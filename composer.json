@@ -19,6 +19,8 @@
 		"propel/propel-bundle": "1.1.*"
 	},
 	"autoload": {
-		"psr-0": { "": "src/" }
-	}
+        	"psr-0": { "Dzangocart\\SubscriptionBundle": "" }
+    	},
+    	"target-dir": "Dzangocart/SubscriptionBundle"
+
 }
