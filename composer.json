@@ -10,9 +10,6 @@
 			"email": "op@united-asian.com"
 		}
 	],
-	"autoload": {
-        	"psr-0": { "": "src/" }
-    	},
         "require": {
 		"php": ">=5.3.2",
 		"symfony/symfony": "2.1.*",
