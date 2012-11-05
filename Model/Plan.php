@@ -28,6 +28,11 @@ class Plan extends BasePlan
 			($end == null || $now <= $end));
 	}
 
+	public function isInactive()
+	{
+		return !$this->isActive();
+	}
+
 	public function isDefault()
 	{
 		return $this->getIsDefault();
