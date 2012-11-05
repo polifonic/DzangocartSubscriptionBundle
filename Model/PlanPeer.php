@@ -6,7 +6,8 @@ use Dzangocart\SubscriptionBundle\Model\om\BasePlanPeer;
 
 class PlanPeer extends BasePlanPeer
 {
- public static function getDefaultPlan() {
+ public static function getDefaultPlan()
+ {
     $c = new Criteria();
     $time = date('Y-m-d H:i:s');
     $c1 = $c->getNewCriterion(PlanPeer::DATE_START, null, Criteria::ISNULL);

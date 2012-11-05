@@ -6,7 +6,8 @@ use Dzangocart\SubscriptionBundle\Model\om\BasePlanQuery;
 
 class PlanQuery extends BasePlanQuery
 {
-  public function getActive() {
+  public function getActive()
+  {
     return $this->
       // date start
       condition('date_start_min', 'Plan.DateStart <= ?', date('Y-m-d H:i:s'))->

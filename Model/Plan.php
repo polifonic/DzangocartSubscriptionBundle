@@ -7,19 +7,23 @@ use Dzangocart\SubscriptionBundle\Model\om\BasePlan;
 class Plan extends BasePlan
 {
 
-  public function  __toString() {
+  public function  __toString()
+  {
     return $this->getName();
   }
 
-  public function isDisabled() {
-	return $this->getDisabled();
+  public function isDisabled()
+  {
+    return $this->getDisabled();
   }
 
-  public function isActive() {
+  public function isActive()
+  {
     if ($this->isDisabled()) { return false; }
     $start = $this->getDateStart('Y-m-d H:i:s');
     $end = $this->getDateEnd('Y-m-d H:i:s');
     $now = date('Y-m-d H:i:s');
+
     return (($start == null || $start <= $now) &&
              ($end == null || $now <= $end));
   }
@@ -30,7 +34,8 @@ class Plan extends BasePlan
 
   public function getFree() { return $this->isFree(); }
 
-  public function getFeatures() {
+  public function getFeatures()
+  {
     return PlanFeatureQuery::create()
     ->usePlanFeatureDefinitionQuery()
     ->orderByRank(Criteria::ASC)
@@ -38,7 +43,8 @@ class Plan extends BasePlan
     ->find();
   }
 
-  public function getFeature(PlanFeatureDefinition $definition) {
+  public function getFeature(PlanFeatureDefinition $definition)
+  {
     $feature = PlanFeatureQuery::create()
       ->usePlanFeatureDefinitionQuery()
       ->filterByRank($definition->getRank())
@@ -47,18 +53,20 @@ class Plan extends BasePlan
     if (!$feature) {
       $feature = $definition->createFeature($this);
     }
+
     return $feature;
   }
 
-  public function getPrices() {
+  public function getPrices()
+  {
     return $this->getPlanPricesRelatedByPlanId();
   }
 
-  public function getDefaultPrice() {
+  public function getDefaultPrice()
+  {
     if ($this->getDefaultPriceId()) {
       return $this->getPlanPriceRelatedByDefaultPriceId();
-    }
-    else {
+    } else {
       return PlanPriceQuery::create()->
         filterByPlanId($this->getId())->
         findOne();
