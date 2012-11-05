@@ -1,6 +1,6 @@
 <?php
 
-namespace Dzangocart\Bundle\SubscriptionBundle;
+namespace Dzangocart\SubscriptionBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
