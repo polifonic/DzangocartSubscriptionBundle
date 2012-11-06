@@ -3,7 +3,7 @@
 	"type": "symfony-bundle",
 	"description": "Symfony2 bundle for dzangocart subscription accounts",
 	"keywords": ["dzangocart", "subscription", "symfony2", "bundle", "propel"],
-	"licence": "MIT",
+	"license": "MIT",
 	"authors": [
 		{
 			"name": "Olivier Pichon",
