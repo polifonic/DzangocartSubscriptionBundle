@@ -1,8 +1,8 @@
 <?php
 
-namespace Dzangocart\SubscriptionBundle\Model;
+namespace Dzangocart\Bundle\SubscriptionBundle\Model;
 
-use Dzangocart\SubscriptionBundle\Model\om\BasePlanFeature;
+use Dzangocart\Bundle\SubscriptionBundle\Model\om\BasePlanFeature;
 
 class PlanFeature extends BasePlanFeature
 {

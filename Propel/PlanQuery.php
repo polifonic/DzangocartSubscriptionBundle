@@ -1,8 +1,8 @@
 <?php
 
-namespace Dzangocart\SubscriptionBundle\Model;
+namespace Dzangocart\Bundle\SubscriptionBundle\Model;
 
-use Dzangocart\SubscriptionBundle\Model\om\BasePlanQuery;
+use Dzangocart\Bundle\SubscriptionBundle\Model\om\BasePlanQuery;
 
 class PlanQuery extends BasePlanQuery
 {
