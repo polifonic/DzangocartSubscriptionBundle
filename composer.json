@@ -1,6 +1,8 @@
 {
     "name": "dzangocart/subscription-bundle",
     "type": "symfony-bundle",
+    "description": "Symfony2 bundle for dzangocart subscription accounts",
+    "keywords": ["dzangocart", "subscription", "symfony2", "bundle"],
     "license": "proprietary",
     "authors": [
         {
