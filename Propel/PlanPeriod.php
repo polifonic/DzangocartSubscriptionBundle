@@ -1,14 +1,14 @@
 <?php
 
-namespace Dzangocart\Bundle\SubscriptionBundle\Model;
+namespace Dzangocart\Bundle\SubscriptionBundle\Propel;
 
-use Dzangocart\Bundle\SubscriptionBundle\Model\om\BasePlanPeriod;
+use Dzangocart\Bundle\SubscriptionBundle\Propel\om\BasePlanPeriod;
 
 class PlanPeriod extends BasePlanPeriod
 {
 
-	public function __toString()
-	{
-		return $this->getCurrentTranslation()->getName();
-	}
+    public function __toString()
+    {
+        return $this->getCurrentTranslation()->getName();
+    }
 }

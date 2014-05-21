@@ -1,16 +1,16 @@
 <?php
 
-namespace Dzangocart\Bundle\SubscriptionBundle\Model;
+namespace Dzangocart\Bundle\SubscriptionBundle\Propel;
 
-use Dzangocart\Bundle\SubscriptionBundle\Model\om\BasePlanFeatureDefinitionPeer;
+use Dzangocart\Bundle\SubscriptionBundle\Propel\om\BasePlanFeatureDefinitionPeer;
 
 class PlanFeatureDefinitionPeer extends BasePlanFeatureDefinitionPeer
 {
 
-	public static function getAll()
-	{
-		return PlanFeatureDefinitionQuery::create()
-			->orderByRank(Criteria::ASC)
-			->find();
-	}
+    public static function getAll()
+    {
+        return PlanFeatureDefinitionQuery::create()
+            ->orderByRank(Criteria::ASC)
+            ->find();
+    }
 }
