@@ -1,60 +1,60 @@
 <?php
 
-namespace Dzangocart\Bundle\SubscriptionBundle\Model;
+namespace Dzangocart\Bundle\SubscriptionBundle\Propel;
 
-use Dzangocart\Bundle\SubscriptionBundle\Model\om\BasePlanFeature;
+use Dzangocart\Bundle\SubscriptionBundle\Propel\om\BasePlanFeature;
 
 class PlanFeature extends BasePlanFeature
 {
 
-	public function __toString()
-	{
-		return $this->getValue() .
-			($this->getUnitId() ? $this->getUnit()->getName() : '') .
-			($this->getPeriodId() ? '/' . $this->getPeriod()->getName() : '');
-	}
+    public function __toString()
+    {
+        return $this->getValue() .
+            ($this->getUnitId() ? $this->getUnit()->getName() : '') .
+            ($this->getPeriodId() ? '/' . $this->getPeriod()->getName() : '');
+    }
 
-	public function getDefinition()
-	{
-		return $this->getPlanFeatureDefinition();
-	}
+    public function getDefinition()
+    {
+        return $this->getPlanFeatureDefinition();
+    }
 
-	public function setDefinitionId($id)
-	{
-		if ($this->definition_id) { return; }
-		parent::setDefinitionId($id);
-	}
+    public function setDefinitionId($id)
+    {
+        if ($this->definition_id) { return; }
+        parent::setDefinitionId($id);
+    }
 
-	public function setPlanFeatureDefinition(PlanFeatureDefinition $definition = null)
-	{
-		if ($this->definition_id) { return; }
-		parent::setPlanFeatureDefinition($definition);
-	}
+    public function setPlanFeatureDefinition(PlanFeatureDefinition $definition = null)
+    {
+        if ($this->definition_id) { return; }
+        parent::setPlanFeatureDefinition($definition);
+    }
 
-	public function setDefinition(PlanFeatureDefinition $definition)
-	{
-		$this->setPlanFeatureDefinition($definition);
-	}
+    public function setDefinition(PlanFeatureDefinition $definition)
+    {
+        $this->setPlanFeatureDefinition($definition);
+    }
 
-	public function setPlanId($id)
-	{
-		if ($this->plan_id) { return; }
-		parent::setPlanId($id);
-	}
+    public function setPlanId($id)
+    {
+        if ($this->plan_id) { return; }
+        parent::setPlanId($id);
+    }
 
-	public function setPlan(Plan $plan = null)
-	{
-		if ($this->plan_id) { return; }
-		parent::setPlan($plan);
-	}
+    public function setPlan(Plan $plan = null)
+    {
+        if ($this->plan_id) { return; }
+        parent::setPlan($plan);
+    }
 
-	public function getUnit()
-	{
-		return $this->getPlanUnit();
-	}
+    public function getUnit()
+    {
+        return $this->getPlanUnit();
+    }
 
-	public function getPeriod()
-	{
-		return $this->getPlanPeriod();
-	}
+    public function getPeriod()
+    {
+        return $this->getPlanPeriod();
+    }
 }

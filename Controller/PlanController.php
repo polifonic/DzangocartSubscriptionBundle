@@ -1,6 +1,6 @@
 <?php
 
-namespace Dzangocart\SubscriptionBundle\Controller;
+namespace Dzangocart\Bundle\SubscriptionBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -21,42 +21,43 @@ class PlanController extends Controller
      */
     public function indexAction()
     {
-	    $plans = $this->getQuery()->
-      		find();
+        $plans = $this->getQuery()->
+              find();
 
         return array(
             'plans' => $plans
         );
     }
 
-	    /**
-	     * Finds and displays a Plan entity.
-	     *
-	     * @Route("/show/{id}", name="plan_show")
-	     */
-	    public function showAction($id)
-	    {
-	    }
+        /**
+         * Finds and displays a Plan entity.
+         *
+         * @Route("/show/{id}", name="plan_show")
+         */
+        public function showAction($id)
+        {
+        }
 
-	    /**
-	     * Displays a form to edit an existing Plan entity.
-	     *
-	     */
-	    public function editAction($id)
-	    {
-	    }
+        /**
+         * Displays a form to edit an existing Plan entity.
+         *
+         */
+        public function editAction($id)
+        {
+        }
 
-	    /**
-	     * Deletes a Plan entity.
-	     *
-	     */
-	    public function deleteAction($id)
-	    {
-	    }
+        /**
+         * Deletes a Plan entity.
+         *
+         */
+        public function deleteAction($id)
+        {
+        }
 
-    protected function getQuery() {
-	    return PlanQuery::create()->
-	    	joinWithI18n($this->getRequest()->getLocale());
+    protected function getQuery()
+    {
+        return PlanQuery::create()->
+            joinWithI18n($this->getRequest()->getLocale());
     }
 
 }
