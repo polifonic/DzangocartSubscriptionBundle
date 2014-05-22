@@ -18,16 +18,6 @@ class PlanPrice extends BasePlanPrice
         );
     }
 
-    public function getPlan()
-    {
-        return $this->getPlanRelatedByPlanId();
-    }
-
-    public function getPeriod()
-    {
-        return $this->getPlanPeriod();
-    }
-
     public function format()
     {
         return $this->getNumberFormatter()->formatCurrency($this->getPrice(), $this->getCurrency());
@@ -36,7 +26,7 @@ class PlanPrice extends BasePlanPrice
     protected function getNumberFormatter()
     {
         if (!$this->number_formatter) {
-            $this->number_formatter = new NumberFormatter($this->getPlan()->getCulture(), NumberFormatter::CURRENCY);
+            $this->number_formatter = new NumberFormatter($this->getPlan()->getLocale(), NumberFormatter::CURRENCY);
         }
 
         return $this->number_formatter;

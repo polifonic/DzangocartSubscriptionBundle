@@ -6,12 +6,6 @@ use Dzangocart\Bundle\SubscriptionBundle\Propel\om\BasePlan;
 
 class Plan extends BasePlan
 {
-
-    public function __toString()
-    {
-        return $this->getName();
-    }
-
     public function isDisabled()
     {
         return $this->getDisabled();
@@ -20,9 +14,10 @@ class Plan extends BasePlan
     public function isActive()
     {
         if ($this->isDisabled()) { return false; }
-        $start = $this->getDateStart('Y-m-d H:i:s');
-        $end = $this->getDateEnd('Y-m-d H:i:s');
-        $now = date('Y-m-d H:i:s');
+
+        $start = $this->getDateStart('U');
+        $end = $this->getDateEnd('U');
+        $now = time();
 
         return (($start == null || $start <= $now) &&
             ($end == null || $now <= $end));
@@ -64,6 +59,7 @@ class Plan extends BasePlan
             ->filterByRank($definition->getRank())
             ->endUse()
             ->findOneByPlanId($this->getId());
+
         if (!$feature) {
             $feature = $definition->createFeature($this);
         }
@@ -71,19 +67,8 @@ class Plan extends BasePlan
         return $feature;
     }
 
-    public function getPrices()
-    {
-        return $this->getPlanPricesRelatedByPlanId();
-    }
-
     public function getDefaultPrice()
     {
-        if ($this->getDefaultPriceId()) {
-            return $this->getPlanPriceRelatedByDefaultPriceId();
-        } else {
-            return PlanPriceQuery::create()->
-                filterByPlanId($this->getId())->
-                findOne();
-        }
+        return $this->getPrices(PlanPriceQuery::create()->getDefault());
     }
 }

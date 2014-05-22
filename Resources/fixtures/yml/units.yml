@@ -1,0 +1,35 @@
+Dzangocart\Bundle\SubscriptionBundle\Propel\PlanUnit:
+    PlanUnit_1: {  }
+    PlanUnit_2: {  }
+    PlanUnit_3: {  }
+Dzangocart\Bundle\SubscriptionBundle\Propel\PlanUnitI18n:
+    PlanUnitI18n_1_en:
+        id: PlanUnit_1
+        locale: en
+        name: Mb
+        plural: Mb
+    PlanUnitI18n_1_fr:
+        id: PlanUnit_1
+        locale: fr
+        name: Mo
+        plural: Mo
+    PlanUnitI18n_2_en:
+        id: PlanUnit_2
+        locale: en
+        name: Gb
+        plural: Gb
+    PlanUnitI18n_2_fr:
+        id: PlanUnit_2
+        locale: fr
+        name: Go
+        plural: Go
+    PlanUnitI18n_3_en:
+        id: PlanUnit_3
+        locale: en
+        name: Tb
+        plural: Tb
+    PlanUnitI18n_3_fr:
+        id: PlanUnit_3
+        locale: fr
+        name: To
+        plural: To

@@ -9,15 +9,25 @@ class PlanQuery extends BasePlanQuery
     public function getActive()
     {
         return $this->
-            // date start
-            condition('date_start_min', 'Plan.DateStart <= ?', date('Y-m-d H:i:s'))->
-            condition('date_start_null', 'Plan.DateStart IS NULL')->
-            combine(array('date_start_min', 'date_start_null'), 'or', 'date_start')->
-            // date end
-            condition('date_end_min', 'Plan.DateEnd >= ?', date('Y-m-d H:i:s'))->
-            condition('date_end_null', 'Plan.DateEnd IS NULL')->
-            combine(array('date_end_min', 'date_end_null'), 'or', 'date_end')->
-            where(array('date_start', 'date_end'), 'and')->
+            // start date
+            condition('start_min', 'Plan.Start <= ?', date('Y-m-d H:i:s'))->
+            condition('start_null', 'Plan.Start IS NULL')->
+            combine(array('start_min', 'start_null'), 'or', 'start')->
+
+            // finish date
+            condition('finish_min', 'Plan.Finish >= ?', date('Y-m-d H:i:s'))->
+            condition('finish_null', 'Plan.Finish IS NULL')->
+            combine(array('finish_min', 'finish_null'), 'or', 'finish')->
+            where(array('start', 'finish'), 'and')->
+
             filterByDisabled(false);
+    }
+
+    public function getDefault()
+    {
+        return $this
+            ->getActive()
+            ->orderByRank()
+            ->findOneByIsDefault(true);
     }
 }

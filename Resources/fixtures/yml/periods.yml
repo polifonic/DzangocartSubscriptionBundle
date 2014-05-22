@@ -1,0 +1,62 @@
+Dzangocart\Bundle\SubscriptionBundle\Propel\PlanPeriod:
+    PlanPeriod_1:
+        date_interval: ''
+    PlanPeriod_2:
+        date_interval: ''
+    PlanPeriod_3:
+        date_interval: ''
+    PlanPeriod_4:
+        date_interval: ''
+    PlanPeriod_5:
+        date_interval: ''
+Dzangocart\Bundle\SubscriptionBundle\Propel\PlanPeriodI18n:
+    PlanPeriodI18n_1_en:
+        id: PlanPeriod_1
+        locale: en
+        name: hour
+        plural: hours
+    PlanPeriodI18n_1_fr:
+        id: PlanPeriod_1
+        locale: fr
+        name: heure
+        plural: heures
+    PlanPeriodI18n_2_en:
+        id: PlanPeriod_2
+        locale: en
+        name: day
+        plural: days
+    PlanPeriodI18n_2_fr:
+        id: PlanPeriod_2
+        locale: fr
+        name: jour
+        plural: jours
+    PlanPeriodI18n_3_en:
+        id: PlanPeriod_3
+        locale: en
+        name: week
+        plural: weeks
+    PlanPeriodI18n_3_fr:
+        id: PlanPeriod_3
+        locale: fr
+        name: semaine
+        plural: semaines
+    PlanPeriodI18n_4_en:
+        id: PlanPeriod_4
+        locale: en
+        name: month
+        plural: months
+    PlanPeriodI18n_4_fr:
+        id: PlanPeriod_4
+        locale: fr
+        name: mois
+        plural: mois
+    PlanPeriodI18n_5_en:
+        id: PlanPeriod_5
+        locale: en
+        name: yeaer
+        plural: years
+    PlanPeriodI18n_5_fr:
+        id: PlanPeriod_5
+        locale: fr
+        name: an
+        plural: ans

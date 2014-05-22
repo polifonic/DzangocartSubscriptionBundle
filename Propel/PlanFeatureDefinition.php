@@ -15,9 +15,4 @@ class PlanFeatureDefinition extends BasePlanFeatureDefinition
 
         return $feature;
     }
-
-    public function __toString()
-    {
-        return $this->getName();
-    }
 }
