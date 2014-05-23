@@ -6,11 +6,16 @@ Symfony 2 bundle for dzangocart subscription accounts
 Features
 --------
 
+  * Declare your entities to be subscription-type products
+  * Manage different pricing plans and their features
+  * Display a pricing page on your web site
+  * Easy links to your dzangocart store
 
 Requirements
 ------------
 
-TODO
+While this bundle is primarily intended for owners of a [Dzngocart](http://www,dzangocart.com) store,
+most of its feature can still be used by anyone.
 
 
 Installation
