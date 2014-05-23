@@ -38,6 +38,7 @@ If you are using assetic, add the bundle to the assetic configuration:
 Usage
 ~~~~~
 
+
 Fixtures
 ~~~~~~~~
 
@@ -46,4 +47,4 @@ For your convenience, several fixtures are included in the bundle, under `Resour
 Some of these fixtures only have demonstration value (plans, features) but others like units and periods,
 may be of some practical use. To load the fixtures into your database using propel:
 
-  php app/console propel:fixtures:load @DzangocartSubscriptionBundle
+    php app/console propel:fixtures:load @DzangocartSubscriptionBundle
