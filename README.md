@@ -59,7 +59,7 @@ TODO
 Fixtures
 --------
 
-For your convenience, several fixtures are included in the bundle, under `Resources\fixtures'.
+For your convenience, several fixtures are included in the bundle, under `Resources\fixtures`.
 
 Some of these fixtures only have demonstration value (plans, features) but others like units and periods,
 may be of some practical use. To load the fixtures into your database using propel:
