@@ -14,7 +14,7 @@ Features
 Requirements
 ------------
 
-While this bundle is primarily intended for owners of a [Dzangocart](http://www,dzangocart.com) store,
+While this bundle is primarily intended for owners of a [Dzangocart](http://www.dzangocart.com) store,
 most of its feature can still be used by anyone.
 
 
