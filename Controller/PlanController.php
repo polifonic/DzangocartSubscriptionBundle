@@ -2,11 +2,12 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanQuery;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Dzangocart\SubscriptionBundle\Model\PlanQuery;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * @Route("/plan")
@@ -18,11 +19,12 @@ class PlanController extends Controller
      * Lists all Plans.
      *
      * @Route("/", name="plans")
+     * @Template("DzangocartSubscriptionBundle:Plan:index.html.twig")
      */
     public function indexAction()
     {
-        $plans = $this->getQuery()->
-              find();
+        $plans = $this->getQuery()
+            ->find();
 
         return array(
             'plans' => $plans
@@ -33,9 +35,11 @@ class PlanController extends Controller
      * Finds and displays a Plan entity.
      *
      * @Route("/show/{id}", name="plan_show")
+     * @Template("DzangocartSubscriptionBundle:Plan:show.html.twig")
      */
     public function showAction($id)
     {
+        
     }
 
     /**
@@ -44,6 +48,7 @@ class PlanController extends Controller
      */
     public function editAction($id)
     {
+        
     }
 
     /**
@@ -52,12 +57,12 @@ class PlanController extends Controller
      */
     public function deleteAction($id)
     {
+        
     }
 
     protected function getQuery()
     {
-        return PlanQuery::create()->
-            joinWithI18n($this->getRequest()->getLocale());
+        return PlanQuery::create()
+            ->joinWithI18n($this->getRequest()->getLocale());
     }
-
 }
