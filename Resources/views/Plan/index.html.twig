@@ -1,9 +1,11 @@
 {% extends "DzangocartSubscriptionBundle:Admin:layout.html.twig" %}
 
-{% block main %}
-<section class="dzangocart plans">
-    <h2>{% trans from "plans" %}plans.list{% endtrans %}</h2>
+{% block plan_page_title %}
+		<h2>{% trans from "plans" %}plans.list{% endtrans %}</h2>
+{% endblock %}
 
+{% block plan_content %}
+<section class="dzangocart plans">
     <table class="list">
         <thead>
             <tr>
