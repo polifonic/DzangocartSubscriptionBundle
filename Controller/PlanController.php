@@ -68,7 +68,7 @@ class PlanController extends Controller
      * @Route("/create", name="dzangocart_subscription_plans_create")
      * @Template("DzangocartSubscriptionBundle:Plan:create.html.twig")
      */
-    public function createAction(\Symfony\Component\HttpFoundation\Request $req)
+    public function createAction()
     {
         return array();
     }
