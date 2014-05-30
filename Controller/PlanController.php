@@ -44,11 +44,13 @@ class PlanController extends Controller
 
     /**
      * Displays a form to edit an existing Plan entity.
-     *
+     * 
+     * @Route("/edit/{id}", name="plan_feature_edit")
+     * @Template("DzangocartSubscriptionBundle:Plan:edit.html.twig")
      */
     public function editAction($id)
     {
-        
+        return array();
     }
 
     /**
@@ -58,6 +60,17 @@ class PlanController extends Controller
     public function deleteAction($id)
     {
         
+    }
+    
+    /**
+     * Create a Plan entity.
+     * 
+     * @Route("/create", name="plan_feature_create")
+     * @Template("DzangocartSubscriptionBundle:Plan:create.html.twig")
+     */
+    public function createAction(\Symfony\Component\HttpFoundation\Request $req)
+    {
+        return array();
     }
 
     protected function getQuery()
