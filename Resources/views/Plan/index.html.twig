@@ -1,5 +1,10 @@
 {% extends "DzangocartSubscriptionBundle:Admin:layout.html.twig" %}
 
+{% block plan_head_style %}
+	{{ parent() }}
+	<link href="{{ asset('bundles/dzangocartsubscription/css/plan.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
 {% block plan_page_title %}
 	<h2>{% trans from "plans" %}plans.list{% endtrans %}</h2>
 {% endblock %}
@@ -40,7 +45,3 @@
 </section>
 {% endblock %}
 
-{% block stylesheets %}
-	{{ parent() }}
-	<link href="{{ asset('bundles/dzangocartsubscription/css/plan.css') }}" type="text/css" rel="stylesheet" />
-{% endblock %}
