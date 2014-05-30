@@ -7,12 +7,12 @@ use Propel\PropelBundle\Form\BaseAbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class PlanFeatureDefinationFormType extends BaseAbstractType
+class PlanFeatureDefinitionFormType extends BaseAbstractType
 {
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'name' => 'plan_feature_defination_form',
+            'name' => 'plan_feature_definition_form',
             'translation_domain' => 'features',
             'show_legend' => false
         ));
@@ -24,24 +24,24 @@ class PlanFeatureDefinationFormType extends BaseAbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name', 'text', array(
-            'label' => 'features.defination.label.name'
+            'label' => 'features.definition.name'
         ));
 
         $builder->add('description', 'text', array(
-            'label' => 'features.defination.label.description'
+            'label' => 'features.definition.description'
         ));
 
         $builder->add('rank', 'number', array(
-            'label' => 'features.defination.label.rank'
+            'label' => 'features.definition.rank'
         ));
         
         $builder->add('submit', 'submit', array(
-            'label' => 'features.defination.label.submit'
+            'label' => 'features.definition.submit'
         ));
     }
 
     public function getName()
     {
-        return "plan_feature_defination_form";
+        return "plan_feature_definition_form";
     }
 }

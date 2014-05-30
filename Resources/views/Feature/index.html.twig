@@ -1,11 +1,36 @@
 {% extends "DzangocartSubscriptionBundle:Admin:layout.html.twig" %}
 
+{% trans_default_domain "features" %}
+
+{% block core_head_style %}
+	{{ parent() }}
+	{% stylesheets filter="cssrewrite" output="css/*.css"
+		'bundles/uamdatatables/css/jquery.dataTables_bootstrap.css'
+	%}
+		<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+	{% endstylesheets %}
+{% endblock %}
+
 {% block plan_page_title %}
 	<h2>{% trans from "features" %}features.list{% endtrans %}</h2>
 {% endblock %}
 
+{% block bodyclass %}feature{% endblock %}
+
 {% block plan_content %}
-	Display all the plan features
+	<table class="table table-condensed">
+		<thead>
+			<tr>
+				<th class="selectall"></th>
+				<th class="name">{% trans %}features.definition.name{% endtrans %}</th>
+				<th class="description">{% trans %}features.definition.description{% endtrans %}</th>
+				<th class="rank">{% trans %}features.definition.rank{% endtrans %}</th>
+				<th class="actions">{% trans %}features.action.title{% endtrans %}</th>
+			</tr>			
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
 {% endblock %}
 
 {% block stylesheets %}

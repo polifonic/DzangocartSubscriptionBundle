@@ -2,7 +2,7 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Controller;
 
-use Dzangocart\Bundle\SubscriptionBundle\Form\Type\PlanFeatureDefinationFormType;
+use Dzangocart\Bundle\SubscriptionBundle\Form\Type\PlanFeatureDefinitionFormType;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanFeatureDefinition;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -67,7 +67,7 @@ class FeatureController extends Controller
      */
     public function createAction(Request $request)
     {
-        $form = $this->createForm(new PlanFeatureDefinationFormType(), $feature_discription = new PlanFeatureDefinition());
+        $form = $this->createForm(new PlanFeatureDefinitionFormType(), $feature_discription = new PlanFeatureDefinition());
         
         $form->handleRequest($request);
         
