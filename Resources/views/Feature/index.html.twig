@@ -2,7 +2,7 @@
 
 {% trans_default_domain "features" %}
 
-{% block core_head_style %}
+{% block plan_head_style %}
 	{{ parent() }}
 	{% stylesheets filter="cssrewrite" output="css/*.css"
 		'bundles/uamdatatables/css/jquery.dataTables_bootstrap.css'
@@ -15,7 +15,7 @@
 	<h2>{% trans from "features" %}features.list{% endtrans %}</h2>
 {% endblock %}
 
-{% block bodyclass %}feature{% endblock %}
+{% block bodyclass %}features{% endblock %}
 
 {% block plan_content %}
 	<table class="table table-condensed">
@@ -33,5 +33,20 @@
 	</table>
 {% endblock %}
 
-{% block stylesheets %}
+{% block plan_foot_script %}
+	{{ parent() }}
+	{% javascripts
+            'bundles/uamdatatables/js/jquery.dataTables.min.js'
+            'bundles/uamdatatables/js/jquery.dataTables_bootstrap.js'
+			'bundles/dzangocartsubscription/js/scripts/features.js'
+	%}
+	<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+	<script>
+		dzangocart_subscription.features = {
+			dataTables: {
+				sAjaxSource: "{{ path('features', { _format: 'json' }) }}"
+			}
+		};
+	</script>
 {% endblock %}

@@ -4,12 +4,14 @@ namespace Dzangocart\Bundle\SubscriptionBundle\Controller;
 
 use Dzangocart\Bundle\SubscriptionBundle\Form\Type\PlanFeatureDefinitionFormType;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanFeatureDefinition;
+use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanFeatureDefinitionQuery;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @Route("/feature")
@@ -23,8 +25,36 @@ class FeatureController extends Controller
      * @Route("/", name="features")
      * @Template("DzangocartSubscriptionBundle:Feature:index.html.twig")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        if ($request->isXmlHttpRequest() || 'json' == $request->getRequestFormat()) {
+
+            $query = $this->getQuery();
+
+            $total_count = $query
+                ->count();
+
+            $filtered_count = $total_count;
+
+            $features = $query
+                //->datatablesSort($request->query, $this->getDataTablesSortColumns())
+                ->setLimit($request->query->get('iDisplayLength', 10))
+                ->setOffset($request->query->get('iDisplayStart'))
+                ->find();
+
+            $data = array(
+                'sEcho' => $request->query->get('sEcho'),
+                'iStart' => 0,
+                'iTotalRecords' => $total_count,
+                'iTotalDisplayRecords' => $filtered_count,
+                'features' => $features
+            );
+
+            $view = $this->renderView('DzangocartSubscriptionBundle:Feature:index.json.twig', $data);
+
+            return new Response($view, 200, array('Content-Type' => 'application/json'));
+        }
+        
         return array();
     }
     
@@ -78,6 +108,21 @@ class FeatureController extends Controller
         
         return array(
             'form' => $form->createView()
+        );
+    }
+    
+    protected function getQuery()
+    {
+        return PlanFeatureDefinitionQuery::create()
+            ->joinWithI18n($this->getRequest()->getLocale());
+    }
+
+    protected function getDatatablesSortColumns()
+    {
+        return array(
+            1 => 'plan_feature_definition.name',
+            2 => 'plan_feature_definition.description',
+            3 => 'plan_feature_defination.rank'
         );
     }
 }

@@ -1,0 +1,22 @@
+{% spaceless %}
+{
+	{% trans_default_domain "features" %}
+	"sEcho": "{{ sEcho }}",
+	"iTotalRecords": {{ iTotalRecords }},
+	"iTotalDisplayRecords": {{ iTotalDisplayRecords }},
+	"aaData" : [
+		{% for feature in features %}
+			{
+				"DT_RowId": "{{ 'feature_' ~ feature.id }}",
+				"DT_RowClass": "{{ 'feature' }}",
+				"id": "{{ feature.id }}",
+				"0": "",
+				"1": "{{ feature.name }}",
+				"2": "{{ feature.description }}",
+				"3": "{{ feature.rank }}",
+				"4": ""
+			}{% if not loop.last %},{% endif %}
+		{% endfor %}
+	]
+}
+{% endspaceless %}
