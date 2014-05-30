@@ -8,4 +8,4 @@ features:
         rank:        Rank
         submit:      Create
     edit:            Modify Plan Feature %feature_name%
-    list:            Plan Features   
+    list:            Plan Feature Descriptions   
