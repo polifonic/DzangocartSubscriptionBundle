@@ -1,4 +1,4 @@
 features:
-    create: Create a new Plan Feature
+    create: Create a new Plan
     edit: Modify Plan Feature %feature_name%
     list: Plan Features
