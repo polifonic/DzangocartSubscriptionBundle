@@ -2,10 +2,14 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Controller;
 
+use Dzangocart\Bundle\SubscriptionBundle\Form\Type\PlanFeatureDefinationFormType;
+use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanFeatureDefinition;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("/feature")
@@ -61,9 +65,20 @@ class FeatureController extends Controller
      * @Route("/create", name="dzangocart_subscription_plan_feature_create")
      * @Template("DzangocartSubscriptionBundle:Feature:create.html.twig")
      */
-    public function createAction()
+    public function createAction(Request $request)
     {
-        return array();
+        $form = $this->createForm(new PlanFeatureDefinationFormType(), $feature_discription = new PlanFeatureDefinition());
+        
+        $form->handleRequest($request);
+        
+        if ($form->isValid()) {
+            $feature_discription->save();
+            return $this->redirect($this->generateUrl('features'));
+        }
+        
+        return array(
+            'form' => $form->createView()
+        );
     }
 }
 

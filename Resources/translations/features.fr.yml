@@ -1,4 +1,10 @@
 features:
     create: Create a new Plan Feature
+    defination:
+        label:
+            description: Description
+            name: Name
+            rank: Rank
+            submit: Create
     edit: Modify Plan Feature %feature_name%
     list: Plan Features
