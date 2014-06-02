@@ -75,9 +75,27 @@ class FeatureController extends Controller
      * @Route("/edit/{id}", name="dzangocart_subscription_feature_edit")
      * @Template("DzangocartSubscriptionBundle:Feature:edit.html.twig")
      */
-    public function editAction($id)
+    public function editAction($id , Request $request)
     {
-        return array();
+        $plan_feature_description = $this->getQuery()
+            ->findPk($id);
+            
+        
+        $form = $this->createForm(new PlanFeatureDefinitionFormType(), $plan_feature_description);
+        
+        $form->handleRequest($request);
+        
+        if ($form->isValid()) {
+            $plan_feature_description->save();
+            return $this->redirect($this->generateUrl('dzangocart_subscription_features'));
+        }
+        
+        return array(
+            'form' => $form->createView(),
+            'feature_description' => $plan_feature_description
+        );
+        
+
     }
 
     /**

@@ -36,8 +36,12 @@ class PlanFeatureDefinitionFormType extends BaseAbstractType
         ));
         
         $builder->add('submit', 'submit', array(
-            'label' => 'features.definition.submit'
+            'label' => 'features.definition.save'
         ));
+/*        
+        $builder->add('modify', 'submit', array(
+            'label' => 'features.definition.modify'
+        ));*/
     }
 
     public function getName()

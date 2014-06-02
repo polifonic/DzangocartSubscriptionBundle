@@ -1,11 +1,11 @@
 {% extends "DzangocartSubscriptionBundle:Admin:layout.html.twig" %}
 
 {% block plan_page_title %}
-	<h2>{% trans from "features" %}features.edit{% endtrans %}</h2>
+	<h2>{% trans from "features" %}features.edit{% endtrans %}: {{ feature_description.name }}</h2>
 {% endblock %}
 
 {% block plan_content %}
-	Page to edit existing Plan.
+	{{ form(form) }}
 {% endblock %}
 
 {% block stylesheets %}
