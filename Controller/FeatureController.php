@@ -22,7 +22,7 @@ class FeatureController extends Controller
     /**
      * Lists all Plans Feature.
      *
-     * @Route("/", name="features")
+     * @Route("/", name="dzangocart_subscription_features")
      * @Template("DzangocartSubscriptionBundle:Feature:index.html.twig")
      */
     public function indexAction(Request $request)
@@ -61,7 +61,7 @@ class FeatureController extends Controller
     /**
      * Finds and displays a Plan Feature entity.
      *
-     * @Route("/show/{id}", name="feature_show")
+     * @Route("/show/{id}", name="dzangocart_subscription_feature_show")
      * @Template("DzangocartSubscriptionBundle:Feature:show.html.twig")
      */
     public function showAction($id)
@@ -72,7 +72,7 @@ class FeatureController extends Controller
     /**
      * Displays a form to edit an existing Plan Feature entity.
      * 
-     * @Route("/edit/{id}", name="dzangocart_subscription_plan_feature_edit")
+     * @Route("/edit/{id}", name="dzangocart_subscription_feature_edit")
      * @Template("DzangocartSubscriptionBundle:Feature:edit.html.twig")
      */
     public function editAction($id)
@@ -92,7 +92,7 @@ class FeatureController extends Controller
     /**
      * Create a Plan Feature entity.
      * 
-     * @Route("/create", name="dzangocart_subscription_plan_feature_create")
+     * @Route("/create", name="dzangocart_subscription_feature_create")
      * @Template("DzangocartSubscriptionBundle:Feature:create.html.twig")
      */
     public function createAction(Request $request)
@@ -103,7 +103,7 @@ class FeatureController extends Controller
         
         if ($form->isValid()) {
             $feature_discription->save();
-            return $this->redirect($this->generateUrl('features'));
+            return $this->redirect($this->generateUrl('dzangocart_subscription_features'));
         }
         
         return array(
