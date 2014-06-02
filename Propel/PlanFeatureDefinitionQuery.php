@@ -2,7 +2,11 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Propel;
 
+use Criteria;
+
 use Dzangocart\Bundle\SubscriptionBundle\Propel\om\BasePlanFeatureDefinitionQuery;
+
+use Symfony\Component\HttpFoundation\ParameterBag;
 
 class PlanFeatureDefinitionQuery extends BasePlanFeatureDefinitionQuery
 {
@@ -27,12 +31,13 @@ class PlanFeatureDefinitionQuery extends BasePlanFeatureDefinitionQuery
 
                 $control++;
             }
+
         }
 
         return $control ? $this : $this->defaultSort();
     }
 
-    public function defaultSort()
+    function defaultSort()
     {
         return $this->orderById();
     }

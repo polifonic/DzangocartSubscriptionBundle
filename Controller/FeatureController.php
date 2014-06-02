@@ -37,7 +37,7 @@ class FeatureController extends Controller
             $filtered_count = $total_count;
 
             $features = $query
-                //->datatablesSort($request->query, $this->getDataTablesSortColumns())
+                ->datatablesSort($request->query, $this->getDataTablesSortColumns())
                 ->setLimit($request->query->get('iDisplayLength', 10))
                 ->setOffset($request->query->get('iDisplayStart'))
                 ->find();
@@ -148,9 +148,7 @@ class FeatureController extends Controller
     protected function getDatatablesSortColumns()
     {
         return array(
-            1 => 'plan_feature_definition.name',
-            2 => 'plan_feature_definition.description',
-            3 => 'plan_feature_defination.rank'
+            3 => 'plan_feature_definition.rank'
         );
     }
 }

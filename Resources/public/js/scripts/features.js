@@ -34,7 +34,7 @@
 	$.fn.features.defaults = {
 		dataTables: {
 			aoColumnDefs: [
-				{ bSortable: false, aTargets: [ 0, 4 ] },
+				{ bSortable: false, aTargets: [ 0, 1, 2, 4 ] },
 				{ bVisible: false, aTargets: [ 0 ] },
 				{ sClass: "actions", aTargets: [ 4 ] }
 			],
@@ -45,6 +45,7 @@
 			bPaginate: true,
 			bProcessing: true,
 			bServerSide: true,
+			bSortable: true,
 			oLanguage: {
 				sUrl: "/bundles/uamdatatables/lang/en.txt"
 			}
