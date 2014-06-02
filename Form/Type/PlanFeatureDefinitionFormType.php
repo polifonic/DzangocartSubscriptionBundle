@@ -13,7 +13,7 @@ class PlanFeatureDefinitionFormType extends BaseAbstractType
     {
         $resolver->setDefaults(array(
             'name' => 'plan_feature_definition_form',
-            'translation_domain' => 'features',
+            'translation_domain' => 'feature',
             'show_legend' => false
         ));
     }
@@ -24,19 +24,19 @@ class PlanFeatureDefinitionFormType extends BaseAbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name', 'text', array(
-            'label' => 'features.definition.name'
+            'label' => 'feature.features.name'
         ));
 
         $builder->add('description', 'text', array(
-            'label' => 'features.definition.description'
+            'label' => 'feature.features.description'
         ));
 
         $builder->add('rank', 'number', array(
-            'label' => 'features.definition.rank'
+            'label' => 'feature.features.rank'
         ));
 
         $builder->add('submit', 'submit', array(
-            'label' => 'features.definition.save'
+            'label' => 'feature.features.save'
         ));
         /*
           $builder->add('modify', 'submit', array(

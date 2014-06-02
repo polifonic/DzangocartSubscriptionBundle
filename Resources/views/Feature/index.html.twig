@@ -1,6 +1,6 @@
 {% extends "DzangocartSubscriptionBundle:Admin:layout.html.twig" %}
 
-{% trans_default_domain "features" %}
+{% trans_default_domain "feature" %}
 
 {% block plan_head_style %}
 	{{ parent() }}
@@ -8,9 +8,9 @@
 
 {% block plan_page_title %}
 	<a type='button' class='btn btn-default pull-right' href="{{ path('dzangocart_subscription_feature_create') }}">
-		{% trans %}features.action.create{% endtrans %}
+		{% trans %}feature.features.action.create{% endtrans %}
 	</a>
-	<h2>{% trans from "features" %}features.list{% endtrans %}</h2>
+	<h2>{% trans %}feature.features.list{% endtrans %}</h2>
 {% endblock %}
 
 {% block bodyclass %}features{% endblock %}
@@ -19,10 +19,10 @@
 	<table class="table table-condensed">
 		<thead>
 			<tr>
-				<th class="rank">{% trans %}features.definition.rank{% endtrans %}</th>
-				<th class="name">{% trans %}features.definition.name{% endtrans %}</th>
-				<th class="description">{% trans %}features.definition.description{% endtrans %}</th>
-				<th class="actions">{% trans %}features.action.title{% endtrans %}</th>
+				<th class="rank"></th>
+				<th class="name">{% trans %}feature.features.name{% endtrans %}</th>
+				<th class="description">{% trans %}feature.features.description{% endtrans %}</th>
+				<th class="actions">{% trans %}feature.features.action.title{% endtrans %}</th>
 			</tr>			
 		</thead>
 		<tbody>
@@ -31,7 +31,7 @@
 					<th>{{ feature.rank }}</th>
 					<th>{{ feature.name }}</th>
 					<th>{{ feature.description }}</th>
-					<th><a href='{{ path('dzangocart_subscription_feature_edit', { 'id' : feature.id }) }}'>{% trans %}features.action.edit{% endtrans %}</a></th>
+					<th><a href='{{ path('dzangocart_subscription_feature_edit', { 'id' : feature.id }) }}'>{% trans %}feature.features.action.edit{% endtrans %}</a></th>
 				</tr>
 			{% endfor %}
 		</tbody>

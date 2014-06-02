@@ -20,7 +20,6 @@ use Symfony\Component\HttpFoundation\Response;
 class FeatureController extends Controller
 {
     /**
-     * Lists all Plans Feature.
      *
      * @Route("/", name="dzangocart_subscription_features")
      * @Template("DzangocartSubscriptionBundle:Feature:index.html.twig")
@@ -34,49 +33,28 @@ class FeatureController extends Controller
     }
 
     /**
-     * Finds and displays a Plan Feature entity.
-     *
-     * @Route("/show/{id}", name="dzangocart_subscription_feature_show")
-     * @Template("DzangocartSubscriptionBundle:Feature:show.html.twig")
-     */
-    public function showAction($id)
-    {
-        $plan_feature_description = $this->getQuery()
-            ->findPk($id);
-
-        if ($plan_feature_description) {
-            return array(
-                'feature_description' => $plan_feature_description
-            );
-        } else {
-            return $this->redirect($this->generateUrl('dzangocart_subscription_features'));
-        }
-    }
-
-    /**
-     * Displays a form to edit an existing Plan Feature entity.
      * 
      * @Route("/edit/{id}", name="dzangocart_subscription_feature_edit")
      * @Template("DzangocartSubscriptionBundle:Feature:edit.html.twig")
      */
     public function editAction($id, Request $request)
     {
-        $plan_feature_description = $this->getQuery()
+        $feature = $this->getQuery()
             ->findPk($id);
 
-        if ($plan_feature_description) {
-            $form = $this->createForm(new PlanFeatureDefinitionFormType(), $plan_feature_description);
+        if ($feature) {
+            $form = $this->createForm(new PlanFeatureDefinitionFormType(), $feature);
 
             $form->handleRequest($request);
 
             if ($form->isValid()) {
-                $plan_feature_description->save();
-                return $this->redirect($this->generateUrl('dzangocart_subscription_feature_show', array('id' => $id)));
+                $feature->save();
+                return $this->redirect($this->generateUrl('dzangocart_subscription_features'));
             }
 
             return array(
                 'form' => $form->createView(),
-                'feature_description' => $plan_feature_description
+                'feature' => $feature
             );
         } else {
             return $this->redirect($this->generateUrl('dzangocart_subscription_features'));
@@ -84,7 +62,6 @@ class FeatureController extends Controller
     }
 
     /**
-     * Deletes a Plan Feature entity.
      *
      */
     public function deleteAction($id)
@@ -93,20 +70,19 @@ class FeatureController extends Controller
     }
 
     /**
-     * Create a Plan Feature entity.
      * 
      * @Route("/create", name="dzangocart_subscription_feature_create")
      * @Template("DzangocartSubscriptionBundle:Feature:create.html.twig")
      */
     public function createAction(Request $request)
     {
-        $form = $this->createForm(new PlanFeatureDefinitionFormType(), $feature_discription = new PlanFeatureDefinition());
+        $form = $this->createForm(new PlanFeatureDefinitionFormType(), $feature = new PlanFeatureDefinition());
 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $feature_discription->save();
-            return $this->redirect($this->generateUrl('dzangocart_subscription_feature_show', array('id' => $feature_discription->getId())));
+            $feature->save();
+            return $this->redirect($this->generateUrl('dzangocart_subscription_features'));
         }
 
         return array(
