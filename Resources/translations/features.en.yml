@@ -1,8 +1,11 @@
 features:
     action:
-        title: Action
+        create:      Create
+        edit:        Edit
+        title:       Action
     create:          Create a new Plan Feature
     definition:
+        create:      Create
         description: Description
         name:        Name
         rank:        Rank

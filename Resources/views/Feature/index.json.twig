@@ -14,7 +14,7 @@
 				"1": "{{ feature.name }}",
 				"2": "{{ feature.description }}",
 				"3": "{{ feature.rank }}",
-				"4": ""
+				"4": "<a href='{{ path('dzangocart_subscription_feature_edit', { 'id' : feature.id }) }}'>{% trans %}features.action.edit{% endtrans %}</a>"
 			}{% if not loop.last %},{% endif %}
 		{% endfor %}
 	]
