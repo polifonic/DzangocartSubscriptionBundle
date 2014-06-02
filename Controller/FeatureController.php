@@ -34,7 +34,7 @@ class FeatureController extends Controller
 
     /**
      * 
-     * @Route("/edit/{id}", name="dzangocart_subscription_feature_edit")
+     * @Route("/{id}/edit", name="dzangocart_subscription_feature_edit")
      * @Template("DzangocartSubscriptionBundle:Feature:edit.html.twig")
      */
     public function editAction($id, Request $request)
