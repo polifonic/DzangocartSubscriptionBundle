@@ -61,7 +61,7 @@ class PlanController extends Controller
     {
         
     }
-    
+
     /**
      * Create a Plan entity.
      * 
@@ -76,6 +76,6 @@ class PlanController extends Controller
     protected function getQuery()
     {
         return PlanQuery::create()
-            ->joinWithI18n($this->getRequest()->getLocale());
+                ->joinWithI18n($this->getRequest()->getLocale());
     }
 }
