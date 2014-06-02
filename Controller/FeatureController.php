@@ -54,10 +54,10 @@ class FeatureController extends Controller
 
             return new Response($view, 200, array('Content-Type' => 'application/json'));
         }
-        
+
         return array();
     }
-    
+
     /**
      * Finds and displays a Plan Feature entity.
      *
@@ -68,7 +68,7 @@ class FeatureController extends Controller
     {
         $plan_feature_description = $this->getQuery()
             ->findPk($id);
-        
+
         if ($plan_feature_description) {
             return array(
                 'feature_description' => $plan_feature_description
@@ -76,7 +76,6 @@ class FeatureController extends Controller
         } else {
             return $this->redirect($this->generateUrl('dzangocart_subscription_features'));
         }
-        
     }
 
     /**
@@ -85,14 +84,14 @@ class FeatureController extends Controller
      * @Route("/edit/{id}", name="dzangocart_subscription_feature_edit")
      * @Template("DzangocartSubscriptionBundle:Feature:edit.html.twig")
      */
-    public function editAction($id , Request $request)
+    public function editAction($id, Request $request)
     {
         $plan_feature_description = $this->getQuery()
             ->findPk($id);
-            
+
         if ($plan_feature_description) {
             $form = $this->createForm(new PlanFeatureDefinitionFormType(), $plan_feature_description);
-        
+
             $form->handleRequest($request);
 
             if ($form->isValid()) {
@@ -107,7 +106,6 @@ class FeatureController extends Controller
         } else {
             return $this->redirect($this->generateUrl('dzangocart_subscription_features'));
         }
-
     }
 
     /**
@@ -118,7 +116,7 @@ class FeatureController extends Controller
     {
         
     }
-    
+
     /**
      * Create a Plan Feature entity.
      * 
@@ -128,23 +126,23 @@ class FeatureController extends Controller
     public function createAction(Request $request)
     {
         $form = $this->createForm(new PlanFeatureDefinitionFormType(), $feature_discription = new PlanFeatureDefinition());
-        
+
         $form->handleRequest($request);
-        
+
         if ($form->isValid()) {
             $feature_discription->save();
             return $this->redirect($this->generateUrl('dzangocart_subscription_feature_show', array('id' => $feature_discription->getId())));
         }
-        
+
         return array(
             'form' => $form->createView()
         );
     }
-    
+
     protected function getQuery()
     {
         return PlanFeatureDefinitionQuery::create()
-            ->joinWithI18n($this->getRequest()->getLocale());
+                ->joinWithI18n($this->getRequest()->getLocale());
     }
 
     protected function getDatatablesSortColumns()
@@ -156,4 +154,3 @@ class FeatureController extends Controller
         );
     }
 }
-
