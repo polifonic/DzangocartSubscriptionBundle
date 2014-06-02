@@ -1,0 +1,15 @@
+{% extends "DzangocartSubscriptionBundle:Admin:layout.html.twig" %}
+
+{% block plan_page_title %}
+	<h2>{% trans from "features" %}features.definition.name{% endtrans %}: {{ feature_description.name }}</h2>
+{% endblock %}
+
+{% block plan_content %}
+	<h3>{% trans from "features" %}features.definition.description{% endtrans %}</h3>
+	{{ feature_description.description }}
+	<h3>{% trans from "features" %}features.definition.rank{% endtrans %}</h3>
+	{{ feature_description.rank }}
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}

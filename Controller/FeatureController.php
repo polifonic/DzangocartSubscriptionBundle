@@ -66,6 +66,12 @@ class FeatureController extends Controller
      */
     public function showAction($id)
     {
+        $plan_feature_description = $this->getQuery()
+            ->findPk($id);
+        
+        return array(
+            'feature_description' => $plan_feature_description
+        ); 
         
     }
 
