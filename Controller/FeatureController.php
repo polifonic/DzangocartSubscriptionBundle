@@ -27,35 +27,10 @@ class FeatureController extends Controller
      */
     public function indexAction(Request $request)
     {
-        if ($request->isXmlHttpRequest() || 'json' == $request->getRequestFormat()) {
-
-            $query = $this->getQuery();
-
-            $total_count = $query
-                ->count();
-
-            $filtered_count = $total_count;
-
-            $features = $query
-                ->datatablesSort($request->query, $this->getDataTablesSortColumns())
-                ->setLimit($request->query->get('iDisplayLength', 10))
-                ->setOffset($request->query->get('iDisplayStart'))
-                ->find();
-
-            $data = array(
-                'sEcho' => $request->query->get('sEcho'),
-                'iStart' => 0,
-                'iTotalRecords' => $total_count,
-                'iTotalDisplayRecords' => $filtered_count,
-                'features' => $features
-            );
-
-            $view = $this->renderView('DzangocartSubscriptionBundle:Feature:index.json.twig', $data);
-
-            return new Response($view, 200, array('Content-Type' => 'application/json'));
-        }
-
-        return array();
+        $features = $this->getQuery()
+            ->find();
+        
+        return array('features' => $features);
     }
 
     /**
@@ -142,13 +117,7 @@ class FeatureController extends Controller
     protected function getQuery()
     {
         return PlanFeatureDefinitionQuery::create()
-                ->joinWithI18n($this->getRequest()->getLocale());
-    }
-
-    protected function getDatatablesSortColumns()
-    {
-        return array(
-            3 => 'plan_feature_definition.rank'
-        );
+            ->joinWithI18n($this->getRequest()->getLocale())
+            ->orderByRank();
     }
 }

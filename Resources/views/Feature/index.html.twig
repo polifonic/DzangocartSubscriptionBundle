@@ -4,11 +4,6 @@
 
 {% block plan_head_style %}
 	{{ parent() }}
-	{% stylesheets filter="cssrewrite" output="css/*.css"
-		'bundles/uamdatatables/css/jquery.dataTables_bootstrap.css'
-	%}
-		<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
-	{% endstylesheets %}
 {% endblock %}
 
 {% block plan_page_title %}
@@ -24,32 +19,25 @@
 	<table class="table table-condensed">
 		<thead>
 			<tr>
-				<th class="selectall"></th>
+				<th class="rank">{% trans %}features.definition.rank{% endtrans %}</th>
 				<th class="name">{% trans %}features.definition.name{% endtrans %}</th>
 				<th class="description">{% trans %}features.definition.description{% endtrans %}</th>
-				<th class="rank">{% trans %}features.definition.rank{% endtrans %}</th>
 				<th class="actions">{% trans %}features.action.title{% endtrans %}</th>
 			</tr>			
 		</thead>
 		<tbody>
+			{% for feature in features %}
+				<tr>
+					<th>{{ feature.rank }}</th>
+					<th>{{ feature.name }}</th>
+					<th>{{ feature.description }}</th>
+					<th><a href='{{ path('dzangocart_subscription_feature_edit', { 'id' : feature.id }) }}'>{% trans %}features.action.edit{% endtrans %}</a></th>
+				</tr>
+			{% endfor %}
 		</tbody>
 	</table>
 {% endblock %}
 
 {% block plan_foot_script %}
 	{{ parent() }}
-	{% javascripts
-			'bundles/uamdatatables/js/jquery.dataTables.min.js'
-			'bundles/uamdatatables/js/jquery.dataTables_bootstrap.js'
-			'bundles/dzangocartsubscription/js/scripts/features.js'
-	%}
-	<script src="{{ asset_url }}"></script>
-	{% endjavascripts %}
-	<script>
-		dzangocart_subscription.features = {
-			dataTables: {
-				sAjaxSource: "{{ path('dzangocart_subscription_features', { _format: 'json' }) }}"
-			}
-		};
-	</script>
 {% endblock %}
