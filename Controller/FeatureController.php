@@ -69,9 +69,13 @@ class FeatureController extends Controller
         $plan_feature_description = $this->getQuery()
             ->findPk($id);
         
-        return array(
-            'feature_description' => $plan_feature_description
-        ); 
+        if ($plan_feature_description) {
+            return array(
+                'feature_description' => $plan_feature_description
+            );
+        } else {
+            return $this->redirect($this->generateUrl('dzangocart_subscription_features'));
+        }
         
     }
 
@@ -86,21 +90,23 @@ class FeatureController extends Controller
         $plan_feature_description = $this->getQuery()
             ->findPk($id);
             
+        if ($plan_feature_description) {
+            $form = $this->createForm(new PlanFeatureDefinitionFormType(), $plan_feature_description);
         
-        $form = $this->createForm(new PlanFeatureDefinitionFormType(), $plan_feature_description);
-        
-        $form->handleRequest($request);
-        
-        if ($form->isValid()) {
-            $plan_feature_description->save();
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+                $plan_feature_description->save();
+                return $this->redirect($this->generateUrl('dzangocart_subscription_feature_show', array('id' => $id)));
+            }
+
+            return array(
+                'form' => $form->createView(),
+                'feature_description' => $plan_feature_description
+            );
+        } else {
             return $this->redirect($this->generateUrl('dzangocart_subscription_features'));
         }
-        
-        return array(
-            'form' => $form->createView(),
-            'feature_description' => $plan_feature_description
-        );
-        
 
     }
 
@@ -127,7 +133,7 @@ class FeatureController extends Controller
         
         if ($form->isValid()) {
             $feature_discription->save();
-            return $this->redirect($this->generateUrl('dzangocart_subscription_features'));
+            return $this->redirect($this->generateUrl('dzangocart_subscription_feature_show', array('id' => $feature_discription->getId())));
         }
         
         return array(
