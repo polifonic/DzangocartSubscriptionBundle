@@ -43,7 +43,13 @@ class FeatureController extends Controller
             ->findPk($id);
 
         if ($feature) {
-            $form = $this->createForm(new PlanFeatureDefinitionFormType(), $feature);
+            $form = $this->createForm(
+                new PlanFeatureDefinitionFormType(),
+                $feature,
+                array(
+                    'action' => $this->generateUrl('dzangocart_subscription_feature_edit', array('id' => $id))
+                )
+            );
 
             $form->handleRequest($request);
 
@@ -76,7 +82,13 @@ class FeatureController extends Controller
      */
     public function createAction(Request $request)
     {
-        $form = $this->createForm(new PlanFeatureDefinitionFormType(), $feature = new PlanFeatureDefinition());
+        $form = $this->createForm(
+            new PlanFeatureDefinitionFormType(),
+            $feature = new PlanFeatureDefinition(),
+            array(
+                'action' => $this->generateUrl('dzangocart_subscription_feature_create')
+            )
+        );
 
         $form->handleRequest($request);
 
