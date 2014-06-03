@@ -4,13 +4,13 @@
 <section class="dzangocart plans">
 	<div class="toolbar">
 		<a href="{{ path('dzangocart_subscription_plans') }}" class="cancel">
-			{% trans from "subscription" %}actions.back_to_list{% endtrans %}
+			{% trans from "subscription" %}subscription.actions.back_to_list{% endtrans %}
 		</a>
 		<a class="delete" href="{{ path('dzangocart_subscription_plan_delete', { 'id': entity.id }) }}" class="delete">
-			{% trans from "subscription" %}actions.delete{% endtrans %}
+			{% trans from "subscription" %}subscription.actions.delete{% endtrans %}
 		</a>
 		<a href="{{ path('dzangocart_subscription_plan_edit', { 'id': entity.id }) }}" class="edit">
-			{% trans from "subscription" %}actions.edit{% endtrans %}
+			{% trans from "subscription" %}subscription.actions.edit{% endtrans %}
 		</a>
 	</div>
 	<h2>{{ entity.name }}</h2>
@@ -18,27 +18,27 @@
 	<table class="show plan">
 		<tbody>
 			<tr>
-				<th>{% trans from "subscription" %}plan.name{% endtrans %}</th>
+				<th>{% trans from "subscription" %}subscription.plan.name{% endtrans %}</th>
 				<td>{{ entity.name }}</td>
 			</tr>
 			<tr>
-				<th>{% trans from "subscription" %}plan.description{% endtrans %}</th>
+				<th>{% trans from "subscription" %}subscription.plan.description{% endtrans %}</th>
 				<td>{{ entity.description }}</td>
 			</tr>
 			<tr>
-				<th>{% trans from "subscription" %}plan.available_from{% endtrans %}</th>
+				<th>{% trans from "subscription" %}subscription.plan.available_from{% endtrans %}</th>
 				<td>{{ entity.start ? entity.start|date('Y-m-d H:i:s') : '' }}</td>
 			</tr>
 			<tr>
-				<th>{% trans from "subscription" %}plan.available_until{% endtrans %}</th>
+				<th>{% trans from "subscription" %}subscription.plan.available_until{% endtrans %}</th>
 				<td>{{ entity.finish ? entity.finish|date('Y-m-d H:i:s') : '' }}</td>
 			</tr>
 			<tr>
-				<th>{% trans from "subscription" %}plan.price{% endtrans %}</th>
+				<th>{% trans from "subscription" %}subscription.plan.price{% endtrans %}</th>
 				<td>{# entity.price #}</td>
 			</tr>
 			<tr>
-				<th>{% trans from "subscription" %}plan.default{% endtrans %}</th>
+				<th>{% trans from "subscription" %}subscription.plan.default{% endtrans %}</th>
 				<td>
 					{% if entity.isDefault %}<img src="{{ asset('bundles/dzangocartsubscription/images/tick.png') }}" />{% endif %}
 				</td>
