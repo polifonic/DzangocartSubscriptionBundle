@@ -4,6 +4,7 @@
 
 {% block plan_head_style %}
 	{{ parent() }}
+	<link href="{{ asset('bundles/dzangocartsubscription/css/feature.css') }}" type="text/css" rel="stylesheet" />
 {% endblock %}
 
 {% block plan_page_title %}
@@ -28,10 +29,10 @@
 		<tbody>
 			{% for feature in features %}
 				<tr>
-					<th>{{ feature.rank }}</th>
-					<th>{{ feature.name }}</th>
-					<th>{{ feature.description }}</th>
-					<th><a href='{{ path('dzangocart_subscription_feature_edit', { 'id' : feature.id }) }}'>{% trans %}feature.features.action.edit{% endtrans %}</a></th>
+					<td>{{ feature.rank }}</td>
+					<td>{{ feature.name }}</td>
+					<td>{{ feature.description }}</td>
+					<td><a href='{{ path('dzangocart_subscription_feature_edit', { 'id' : feature.id }) }}'>{% trans %}feature.features.action.edit{% endtrans %}</a></td>
 				</tr>
 			{% endfor %}
 		</tbody>
