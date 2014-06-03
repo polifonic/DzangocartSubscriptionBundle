@@ -15,8 +15,8 @@ class Plan extends BasePlan
     {
         if ($this->isDisabled()) { return false; }
 
-        $start = $this->getDateStart('U');
-        $end = $this->getDateEnd('U');
+        $start = $this->getStart('U');
+        $end = $this->getFinish('U');
         $now = time();
 
         return (($start == null || $start <= $now) &&

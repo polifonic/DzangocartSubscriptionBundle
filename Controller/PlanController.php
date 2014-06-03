@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("/plan")
@@ -20,7 +21,7 @@ class PlanController extends Controller
     /**
      * Lists all Plans.
      *
-     * @Route("/", name="plans")
+     * @Route("/", name="dzangocart_subscription_plans")
      * @Template("DzangocartSubscriptionBundle:Plan:index.html.twig")
      */
     public function indexAction()
@@ -36,7 +37,7 @@ class PlanController extends Controller
     /**
      * Finds and displays a Plan entity.
      *
-     * @Route("/show/{id}", name="plan_show")
+     * @Route("/show/{id}", name="dzangocart_subscription_plan_show")
      * @Template("DzangocartSubscriptionBundle:Plan:show.html.twig")
      */
     public function showAction($id)
@@ -47,7 +48,7 @@ class PlanController extends Controller
     /**
      * Displays a form to edit an existing Plan entity.
      * 
-     * @Route("/edit/{id}", name="dzangocart_subscription_plans_edit")
+     * @Route("/edit/{id}", name="dzangocart_subscription_plan_edit")
      * @Template("DzangocartSubscriptionBundle:Plan:edit.html.twig")
      */
     public function editAction($id)
@@ -70,7 +71,7 @@ class PlanController extends Controller
      * @Route("/create", name="dzangocart_subscription_plan_create")
      * @Template("DzangocartSubscriptionBundle:Plan:create.html.twig")
      */
-    public function createAction()
+    public function createAction(Request $request)
     {
        $form = $this->createForm(
             new PlanFormType(),
@@ -79,6 +80,13 @@ class PlanController extends Controller
                 'action' => $this->generateUrl('dzangocart_subscription_plan_create'))
             );
 
+        $form->handleRequest($request);
+        
+        if ($form->isValid()) {
+            $plan->save();
+            return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
+        }
+            
         return array(
             'form' => $form->createView()
         );
@@ -87,6 +95,6 @@ class PlanController extends Controller
     protected function getQuery()
     {
         return PlanQuery::create()
-                ->joinWithI18n($this->getRequest()->getLocale());
+            ->joinWithI18n($this->getRequest()->getLocale());
     }
 }
