@@ -2,7 +2,9 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Controller;
 
+use Dzangocart\Bundle\SubscriptionBundle\Form\Type\PlanFormType;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanQuery;
+use Dzangocart\Bundle\SubscriptionBundle\Propel\Plan;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -70,7 +72,16 @@ class PlanController extends Controller
      */
     public function createAction()
     {
-        return array();
+       $form = $this->createForm(
+            new PlanFormType(),
+            $plan = new Plan(),
+            array(
+                'action' => $this->generateUrl('dzangocart_subscription_plan_create'))
+            );
+
+        return array(
+            'form' => $form->createView()
+        );
     }
 
     protected function getQuery()
