@@ -27,15 +27,15 @@
 			</tr>
 			<tr>
 				<th>{% trans from "subscription" %}plan.available_from{% endtrans %}</th>
-				<td>{{ entity.dateStart ? entity.dateStart|date('Y-m-d H:i:s') : '' }}</td>
+				<td>{{ entity.start ? entity.start|date('Y-m-d H:i:s') : '' }}</td>
 			</tr>
 			<tr>
 				<th>{% trans from "subscription" %}plan.available_until{% endtrans %}</th>
-				<td>{{ entity.dateEnd ? entity.dateEnd|date('Y-m-d H:i:s') : '' }}</td>
+				<td>{{ entity.finish ? entity.finish|date('Y-m-d H:i:s') : '' }}</td>
 			</tr>
 			<tr>
 				<th>{% trans from "subscription" %}plan.price{% endtrans %}</th>
-				<td>{{ entity.price }}</td>
+				<td>{# entity.price #}</td>
 			</tr>
 			<tr>
 				<th>{% trans from "subscription" %}plan.default{% endtrans %}</th>
