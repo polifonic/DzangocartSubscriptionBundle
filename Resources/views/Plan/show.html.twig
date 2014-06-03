@@ -3,7 +3,7 @@
 {% block content %}
 <section class="dzangocart plans">
 	<div class="toolbar">
-		<a href="{{ path('plans') }}" class="cancel">
+		<a href="{{ path('dzangocart_subscription_plans') }}" class="cancel">
 			{% trans from "subscription" %}actions.back_to_list{% endtrans %}
 		</a>
 		<a class="delete" href="{{ path('dzangocart_subscription_plan_delete', { 'id': entity.id }) }}" class="delete">
