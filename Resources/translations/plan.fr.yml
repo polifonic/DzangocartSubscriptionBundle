@@ -5,6 +5,7 @@ plan:
             save:    Save
             title:   Actions
         create:      Create a new plan
+        delete:      Delete plan
         description: Description
         edit:        Modify %plan_name%
         from:        Available from

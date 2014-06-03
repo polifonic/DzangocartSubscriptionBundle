@@ -45,9 +45,13 @@ class PlanController extends Controller
         $entity = $this->getQuery()
             ->findPk($id);
         
-        return array (
-            'entity' => $entity
-        );
+        if ($entity) {
+            return array (
+                'entity' => $entity
+            );
+        } else {
+            return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
+        } 
         
     }
 
@@ -57,20 +61,52 @@ class PlanController extends Controller
      * @Route("/edit/{id}", name="dzangocart_subscription_plan_edit")
      * @Template("DzangocartSubscriptionBundle:Plan:edit.html.twig")
      */
-    public function editAction($id)
+    public function editAction($id, Request $request)
     {
-        return array();
+        $entity = $this->getQuery()
+            ->findPk($id);
+        
+        if ($entity) {
+            $form = $this->createForm(
+                new PlanFormType(),
+                $entity,
+                array(
+                    'action' => $this->generateUrl('dzangocart_subscription_plan_edit', array('id' => $id)))
+                );
+
+            $form->handleRequest($request);
+        
+            if ($form->isValid()) {
+                $entity->save();
+                return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
+            }
+            
+            return array(
+                'form' => $form->createView()
+            );
+        } else {
+            return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
+        }
+
     }
 
     /**
      * Delete existing Plan entity.
      * 
-     * @Route("/delete/{$id}", name="dzangocart_subscription_plan_delete")
-     * @Template("DzangocartSubscriptionBundle:Plan:edit.html.twig")
+     * @Route("/delete/{id}", name="dzangocart_subscription_plan_delete")
+     * @Template()
      */
     public function deleteAction($id)
     {
+        $entity = $this->getQuery()
+            ->findPk($id);
+
+        if ($entity) {
+            $entity->delete();
+        }
         
+        return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
+
     }
 
     /**
@@ -103,6 +139,7 @@ class PlanController extends Controller
     protected function getQuery()
     {
         return PlanQuery::create()
-            ->joinWithI18n($this->getRequest()->getLocale());
+            ->joinWithI18n($this->getRequest()->getLocale())
+            ->orderByRank();
     }
 }

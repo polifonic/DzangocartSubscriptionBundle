@@ -6,7 +6,7 @@
 		<a href="{{ path('dzangocart_subscription_plans') }}" class="cancel">
 			{% trans from "subscription" %}subscription.actions.back_to_list{% endtrans %}
 		</a>
-		<a class="delete" href="{{ path('dzangocart_subscription_plan_delete', { 'id': entity.id }) }}" class="delete">
+		<a href="{{ path('dzangocart_subscription_plan_delete', { 'id': entity.id }) }}" class="delete">
 			{% trans from "subscription" %}subscription.actions.delete{% endtrans %}
 		</a>
 		<a href="{{ path('dzangocart_subscription_plan_edit', { 'id': entity.id }) }}" class="edit">
