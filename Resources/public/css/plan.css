@@ -1,17 +1,17 @@
-.plans table.list tr.disabled,
-.plans table.list tr.inactive {
+.plans table tr.disabled,
+.plans table tr.inactive {
 	background-color: #ddd;
 }
 
-.plans table.list tr.default {
+.plans table tr.default {
 	background-color: green;
 }
 
-.plans table.list th.check { width: 1.5em; }
-.plans table.list th.rank { width: 4em; }
-.plans table.list th.description { width: 15em; }
-.plans table.list th.date { width: 9em; }
-.plans table.list th.price { width: 6em; }
-.plans table.list th.actions { width: 6em; }
+.plans table th.check { width: 1.5em; }
+.plans table th.rank { width: 4em; }
+.plans table th.description { width: 15em; }
+.plans table th.date { width: 9em; }
+.plans table th.price { width: 6em; }
+.plans table th.actions { width: 6em; }
 
 

@@ -5,6 +5,8 @@
 	<link href="{{ asset('bundles/dzangocartsubscription/css/plan.css') }}" type="text/css" rel="stylesheet" />
 {% endblock %}
 
+{% block bodyclass %}plans{% endblock %}
+
 {% block plan_page_title %}
 	<a type='button' class='btn btn-default pull-right' href="{{ path('dzangocart_subscription_plan_create') }}">
 		{% trans from "plan" %}plan.plans.actions.create{% endtrans %}
