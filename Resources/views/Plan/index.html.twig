@@ -6,24 +6,27 @@
 {% endblock %}
 
 {% block plan_page_title %}
-	<h2>{% trans from "plans" %}plans.list{% endtrans %}</h2>
+	<a type='button' class='btn btn-default pull-right' href="{{ path('dzangocart_subscription_plan_create') }}">
+		{% trans from "plan" %}plan.plans.actions.create{% endtrans %}
+	</a>
+	<h2>{% trans from "plan" %}plan.plans.list{% endtrans %}</h2>
 {% endblock %}
 
 {% block plan_content %}
 <section class="dzangocart plans">
-	<table class="list">
+	<table class="table table-condensed">
 		<thead>
 			<tr>
 				<th class="check">
 					<input type="checkbox" class="checkall" />
 				</th>
-				<th class="rank">{% trans from "plans" %}plans.rank{% endtrans %}</th>
-				<th class="left name">{% trans from "plans" %}plans.name{% endtrans %}</th>
-				<th class="left description">{% trans from "plans" %}plans.description{% endtrans %}</th>
-				<th class="date">{% trans from "plans" %}plans.from{% endtrans %}</th>
-				<th class="date">{% trans from "plans" %}plans.to{% endtrans %}</th>
-				<th class="price">{% trans from "plans" %}plans.price{% endtrans %}</th>
-				<th class="actions">{% trans from "plans" %}plans.actions{% endtrans %}</th>
+				<th class="rank">{% trans from "plan" %}plan.plans.rank{% endtrans %}</th>
+				<th class="left name">{% trans from "plan" %}plan.plans.name{% endtrans %}</th>
+				<th class="left description">{% trans from "plan" %}plan.plans.description{% endtrans %}</th>
+				<th class="date">{% trans from "plan" %}plan.plans.from{% endtrans %}</th>
+				<th class="date">{% trans from "plan" %}plan.plans.to{% endtrans %}</th>
+				<th class="price">{% trans from "plan" %}plan.plans.price{% endtrans %}</th>
+				<th class="actions">{% trans from "plan" %}plan.plans.actions.title{% endtrans %}</th>
 			</tr>
 		</thead>
 		<tbody>

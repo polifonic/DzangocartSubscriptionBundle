@@ -65,7 +65,7 @@ class PlanController extends Controller
     /**
      * Create a Plan entity.
      * 
-     * @Route("/create", name="dzangocart_subscription_plans_create")
+     * @Route("/create", name="dzangocart_subscription_plan_create")
      * @Template("DzangocartSubscriptionBundle:Plan:create.html.twig")
      */
     public function createAction()
