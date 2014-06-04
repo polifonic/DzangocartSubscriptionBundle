@@ -23,10 +23,6 @@ class PlanFormType extends BaseAbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('rank', 'number', array(
-            'label' => 'plan.plans.rank'
-        ));
-
         $builder->add('name', 'text', array(
             'label' => 'plan.plans.name'
         ));

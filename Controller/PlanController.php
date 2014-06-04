@@ -2,6 +2,8 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Controller;
 
+use Criteria;
+
 use Dzangocart\Bundle\SubscriptionBundle\Form\Type\PlanFormType;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanQuery;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\Plan;
@@ -102,7 +104,7 @@ class PlanController extends Controller
             ->findPk($id);
 
         if ($entity) {
-            $entity->delete();
+            $entity->delete(); 
         }
         
         return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
@@ -127,6 +129,9 @@ class PlanController extends Controller
         $form->handleRequest($request);
         
         if ($form->isValid()) {
+            $existing_plan_count = $this->getQuery()
+                ->count();
+            $plan->setRank($existing_plan_count + 1);
             $plan->save();
             return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
         }
