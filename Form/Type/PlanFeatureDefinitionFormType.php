@@ -31,10 +31,6 @@ class PlanFeatureDefinitionFormType extends BaseAbstractType
             'label' => 'feature.features.description'
         ));
 
-        $builder->add('rank', 'number', array(
-            'label' => 'feature.features.rank'
-        ));
-
         $builder->add('submit', 'submit', array(
             'label' => 'feature.features.save'
         ));

@@ -93,6 +93,9 @@ class FeatureController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $existing_feature_count = $this->getQuery()
+                ->count();
+            $feature->setRank($existing_feature_count + 1);
             $feature->save();
             return $this->redirect($this->generateUrl('dzangocart_subscription_features'));
         }
