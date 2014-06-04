@@ -129,9 +129,6 @@ class PlanController extends Controller
         $form->handleRequest($request);
         
         if ($form->isValid()) {
-            $existing_plan_count = $this->getQuery()
-                ->count();
-            $plan->setRank($existing_plan_count + 1);
             $plan->save();
             return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
         }
