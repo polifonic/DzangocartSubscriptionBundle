@@ -39,6 +39,13 @@ class PlanFormType extends BaseAbstractType
             'label' => 'plan.plans.to'
         ));
         
+        $builder->add('plan_features', 'collection', array(
+            'type'          => new PlanFeatureFormType(),
+            'allow_add'     => true,
+            'allow_delete'  => true,
+            'by_reference'  => false,
+        ));
+        
         $builder->add('save', 'submit', array(
             'label' => 'plan.plans.actions.save'
         )); 
