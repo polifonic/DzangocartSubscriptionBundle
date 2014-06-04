@@ -2,8 +2,6 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Controller;
 
-use Criteria;
-
 use Dzangocart\Bundle\SubscriptionBundle\Form\Type\PlanFormType;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanQuery;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\Plan;
@@ -46,15 +44,15 @@ class PlanController extends Controller
     {
         $entity = $this->getQuery()
             ->findPk($id);
-        
+
         if ($entity) {
-            return array (
+            return array(
                 'entity' => $entity
             );
         } else {
             return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
-        } 
-        
+        }
+
     }
 
     /**
@@ -67,22 +65,21 @@ class PlanController extends Controller
     {
         $entity = $this->getQuery()
             ->findPk($id);
-        
+
         if ($entity) {
             $form = $this->createForm(
-                new PlanFormType(),
-                $entity,
-                array(
-                    'action' => $this->generateUrl('dzangocart_subscription_plan_edit', array('id' => $id)))
-                );
+                new PlanFormType(), $entity, array(
+                'action' => $this->generateUrl('dzangocart_subscription_plan_edit', array('id' => $id))
+                )
+            );
 
             $form->handleRequest($request);
-        
+
             if ($form->isValid()) {
                 $entity->save();
                 return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
             }
-            
+
             return array(
                 'form' => $form->createView()
             );
@@ -104,11 +101,10 @@ class PlanController extends Controller
             ->findPk($id);
 
         if ($entity) {
-            $entity->delete(); 
+            $entity->delete();
         }
-        
-        return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
 
+        return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
     }
 
     /**
@@ -119,20 +115,18 @@ class PlanController extends Controller
      */
     public function createAction(Request $request)
     {
-       $form = $this->createForm(
-            new PlanFormType(),
-            $plan = new Plan(),
-            array(
-                'action' => $this->generateUrl('dzangocart_subscription_plan_create'))
-            );
+        $form = $this->createForm(
+            new PlanFormType(), $plan = new Plan(), array(
+            'action' => $this->generateUrl('dzangocart_subscription_plan_create'))
+        );
 
         $form->handleRequest($request);
-        
+
         if ($form->isValid()) {
             $plan->save();
             return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
         }
-            
+
         return array(
             'form' => $form->createView()
         );

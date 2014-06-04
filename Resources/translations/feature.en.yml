@@ -2,6 +2,7 @@ feature:
     features:
         action:
             create:      Create
+            delete:      Delete
             edit:        Edit
             title:       Action
             

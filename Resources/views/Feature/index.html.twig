@@ -32,7 +32,10 @@
 					<td>{{ feature.rank }}</td>
 					<td>{{ feature.name }}</td>
 					<td>{{ feature.description }}</td>
-					<td><a href='{{ path('dzangocart_subscription_feature_edit', { 'id' : feature.id }) }}'>{% trans %}feature.features.action.edit{% endtrans %}</a></td>
+					<td>
+						<a href='{{ path('dzangocart_subscription_feature_edit', { 'id' : feature.id }) }}'>{% trans %}feature.features.action.edit{% endtrans %}</a>
+						<a href='{{ path('dzangocart_subscription_feature_delete', { 'id' : feature.id }) }}'>{% trans %}feature.features.action.delete{% endtrans %}</a>
+					</td>
 				</tr>
 			{% endfor %}
 		</tbody>

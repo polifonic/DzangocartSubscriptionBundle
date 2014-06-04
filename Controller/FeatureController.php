@@ -11,7 +11,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @Route("/feature")
@@ -28,7 +27,7 @@ class FeatureController extends Controller
     {
         $features = $this->getQuery()
             ->find();
-        
+
         return array('features' => $features);
     }
 
@@ -65,14 +64,25 @@ class FeatureController extends Controller
         } else {
             return $this->redirect($this->generateUrl('dzangocart_subscription_features'));
         }
+
     }
 
     /**
-     *
+     * Delete existing Feature entity.
+     * 
+     * @Route("/{id}/delete", name="dzangocart_subscription_feature_delete")
+     * @Template()
      */
     public function deleteAction($id)
     {
-        
+        $entity = $this->getQuery()
+            ->findPk($id);
+
+        if ($entity) {
+            $entity->delete(); 
+        }
+
+        return $this->redirect($this->generateUrl('dzangocart_subscription_features'));
     }
 
     /**
