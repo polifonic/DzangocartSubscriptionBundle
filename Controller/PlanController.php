@@ -81,7 +81,8 @@ class PlanController extends Controller
             }
 
             return array(
-                'form' => $form->createView()
+                'form' => $form->createView(),
+                'plan' => $entity
             );
         } else {
             return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
