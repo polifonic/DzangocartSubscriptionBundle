@@ -9,6 +9,13 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PlanFeatureFormType extends BaseAbstractType
 {
+    protected $locale;
+
+    public function __construct($locale = 'en')
+    {
+        $this->locale = $locale;
+    }
+
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
@@ -38,15 +45,18 @@ class PlanFeatureFormType extends BaseAbstractType
         $builder->add('unit', 'model', array(
             'class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\PlanUnit',
             'property' => 'name',
-            //'query' => \Dzangocart\Bundle\SubscriptionBundle\Propel\PlanUnitI18nQuery::create(),
-            'label' => 'Unit'
+            'query' => $this->getUnitQuery(),
+            'label' => 'Unit',
+            'required' => false
             //'index_property' => 'slug' /** If you want to use a specifiq unique column for key to not expose the PK **/
         ));
         
         $builder->add('period', 'model', array(
             'class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\PlanPeriod',
             'property' => 'name',
-            'label' => 'Period'
+            'query' => $this->getPeriodQuery(),
+            'label' => 'Period',
+            'required' => false
             //'index_property' => 'slug' /** If you want to use a specifiq unique column for key to not expose the PK **/
         ));
 
@@ -55,5 +65,17 @@ class PlanFeatureFormType extends BaseAbstractType
     public function getName()
     {
         return "plan_feature_form";
+    }
+    
+    protected function getUnitQuery()
+    {
+        return \Dzangocart\Bundle\SubscriptionBundle\Propel\PlanUnitQuery::create()
+            ->joinWithI18n($this->locale);
+    }
+    
+    protected function getPeriodQuery()
+    {
+        return \Dzangocart\Bundle\SubscriptionBundle\Propel\PlanPeriodQuery::create()
+            ->joinWithI18n($this->locale);
     }
 }

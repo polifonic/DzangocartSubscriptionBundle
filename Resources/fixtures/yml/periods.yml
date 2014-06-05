@@ -53,7 +53,7 @@ Dzangocart\Bundle\SubscriptionBundle\Propel\PlanPeriodI18n:
     PlanPeriodI18n_5_en:
         id: PlanPeriod_5
         locale: en
-        name: yeaer
+        name: year
         plural: years
     PlanPeriodI18n_5_fr:
         id: PlanPeriod_5

@@ -73,13 +73,13 @@ class PlanController extends Controller
                 ->count();
             $entity_feature_count = $entity->getPlanFeatures()
                 ->count();
-            
+
             for ($i = 1; $i <= $all_feature_count - $entity_feature_count; $i++) {
-                $entity->addPlanFeature(new PlanFeature());         
+                $entity->addPlanFeature(new PlanFeature());
             }
 
             $form = $this->createForm(
-                new PlanFormType(), $entity, array(
+                new PlanFormType($request->getLocale()), $entity, array(
                     'action' => $this->generateUrl('dzangocart_subscription_plan_edit', array('id' => $id))
                 )
             );
@@ -150,7 +150,7 @@ class PlanController extends Controller
             ->joinWithI18n($this->getRequest()->getLocale())
             ->orderByRank();
     }
-    
+
     protected function getPlanFeatureDefinitionQuery()
     {
         return PlanFeatureDefinitionQuery::create();
