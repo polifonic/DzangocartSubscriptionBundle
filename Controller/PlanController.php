@@ -2,9 +2,11 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Controller;
 
+use Dzangocart\Bundle\SubscriptionBundle\Propel\Plan;
+use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanFeature;
+use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanFeatureDefinitionQuery;
 use Dzangocart\Bundle\SubscriptionBundle\Form\Type\PlanFormType;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanQuery;
-use Dzangocart\Bundle\SubscriptionBundle\Propel\Plan;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -67,9 +69,18 @@ class PlanController extends Controller
             ->findPk($id);
 
         if ($entity) {
+            $all_feature_count = $this->getPlanFeatureDefinitionQuery()
+                ->count();
+            $entity_feature_count = $entity->getPlanFeatures()
+                ->count();
+            
+            for ($i = 1; $i <= $all_feature_count - $entity_feature_count; $i++) {
+                $entity->addPlanFeature(new PlanFeature());         
+            }
+
             $form = $this->createForm(
                 new PlanFormType(), $entity, array(
-                'action' => $this->generateUrl('dzangocart_subscription_plan_edit', array('id' => $id))
+                    'action' => $this->generateUrl('dzangocart_subscription_plan_edit', array('id' => $id))
                 )
             );
 
@@ -138,5 +149,10 @@ class PlanController extends Controller
         return PlanQuery::create()
             ->joinWithI18n($this->getRequest()->getLocale())
             ->orderByRank();
+    }
+    
+    protected function getPlanFeatureDefinitionQuery()
+    {
+        return PlanFeatureDefinitionQuery::create();
     }
 }

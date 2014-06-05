@@ -43,7 +43,7 @@ class PlanFormType extends BaseAbstractType
             'type'          => new PlanFeatureFormType(),
             'allow_add'     => true,
             'allow_delete'  => true,
-            'by_reference'  => false,
+            'by_reference'  => false
         ));
         
         $builder->add('save', 'submit', array(

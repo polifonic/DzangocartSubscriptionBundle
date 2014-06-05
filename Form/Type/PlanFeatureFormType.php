@@ -24,7 +24,7 @@ class PlanFeatureFormType extends BaseAbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('definition_id', 'model', array(
+        $builder->add('definition', 'model', array(
             'class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\PlanFeatureDefinition',
             'property' => 'name',
             'label' => 'Feature'
@@ -38,6 +38,7 @@ class PlanFeatureFormType extends BaseAbstractType
         $builder->add('unit', 'model', array(
             'class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\PlanUnit',
             'property' => 'name',
+            //'query' => \Dzangocart\Bundle\SubscriptionBundle\Propel\PlanUnitI18nQuery::create(),
             'label' => 'Unit'
             //'index_property' => 'slug' /** If you want to use a specifiq unique column for key to not expose the PK **/
         ));
