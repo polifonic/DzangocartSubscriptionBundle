@@ -34,45 +34,44 @@ class PlanFeatureFormType extends BaseAbstractType
         $builder->add('definition', 'model', array(
             'class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\PlanFeatureDefinition',
             'property' => 'name',
-            'label' => 'Feature'
+            'label' => 'feature.label'
             //'index_property' => 'slug' /** If you want to use a specifiq unique column for key to not expose the PK **/
         ));
-        
+
         $builder->add('value', 'text', array(
-            'label' => 'Value'
+            'label' => 'feature.value.label'
         ));
-        
+
         $builder->add('unit', 'model', array(
             'class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\PlanUnit',
             'property' => 'name',
             'query' => $this->getUnitQuery(),
-            'label' => 'Unit',
-            'required' => false
-            //'index_property' => 'slug' /** If you want to use a specifiq unique column for key to not expose the PK **/
-        ));
-        
-        $builder->add('period', 'model', array(
-            'class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\PlanPeriod',
-            'property' => 'name',
-            'query' => $this->getPeriodQuery(),
-            'label' => 'Period',
+            'label' => 'feature.unit.label',
             'required' => false
             //'index_property' => 'slug' /** If you want to use a specifiq unique column for key to not expose the PK **/
         ));
 
+        $builder->add('period', 'model', array(
+            'class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\PlanPeriod',
+            'property' => 'name',
+            'query' => $this->getPeriodQuery(),
+            'label' => 'feature.period.label',
+            'required' => false
+            //'index_property' => 'slug' /** If you want to use a specifiq unique column for key to not expose the PK **/
+        ));
     }
 
     public function getName()
     {
         return "plan_feature_form";
     }
-    
+
     protected function getUnitQuery()
     {
         return \Dzangocart\Bundle\SubscriptionBundle\Propel\PlanUnitQuery::create()
             ->joinWithI18n($this->locale);
     }
-    
+
     protected function getPeriodQuery()
     {
         return \Dzangocart\Bundle\SubscriptionBundle\Propel\PlanPeriodQuery::create()

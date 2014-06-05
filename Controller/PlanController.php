@@ -80,7 +80,7 @@ class PlanController extends Controller
 
             $form = $this->createForm(
                 new PlanFormType($request->getLocale()), $entity, array(
-                    'action' => $this->generateUrl('dzangocart_subscription_plan_edit', array('id' => $id))
+                'action' => $this->generateUrl('dzangocart_subscription_plan_edit', array('id' => $id))
                 )
             );
 
@@ -147,8 +147,8 @@ class PlanController extends Controller
     protected function getQuery()
     {
         return PlanQuery::create()
-            ->joinWithI18n($this->getRequest()->getLocale())
-            ->orderByRank();
+                ->joinWithI18n($this->getRequest()->getLocale())
+                ->orderByRank();
     }
 
     protected function getPlanFeatureDefinitionQuery()
