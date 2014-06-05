@@ -9,6 +9,13 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PlanFormType extends BaseAbstractType
 {
+    protected $locale;
+
+    public function __construct($locale = 'en')
+    {
+        $this->locale = $locale;
+    }
+
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
@@ -32,16 +39,26 @@ class PlanFormType extends BaseAbstractType
         ));
 
         $builder->add('start', 'date', array(
-            'label' => 'plan.plans.from'
+            'label' => 'plan.plans.from',
+            'widget' => 'single_text'
         ));
-        
+
         $builder->add('finish', 'date', array(
-            'label' => 'plan.plans.to'
+            'label' => 'plan.plans.to',
+            'widget' => 'single_text'
         ));
-        
+
+        $builder->add('plan_features', 'collection', array(
+            'type' => new PlanFeatureFormType($this->locale),
+            'allow_add' => true,
+            'allow_delete' => true,
+            'by_reference' => false,
+            'label' => false
+        ));
+
         $builder->add('save', 'submit', array(
             'label' => 'plan.plans.actions.save'
-        )); 
+        ));
     }
 
     public function getName()

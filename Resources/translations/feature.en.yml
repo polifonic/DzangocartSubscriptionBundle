@@ -8,8 +8,15 @@ feature:
             
         create:          Create a new Feature
         description:     Description
+        edit:            Modify Feature 
+        list:            Features  
         name:            Name
         rank:            Rank
         save:            Save
-        edit:            Modify Feature 
-        list:            Features  
+    period:
+        label:           Period
+    label:               Feature
+    unit:
+        label:           Unit
+    value:
+        label:           Value
