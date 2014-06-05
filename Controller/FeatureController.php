@@ -78,7 +78,7 @@ class FeatureController extends Controller
         $entity = $this->getQuery()
             ->findPk($id);
 
-        if ($entity) {
+        if ($entity && !$entity->getPlanFeatures()) {
             $entity->delete(); 
         }
 
