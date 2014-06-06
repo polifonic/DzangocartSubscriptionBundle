@@ -12,7 +12,7 @@ Dzangocart\Bundle\SubscriptionBundle\Propel\PlanPeriod:
 Dzangocart\Bundle\SubscriptionBundle\Propel\PlanPeriodI18n:
     PlanPeriodI18n_1_en:
         id: PlanPeriod_1
-        locale: en
+        locale: en_US
         name: hour
         plural: hours
     PlanPeriodI18n_1_fr:
@@ -22,7 +22,7 @@ Dzangocart\Bundle\SubscriptionBundle\Propel\PlanPeriodI18n:
         plural: heures
     PlanPeriodI18n_2_en:
         id: PlanPeriod_2
-        locale: en
+        locale: en_US
         name: day
         plural: days
     PlanPeriodI18n_2_fr:
@@ -32,7 +32,7 @@ Dzangocart\Bundle\SubscriptionBundle\Propel\PlanPeriodI18n:
         plural: jours
     PlanPeriodI18n_3_en:
         id: PlanPeriod_3
-        locale: en
+        locale: en_US
         name: week
         plural: weeks
     PlanPeriodI18n_3_fr:
@@ -42,7 +42,7 @@ Dzangocart\Bundle\SubscriptionBundle\Propel\PlanPeriodI18n:
         plural: semaines
     PlanPeriodI18n_4_en:
         id: PlanPeriod_4
-        locale: en
+        locale: en_US
         name: month
         plural: months
     PlanPeriodI18n_4_fr:
@@ -52,7 +52,7 @@ Dzangocart\Bundle\SubscriptionBundle\Propel\PlanPeriodI18n:
         plural: mois
     PlanPeriodI18n_5_en:
         id: PlanPeriod_5
-        locale: en
+        locale: en_US
         name: year
         plural: years
     PlanPeriodI18n_5_fr:

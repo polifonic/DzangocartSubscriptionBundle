@@ -135,6 +135,7 @@ class PlanController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $plan->setLocale($request->getLocale());
             $plan->save();
             return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
         }

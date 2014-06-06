@@ -103,6 +103,7 @@ class FeatureController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $feature->setLocale($request->getLocale());
             $feature->save();
             return $this->redirect($this->generateUrl('dzangocart_subscription_features'));
         }

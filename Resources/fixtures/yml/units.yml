@@ -5,7 +5,7 @@ Dzangocart\Bundle\SubscriptionBundle\Propel\PlanUnit:
 Dzangocart\Bundle\SubscriptionBundle\Propel\PlanUnitI18n:
     PlanUnitI18n_1_en:
         id: PlanUnit_1
-        locale: en
+        locale: en_US
         name: Mb
         plural: Mb
     PlanUnitI18n_1_fr:
@@ -15,7 +15,7 @@ Dzangocart\Bundle\SubscriptionBundle\Propel\PlanUnitI18n:
         plural: Mo
     PlanUnitI18n_2_en:
         id: PlanUnit_2
-        locale: en
+        locale: en_US
         name: Gb
         plural: Gb
     PlanUnitI18n_2_fr:
@@ -25,7 +25,7 @@ Dzangocart\Bundle\SubscriptionBundle\Propel\PlanUnitI18n:
         plural: Go
     PlanUnitI18n_3_en:
         id: PlanUnit_3
-        locale: en
+        locale: en_US
         name: Tb
         plural: Tb
     PlanUnitI18n_3_fr:
