@@ -1,17 +1,3 @@
-plans:
-    actions:
-        show:       Show
-        title:      Actions
-    description:    Description
-    from:           From
-    name:           Name
-    nav:
-        create:     Create a new plan
-    page_title:     Plans
-    price:          Price
-    rank:           Rank
-    to:             To
-
 plan:
     create:
         cancel:         '&larr; Cancel'
@@ -28,6 +14,20 @@ plan:
             label:      Save
         to:
             label:      Available to
+
+    plans:
+        actions:
+            show:       Show
+            title:      Actions
+        description:    Description
+        from:           From
+        name:           Name
+        nav:
+            create:     Create a new plan
+        page_title:     Plans
+        price:          Price
+        rank:           Rank
+        to:             To
 
     show:
         cancel:         '&larr; Return to plans list'

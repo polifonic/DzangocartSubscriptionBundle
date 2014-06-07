@@ -9,25 +9,25 @@
 
 {% block dzangocart_subscription_page_nav %}
 	<a type='button' class='btn btn-default pull-right' href="{{ path('dzangocart_subscription_plan_create') }}">
-		{% trans %}plans.nav.create{% endtrans %}
+		{% trans %}plan.plans.nav.create{% endtrans %}
 	</a>
 {% endblock %}
 
 {% block dzangocart_subscription_page_class %}plans{% endblock %}
 
-{% block dzangocart_subscription_page_title %}{% trans %}plans.page_title{% endtrans %}{% endblock %}
+{% block dzangocart_subscription_page_title %}{% trans %}plan.plans.page_title{% endtrans %}{% endblock %}
 
 {% block dzangocart_subscription_content %}
 <table class="table table-condensed">
 	<thead>
 		<tr>
-			<th class="rank">{% trans %}plans.rank{% endtrans %}</th>
-			<th class="left name">{% trans %}plans.name{% endtrans %}</th>
-			<th class="left description">{% trans %}plans.description{% endtrans %}</th>
-			<th class="date">{% trans %}plans.from{% endtrans %}</th>
-			<th class="date">{% trans %}plans.to{% endtrans %}</th>
-			<th class="price">{% trans %}plans.price{% endtrans %}</th>
-			<th class="actions">{% trans %}plans.actions.title{% endtrans %}</th>
+			<th class="rank">{% trans %}plan.plans.rank{% endtrans %}</th>
+			<th class="left name">{% trans %}plan.plans.name{% endtrans %}</th>
+			<th class="left description">{% trans %}plan.plans.description{% endtrans %}</th>
+			<th class="date">{% trans %}plan.plans.from{% endtrans %}</th>
+			<th class="date">{% trans %}plan.plans.to{% endtrans %}</th>
+			<th class="price">{% trans %}plan.plans.price{% endtrans %}</th>
+			<th class="actions">{% trans %}plan.plans.actions.title{% endtrans %}</th>
 		</tr>
 	</thead>
 	<tbody>
