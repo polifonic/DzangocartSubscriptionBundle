@@ -79,7 +79,7 @@
 		</unique>
 	</table>
 
-	<table name="plan_period">
+	<table name="plan_period" allowPkInsert="true">
 		<column name="id"            type="integer" required="true" primaryKey="true" autoIncrement="true" />
 		<column name="date_interval" type="varchar" size="10" required="true" />
 		<column name="name"          type="varchar" size="20" required="true" primaryString="true" />
@@ -89,7 +89,7 @@
 		</behavior>
 	</table>
 
-	<table name="plan_unit">
+	<table name="plan_unit" allowPkInsert="true">
 		<column name="id"     type="integer" required="true" primaryKey="true" autoIncrement="true" />
 		<column name="name"   type="varchar" size="20" required="true" primaryString="true" />
 		<column name="plural" type="varchar" size="20" required="true" />
