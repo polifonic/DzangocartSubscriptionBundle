@@ -19,9 +19,9 @@ class PlanFormType extends BaseAbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'name' => 'plan_form',
-            'translation_domain' => 'plan',
-            'show_legend' => false
+            'name' => 'plan',
+            'translation_domain' => 'dzangocart_subscription',
+            'data_class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\Plan'
         ));
     }
 
@@ -31,21 +31,23 @@ class PlanFormType extends BaseAbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name', 'text', array(
-            'label' => 'plan.plans.name'
+            'label' => 'plan.form.name.label'
         ));
 
         $builder->add('description', 'text', array(
-            'label' => 'plan.plans.description'
+            'label' => 'plan.form.description.label'
         ));
 
         $builder->add('start', 'date', array(
-            'label' => 'plan.plans.from',
-            'widget' => 'single_text'
+            'label' => 'plan.form.from.label',
+            'widget' => 'single_text',
+            'required' => false
         ));
 
         $builder->add('finish', 'date', array(
-            'label' => 'plan.plans.to',
-            'widget' => 'single_text'
+            'label' => 'plan.form.to.label',
+            'widget' => 'single_text',
+            'required' => false
         ));
 
         $builder->add('plan_features', 'collection', array(
@@ -57,7 +59,7 @@ class PlanFormType extends BaseAbstractType
         ));
 
         $builder->add('save', 'submit', array(
-            'label' => 'plan.plans.actions.save'
+            'label' => 'plan.form.submit.label'
         ));
     }
 

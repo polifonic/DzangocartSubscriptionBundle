@@ -1,0 +1,42 @@
+plans:
+    actions:
+        show:       Show
+        title:      Actions
+    description:    Description
+    from:           From
+    name:           Name
+    nav:
+        create:     Create a new plan
+    page_title:     Plans
+    price:          Price
+    rank:           Rank
+    to:             To
+
+plan:
+    create:
+        cancel:         '&larr; Cancel'
+        page_title:     Create a new plan
+
+    form:
+        description:
+            label:      Description
+        from:
+            label:      Available from
+        name:
+            label:      Name
+        submit:
+            label:      Save
+        to:
+            label:      Available to
+
+    show:
+        cancel:         '&larr; Return to plans list'
+        description:    Description
+        from:           From
+        name:           Name
+        nav:
+            create:     Create new plan
+        page_title:     Plan: %plan%
+        price:          Price
+        rank:           Rank
+        to:             To

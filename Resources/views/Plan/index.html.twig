@@ -1,52 +1,49 @@
-{% extends "DzangocartSubscriptionBundle:Admin:layout.html.twig" %}
+{% extends "DzangocartSubscriptionBundle::admin.html.twig" %}
 
-{% block plan_head_style %}
+{% trans_default_domain "dzangocart_subscription" %}
+
+{% block dzangocart_subscription_head_style %}
 	{{ parent() }}
 	<link href="{{ asset('bundles/dzangocartsubscription/css/plan.css') }}" type="text/css" rel="stylesheet" />
 {% endblock %}
 
-{% block bodyclass %}plans{% endblock %}
-
-{% block plan_page_title %}
+{% block dzangocart_subscription_page_nav %}
 	<a type='button' class='btn btn-default pull-right' href="{{ path('dzangocart_subscription_plan_create') }}">
-		{% trans from "plan" %}plan.plans.actions.create{% endtrans %}
+		{% trans %}plans.nav.create{% endtrans %}
 	</a>
-	<h2>{% trans from "plan" %}plan.plans.list{% endtrans %}</h2>
 {% endblock %}
 
-{% block plan_content %}
-<section class="dzangocart plans">
-	<table class="table table-condensed">
-		<thead>
-			<tr>
-				<th class="check">
-					<input type="checkbox" class="checkall" />
-				</th>
-				<th class="rank">{% trans from "plan" %}plan.plans.rank{% endtrans %}</th>
-				<th class="left name">{% trans from "plan" %}plan.plans.name{% endtrans %}</th>
-				<th class="left description">{% trans from "plan" %}plan.plans.description{% endtrans %}</th>
-				<th class="date">{% trans from "plan" %}plan.plans.from{% endtrans %}</th>
-				<th class="date">{% trans from "plan" %}plan.plans.to{% endtrans %}</th>
-				<th class="price">{% trans from "plan" %}plan.plans.price{% endtrans %}</th>
-				<th class="actions">{% trans from "plan" %}plan.plans.actions.title{% endtrans %}</th>
+{% block dzangocart_subscription_page_class %}plans{% endblock %}
+
+{% block dzangocart_subscription_page_title %}{% trans %}plans.page_title{% endtrans %}{% endblock %}
+
+{% block dzangocart_subscription_content %}
+<table class="table table-condensed">
+	<thead>
+		<tr>
+			<th class="rank">{% trans %}plans.rank{% endtrans %}</th>
+			<th class="left name">{% trans %}plans.name{% endtrans %}</th>
+			<th class="left description">{% trans %}plans.description{% endtrans %}</th>
+			<th class="date">{% trans %}plans.from{% endtrans %}</th>
+			<th class="date">{% trans %}plans.to{% endtrans %}</th>
+			<th class="price">{% trans %}plans.price{% endtrans %}</th>
+			<th class="actions">{% trans %}plans.actions.title{% endtrans %}</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for plan in plans %}
+			<tr class="{% if plan.isDisabled %}disabled{% elseif plan.isInactive %}inactive{% elseif plan.isDefault %}default{%endif %}">
+				<td class="number">{{ plan.rank }}</td>
+				<td><a href="{{ path('dzangocart_subscription_plan_show', { 'id': plan.id }) }}">{{ plan.name }}</a></td>
+				<td>{{ plan.description }}</td>
+				<td>{% if plan.start %}{{ plan.start|date('Y-m-d H:i') }}{% endif%}</td>
+				<td>{% if plan.finish %}{{ plan.finish|date('Y-m-d H:i') }}{% endif%}</td>
+				<td class="amount"></td>
+				<td class="actions">{% include "DzangocartSubscriptionBundle:Plan:actions.html.twig" %}</td>
+				</td>
 			</tr>
-		</thead>
-		<tbody>
-			{% for plan in plans %}
-				<tr class="{% if plan.isDisabled %}disabled{% elseif plan.isInactive %}inactive{% elseif plan.isDefault %}default{%endif %}">
-					<td><input type="checkbox" name="plan_ids[]" value="{{ plan.id }}" /></td>
-					<td class="number">{{ plan.rank }}</td>
-					<td><a href="{{ path('dzangocart_subscription_plan_show', { 'id': plan.id }) }}">{{ plan.name }}</a></td>
-					<td>{{ plan.description }}</td>
-					<td class="center">{% if plan.start %}{{ plan.start|date('Y-m-d H:i') }}{% endif%}</td>
-					<td class="center">{% if plan.finish %}{{ plan.finish|date('Y-m-d H:i') }}{% endif%}</td>
-					<td class="amount"></td>
-					<td class="actions">
-					</td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
-</section>
+		{% endfor %}
+	</tbody>
+</table>
 {% endblock %}
 

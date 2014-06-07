@@ -1,0 +1,11 @@
+{
+	"name": "polifonic/backend",
+	"dependencies": {
+		"autotabs" : "2.0",
+		"bootstrap": "~3.1",
+		"font-awesome": "~4.1",
+		"jquery": "~1.11",
+		"modernizr": "~2.7",
+		"respond": "~1.4"
+	}
+}

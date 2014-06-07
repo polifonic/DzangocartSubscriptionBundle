@@ -1,0 +1,12 @@
+plans:
+    actions:
+        title:      Actions
+    description:    Description
+    from:           Du
+    name:           Nom
+    nav:
+        create:     Créer un nouvelle formule
+    page_title:     Formules
+    price:          Prix
+    rank:           Rang
+    to:             Au

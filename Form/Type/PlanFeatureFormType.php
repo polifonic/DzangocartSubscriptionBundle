@@ -19,9 +19,8 @@ class PlanFeatureFormType extends BaseAbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'name' => 'plan_feature_form',
-            'translation_domain' => 'feature',
-            'show_legend' => false,
+            'name' => 'plan_feature',
+            'translation_domain' => 'dzangocart_subscription',
             'data_class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\PlanFeature'
         ));
     }

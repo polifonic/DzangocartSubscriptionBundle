@@ -7,11 +7,20 @@
 	background-color: green;
 }
 
-.plans table th.check { width: 1.5em; }
 .plans table th.rank { width: 4em; }
 .plans table th.description { width: 15em; }
 .plans table th.date { width: 9em; }
 .plans table th.price { width: 6em; }
 .plans table th.actions { width: 6em; }
+
+.plans table td.actions ul {
+	margin: 0;
+	padding: 0;
+}
+
+.plans table td.actions ul li {
+	list-style-type: none;
+	display: inline;
+}
 
 

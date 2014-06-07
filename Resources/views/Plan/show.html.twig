@@ -1,46 +1,46 @@
-{% extends "DzangocartSubscriptionBundle:Admin:layout.html.twig" %}
+{% extends "DzangocartSubscriptionBundle::admin.html.twig" %}
 
-{% block content %}
+{% trans_default_domain "dzangocart_subscription" %}
+
+{% block dzangocart_subscription_head_style %}
+{% endblock %}
+
+{% block dzangocart_subscription_page_nav %}
+	<a href="{{ path('dzangocart_subscription_plans') }}">{% trans %}plan.show.cancel{% endtrans %}</a>
+{% endblock %}
+
+{% block dzangocart_subscription_page_title %}
+	{% trans with { '%plan%': plan.name } %}plan.show.page_title{% endtrans %}
+{% endblock %}
+
+{% block dzangocart_subscription_content %}
 <section class="dzangocart plans">
-	<div class="toolbar">
-		<a href="{{ path('dzangocart_subscription_plans') }}" class="cancel">
-			{% trans from "subscription" %}subscription.actions.back_to_list{% endtrans %}
-		</a>
-		<a href="{{ path('dzangocart_subscription_plan_delete', { 'id': entity.id }) }}" class="delete">
-			{% trans from "subscription" %}subscription.actions.delete{% endtrans %}
-		</a>
-		<a href="{{ path('dzangocart_subscription_plan_edit', { 'id': entity.id }) }}" class="edit">
-			{% trans from "subscription" %}subscription.actions.edit{% endtrans %}
-		</a>
-	</div>
-	<h2>{{ entity.name }}</h2>
-
 	<table class="show plan">
 		<tbody>
 			<tr>
-				<th>{% trans from "subscription" %}subscription.plan.name{% endtrans %}</th>
-				<td>{{ entity.name }}</td>
+				<th>{% trans %}subscription.plan.name{% endtrans %}</th>
+				<td>{{ plan.name }}</td>
 			</tr>
 			<tr>
-				<th>{% trans from "subscription" %}subscription.plan.description{% endtrans %}</th>
-				<td>{{ entity.description }}</td>
+				<th>{% trans %}subscription.plan.description{% endtrans %}</th>
+				<td>{{ plan.description }}</td>
 			</tr>
 			<tr>
-				<th>{% trans from "subscription" %}subscription.plan.available_from{% endtrans %}</th>
-				<td>{{ entity.start ? entity.start|date('Y-m-d H:i:s') : '' }}</td>
+				<th>{% trans %}subscription.plan.available_from{% endtrans %}</th>
+				<td>{{ plan.start ? plan.start|date('Y-m-d H:i:s') : '' }}</td>
 			</tr>
 			<tr>
-				<th>{% trans from "subscription" %}subscription.plan.available_until{% endtrans %}</th>
-				<td>{{ entity.finish ? entity.finish|date('Y-m-d H:i:s') : '' }}</td>
+				<th>{% trans %}subscription.plan.available_until{% endtrans %}</th>
+				<td>{{ plan.finish ? plan.finish|date('Y-m-d H:i:s') : '' }}</td>
 			</tr>
 			<tr>
-				<th>{% trans from "subscription" %}subscription.plan.price{% endtrans %}</th>
-				<td>{# entity.price #}</td>
+				<th>{% trans %}subscription.plan.price{% endtrans %}</th>
+				<td>{# plan.price #}</td>
 			</tr>
 			<tr>
-				<th>{% trans from "subscription" %}subscription.plan.default{% endtrans %}</th>
+				<th>{% trans %}subscription.plan.default{% endtrans %}</th>
 				<td>
-					{% if entity.isDefault %}<img src="{{ asset('bundles/dzangocartsubscription/images/tick.png') }}" />{% endif %}
+					{% if plan.isDefault %}<img src="{{ asset('bundles/dzangocartsubscription/images/tick.png') }}" />{% endif %}
 				</td>
 			</tr>
 		</tbody>

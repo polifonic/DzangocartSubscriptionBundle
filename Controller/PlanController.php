@@ -37,30 +37,29 @@ class PlanController extends Controller
     }
 
     /**
-     * Finds and displays a Plan entity.
+     * Displays a Plan.
      *
-     * @Route("/show/{id}", name="dzangocart_subscription_plan_show")
+     * @Route("/{id}", name="dzangocart_subscription_plan_show", requirements={"id" = "\d+"})
      * @Template("DzangocartSubscriptionBundle:Plan:show.html.twig")
      */
     public function showAction($id)
     {
-        $entity = $this->getQuery()
+        $plan = $this->getQuery()
             ->findPk($id);
 
-        if ($entity) {
-            return array(
-                'entity' => $entity
-            );
-        } else {
-            return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
+        if (!$plan) {
+            throw $this->createNotFoundException('Plan not found');
         }
 
+        return array(
+            'plan' => $plan
+        );
     }
 
     /**
      * Displays a form to edit an existing Plan entity.
-     * 
-     * @Route("/edit/{id}", name="dzangocart_subscription_plan_edit")
+     *
+     * @Route("/{id}/edit", name="dzangocart_subscription_plan_edit", requirements={"id" = "\d+"})
      * @Template("DzangocartSubscriptionBundle:Plan:edit.html.twig")
      */
     public function editAction($id, Request $request)
@@ -103,8 +102,8 @@ class PlanController extends Controller
 
     /**
      * Delete existing Plan entity.
-     * 
-     * @Route("/delete/{id}", name="dzangocart_subscription_plan_delete")
+     *
+     * @Route("/{id}/delete", name="dzangocart_subscription_plan_delete", requirements={"id" = "\d+"})
      * @Template()
      */
     public function deleteAction($id)
@@ -121,26 +120,34 @@ class PlanController extends Controller
 
     /**
      * Create a Plan entity.
-     * 
+     *
      * @Route("/create", name="dzangocart_subscription_plan_create")
      * @Template("DzangocartSubscriptionBundle:Plan:create.html.twig")
      */
     public function createAction(Request $request)
     {
+        $plan = new Plan();
+
+        $plan->setLocale($request->getLocale());
+
         $form = $this->createForm(
-            new PlanFormType(), $plan = new Plan(), array(
-            'action' => $this->generateUrl('dzangocart_subscription_plan_create'))
+            new PlanFormType(),
+            $plan,
+            array(
+                'action' => $this->generateUrl('dzangocart_subscription_plan_create')
+            )
         );
 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $plan->setLocale($request->getLocale());
             $plan->save();
+
             return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
         }
 
         return array(
+            'plan' => $plan,
             'form' => $form->createView()
         );
     }
