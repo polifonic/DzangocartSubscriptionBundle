@@ -2,15 +2,16 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Controller;
 
-use Dzangocart\Bundle\SubscriptionBundle\Form\Type\PlanFeatureDefinitionFormType;
-use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanFeatureDefinition;
-use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanFeatureDefinitionQuery;
+use Dzangocart\Bundle\SubscriptionBundle\Form\Type\FeatureDefinitionFormType;
+use Dzangocart\Bundle\SubscriptionBundle\Propel\FeatureDefinition;
+use Dzangocart\Bundle\SubscriptionBundle\Propel\FeatureDefinitionQuery;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * @Route("/feature")
@@ -32,7 +33,7 @@ class FeatureController extends Controller
     }
 
     /**
-     * 
+     *
      * @Route("/{id}/edit", name="dzangocart_subscription_feature_edit")
      * @Template("DzangocartSubscriptionBundle:Feature:edit.html.twig")
      */
@@ -43,7 +44,7 @@ class FeatureController extends Controller
 
         if ($feature) {
             $form = $this->createForm(
-                new PlanFeatureDefinitionFormType(),
+                new FeatureDefinitionFormType(),
                 $feature,
                 array(
                     'action' => $this->generateUrl('dzangocart_subscription_feature_edit', array('id' => $id))
@@ -69,7 +70,7 @@ class FeatureController extends Controller
 
     /**
      * Delete existing Feature entity.
-     * 
+     *
      * @Route("/{id}/delete", name="dzangocart_subscription_feature_delete")
      * @Template()
      */
@@ -79,22 +80,26 @@ class FeatureController extends Controller
             ->findPk($id);
 
         if ($entity && $entity->getPlanFeatures()->isEmpty()) {
-            $entity->delete(); 
+            $entity->delete();
         }
 
         return $this->redirect($this->generateUrl('dzangocart_subscription_features'));
     }
 
     /**
-     * 
+     *
      * @Route("/create", name="dzangocart_subscription_feature_create")
      * @Template("DzangocartSubscriptionBundle:Feature:create.html.twig")
      */
     public function createAction(Request $request)
     {
+        $feature = new FeatureDefinition();
+
+        $feature->setLocale($request->getLocale());
+
         $form = $this->createForm(
-            new PlanFeatureDefinitionFormType(),
-            $feature = new PlanFeatureDefinition(),
+            new FeatureDefinitionFormType(),
+            $feature,
             array(
                 'action' => $this->generateUrl('dzangocart_subscription_feature_create')
             )
@@ -103,8 +108,9 @@ class FeatureController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $feature->setLocale($request->getLocale());
             $feature->save();
+
+            // TODO [OP 2014-06-07] Display flash success message
             return $this->redirect($this->generateUrl('dzangocart_subscription_features'));
         }
 
@@ -115,8 +121,20 @@ class FeatureController extends Controller
 
     protected function getQuery()
     {
-        return PlanFeatureDefinitionQuery::create()
+        return FeatureDefinitionQuery::create()
             ->joinWithI18n($this->getRequest()->getLocale())
             ->orderByRank();
+    }
+
+    protected function getFeature($id)
+    {
+        $feature = $this->getQuery()
+            ->findPk($id);
+
+        if (!$feature) {
+            throw new NotFoundHttpException('Plan not found');
+        }
+
+        return $feature;
     }
 }
