@@ -235,9 +235,4 @@ class PlanController extends Controller
 
         return $plan;
     }
-
-    protected function getPlanFeatureDefinitionQuery()
-    {
-        return PlanFeatureDefinitionQuery::create();
-    }
 }
