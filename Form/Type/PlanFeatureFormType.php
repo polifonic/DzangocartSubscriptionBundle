@@ -2,6 +2,9 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Form\Type;
 
+use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanPeriodQuery;
+use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanUnitQuery;
+
 use Propel\PropelBundle\Form\BaseAbstractType;
 
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,10 +19,14 @@ class PlanFeatureFormType extends BaseAbstractType
         $this->locale = $locale;
     }
 
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'name' => 'plan_feature',
             'translation_domain' => 'dzangocart_subscription',
             'data_class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\PlanFeature'
         ));
@@ -30,50 +37,40 @@ class PlanFeatureFormType extends BaseAbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('definition', 'model', array(
-            'class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\PlanFeatureDefinition',
-            'property' => 'name',
-            'label' => 'feature.label'
-            //'index_property' => 'slug' /** If you want to use a specifiq unique column for key to not expose the PK **/
-        ));
-
         $builder->add('value', 'text', array(
-            'label' => 'feature.value.label'
+            'label' => false
         ));
 
         $builder->add('unit', 'model', array(
             'class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\PlanUnit',
             'property' => 'name',
             'query' => $this->getUnitQuery(),
-            'label' => 'feature.unit.label',
+            'label' => false,
             'required' => false
-            //'index_property' => 'slug' /** If you want to use a specifiq unique column for key to not expose the PK **/
         ));
 
         $builder->add('period', 'model', array(
             'class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\PlanPeriod',
             'property' => 'name',
             'query' => $this->getPeriodQuery(),
-            'label' => 'feature.period.label',
+            'label' => false,
             'required' => false
-            //'index_property' => 'slug' /** If you want to use a specifiq unique column for key to not expose the PK **/
         ));
     }
-
     public function getName()
     {
-        return "plan_feature_form";
+        return 'dzangocart_subscription_plan_feature';
     }
 
     protected function getUnitQuery()
     {
-        return \Dzangocart\Bundle\SubscriptionBundle\Propel\PlanUnitQuery::create()
-            ->joinWithI18n($this->locale);
+        return PlanUnitQuery::create()
+            ->joinWithI18n($this->getLocale());
     }
 
     protected function getPeriodQuery()
     {
-        return \Dzangocart\Bundle\SubscriptionBundle\Propel\PlanPeriodQuery::create()
-            ->joinWithI18n($this->locale);
+        return PlanPeriodQuery::create()
+            ->joinWithI18n($this->getLocale());
     }
 }

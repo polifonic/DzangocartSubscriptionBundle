@@ -19,9 +19,9 @@ class PlanFormType extends BaseAbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'name' => 'plan',
             'translation_domain' => 'dzangocart_subscription',
-            'data_class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\Plan'
+            'data_class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\Plan',
+            'intention' => 'plan_edit'
         ));
     }
 
@@ -49,15 +49,6 @@ class PlanFormType extends BaseAbstractType
             'widget' => 'single_text',
             'required' => false
         ));
-
-        $builder->add('plan_features', 'collection', array(
-            'type' => new PlanFeatureFormType($this->locale),
-            'allow_add' => true,
-            'allow_delete' => true,
-            'by_reference' => false,
-            'label' => false
-        ));
-
         $builder->add('save', 'submit', array(
             'label' => 'plan.form.submit.label'
         ));
@@ -65,6 +56,6 @@ class PlanFormType extends BaseAbstractType
 
     public function getName()
     {
-        return "plan_form";
+        return 'dzangocarrt_subscription_plan';
     }
 }

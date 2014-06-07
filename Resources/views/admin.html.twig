@@ -8,8 +8,14 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	{% block dzangocart_subscription_head_style %}
-	{% endblock %}
+	{% stylesheets filter="cssrewrite"
+		'bundles/dangocartsubscription/vendor/bootstrap/dist/css/bootstrap.min.css'
+		'bundles/dangocartsubscription/vendor/font-awesome/css/font-awesome.css'
+	%}
+		<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+	{% endstylesheets %}
+
+	{% block dzangocart_subscription_head_style %}{% endblock %}
 
 	{% block dzangocart_subscription_head_script %}
 	{% endblock %}
@@ -21,6 +27,14 @@
 		<h2>{% block dzangocart_subscription_page_title %}{% endblock %}</h2>
 	{% endblock %}
 	{% block dzangocart_subscription_content %}{% endblock %}
+
+	{% javascripts
+		'bundles/dangocartsubscription/vendor/jquery/dist/jquery.min.js'
+		'bundles/dangocartsubscription/vendor/bootstrap/dist/js/bootstrap.min.js'
+	%}
+		<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+
 	{% block dzangocart_subscription_foot_script %}{% endblock %}
 </body>
 </html>

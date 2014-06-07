@@ -1,0 +1,7 @@
+dzangocart_subscription_plan:
+    resource: "@DzangocartSubscriptionBundle/Controller/PlanController.php"
+    type: annotation
+
+dzangocart_subscription_feature:
+    resource: "@DzangocartSubscriptionBundle/Controller/FeatureController.php"
+    type: annotation

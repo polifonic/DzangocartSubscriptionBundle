@@ -3,6 +3,12 @@ plan:
         cancel:         '&larr; Cancel'
         page_title:     Create a new plan
 
+    feature:
+        name:           Feature
+        period:         Per
+        value:          Value
+        unit:           Unit
+
     form:
         description:
             label:      Description
@@ -32,11 +38,14 @@ plan:
     show:
         cancel:         '&larr; Return to plans list'
         description:    Description
+        features:       Features
         from:           From
+        info:           Details
         name:           Name
         nav:
             create:     Create new plan
         page_title:     Plan: %plan%
         price:          Price
+        prices:         Prices
         rank:           Rank
         to:             To

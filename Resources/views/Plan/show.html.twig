@@ -3,7 +3,14 @@
 {% trans_default_domain "dzangocart_subscription" %}
 
 {% block dzangocart_subscription_head_style %}
+	{% stylesheets filter="cssrewrite" output="css/*.css"
+		'bundles/dzangocartsubscription/vendor/autotabs/css/jquery.autotabs.css'
+	%}
+		<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+	{% endstylesheets %}
 {% endblock %}
+
+{% block dzangocart_subscription_page_class %}plan{% endblock %}
 
 {% block dzangocart_subscription_page_nav %}
 	<a href="{{ path('dzangocart_subscription_plans') }}">{% trans %}plan.show.cancel{% endtrans %}</a>
@@ -14,36 +21,28 @@
 {% endblock %}
 
 {% block dzangocart_subscription_content %}
-<section class="dzangocart plans">
-	<table class="show plan">
-		<tbody>
-			<tr>
-				<th>{% trans %}subscription.plan.name{% endtrans %}</th>
-				<td>{{ plan.name }}</td>
-			</tr>
-			<tr>
-				<th>{% trans %}subscription.plan.description{% endtrans %}</th>
-				<td>{{ plan.description }}</td>
-			</tr>
-			<tr>
-				<th>{% trans %}subscription.plan.available_from{% endtrans %}</th>
-				<td>{{ plan.start ? plan.start|date('Y-m-d H:i:s') : '' }}</td>
-			</tr>
-			<tr>
-				<th>{% trans %}subscription.plan.available_until{% endtrans %}</th>
-				<td>{{ plan.finish ? plan.finish|date('Y-m-d H:i:s') : '' }}</td>
-			</tr>
-			<tr>
-				<th>{% trans %}subscription.plan.price{% endtrans %}</th>
-				<td>{# plan.price #}</td>
-			</tr>
-			<tr>
-				<th>{% trans %}subscription.plan.default{% endtrans %}</th>
-				<td>
-					{% if plan.isDefault %}<img src="{{ asset('bundles/dzangocartsubscription/images/tick.png') }}" />{% endif %}
-				</td>
-			</tr>
-		</tbody>
-	</table>
-</section>
+<div class="tabs">
+	<div id="info" class="tab-pane">
+		<h3>{% trans %}plan.show.info{% endtrans %}</h3>
+		{{ render(controller("DzangocartSubscriptionBundle:Plan:edit", { id: plan.id })) }}
+	</div>
+	<div id="features" class="tab-pane">
+		{% render(controller("DzangocartSubscriptionBundle:Plan:features", { id: plan.id })) %}
+	</div>
+	<div id="prices" class="tab-pane">
+		{% render(controller("DzangocartSubscriptionBundle:Plan:prices", { id: plan.id })) %}
+	</div>
+</div>
+{% endblock %}
+
+{% block dzangocart_subscription_foot_script %}
+	{% javascripts
+		'bundles/dzangocartsubscription/vendor/autotabs/js/jquery.autotabs.min.js'
+		'bundles/dzangocartsubscription/js/plan.js'
+	%}
+		<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+	<script>
+	var dzangocart_subscription_plan = {};
+	</script>
 {% endblock %}

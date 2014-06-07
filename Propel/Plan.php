@@ -2,6 +2,8 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Propel;
 
+use Criteria;
+
 use Dzangocart\Bundle\SubscriptionBundle\Propel\om\BasePlan;
 
 class Plan extends BasePlan
@@ -43,13 +45,36 @@ class Plan extends BasePlan
         return $this->isFree();
     }
 
-    public function getFeatures()
+    public function getFeatures(PropelPDO $con = null)
     {
-        return PlanFeatureQuery::create()
-            ->usePlanFeatureDefinitionQuery()
-            ->orderByRank(Criteria::ASC)
-            ->endUse()
+        $_features = array();
+
+        foreach ($this->getPlanFeatures() as $feature) {
+            $_features[$feature->getDefinitionId()] = $feature;
+        }
+
+        $definitions = PlanFeatureDefinitionQuery::create()
+            ->joinWithI18n($this->getLocale())
+            ->orderByRank()
             ->find();
+
+        $features = array();
+
+        foreach ($definitions as $definition) {
+            $id = $definition->getId();
+
+            if (array_key_exists($id, $_features)) {
+                $feature = $_features[$id];
+            } else {
+                $feature = new PlanFeature();
+                $feature->setDefinition($definition);
+                $feature->setPlan($this);
+            }
+
+            $features[$id] = $feature;
+        }
+
+        return $features;
     }
 
     public function getFeature(PlanFeatureDefinition $definition)
@@ -70,5 +95,15 @@ class Plan extends BasePlan
     public function getDefaultPrice()
     {
         return $this->getPrices(PlanPriceQuery::create()->getDefault());
+    }
+
+    public function disable()
+    {
+        $this->setDisabled(true);
+    }
+
+    public function enable()
+    {
+        $this->setDisabled(false);
     }
 }

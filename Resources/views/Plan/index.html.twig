@@ -3,8 +3,11 @@
 {% trans_default_domain "dzangocart_subscription" %}
 
 {% block dzangocart_subscription_head_style %}
-	{{ parent() }}
-	<link href="{{ asset('bundles/dzangocartsubscription/css/plan.css') }}" type="text/css" rel="stylesheet" />
+	{% stylesheets filter="cssrewrite"
+		'bundles/dzangocartsubscription/css/plan.css'
+	%}
+		<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+	{% endstylesheets %}
 {% endblock %}
 
 {% block dzangocart_subscription_page_nav %}
