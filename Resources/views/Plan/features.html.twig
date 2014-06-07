@@ -2,15 +2,23 @@
 
 {{ form_start(form) }}
 
-<h3>{% trans %}plan.show.features{% endtrans %}</h3>
+<h3>{% trans %}plan.features.title{% endtrans %}</h3>
+
+{{ form_errors(form) }}
+
+{% for flashMessage in app.session.flashbag.get('plan.features') %}
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
 
 <table class="table">
 	<thead>
 		<tr>
-			<th class="name">{% trans %}plan.feature.name{% endtrans %}</th>
-			<th class="value">{% trans %}plan.feature.value{% endtrans %}</th>
-			<th class="unit">{% trans %}plan.feature.unit{% endtrans %}</th>
-			<th class="period">{% trans %}plan.feature.period{% endtrans %}</th>
+			<th class="name">{% trans %}plan.features.name{% endtrans %}</th>
+			<th class="value">{% trans %}plan.features.value{% endtrans %}</th>
+			<th class="unit">{% trans %}plan.features.unit{% endtrans %}</th>
+			<th class="period">{% trans %}plan.features.period{% endtrans %}</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -26,3 +34,5 @@
 </table>
 
 {{ form_rest(form) }}
+
+{{ form_end(form) }}

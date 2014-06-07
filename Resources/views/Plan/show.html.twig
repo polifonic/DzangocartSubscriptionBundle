@@ -5,6 +5,7 @@
 {% block dzangocart_subscription_head_style %}
 	{% stylesheets filter="cssrewrite" output="css/*.css"
 		'bundles/dzangocartsubscription/vendor/autotabs/css/jquery.autotabs.css'
+		'bundles/dzangocartsubscription/css/plan.css'
 	%}
 		<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
 	{% endstylesheets %}
@@ -22,14 +23,14 @@
 
 {% block dzangocart_subscription_content %}
 <div class="tabs">
-	<div id="info" class="tab-pane">
-		<h3>{% trans %}plan.show.info{% endtrans %}</h3>
+	<div id="info" class="tab-pane info">
+		<h3>{% trans %}plan.edit.title{% endtrans %}</h3>
 		{{ render(controller("DzangocartSubscriptionBundle:Plan:edit", { id: plan.id })) }}
 	</div>
-	<div id="features" class="tab-pane">
+	<div id="features" class="tab-pane features">
 		{% render(controller("DzangocartSubscriptionBundle:Plan:features", { id: plan.id })) %}
 	</div>
-	<div id="prices" class="tab-pane">
+	<div id="prices" class="tab-pane prices">
 		{% render(controller("DzangocartSubscriptionBundle:Plan:prices", { id: plan.id })) %}
 	</div>
 </div>
@@ -37,7 +38,9 @@
 
 {% block dzangocart_subscription_foot_script %}
 	{% javascripts
+		'bundles/dzangocartsubscription/vendor/jquery.cookie/jquery.cookie.js'
 		'bundles/dzangocartsubscription/vendor/autotabs/js/jquery.autotabs.min.js'
+		'bundles/dzangocartsubscription/vendor/jquery-form/jquery.form.js'
 		'bundles/dzangocartsubscription/js/plan.js'
 	%}
 		<script src="{{ asset_url }}"></script>

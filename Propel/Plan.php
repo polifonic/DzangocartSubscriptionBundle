@@ -45,15 +45,15 @@ class Plan extends BasePlan
         return $this->isFree();
     }
 
-    public function getFeatures(PropelPDO $con = null)
+    public function getFeatures($criteria = null, PropelPDO $con = null)
     {
         $_features = array();
 
-        foreach ($this->getPlanFeatures() as $feature) {
+        foreach (parent::getFeatures() as $feature) {
             $_features[$feature->getDefinitionId()] = $feature;
         }
 
-        $definitions = PlanFeatureDefinitionQuery::create()
+        $definitions = FeatureDefinitionQuery::create()
             ->joinWithI18n($this->getLocale())
             ->orderByRank()
             ->find();
@@ -66,7 +66,7 @@ class Plan extends BasePlan
             if (array_key_exists($id, $_features)) {
                 $feature = $_features[$id];
             } else {
-                $feature = new PlanFeature();
+                $feature = new Feature();
                 $feature->setDefinition($definition);
                 $feature->setPlan($this);
             }
@@ -77,24 +77,9 @@ class Plan extends BasePlan
         return $features;
     }
 
-    public function getFeature(PlanFeatureDefinition $definition)
-    {
-        $feature = PlanFeatureQuery::create()
-            ->usePlanFeatureDefinitionQuery()
-            ->filterByRank($definition->getRank())
-            ->endUse()
-            ->findOneByPlanId($this->getId());
-
-        if (!$feature) {
-            $feature = $definition->createFeature($this);
-        }
-
-        return $feature;
-    }
-
     public function getDefaultPrice()
     {
-        return $this->getPrices(PlanPriceQuery::create()->getDefault());
+        return $this->getPrices(PriceQuery::create()->getDefault());
     }
 
     public function disable()

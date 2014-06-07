@@ -7,14 +7,13 @@ use Propel\PropelBundle\Form\BaseAbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class PlanFeatureDefinitionFormType extends BaseAbstractType
+class FeatureDefinitionFormType extends BaseAbstractType
 {
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'name' => 'plan_feature_definition_form',
-            'translation_domain' => 'feature',
-            'show_legend' => false
+            'name' => 'fzangocart_subscription_feature_definition',
+            'translation_domain' => 'dzangocart_subscription'
         ));
     }
 
@@ -38,10 +37,5 @@ class PlanFeatureDefinitionFormType extends BaseAbstractType
           $builder->add('modify', 'submit', array(
           'label' => 'features.definition.modify'
           )); */
-    }
-
-    public function getName()
-    {
-        return "plan_feature_definition_form";
     }
 }

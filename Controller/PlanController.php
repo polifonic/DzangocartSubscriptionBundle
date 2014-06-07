@@ -175,9 +175,10 @@ class PlanController extends Controller
         if ($form->isValid()) {
             $plan->save();
 
-            // TODO [OP 2014-06-07] Display success message
-
-            return $this->redirect($this->generateUrl('dzangocart_subscription_plan', array('id' => $id)));
+            $this->get('session')->getFlashBag()->add(
+                'plan.features',
+                $this->get('translator')->trans('plan.features.success', array(), 'dzangocart_subscription', $request->getLocale())
+            );
         }
 
         return array(

@@ -16,7 +16,7 @@
 		</behavior>
 	</table>
 
-	<table name="plan_price">
+	<table name="plan_price" phpName="Price">
 		<column name="id"         type="integer" required="true" primaryKey="true" autoIncrement="true" />
 		<column name="plan_id"    type="integer" required="true" />
 		<column name="currency"   type="varchar" size="3" required="true" default="EUR" />
@@ -36,7 +36,7 @@
 		</behavior>
 	</table>
 
-	<table name="plan_feature_definition">
+	<table name="plan_feature_definition" phpName="FeatureDefinition">
 		<column name="id"          type="integer" required="true" primaryKey="true" autoIncrement="true" />
 		<column name="name"        type="varchar" size="100" required="true" primaryString="true" />
 		<column name="description" type="longvarchar" required="false" />
@@ -48,7 +48,7 @@
 		</behavior>
 	</table>
 
-	<table name="plan_feature">
+	<table name="plan_feature" phpName="Feature">
 		<column name="id"            type="integer" required="true" primaryKey="true" autoIncrement="true" />
 		<column name="plan_id"       type="integer" required="true" />
 		<column name="definition_id" type="integer" required="true" />
@@ -79,7 +79,7 @@
 		</unique>
 	</table>
 
-	<table name="plan_period" allowPkInsert="true">
+	<table name="plan_period" phpName="Period" allowPkInsert="true">
 		<column name="id"            type="integer" required="true" primaryKey="true" autoIncrement="true" />
 		<column name="date_interval" type="varchar" size="10" required="true" />
 		<column name="name"          type="varchar" size="20" required="true" primaryString="true" />
@@ -89,7 +89,7 @@
 		</behavior>
 	</table>
 
-	<table name="plan_unit" allowPkInsert="true">
+	<table name="plan_unit" phpName="Unit" allowPkInsert="true">
 		<column name="id"     type="integer" required="true" primaryKey="true" autoIncrement="true" />
 		<column name="name"   type="varchar" size="20" required="true" primaryString="true" />
 		<column name="plural" type="varchar" size="20" required="true" />

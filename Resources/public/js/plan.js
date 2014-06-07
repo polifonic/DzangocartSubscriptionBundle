@@ -13,8 +13,21 @@
 					var $this = $( this );
 
 					$( ".tabs", this ).autotabs( $.extend( true, {}, settings.autotabs, {
-
+						success: {
+							features: helpers.initFeatures
+						}
 					} ) );
+				});
+			}
+		};
+
+		var helpers = {
+			initFeatures: function() {
+				$( "form", this ).ajaxForm({
+					target: this,
+					success: function() {
+						helpers.initFeatures.apply( this );
+					}
 				});
 			}
 		};
@@ -32,6 +45,7 @@
 
 	$.fn.plan.defaults = {
 		autotabs: {
+			cookie_name: "dzangocart_plan",
 			tabs_class: "nav nav-tabs",
 			tab_class: "",
 			active_class: "active"

@@ -2,11 +2,10 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Propel;
 
-use Dzangocart\Bundle\SubscriptionBundle\Propel\om\BasePlanFeature;
+use Dzangocart\Bundle\SubscriptionBundle\Propel\om\BaseFeature;
 
-class PlanFeature extends BasePlanFeature
+class Feature extends BaseFeature
 {
-
     public function __toString()
     {
         return $this->getValue() .

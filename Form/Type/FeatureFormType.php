@@ -2,19 +2,35 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Form\Type;
 
+use Dzangocart\Bundle\SubscriptionBundle\Propel\PeriodQuery;
+use Dzangocart\Bundle\SubscriptionBundle\Propel\UnitQuery;
+
 use Propel\PropelBundle\Form\BaseAbstractType;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class PlanPriceFormType extends BaseAbstractType
+class FeatureFormType extends BaseAbstractType
 {
+    protected $locale;
+
+    public function __construct($locale = 'en')
+    {
+        $this->locale = $locale;
+    }
+
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
             'translation_domain' => 'dzangocart_subscription',
-            'data_class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\PlanPrice',
-            'name' => 'plan_price'
+            'data_class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\Feature',
+            'dzangocart_subscription_feature',
+            'intention' => 'feature'
         ));
     }
 
@@ -23,51 +39,36 @@ class PlanPriceFormType extends BaseAbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        /*
-        $builder->add('definition', 'model', array(
-            'class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\PlanFeatureDefinition',
-            'property' => 'name',
-            'label' => 'feature.label'
-        ));
-
         $builder->add('value', 'text', array(
-            'label' => 'feature.value.label'
+            'label' => false
         ));
 
         $builder->add('unit', 'model', array(
-            'class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\PlanUnit',
+            'class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\Unit',
             'property' => 'name',
             'query' => $this->getUnitQuery(),
-            'label' => 'feature.unit.label',
+            'label' => false,
             'required' => false
         ));
 
         $builder->add('period', 'model', array(
-            'class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\PlanPeriod',
+            'class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\Period',
             'property' => 'name',
             'query' => $this->getPeriodQuery(),
-            'label' => 'feature.period.label',
+            'label' => false,
             'required' => false
         ));
-
-        */
     }
 
-    public function getName()
-    {
-        return "plan_price";
-    }
-/*
     protected function getUnitQuery()
     {
-        return \Dzangocart\Bundle\SubscriptionBundle\Propel\PlanUnitQuery::create()
-            ->joinWithI18n($this->locale);
+        return UnitQuery::create()
+            ->joinWithI18n($this->getLocale());
     }
 
     protected function getPeriodQuery()
     {
-        return \Dzangocart\Bundle\SubscriptionBundle\Propel\PlanPeriodQuery::create()
-            ->joinWithI18n($this->locale);
+        return PeriodQuery::create()
+            ->joinWithI18n($this->getLocale());
     }
-*/
 }

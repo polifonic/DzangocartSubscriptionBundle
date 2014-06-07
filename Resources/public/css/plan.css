@@ -22,8 +22,11 @@
 	display: inline;
 }
 
-.plan .tabs {
-
+.plan .features table th.value {
+	width: 18em;
 }
 
-
+.plan .features table th.unit,
+.plan .features table th.period {
+	width: 10em;
+}

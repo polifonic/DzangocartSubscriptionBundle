@@ -21,6 +21,7 @@ class PlanPricesFormType extends BaseAbstractType
         $resolver->setDefaults(array(
             'translation_domain' => 'dzangocart_subscription',
             'data_class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\Plan',
+            'name' => 'dzangocart_subscription_plan_prices',
             'intention' => 'plan_prices'
         ));
     }
@@ -32,7 +33,7 @@ class PlanPricesFormType extends BaseAbstractType
     {
         $builder->add('prices', 'collection', array(
             'label' => false,
-            'type' => new PlanPriceFormType(),
+            'type' => new PriceFormType(),
             'allow_add' => true,
             'allow_delete' => true
         ));
