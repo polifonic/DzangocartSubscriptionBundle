@@ -13,6 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * @Route("/plan")
@@ -39,17 +40,12 @@ class PlanController extends Controller
     /**
      * Displays a Plan.
      *
-     * @Route("/{id}", name="dzangocart_subscription_plan_show", requirements={"id" = "\d+"})
+     * @Route("/{id}", name="dzangocart_subscription_plan", requirements={"id" = "\d+"})
      * @Template("DzangocartSubscriptionBundle:Plan:show.html.twig")
      */
-    public function showAction($id)
+    public function showAction(Request $request, $id)
     {
-        $plan = $this->getQuery()
-            ->findPk($id);
-
-        if (!$plan) {
-            throw $this->createNotFoundException('Plan not found');
-        }
+        $plan = $this->getPlan($id);
 
         return array(
             'plan' => $plan
@@ -57,47 +53,46 @@ class PlanController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing Plan entity.
+     * Displays a form to edit an existing Plan.
      *
      * @Route("/{id}/edit", name="dzangocart_subscription_plan_edit", requirements={"id" = "\d+"})
      * @Template("DzangocartSubscriptionBundle:Plan:edit.html.twig")
      */
-    public function editAction($id, Request $request)
+    public function editAction(Request $request, $id)
     {
-        $entity = $this->getQuery()
-            ->findPk($id);
+        $plan = $this->getPlan($id);
 
-        if ($entity) {
             $all_feature_count = $this->getPlanFeatureDefinitionQuery()
                 ->count();
-            $entity_feature_count = $entity->getPlanFeatures()
+            $entity_feature_count = $plan->getPlanFeatures()
                 ->count();
 
             for ($i = 1; $i <= $all_feature_count - $entity_feature_count; $i++) {
                 $entity->addPlanFeature(new PlanFeature());
             }
 
-            $form = $this->createForm(
-                new PlanFormType($request->getLocale()), $entity, array(
+        $form = $this->createForm(
+            new PlanFormType($request->getLocale()),
+            $plan,
+            array(
                 'action' => $this->generateUrl('dzangocart_subscription_plan_edit', array('id' => $id))
-                )
-            );
+            )
+        );
 
-            $form->handleRequest($request);
+        $form->handleRequest($request);
 
-            if ($form->isValid()) {
-                $entity->save();
-                return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
-            }
+        if ($form->isValid()) {
+            $plan->save();
 
-            return array(
-                'form' => $form->createView(),
-                'plan' => $entity
-            );
-        } else {
+
+            // TODO [OP 2014-06-07] Add flash success message
             return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
         }
 
+        return array(
+            'form' => $form->createView(),
+            'plan' => $plan
+        );
     }
 
     /**
@@ -106,15 +101,13 @@ class PlanController extends Controller
      * @Route("/{id}/delete", name="dzangocart_subscription_plan_delete", requirements={"id" = "\d+"})
      * @Template()
      */
-    public function deleteAction($id)
+    public function deleteAction(Request $request, $id)
     {
-        $entity = $this->getQuery()
-            ->findPk($id);
+        $plan = $this->getPlan($id);
 
-        if ($entity) {
-            $entity->delete();
-        }
+        $plan->delete();
 
+        // TODO [OP 2014-06-07] Add flash success message
         return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
     }
 
@@ -143,7 +136,7 @@ class PlanController extends Controller
         if ($form->isValid()) {
             $plan->save();
 
-            return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
+            return $this->redirect($this->generateUrl('dzangocart_subscription_plan', array('id' => $plan->getId())));
         }
 
         return array(
@@ -157,6 +150,17 @@ class PlanController extends Controller
         return PlanQuery::create()
                 ->joinWithI18n($this->getRequest()->getLocale())
                 ->orderByRank();
+    }
+
+    protected function getPlan($id) {
+        $plan = $this->getQuery()
+            ->findPk($id);
+
+        if (!$plan) {
+            throw new NotFoundHttpException('Plan not found');
+        }
+
+        return $plan;
     }
 
     protected function getPlanFeatureDefinitionQuery()
