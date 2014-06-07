@@ -29,7 +29,7 @@ class FeatureFormType extends BaseAbstractType
         $resolver->setDefaults(array(
             'translation_domain' => 'dzangocart_subscription',
             'data_class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\Feature',
-            'dzangocart_subscription_feature',
+            'name' => 'dzangocart_subscription_feature',
             'intention' => 'feature'
         ));
     }

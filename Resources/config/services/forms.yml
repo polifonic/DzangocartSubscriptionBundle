@@ -1,8 +1,0 @@
-parameters:
-    dzangocart_subscription.form.plan_feature.class: Dzangocart\Bundle\SubscriptionBundle\Form\Type\PlanFeatureFormType
-
-services:
-    dzangocart_subscription.form.plan_feature:
-        class: %dzangocart_subscription.form.plan_feature.class%
-        tags:
-            - { name: form.type, alias: dzangocart_subscription_plan_feature }
