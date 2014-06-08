@@ -11,29 +11,29 @@ table.table td.actions .dropdown-toggle {
 	box-shadow: none;
 }
 
-.plans table tr.disabled,
-.plans table tr.inactive {
+.plans table.table tr.disabled,
+.plans table.table tr.inactive {
 	background-color: #ddd;
 }
 
-.plans table tr.default {
+.plans table.table tr.default {
 	background-color: green;
 }
 
-.plans table th.rank { width: 4em; }
-.plans table th.date { width: 9em; }
-.plans table th.price { width: 6em; }
-.plans table th.actions {
+.plans table.table th.rank { width: 4em; }
+.plans table.table th.date { width: 9em; }
+.plans table.table th.price { width: 6em; }
+.plans table.table th.actions {
 	text-align: center;
 	width: 36px;
 	box-sizing: border-box;
 }
 
-.plan .features table th.value {
+.plan .features table.table th.value {
 	width: 18em;
 }
 
-.plan .features table th.unit,
-.plan .features table th.period {
+.plan .features table.table th.unit,
+.plan .features table.table th.period {
 	width: 10em;
 }
