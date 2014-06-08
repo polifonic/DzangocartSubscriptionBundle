@@ -16,7 +16,7 @@ gulp.task('compress', function() {
 });
 
 gulp.task('minify', function() {
-	gulp.src('../../public/vendor/**/*.js')
+	gulp.src(['../../public/vendor/**/*.js', '!../../public/vendor/**/*min.js'])
 		.pipe(jsmin())
 		.pipe(rename({suffix: '.min'}))
 		.pipe(gulp.dest('../../public/vendor'));
