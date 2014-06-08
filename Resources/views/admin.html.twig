@@ -9,8 +9,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 	{% stylesheets filter="cssrewrite"
-		'bundles/dangocartsubscription/vendor/bootstrap/dist/css/bootstrap.min.css'
-		'bundles/dangocartsubscription/vendor/font-awesome/css/font-awesome.css'
+		'bundles/dzangocartsubscription/vendor/bootstrap/dist/css/bootstrap.css'
+		'bundles/dzangocartsubscription/vendor/font-awesome/css/font-awesome.css'
 	%}
 		<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
 	{% endstylesheets %}
@@ -22,19 +22,21 @@
 </head>
 
 <body class="{% block dzangocart_subscription_page_class %}{% endblock %}">
-	{% block dzangocart_subscription_page_nav %}{% endblock %}
-	{% block dzangocart_subscription_page_header %}
-		<h2>{% block dzangocart_subscription_page_title %}{% endblock %}</h2>
-	{% endblock %}
-	{% block dzangocart_subscription_content %}{% endblock %}
+	<div class="container">
+		{% block dzangocart_subscription_page_nav %}{% endblock %}
+		{% block dzangocart_subscription_page_header %}
+			<h2>{% block dzangocart_subscription_page_title %}{% endblock %}</h2>
+		{% endblock %}
+		{% block dzangocart_subscription_content %}{% endblock %}
 
-	{% javascripts
-		'bundles/dangocartsubscription/vendor/jquery/dist/jquery.min.js'
-		'bundles/dangocartsubscription/vendor/bootstrap/dist/js/bootstrap.min.js'
-	%}
-		<script src="{{ asset_url }}"></script>
-	{% endjavascripts %}
+		{% javascripts
+			'bundles/dzangocartsubscription/vendor/jquery/dist/jquery.min.js'
+			'bundles/dzangocartsubscription/vendor/bootstrap/dist/js/bootstrap.min.js'
+		%}
+			<script src="{{ asset_url }}"></script>
+		{% endjavascripts %}
 
-	{% block dzangocart_subscription_foot_script %}{% endblock %}
+		{% block dzangocart_subscription_foot_script %}{% endblock %}
+	</div>
 </body>
 </html>
