@@ -34,7 +34,7 @@ class FeatureController extends Controller
 
     /**
      *
-     * @Route("/{id}/edit", name="dzangocart_subscription_feature_edit")
+     * @Route("/{id}/edit", name="dzangocart_subscription_feature_edit", requirements={"id" = "\d+"})
      * @Template("DzangocartSubscriptionBundle:Feature:edit.html.twig")
      */
     public function editAction(Request $request, $id)
@@ -65,7 +65,7 @@ class FeatureController extends Controller
     /**
      * Delete existing Feature entity.
      *
-     * @Route("/{id}/delete", name="dzangocart_subscription_feature_delete")
+     * @Route("/{id}/delete", name="dzangocart_subscription_feature_delete", requirements={"id" = "\d+"})
      * @Template()
      */
     public function deleteAction(Request $request, $id)
