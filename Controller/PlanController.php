@@ -127,7 +127,6 @@ class PlanController extends Controller
 
         if ($form->isValid()) {
             $plan->save();
-
             return $this->redirect($this->generateUrl('dzangocart_subscription_plan', array('id' => $plan->getId())));
         }
 
@@ -224,7 +223,8 @@ class PlanController extends Controller
                 ->orderByRank();
     }
 
-    protected function getPlan($id) {
+    protected function getPlan($id)
+    {
         $plan = $this->getQuery()
             ->findPk($id);
 
