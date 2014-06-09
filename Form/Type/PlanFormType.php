@@ -49,6 +49,7 @@ class PlanFormType extends BaseAbstractType
             'widget' => 'single_text',
             'required' => false
         ));
+        
         $builder->add('save', 'submit', array(
             'label' => 'plan.form.submit.label'
         ));
@@ -56,6 +57,6 @@ class PlanFormType extends BaseAbstractType
 
     public function getName()
     {
-        return 'dzangocarrt_subscription_plan';
+        return 'dzangocart_subscription_plan';
     }
 }
