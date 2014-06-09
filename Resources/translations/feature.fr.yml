@@ -6,7 +6,9 @@ feature:
             edit:        Edit
             title:       Action
             
-        create:          Create a new Feature
+        create:
+            title:       Create a new Feature
+            success:     Feature created Successfully!
         description:     Description
         edit:            Modify Feature 
         list:            Features  

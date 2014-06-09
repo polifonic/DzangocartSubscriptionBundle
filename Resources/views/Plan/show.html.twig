@@ -24,7 +24,6 @@
 {% block dzangocart_subscription_content %}
 <div class="tabs">
 	<div id="info" class="tab-pane info">
-		<h3>{% trans %}plan.edit.title{% endtrans %}</h3>
 		{{ render(controller("DzangocartSubscriptionBundle:Plan:edit", { id: plan.id })) }}
 	</div>
 	<div id="features" class="tab-pane features">

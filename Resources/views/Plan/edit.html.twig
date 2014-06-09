@@ -1,3 +1,20 @@
 {% trans_default_domain "dzangocart_subscription" %}
 
+{{ form_start(form) }}
+
+<h3>{% trans %}plan.edit.title{% endtrans %}</h3>
+
+{{ form_errors(form) }}
+
+{% for flashMessage in app.session.flashbag.get('plan.edit') %}
+	<div class="alert alert-success">
+		{{ flashMessage }}
+	</div>
+{% endfor %}
+
 {{ form(form) }}
+
+{{ form_rest(form) }}
+
+{{ form_end(form) }}
+

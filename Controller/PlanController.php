@@ -75,14 +75,15 @@ class PlanController extends Controller
         if ($form->isValid()) {
             $plan->save();
 
-
-            // TODO [OP 2014-06-07] Add flash success message
-            return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
+            $this->get('session')->getFlashBag()->add(
+                'plan.edit',
+                $this->get('translator')->trans('plan.edit.success', array(), 'dzangocart_subscription', $request->getLocale())
+            );
         }
 
         return array(
-            'form' => $form->createView(),
-            'plan' => $plan
+            'plan' => $plan,
+            'form' => $form->createView()
         );
     }
 
@@ -126,7 +127,6 @@ class PlanController extends Controller
 
         if ($form->isValid()) {
             $plan->save();
-
             return $this->redirect($this->generateUrl('dzangocart_subscription_plan', array('id' => $plan->getId())));
         }
 
@@ -223,7 +223,8 @@ class PlanController extends Controller
                 ->orderByRank();
     }
 
-    protected function getPlan($id) {
+    protected function getPlan($id)
+    {
         $plan = $this->getQuery()
             ->findPk($id);
 

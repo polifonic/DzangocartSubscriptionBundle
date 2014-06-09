@@ -13,6 +13,7 @@ plan:
 
     edit:
         title:          Info
+        success:        The plan's info have been updated.
 
     form:
         description:

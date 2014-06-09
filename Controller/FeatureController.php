@@ -34,53 +34,46 @@ class FeatureController extends Controller
 
     /**
      *
-     * @Route("/{id}/edit", name="dzangocart_subscription_feature_edit")
+     * @Route("/{id}/edit", name="dzangocart_subscription_feature_edit", requirements={"id" = "\d+"})
      * @Template("DzangocartSubscriptionBundle:Feature:edit.html.twig")
      */
-    public function editAction($id, Request $request)
+    public function editAction(Request $request, $id)
     {
-        $feature = $this->getQuery()
-            ->findPk($id);
+        $feature = $this->getFeature($id);
 
-        if ($feature) {
-            $form = $this->createForm(
-                new FeatureDefinitionFormType(),
-                $feature,
-                array(
-                    'action' => $this->generateUrl('dzangocart_subscription_feature_edit', array('id' => $id))
-                )
-            );
+        $form = $this->createForm(
+            new FeatureDefinitionFormType(),
+            $feature,
+            array(
+                'action' => $this->generateUrl('dzangocart_subscription_feature_edit', array('id' => $id))
+            )
+        );
 
-            $form->handleRequest($request);
+        $form->handleRequest($request);
 
-            if ($form->isValid()) {
-                $feature->save();
-                return $this->redirect($this->generateUrl('dzangocart_subscription_features'));
-            }
-
-            return array(
-                'form' => $form->createView(),
-                'feature' => $feature
-            );
-        } else {
+        if ($form->isValid()) {
+            $feature->save();
             return $this->redirect($this->generateUrl('dzangocart_subscription_features'));
         }
 
+        return array(
+            'form' => $form->createView(),
+            'feature' => $feature
+        );
     }
 
     /**
      * Delete existing Feature entity.
      *
-     * @Route("/{id}/delete", name="dzangocart_subscription_feature_delete")
+     * @Route("/{id}/delete", name="dzangocart_subscription_feature_delete", requirements={"id" = "\d+"})
      * @Template()
      */
-    public function deleteAction($id)
+    public function deleteAction(Request $request, $id)
     {
-        $entity = $this->getQuery()
-            ->findPk($id);
+        $feature = $this->getFeature($id);
 
-        if ($entity && $entity->getFeatures()->isEmpty()) {
-            $entity->delete();
+        if ($feature->getFeatures()->isEmpty()) {
+            $feature->delete();
         }
 
         return $this->redirect($this->generateUrl('dzangocart_subscription_features'));
@@ -110,6 +103,10 @@ class FeatureController extends Controller
         if ($form->isValid()) {
             $feature->save();
 
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                $this->get('translator')->trans('feature.features.create.success', array(), 'feature', $request->getLocale())
+            );
             // TODO [OP 2014-06-07] Display flash success message
             return $this->redirect($this->generateUrl('dzangocart_subscription_features'));
         }
@@ -132,7 +129,7 @@ class FeatureController extends Controller
             ->findPk($id);
 
         if (!$feature) {
-            throw new NotFoundHttpException('Plan not found');
+            throw new NotFoundHttpException('Feature not found');
         }
 
         return $feature;
