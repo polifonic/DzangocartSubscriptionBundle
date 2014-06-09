@@ -12,7 +12,7 @@ class FeatureDefinitionFormType extends BaseAbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'name' => 'fzangocart_subscription_feature_definition',
+            'name' => 'dzangocart_subscription_feature_definition',
             'translation_domain' => 'dzangocart_subscription'
         ));
     }
@@ -23,19 +23,15 @@ class FeatureDefinitionFormType extends BaseAbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name', 'text', array(
-            'label' => 'feature.features.name'
+            'label' => 'plan.form.name.label'
         ));
 
         $builder->add('description', 'text', array(
-            'label' => 'feature.features.description'
+            'label' => 'plan.form.description.label'
         ));
 
         $builder->add('submit', 'submit', array(
-            'label' => 'feature.features.save'
+            'label' => 'plan.form.submit.label'
         ));
-        /*
-          $builder->add('modify', 'submit', array(
-          'label' => 'features.definition.modify'
-          )); */
     }
 }
