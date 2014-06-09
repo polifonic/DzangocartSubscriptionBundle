@@ -102,8 +102,11 @@ class FeatureController extends Controller
 
         if ($form->isValid()) {
             $feature->save();
-            //No translation done.
-            $this->get('session')->getFlashBag()->add('success', 'Feature created successfully!'); 
+
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                $this->get('translator')->trans('feature.features.create.success', array(), 'feature', $request->getLocale())
+            );
             // TODO [OP 2014-06-07] Display flash success message
             return $this->redirect($this->generateUrl('dzangocart_subscription_features'));
         }
