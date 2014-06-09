@@ -6,8 +6,6 @@ use Dzangocart\Bundle\SubscriptionBundle\Form\Type\PlanFeaturesFormType;
 use Dzangocart\Bundle\SubscriptionBundle\Form\Type\PlanFormType;
 use Dzangocart\Bundle\SubscriptionBundle\Form\Type\PlanPricesFormType;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\Plan;
-use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanFeature;
-use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanFeatureDefinitionQuery;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanQuery;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
