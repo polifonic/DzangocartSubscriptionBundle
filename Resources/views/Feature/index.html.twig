@@ -24,7 +24,7 @@
 	<table class="table table-condensed">
 		<thead>
 			<tr>
-				<th class="rank"></th>
+				<th class="rank">{% trans %}feature.features.rank{% endtrans %}</th>
 				<th class="name">{% trans %}feature.features.name{% endtrans %}</th>
 				<th class="description">{% trans %}feature.features.description{% endtrans %}</th>
 				<th class="actions"><i class="fa fa-cog"></i></th>
@@ -33,7 +33,7 @@
 		<tbody>
 			{% for feature in features %}
 				<tr>
-					<td class="rank">{{ feature.rank }}</td>
+					<td class="number">{{ feature.rank }}</td>
 					<td>{{ feature.name }}</td>
 					<td>{{ feature.description }}</td>
 					<td class="actions">{% include "DzangocartSubscriptionBundle:Feature:actions.html.twig" %}</td>

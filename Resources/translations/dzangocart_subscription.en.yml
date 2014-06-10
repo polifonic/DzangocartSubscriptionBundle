@@ -15,6 +15,7 @@ feature:
         nav:
             create:     Create a new feature
         page_title:     Features
+        rank:           Rank
 
 plan:
     create:
