@@ -1,12 +1,16 @@
-{% extends "DzangocartSubscriptionBundle:Admin:layout.html.twig" %}
+{% extends "DzangocartSubscriptionBundle::admin.html.twig" %}
 
-{% block plan_page_title %}
-	<h2>{% trans from "feature" %}feature.features.create.title{% endtrans %}</h2>
+{% trans_default_domain "dzangocart_subscription" %}
+
+{% block dzangocart_subscription_head_style %}
 {% endblock %}
 
-{% block plan_content %}
+{% block dzangocart_subscription_page_nav %}
+	<a href="{{ path('dzangocart_subscription_features') }}">{% trans %}feature.create.cancel{% endtrans %}</a>
+{% endblock %}
+
+{% block dzangocart_subscription_page_title %}{% trans %}feature.create.page_title{% endtrans %}{% endblock %}
+
+{% block dzangocart_subscription_content %}
 	{{ form(form) }}
-{% endblock %}
-
-{% block stylesheets %}
 {% endblock %}

@@ -1,8 +1,11 @@
-plan:
+feature:
     create:
         cancel:         '&larr; Cancel'
-        page_title:     Create a new plan
-
+        page_title:     Create a new Feature
+    edit:
+        cancel:         '&larr; Cancel'
+        page_title:     Modify feature
+        
     features:
         actions:
             edit:       Edit
@@ -12,6 +15,15 @@ plan:
         nav:
             create:     Create a new feature
         page_title:     Features
+
+plan:
+    create:
+        cancel:         '&larr; Cancel'
+        page_title:     Create a new plan
+
+    features:
+        description:    Description
+        name:           Feature
         period:         Per
         success:        The plan's features have been updated.
         title:          Features
