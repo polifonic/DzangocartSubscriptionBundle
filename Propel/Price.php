@@ -31,5 +31,16 @@ class Price extends BasePrice
         }
 
         return $this->number_formatter;
-    }    
+    }
+    
+    public function getPeriod(PropelPDO $con = null, $doQuery = true)
+    {
+        if ($this->aPeriod === null && ($this->period_id !== null) && $doQuery) {
+            $this->aPeriod = PeriodQuery::create()
+                ->joinWithI18n($this->getPlan()->getLocale())
+                ->findPk($this->period_id, $con);
+        }
+
+        return $this->aPeriod;
+    }
 }
