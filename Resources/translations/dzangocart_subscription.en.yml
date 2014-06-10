@@ -1,7 +1,7 @@
 feature:
     create:
         cancel:         '&larr; Cancel'
-        page_title:     Create a new Feature
+        page_title:     Create a new feature
     edit:
         cancel:         '&larr; Cancel'
         page_title:     Modify feature
