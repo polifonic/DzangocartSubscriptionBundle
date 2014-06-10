@@ -136,18 +136,35 @@ class PlanController extends Controller
         );
     }
 
+    /**
+     *
+     * @Route("/{id}/disable", name="dzangocart_subscription_plan_disable", requirements={"id" = "\d+"})
+     * @Template()
+     */
     public function disableAction(Request $request, $id)
     {
         $plan = $this->getPlan($id);
 
         $plan->disable();
+        
+        $plan->save();
+        
+        return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
     }
-
+    
+    /**
+     * @Route("/{id}/enable", name="dzangocart_subscription_plan_enable", requirements={"id" = "\d+"})
+     * @Template()
+     */
     public function enableAction(Request $request, $id)
     {
-        $plan = $this->getPlan();
+        $plan = $this->getPlan($id);
 
         $plan->enable();
+        
+        $plan->save();
+        
+        return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
     }
 
     /**

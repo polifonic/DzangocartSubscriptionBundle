@@ -12,6 +12,19 @@
 				{% trans %}plan.plans.actions.show{% endtrans %}
 			</a>
 		</li>
+		{% if plan.isDisabled %}
+			<li>
+				<a href="{{ path('dzangocart_subscription_plan_enable', { id: plan.id }) }}">
+					{% trans %}enable{% endtrans %}
+				</a>
+			</li>
+		{% else %}
+			<li>
+				<a href="{{ path('dzangocart_subscription_plan_disable', { id: plan.id }) }}">
+					{% trans %}disable{% endtrans %}
+				</a>
+			</li>
+		{% endif %}
 	</ul>
 </div>
 {% endspaceless %}
