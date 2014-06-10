@@ -1,47 +1,44 @@
-{% extends "DzangocartSubscriptionBundle:Admin:layout.html.twig" %}
+{% extends "DzangocartSubscriptionBundle::admin.html.twig" %}
 
-{% trans_default_domain "feature" %}
+{% trans_default_domain "dzangocart_subscription" %}
 
-{% block plan_head_style %}
-	{{ parent() }}
-	<link href="{{ asset('bundles/dzangocartsubscription/css/feature.css') }}" type="text/css" rel="stylesheet" />
+{% block dzangocart_subscription_head_style %}
+	{% stylesheets filter="cssrewrite"
+		'bundles/dzangocartsubscription/css/feature.css'
+	%}
+		<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+	{% endstylesheets %}
 {% endblock %}
 
-{% block plan_page_title %}
+{% block dzangocart_subscription_page_nav %}
 	<a type='button' class='btn btn-default pull-right' href="{{ path('dzangocart_subscription_feature_create') }}">
-		{% trans %}feature.features.action.create{% endtrans %}
+		{% trans %}plan.features.nav.create{% endtrans %}
 	</a>
-	<h2>{% trans %}feature.features.list{% endtrans %}</h2>
 {% endblock %}
 
-{% block bodyclass %}features{% endblock %}
+{% block dzangocart_subscription_page_class %}features{% endblock %}
 
-{% block plan_content %}
+{% block dzangocart_subscription_page_title %}{% trans %}plan.features.page_title{% endtrans %}{% endblock %}
+
+{% block dzangocart_subscription_content %}
 	<table class="table table-condensed">
 		<thead>
 			<tr>
 				<th class="rank"></th>
-				<th class="name">{% trans %}feature.features.name{% endtrans %}</th>
-				<th class="description">{% trans %}feature.features.description{% endtrans %}</th>
-				<th class="actions">{% trans %}feature.features.action.title{% endtrans %}</th>
+				<th class="name">{% trans %}plan.features.name{% endtrans %}</th>
+				<th class="description">{% trans %}plan.features.description{% endtrans %}</th>
+				<th class="actions"><i class="fa fa-cog"></i></th>
 			</tr>
 		</thead>
 		<tbody>
 			{% for feature in features %}
 				<tr>
-					<td>{{ feature.rank }}</td>
+					<td class="rank">{{ feature.rank }}</td>
 					<td>{{ feature.name }}</td>
 					<td>{{ feature.description }}</td>
-					<td>
-						<a href='{{ path('dzangocart_subscription_feature_edit', { 'id' : feature.id }) }}'>{% trans %}feature.features.action.edit{% endtrans %}</a>
-						<a href='{{ path('dzangocart_subscription_feature_delete', { 'id' : feature.id }) }}'>{% trans %}feature.features.action.delete{% endtrans %}</a>
-					</td>
+					<td class="actions">{% include "DzangocartSubscriptionBundle:Feature:actions.html.twig" %}</td>
 				</tr>
 			{% endfor %}
 		</tbody>
 	</table>
-{% endblock %}
-
-{% block plan_foot_script %}
-	{{ parent() }}
 {% endblock %}
