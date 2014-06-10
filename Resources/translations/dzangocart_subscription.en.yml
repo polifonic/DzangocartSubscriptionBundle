@@ -4,7 +4,14 @@ plan:
         page_title:     Create a new plan
 
     features:
+        actions:
+            edit:       Edit
+            delete:     Delete
+        description:    Description
         name:           Feature
+        nav:
+            create:     Create a new feature
+        page_title:     Features
         period:         Per
         success:        The plan's features have been updated.
         title:          Features

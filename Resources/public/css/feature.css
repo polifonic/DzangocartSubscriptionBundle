@@ -1,4 +1,21 @@
+table.table td.actions {
+	overflow: visible;
+}
+
+table.table td.actions .dropdown-toggle {
+	text-align: center;
+	background-color: transparent;
+	border: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
 .features table th.rank { width: 4em; }
-.features table th.actions { width: 6em; }
 .features table th.description { width: 45em; }
 .features table th.name {}
+.features table.table th.actions {
+	text-align: center;
+	width: 36px;
+	box-sizing: border-box;
+}
