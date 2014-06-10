@@ -3,11 +3,11 @@
 {% trans_default_domain "dzangocart_subscription" %}
 
 {% block dzangocart_subscription_page_nav %}
-	<a href="{{ path('dzangocart_subscription_features') }}">{% trans %}feature.create.cancel{% endtrans %}</a>
+	<a href="{{ path('dzangocart_subscription_features') }}">{% trans %}feature.edit.cancel{% endtrans %}</a>
 {% endblock %}
 
 {% block dzangocart_subscription_page_title %}
-	<h2>{% trans %}feature.features.actions.edit{% endtrans %}: {{ feature.name }}</h2>
+	<h2>{% trans %}feature.edit.page_title{% endtrans %}: {{ feature.name }}</h2>
 {% endblock %}
 
 {% block dzangocart_subscription_content %}

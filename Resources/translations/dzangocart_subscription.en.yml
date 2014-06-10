@@ -2,6 +2,9 @@ feature:
     create:
         cancel:         '&larr; Cancel'
         page_title:     Create a new Feature
+    edit:
+        cancel:         '&larr; Cancel'
+        page_title:     Modify feature
         
     features:
         actions:
