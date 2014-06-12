@@ -20,10 +20,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  * @Template
  */
 class PlanController extends Controller
-{
-    //this is hard coded here to cap off the plans that are shown in the pricing page
-    const PRICING_SHOW_LIMIT = 5;
-    
+{   
     /**
      * Lists all Plans.
      *
@@ -234,34 +231,7 @@ class PlanController extends Controller
             'plan' => $plan,
             'form' => $form->createView()
         );
-    }
-    
-    /**
-     * @Template() 
-     */
-    public function pricingAction()
-    {
-        $col_width = 2;
-        $row_width = 12;
-
-        $plans = $this->getQuery()
-            ->getActive()
-            ->limit(self::PRICING_SHOW_LIMIT)
-            ->find();
-        
-        $plans_count = count($plans);
-
-        if ($plans_count > 0 && $plans_count < 5  ) {
-            $col_width = 12 / $plans_count;
-            $row_width = $plans_count * 3;
-        }
-
-        return array(
-            'plans' => $plans,
-            'col_width' => $col_width,
-            'row_width' => $row_width
-        );
-    }
+    }    
 
     protected function getQuery()
     {
