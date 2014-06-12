@@ -146,12 +146,12 @@ class PlanController extends Controller
         $plan = $this->getPlan($id);
 
         $plan->disable();
-        
+
         $plan->save();
-        
+
         return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
     }
-    
+
     /**
      * @Route("/{id}/enable", name="dzangocart_subscription_plan_enable", requirements={"id" = "\d+"})
      * @Template()
@@ -161,9 +161,9 @@ class PlanController extends Controller
         $plan = $this->getPlan($id);
 
         $plan->enable();
-        
+
         $plan->save();
-        
+
         return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
     }
 
@@ -231,13 +231,13 @@ class PlanController extends Controller
             'plan' => $plan,
             'form' => $form->createView()
         );
-    }    
+    }
 
     protected function getQuery()
     {
         return PlanQuery::create()
-                ->joinWithI18n($this->getRequest()->getLocale())
-                ->orderByRank();
+            ->joinWithI18n($this->getRequest()->getLocale())
+            ->orderByRank();
     }
 
     protected function getPlan($id)
