@@ -74,7 +74,4 @@ plan:
         page_title:     Plan: %plan%
         rank:           Rank
         to:             To
-        
-pricing:
-    price:
-        na:             N/A
+

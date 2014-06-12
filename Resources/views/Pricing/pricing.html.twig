@@ -27,8 +27,6 @@
 							<li class="price">
 								{%  if plan.defaultPrice|length > 0 %}
 									{{ plan.defaultPrice[0] }}
-								{% else %}
-                                    {% trans %}pricing.price.na{% endtrans %}
 								{% endif %}
 							</li>
 
