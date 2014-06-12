@@ -15,13 +15,13 @@
 		{% if plan.isDisabled %}
 			<li>
 				<a href="{{ path('dzangocart_subscription_plan_enable', { id: plan.id }) }}">
-					{% trans %}enable{% endtrans %}
+					{% trans %}plan.plans.actions.enable{% endtrans %}
 				</a>
 			</li>
 		{% else %}
 			<li>
 				<a href="{{ path('dzangocart_subscription_plan_disable', { id: plan.id }) }}">
-					{% trans %}disable{% endtrans %}
+					{% trans %}plan.plans.actions.disable{% endtrans %}
 				</a>
 			</li>
 		{% endif %}

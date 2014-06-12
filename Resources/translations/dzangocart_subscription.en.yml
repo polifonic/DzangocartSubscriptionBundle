@@ -49,6 +49,8 @@ plan:
 
     plans:
         actions:
+            disable:    Disable
+            enable:     Enable
             show:       Show
             title:      Actions
         description:    Description
