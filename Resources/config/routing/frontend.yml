@@ -1,4 +1,4 @@
 dzangocart_subscription_pricing:
     pattern: /pricing
-    defaults: { _controller: AcmeDemoBundle:Plan:pricing }
+    defaults: { _controller: DzangocartSubscriptionBundle:Plan:pricing }
 

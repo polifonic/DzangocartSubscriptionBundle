@@ -1,7 +1,5 @@
 {% extends "DzangocartSubscriptionBundle::frontend.html.twig" %}
 
-{% trans_default_domain "polifonic" %}
-
 {% block dzangocart_subscription_head_style %}
 	{{ parent() }}
 	{% stylesheets filter="cssrewrite"
@@ -9,7 +7,7 @@
 	%}
 		<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
 	{% endstylesheets %}
-{% endblock head_style %}
+{% endblock %}
 
 {% block dzangocart_subscription_content %}
     <div class="row">
