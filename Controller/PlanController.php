@@ -237,7 +237,6 @@ class PlanController extends Controller
     }
     
     /**
-     * @Route("/pricing", name="dzangocart_subscription_pricing")
      * @Template() 
      */
     public function pricingAction()
