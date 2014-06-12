@@ -10,41 +10,41 @@
 {% endblock %}
 
 {% block dzangocart_subscription_content %}
-    <div class="row">
-        <div class="col-md-{{row_width }} span-centered">
-            <div class="row">
-                {% for plan in plans %}
-                    <div class="col-md-{{ col_width }} pricing-table belize-hole bordered hover-animation">
-                        <ul>
-                            <li class="title">
-                                {{ plan.name }}
-                            </li>
-                            <li class="title">
-                                {{ plan.description }}
-                            </li>
-                            <li class="price">
-                                {%  if plan.defaultPrice|length > 0 %}
-                                    {{ plan.defaultPrice[0] }}
-                                {% else %}
-                                    {{ 'N/A' }}
-                                {% endif %}
-                            </li>
+	<div class="row">
+		<div class="col-md-{{row_width }} span-centered">
+			<div class="row">
+				{% for plan in plans %}
+					<div class="col-md-{{ col_width }} pricing-table belize-hole bordered hover-animation">
+						<ul>
+							<li class="title">
+								{{ plan.name }}
+							</li>
+							<li class="title">
+								{{ plan.description }}
+							</li>
+							<li class="price">
+								{%  if plan.defaultPrice|length > 0 %}
+									{{ plan.defaultPrice[0] }}
+								{% else %}
+									{{ 'N/A' }}
+								{% endif %}
+							</li>
 
-                            {% for feature in plan.features %}
-                                <li>
-                                    <span class="pull-right">{{ feature }}</span>{{ feature.definition.name }}
-                                </li>
-                            {% endfor %}
+							{% for feature in plan.features %}
+								<li>
+									<span class="pull-right">{{ feature }}</span>{{ feature.definition.name }}
+								</li>
+							{% endfor %}
 
-                            <li class="button">
-                                <button class="btn btn-large">
-                                    <i class="icon-shopping-cart"></i>&nbsp;&nbsp;Sign Up
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
+							<li class="button">
+								<button class="btn btn-large">
+									<i class="icon-shopping-cart"></i>&nbsp;&nbsp;Sign Up
+								</button>
+							</li>
+						</ul>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
 {% endblock %}
