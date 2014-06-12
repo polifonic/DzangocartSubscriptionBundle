@@ -10,6 +10,7 @@ class PriceQuery extends BasePriceQuery
     {
         return $this
             ->orderByRank()
-            ->findOneByIsDefault(true);
+            ->filterByIsDefault(true);
+        
     }
 }
