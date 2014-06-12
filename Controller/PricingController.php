@@ -4,21 +4,16 @@ namespace Dzangocart\Bundle\SubscriptionBundle\Controller;
 
 use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanQuery;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * @Route("/pricing")
- * @Template
- */
 class PricingController extends Controller
 {
     //this is hard coded here to cap off the plans that are shown in the pricing page
     const PRICING_SHOW_LIMIT = 5;
-    
+
     /**
      * @Template() 
      */
@@ -31,7 +26,7 @@ class PricingController extends Controller
             ->getActive()
             ->limit(self::PRICING_SHOW_LIMIT)
             ->find();
-        
+
         $plans_count = count($plans);
 
         if ($plans_count > 0 && $plans_count < 5  ) {
@@ -45,13 +40,12 @@ class PricingController extends Controller
             'row_width' => $row_width
         );
     }
-    
+
     protected function getQuery()
     {
         return PlanQuery::create()
-                ->joinWithI18n($this->getRequest()->getLocale())
-                ->orderByRank();
+            ->joinWithI18n($this->getRequest()->getLocale())
+            ->orderByRank();
     }
-
 }
 
