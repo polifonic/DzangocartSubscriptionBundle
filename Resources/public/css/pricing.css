@@ -6,24 +6,24 @@
 .centered {
   text-align: center;
 }
-.pricing {
+.plan {
   font-family: 'Open Sans', sans-serif;
   position: relative;
 }
-.pricing .title,
-.pricing .price,
-.pricing .label,
-.pricing .button {
+.plan .title,
+.plan .price,
+.plan .label,
+.plan .button {
   border-bottom: none !important;
 }
-.pricing .title {
+.plan .title {
   color: #ecf0f1;
   font-size: 18px;
   font-weight: bold;
   padding: 15px;
   text-align: center;
 }
-.pricing .label {
+.plan .label {
   color: #ecf0f1;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -33,7 +33,7 @@
   -moz-border-radius: 0;
   border-radius: 0;
 }
-.pricing .price {
+.plan .price {
   position: relative;
   font-size: 18px;
   font-weight: bold;
@@ -41,32 +41,32 @@
   padding: 15px;
   text-align: center;
 }
-.pricing .price .currency-symbol {
+.plan .price .currency-symbol {
   position: relative;
   top: -17px;
   color: #77939a;
 }
-.pricing .price strong {
+.plan .price strong {
   font-size: 44px;
   line-height: 44px;
   display: inline-block;
 }
-.pricing .price sup {
+.plan .price sup {
   position: relative;
   top: -20px;
 }
-.pricing .price em {
+.plan .price em {
   position: relative;
   bottom: -2px;
   font-size: 14px;
   font-weight: normal;
   color: #a3b6bb;
 }
-.pricing .button {
+.plan .button {
   padding: 15px;
   text-align: center;
 }
-.pricing .button .btn {
+.plan .button .btn {
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
   color: #ecf0f1;
@@ -79,14 +79,14 @@
   -moz-border-radius: 0;
   border-radius: 0;
 }
-.pricing .button .btn:hover {
+.plan .button .btn:hover {
   background-color: #dde4e6;
   color: #fbfcfc;
 }
-.pricing .button.colored {
+.plan .button.colored {
   position: relative;
 }
-.pricing .button.colored:after {
+.plan .button.colored:after {
   bottom: 100%;
   border: solid transparent;
   content: " ";
@@ -95,12 +95,12 @@
   position: absolute;
   pointer-events: none;
 }
-.pricing .button.colored:after {
+.plan .button.colored:after {
   border-width: 5px;
   left: 50%;
   margin-left: -5px;
 }
-.pricing ul {
+.plan ul {
   position: relative;
   list-style: none;
   margin: 0;
@@ -111,18 +111,18 @@
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
-.pricing ul li {
+.plan ul li {
   color: #77939a;
   background-color: #ffffff;
   padding: 10px;
   border-bottom: 1px solid #ecf0f1;
 }
-.pricing.rounded ul {
+.plan.rounded ul {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
 }
-.pricing.rounded .title {
+.plan.rounded .title {
   -webkit-border-top-left-radius: 5px;
   -moz-border-radius-topleft: 5px;
   border-top-left-radius: 5px;
@@ -130,7 +130,7 @@
   -moz-border-radius-topright: 5px;
   border-top-right-radius: 5px;
 }
-.pricing.rounded .button {
+.plan.rounded .button {
   -webkit-border-bottom-left-radius: 5px;
   -moz-border-radius-bottomleft: 5px;
   border-bottom-left-radius: 5px;
@@ -138,98 +138,98 @@
   -moz-border-radius-bottomright: 5px;
   border-bottom-right-radius: 5px;
 }
-.pricing.rounded .button .btn {
+.plan.rounded .button .btn {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
-.pricing.bordered ul {
+.plan.bordered ul {
   border: 5px solid #f5f7f7;
 }
-.pricing.standout {
+.plan.standout {
   top: -24px;
   margin-bottom: -24px;
 }
-.pricing.standout .label {
+.plan.standout .label {
   font-family: 'Open Sans', sans-serif;
   text-shadow: none;
 }
-.pricing.standout .price .currency-symbol,
-.pricing.standout .price strong,
-.pricing.standout .price sup,
-.pricing.standout .price em {
+.plan.standout .price .currency-symbol,
+.plan.standout .price strong,
+.plan.standout .price sup,
+.plan.standout .price em {
   color: #ecf0f1;
 }
-.pricing.plain li {
+.plan.plain li {
   color: #77939a;
   background-color: #ffffff;
   border-bottom: 1px solid #ffffff;
 }
-.pricing.plain li.button {
+.plan.plain li.button {
   border-bottom: none;
 }
-.pricing.plain .alt li {
+.plan.plain .alt li {
   background-color: #f8f9fa;
   border-bottom: 1px solid #f8f9fa;
 }
-.pricing.plain .alt .price .currency-symbol,
-.pricing.plain .alt .price strong,
-.pricing.plain .alt .price sup,
-.pricing.plain .alt .price em {
+.plan.plain .alt .price .currency-symbol,
+.plan.plain .alt .price strong,
+.plan.plain .alt .price sup,
+.plan.plain .alt .price em {
   color: #77939a;
 }
-.pricing.plain .alt-dark li {
+.plan.plain .alt-dark li {
   color: #77939a;
   background-color: #2c3e50;
   border-bottom: 1px solid #2c3e50;
 }
-.pricing.plain.standout .price {
+.plan.plain.standout .price {
   background-color: #ffffff;
 }
-.pricing.plain.standout .price .currency-symbol,
-.pricing.plain.standout .price strong,
-.pricing.plain.standout .price sup {
+.plan.plain.standout .price .currency-symbol,
+.plan.plain.standout .price strong,
+.plan.plain.standout .price sup {
   color: #77939a;
 }
-.pricing.plain.standout .price em {
+.plan.plain.standout .price em {
   color: #94aab0;
 }
-.pricing.plain.standout .label {
+.plan.plain.standout .label {
   background-color: #ffffff;
 }
-.pricing.plain.standout .alt .price {
+.plan.plain.standout .alt .price {
   color: #77939a;
   background-color: #f8f9fa;
 }
-.pricing.plain.standout .alt .label {
+.plan.plain.standout .alt .label {
   background-color: #f8f9fa;
 }
-.pricing.plain.standout .alt-dark .price {
+.plan.plain.standout .alt-dark .price {
   color: #77939a;
   background-color: #2c3e50;
 }
-.pricing.plain.standout .alt-dark .label {
+.plan.plain.standout .alt-dark .label {
   background-color: #2c3e50;
 }
-.pricing.hover-animation {
+.plan.hover-animation {
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-.pricing .alt li {
+.plan .alt li {
   background-color: #f8f9fa;
 }
-.pricing .alt .price {
+.plan .alt .price {
   background-color: #ecf0f1;
 }
-.pricing .alt-dark {
+.plan .alt-dark {
   color: #ecf0f1;
 }
-.pricing .alt-dark li {
+.plan .alt-dark li {
   background-color: #2c3e50;
   border-bottom: 1px solid #273646;
 }
-.pricing .alt-dark .price {
+.plan .alt-dark .price {
   background-color: #273646;
 }
