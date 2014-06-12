@@ -1,5 +1,7 @@
 {% extends "DzangocartSubscriptionBundle::frontend.html.twig" %}
 
+{% trans_default_domain "dzangocart_subscription" %}
+
 {% block dzangocart_subscription_head_style %}
 	{{ parent() }}
 	{% stylesheets filter="cssrewrite"
@@ -26,7 +28,7 @@
 								{%  if plan.defaultPrice|length > 0 %}
 									{{ plan.defaultPrice[0] }}
 								{% else %}
-									{{ 'N/A' }}
+                                    {% trans %}pricing.price.na{% endtrans %}
 								{% endif %}
 							</li>
 
