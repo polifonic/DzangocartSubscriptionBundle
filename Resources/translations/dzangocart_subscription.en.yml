@@ -1,22 +1,3 @@
-feature:
-    create:
-        cancel:         '&larr; Cancel'
-        page_title:     Create a new feature
-    edit:
-        cancel:         '&larr; Cancel'
-        page_title:     Modify feature
-        
-    features:
-        actions:
-            edit:       Edit
-            delete:     Delete
-        description:    Description
-        name:           Feature
-        nav:
-            create:     Create a new feature
-        page_title:     Features
-        rank:           Rank
-
 plan:
     create:
         cancel:         '&larr; Cancel'
