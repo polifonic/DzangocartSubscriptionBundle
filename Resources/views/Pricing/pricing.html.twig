@@ -25,9 +25,7 @@
 								{{ plan.description }}
 							</li>
 							<li class="price">
-								{%  if plan.defaultPrice|length > 0 %}
-									{{ plan.defaultPrice[0] }}
-								{% endif %}
+								{{ plan.defaultPrice }}
 							</li>
 
 							{% for feature in plan.features %}

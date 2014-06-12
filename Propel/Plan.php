@@ -79,7 +79,8 @@ class Plan extends BasePlan
 
     public function getDefaultPrice()
     {
-        return $this->getPrices(PriceQuery::create()->getDefault());
+        return $this->getPrices(PriceQuery::create()->getDefault())
+            ->getFirst();
     }
 
     public function disable()
