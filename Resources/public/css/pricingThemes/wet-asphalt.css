@@ -1,0 +1,39 @@
+.wet-asphalt .title,
+.wet-asphalt .alt .title,
+.wet-asphalt .alt-dark .title {
+  background-color: #34495e;
+}
+.wet-asphalt .button .btn {
+  background-color: #34495e;
+  border: 1px solid #34495e;
+}
+.wet-asphalt .button .btn:hover {
+  background-color: #2b3c4e;
+}
+.wet-asphalt .button.btn-hover-alt .btn:hover {
+  color: #34495e;
+  background-color: #ffffff;
+}
+.wet-asphalt .button.colored {
+  background-color: #34495e;
+}
+.wet-asphalt .button.colored:after {
+  border-color: transparent;
+  border-bottom-color: #34495e;
+}
+.wet-asphalt.standout ul {
+  border: 5px solid #34495e;
+}
+.wet-asphalt.standout .price,
+.wet-asphalt.standout .label {
+  background-color: #2f4154;
+}
+.wet-asphalt.hover-animation:hover {
+  margin-top: -5px;
+}
+.wet-asphalt.hover-animation:hover.bordered ul {
+  border: 5px solid #34495e;
+}
+.wet-asphalt.hover-animation.standout:hover {
+  margin-top: -5px;
+}

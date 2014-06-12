@@ -1,0 +1,40 @@
+.sun-flower .title,
+.sun-flower .alt .title,
+.sun-flower .alt-dark .title {
+  background-color: #f1c40f;
+}
+.sun-flower .button .btn {
+  background-color: #f1c40f;
+  border: 1px solid #f1c40f;
+}
+.sun-flower .button .btn:hover {
+  background-color: #dab10d;
+}
+.sun-flower .button.btn-hover-alt .btn:hover {
+  color: #f1c40f;
+  background-color: #ffffff;
+}
+.sun-flower .button.colored {
+  background-color: #f1c40f;
+}
+.sun-flower .button.colored:after {
+  border-color: transparent;
+  border-bottom-color: #f1c40f;
+}
+.sun-flower.standout ul {
+  border: 5px solid #f1c40f;
+}
+.sun-flower.standout .price,
+.sun-flower.standout .label {
+  background-color: #e3b90d;
+}
+.sun-flower.hover-animation:hover {
+  margin-top: -5px;
+}
+.sun-flower.hover-animation:hover.bordered ul {
+  border: 5px solid #f1c40f;
+}
+.sun-flower.hover-animation.standout:hover {
+  margin-top: -5px;
+}
+

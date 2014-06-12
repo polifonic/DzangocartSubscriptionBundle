@@ -1,0 +1,39 @@
+.nephritis .title,
+.nephritis .alt .title,
+.nephritis .alt-dark .title {
+  background-color: #27ae60;
+}
+.nephritis .button .btn {
+  background-color: #27ae60;
+  border: 1px solid #27ae60;
+}
+.nephritis .button .btn:hover {
+  background-color: #229955;
+}
+.nephritis .button.btn-hover-alt .btn:hover {
+  color: #27ae60;
+  background-color: #ffffff;
+}
+.nephritis .button.colored {
+  background-color: #27ae60;
+}
+.nephritis .button.colored:after {
+  border-color: transparent;
+  border-bottom-color: #27ae60;
+}
+.nephritis.standout ul {
+  border: 5px solid #27ae60;
+}
+.nephritis.standout .price,
+.nephritis.standout .label {
+  background-color: #24a259;
+}
+.nephritis.hover-animation:hover {
+  margin-top: -5px;
+}
+.nephritis.hover-animation:hover.bordered ul {
+  border: 5px solid #27ae60;
+}
+.nephritis.hover-animation.standout:hover {
+  margin-top: -5px;
+}

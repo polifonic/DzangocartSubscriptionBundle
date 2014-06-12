@@ -1,0 +1,39 @@
+.asbestos .title,
+.asbestos .alt .title,
+.asbestos .alt-dark .title {
+  background-color: #7f8c8d;
+}
+.asbestos .button .btn {
+  background-color: #7f8c8d;
+  border: 1px solid #7f8c8d;
+}
+.asbestos .button .btn:hover {
+  background-color: #727f80;
+}
+.asbestos .button.btn-hover-alt .btn:hover {
+  color: #7f8c8d;
+  background-color: #ffffff;
+}
+.asbestos .button.colored {
+  background-color: #7f8c8d;
+}
+.asbestos .button.colored:after {
+  border-color: transparent;
+  border-bottom-color: #7f8c8d;
+}
+.asbestos.standout ul {
+  border: 5px solid #7f8c8d;
+}
+.asbestos.standout .price,
+.asbestos.standout .label {
+  background-color: #778586;
+}
+.asbestos.hover-animation:hover {
+  margin-top: -5px;
+}
+.asbestos.hover-animation:hover.bordered ul {
+  border: 5px solid #7f8c8d;
+}
+.asbestos.hover-animation.standout:hover {
+  margin-top: -5px;
+}

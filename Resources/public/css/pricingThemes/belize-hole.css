@@ -1,0 +1,39 @@
+.belize-hole .title,
+.belize-hole .alt .title,
+.belize-hole .alt-dark .title {
+  background-color: #2980b9;
+}
+.belize-hole .button .btn {
+  background-color: #2980b9;
+  border: 1px solid #2980b9;
+}
+.belize-hole .button .btn:hover {
+  background-color: #2472a4;
+}
+.belize-hole .button.btn-hover-alt .btn:hover {
+  color: #2980b9;
+  background-color: #ffffff;
+}
+.belize-hole .button.colored {
+  background-color: #2980b9;
+}
+.belize-hole .button.colored:after {
+  border-color: transparent;
+  border-bottom-color: #2980b9;
+}
+.belize-hole.standout ul {
+  border: 5px solid #2980b9;
+}
+.belize-hole.standout .price,
+.belize-hole.standout .label {
+  background-color: #2677ac;
+}
+.belize-hole.hover-animation:hover {
+  margin-top: -5px;
+}
+.belize-hole.hover-animation:hover.bordered ul {
+  border: 5px solid #2980b9;
+}
+.belize-hole.hover-animation.standout:hover {
+  margin-top: -5px;
+}

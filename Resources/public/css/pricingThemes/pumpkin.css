@@ -1,0 +1,39 @@
+.pumpkin .title,
+.pumpkin .alt .title,
+.pumpkin .alt-dark .title {
+  background-color: #d35400;
+}
+.pumpkin .button .btn {
+  background-color: #d35400;
+  border: 1px solid #d35400;
+}
+.pumpkin .button .btn:hover {
+  background-color: #ba4a00;
+}
+.pumpkin .button.btn-hover-alt .btn:hover {
+  color: #d35400;
+  background-color: #ffffff;
+}
+.pumpkin .button.colored {
+  background-color: #d35400;
+}
+.pumpkin .button.colored:after {
+  border-color: transparent;
+  border-bottom-color: #d35400;
+}
+.pumpkin.standout ul {
+  border: 5px solid #d35400;
+}
+.pumpkin.standout .price,
+.pumpkin.standout .label {
+  background-color: #c44e00;
+}
+.pumpkin.hover-animation:hover {
+  margin-top: -5px;
+}
+.pumpkin.hover-animation:hover.bordered ul {
+  border: 5px solid #d35400;
+}
+.pumpkin.hover-animation.standout:hover {
+  margin-top: -5px;
+}

@@ -1,0 +1,39 @@
+.orange .title,
+.orange .alt .title,
+.orange .alt-dark .title {
+  background-color: #f39c12;
+}
+.orange .button .btn {
+  background-color: #f39c12;
+  border: 1px solid #f39c12;
+}
+.orange .button .btn:hover {
+  background-color: #e08e0b;
+}
+.orange .button.btn-hover-alt .btn:hover {
+  color: #f39c12;
+  background-color: #ffffff;
+}
+.orange .button.colored {
+  background-color: #f39c12;
+}
+.orange .button.colored:after {
+  border-color: transparent;
+  border-bottom-color: #f39c12;
+}
+.orange.standout ul {
+  border: 5px solid #f39c12;
+}
+.orange.standout .price,
+.orange.standout .label {
+  background-color: #ea940c;
+}
+.orange.hover-animation:hover {
+  margin-top: -5px;
+}
+.orange.hover-animation:hover.bordered ul {
+  border: 5px solid #f39c12;
+}
+.orange.hover-animation.standout:hover {
+  margin-top: -5px;
+}

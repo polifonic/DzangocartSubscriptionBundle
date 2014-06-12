@@ -1,0 +1,39 @@
+.green-sea .title,
+.green-sea .alt .title,
+.green-sea .alt-dark .title {
+  background-color: #16a085;
+}
+.green-sea .button .btn {
+  background-color: #16a085;
+  border: 1px solid #16a085;
+}
+.green-sea .button .btn:hover {
+  background-color: #138a72;
+}
+.green-sea .button.btn-hover-alt .btn:hover {
+  color: #16a085;
+  background-color: #ffffff;
+}
+.green-sea .button.colored {
+  background-color: #16a085;
+}
+.green-sea .button.colored:after {
+  border-color: transparent;
+  border-bottom-color: #16a085;
+}
+.green-sea.standout ul {
+  border: 5px solid #16a085;
+}
+.green-sea.standout .price,
+.green-sea.standout .label {
+  background-color: #14937a;
+}
+.green-sea.hover-animation:hover {
+  margin-top: -5px;
+}
+.green-sea.hover-animation:hover.bordered ul {
+  border: 5px solid #16a085;
+}
+.green-sea.hover-animation.standout:hover {
+  margin-top: -5px;
+}

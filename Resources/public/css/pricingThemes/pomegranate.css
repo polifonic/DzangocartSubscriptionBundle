@@ -1,0 +1,39 @@
+.pomegranate .title,
+.pomegranate .alt .title,
+.pomegranate .alt-dark .title {
+  background-color: #c0392b;
+}
+.pomegranate .button .btn {
+  background-color: #c0392b;
+  border: 1px solid #c0392b;
+}
+.pomegranate .button .btn:hover {
+  background-color: #ab3326;
+}
+.pomegranate .button.btn-hover-alt .btn:hover {
+  color: #c0392b;
+  background-color: #ffffff;
+}
+.pomegranate .button.colored {
+  background-color: #c0392b;
+}
+.pomegranate .button.colored:after {
+  border-color: transparent;
+  border-bottom-color: #c0392b;
+}
+.pomegranate.standout ul {
+  border: 5px solid #c0392b;
+}
+.pomegranate.standout .price,
+.pomegranate.standout .label {
+  background-color: #b33528;
+}
+.pomegranate.hover-animation:hover {
+  margin-top: -5px;
+}
+.pomegranate.hover-animation:hover.bordered ul {
+  border: 5px solid #c0392b;
+}
+.pomegranate.hover-animation.standout:hover {
+  margin-top: -5px;
+}

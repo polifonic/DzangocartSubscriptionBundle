@@ -1,0 +1,39 @@
+.amethyst .title,
+.amethyst .alt .title,
+.amethyst .alt-dark .title {
+  background-color: #9b59b6;
+}
+.amethyst .button .btn {
+  background-color: #9b59b6;
+  border: 1px solid #9b59b6;
+}
+.amethyst .button .btn:hover {
+  background-color: #8f4bab;
+}
+.amethyst .button.btn-hover-alt .btn:hover {
+  color: #9b59b6;
+  background-color: #ffffff;
+}
+.amethyst .button.colored {
+  background-color: #9b59b6;
+}
+.amethyst .button.colored:after {
+  border-color: transparent;
+  border-bottom-color: #9b59b6;
+}
+.amethyst.standout ul {
+  border: 5px solid #9b59b6;
+}
+.amethyst.standout .price,
+.amethyst.standout .label {
+  background-color: #954eb1;
+}
+.amethyst.hover-animation:hover {
+  margin-top: -5px;
+}
+.amethyst.hover-animation:hover.bordered ul {
+  border: 5px solid #9b59b6;
+}
+.amethyst.hover-animation.standout:hover {
+  margin-top: -5px;
+}

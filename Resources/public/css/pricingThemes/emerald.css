@@ -1,0 +1,39 @@
+.emerald .title,
+.emerald .alt .title,
+.emerald .alt-dark .title {
+  background-color: #2ecc71;
+}
+.emerald .button .btn {
+  background-color: #2ecc71;
+  border: 1px solid #2ecc71;
+}
+.emerald .button .btn:hover {
+  background-color: #29b765;
+}
+.emerald .button.btn-hover-alt .btn:hover {
+  color: #2ecc71;
+  background-color: #ffffff;
+}
+.emerald .button.colored {
+  background-color: #2ecc71;
+}
+.emerald .button.colored:after {
+  border-color: transparent;
+  border-bottom-color: #2ecc71;
+}
+.emerald.standout ul {
+  border: 5px solid #2ecc71;
+}
+.emerald.standout .price,
+.emerald.standout .label {
+  background-color: #2bc06a;
+}
+.emerald.hover-animation:hover {
+  margin-top: -5px;
+}
+.emerald.hover-animation:hover.bordered ul {
+  border: 5px solid #2ecc71;
+}
+.emerald.hover-animation.standout:hover {
+  margin-top: -5px;
+}

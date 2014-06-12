@@ -1,0 +1,39 @@
+.alizarin .title,
+.alizarin .alt .title,
+.alizarin .alt-dark .title {
+  background-color: #e74c3c;
+}
+.alizarin .button .btn {
+  background-color: #e74c3c;
+  border: 1px solid #e74c3c;
+}
+.alizarin .button .btn:hover {
+  background-color: #e43725;
+}
+.alizarin .button.btn-hover-alt .btn:hover {
+  color: #e74c3c;
+  background-color: #ffffff;
+}
+.alizarin .button.colored {
+  background-color: #e74c3c;
+}
+.alizarin .button.colored:after {
+  border-color: transparent;
+  border-bottom-color: #e74c3c;
+}
+.alizarin.standout ul {
+  border: 5px solid #e74c3c;
+}
+.alizarin.standout .price,
+.alizarin.standout .label {
+  background-color: #e53f2e;
+}
+.alizarin.hover-animation:hover {
+  margin-top: -5px;
+}
+.alizarin.hover-animation:hover.bordered ul {
+  border: 5px solid #e74c3c;
+}
+.alizarin.hover-animation.standout:hover {
+  margin-top: -5px;
+}

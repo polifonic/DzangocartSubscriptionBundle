@@ -1,0 +1,39 @@
+.midnight-blue .title,
+.midnight-blue .alt .title,
+.midnight-blue .alt-dark .title {
+  background-color: #2c3e50;
+}
+.midnight-blue .button .btn {
+  background-color: #2c3e50;
+  border: 1px solid #2c3e50;
+}
+.midnight-blue .button .btn:hover {
+  background-color: #233140;
+}
+.midnight-blue .button.btn-hover-alt .btn:hover {
+  color: #2c3e50;
+  background-color: #ffffff;
+}
+.midnight-blue .button.colored {
+  background-color: #2c3e50;
+}
+.midnight-blue .button.colored:after {
+  border-color: transparent;
+  border-bottom-color: #2c3e50;
+}
+.midnight-blue.standout ul {
+  border: 5px solid #2c3e50;
+}
+.midnight-blue.standout .price,
+.midnight-blue.standout .label {
+  background-color: #273646;
+}
+.midnight-blue.hover-animation:hover {
+  margin-top: -5px;
+}
+.midnight-blue.hover-animation:hover.bordered ul {
+  border: 5px solid #2c3e50;
+}
+.midnight-blue.hover-animation.standout:hover {
+  margin-top: -5px;
+}

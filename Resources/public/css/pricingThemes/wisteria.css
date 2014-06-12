@@ -1,0 +1,39 @@
+.wisteria .title,
+.wisteria .alt .title,
+.wisteria .alt-dark .title {
+  background-color: #8e44ad;
+}
+.wisteria .button .btn {
+  background-color: #8e44ad;
+  border: 1px solid #8e44ad;
+}
+.wisteria .button .btn:hover {
+  background-color: #7f3d9b;
+}
+.wisteria .button.btn-hover-alt .btn:hover {
+  color: #8e44ad;
+  background-color: #ffffff;
+}
+.wisteria .button.colored {
+  background-color: #8e44ad;
+}
+.wisteria .button.colored:after {
+  border-color: transparent;
+  border-bottom-color: #8e44ad;
+}
+.wisteria.standout ul {
+  border: 5px solid #8e44ad;
+}
+.wisteria.standout .price,
+.wisteria.standout .label {
+  background-color: #8540a2;
+}
+.wisteria.hover-animation:hover {
+  margin-top: -5px;
+}
+.wisteria.hover-animation:hover.bordered ul {
+  border: 5px solid #8e44ad;
+}
+.wisteria.hover-animation.standout:hover {
+  margin-top: -5px;
+}

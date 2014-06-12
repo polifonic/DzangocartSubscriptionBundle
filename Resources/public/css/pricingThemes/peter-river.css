@@ -1,0 +1,39 @@
+.peter-river .title,
+.peter-river .alt .title,
+.peter-river .alt-dark .title {
+  background-color: #3498db;
+}
+.peter-river .button .btn {
+  background-color: #3498db;
+  border: 1px solid #3498db;
+}
+.peter-river .button .btn:hover {
+  background-color: #258cd1;
+}
+.peter-river .button.btn-hover-alt .btn:hover {
+  color: #3498db;
+  background-color: #ffffff;
+}
+.peter-river .button.colored {
+  background-color: #3498db;
+}
+.peter-river .button.colored:after {
+  border-color: transparent;
+  border-bottom-color: #3498db;
+}
+.peter-river.standout ul {
+  border: 5px solid #3498db;
+}
+.peter-river.standout .price,
+.peter-river.standout .label {
+  background-color: #2791d9;
+}
+.peter-river.hover-animation:hover {
+  margin-top: -5px;
+}
+.peter-river.hover-animation:hover.bordered ul {
+  border: 5px solid #3498db;
+}
+.peter-river.hover-animation.standout:hover {
+  margin-top: -5px;
+}

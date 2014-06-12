@@ -1,0 +1,39 @@
+.concrete .title,
+.concrete .alt .title,
+.concrete .alt-dark .title {
+  background-color: #95a5a6;
+}
+.concrete .button .btn {
+  background-color: #95a5a6;
+  border: 1px solid #95a5a6;
+}
+.concrete .button .btn:hover {
+  background-color: #87999a;
+}
+.concrete .button.btn-hover-alt .btn:hover {
+  color: #95a5a6;
+  background-color: #ffffff;
+}
+.concrete .button.colored {
+  background-color: #95a5a6;
+}
+.concrete .button.colored:after {
+  border-color: transparent;
+  border-bottom-color: #95a5a6;
+}
+.concrete.standout ul {
+  border: 5px solid #95a5a6;
+}
+.concrete.standout .price,
+.concrete.standout .label {
+  background-color: #8d9e9f;
+}
+.concrete.hover-animation:hover {
+  margin-top: -5px;
+}
+.concrete.hover-animation:hover.bordered ul {
+  border: 5px solid #95a5a6;
+}
+.concrete.hover-animation.standout:hover {
+  margin-top: -5px;
+}

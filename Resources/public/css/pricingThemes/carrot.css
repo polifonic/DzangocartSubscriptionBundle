@@ -1,0 +1,39 @@
+.carrot .title,
+.carrot .alt .title,
+.carrot .alt-dark .title {
+  background-color: #e67e22;
+}
+.carrot .button .btn {
+  background-color: #e67e22;
+  border: 1px solid #e67e22;
+}
+.carrot .button .btn:hover {
+  background-color: #d67118;
+}
+.carrot .button.btn-hover-alt .btn:hover {
+  color: #e67e22;
+  background-color: #ffffff;
+}
+.carrot .button.colored {
+  background-color: #e67e22;
+}
+.carrot .button.colored:after {
+  border-color: transparent;
+  border-bottom-color: #e67e22;
+}
+.carrot.standout ul {
+  border: 5px solid #e67e22;
+}
+.carrot.standout .price,
+.carrot.standout .label {
+  background-color: #df7619;
+}
+.carrot.hover-animation:hover {
+  margin-top: -5px;
+}
+.carrot.hover-animation:hover.bordered ul {
+  border: 5px solid #e67e22;
+}
+.carrot.hover-animation.standout:hover {
+  margin-top: -5px;
+}
