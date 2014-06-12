@@ -8,15 +8,16 @@
 		'bundles/dzangocartsubscription/css/pricing.css'
 	%}
 		<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+	    <link href="{{ asset('bundles/dzangocartsubscription/css/pricingThemes/'~ theme ~'.css') }}" type="text/css" rel="stylesheet" media="screen"/>
 	{% endstylesheets %}
 {% endblock %}
 
 {% block dzangocart_subscription_content %}
 	<div class="row">
-		<div class="col-md-{{row_width }} span-centered">
+		<div class="col-md-{{ row_width }} span-centered">
 			<div class="row">
 				{% for plan in plans %}
-					<div class="col-md-{{ col_width }} pricing-table belize-hole bordered hover-animation">
+					<div class="col-md-{{ col_width }} pricing-table {{ theme }} bordered hover-animation">
 						<ul>
 							<li class="title">
 								{{ plan.name }}

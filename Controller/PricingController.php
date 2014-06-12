@@ -19,6 +19,7 @@ class PricingController extends Controller
      */
     public function pricingAction(Request $request)
     {
+		$theme = 'wet-asphalt';
         $col_width = 2;
         $row_width = 12;
 
@@ -37,7 +38,8 @@ class PricingController extends Controller
         return array(
             'plans' => $plans,
             'col_width' => $col_width,
-            'row_width' => $row_width
+            'row_width' => $row_width,
+			'theme' => $theme
         );
     }
 
