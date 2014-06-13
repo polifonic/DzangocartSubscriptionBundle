@@ -11,7 +11,11 @@
 				{% if plan.defaultPrice %}
 					<span class="currency-symbol">{{ plan.defaultPrice.currencySymbol }}</span>
 					<strong>{{ plan.defaultPrice.price|split(".")[0]}}</strong>
-					<sup>{{ plan.defaultPrice.price|split(".")[1] }}</sup>
+					<sup>
+						{% if plan.defaultPrice.price|split(".")|length == 2 %}
+							{{ plan.defaultPrice.price|split(".")[1] }}
+						{% endif %}
+					</sup>
 					<em>/{{ plan.defaultPrice.period.name }}</em>
 				{% endif %}
 			</li>
