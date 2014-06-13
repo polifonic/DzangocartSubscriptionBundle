@@ -1,0 +1,52 @@
+.hover-wet-asphalt .plan .title,
+.hover-wet-asphalt .plan .alt .title,
+.hover-wet-asphalt .plan .alt-dark .title {
+	background-color: #34495e;
+}
+
+.hover-wet-asphalt .plan .button .btn {
+	background-color: #34495e;
+	border: 1px solid #34495e;
+}
+
+.hover-wet-asphalt .plan .button .btn:hover {
+	background-color: #2b3c4e;
+}
+
+.hover-wet-asphalt .plan .button.btn-hover-alt .btn:hover {
+	color: #34495e;
+	background-color: #ffffff;
+}
+
+.hover-wet-asphalt .plan .button.colored {
+	background-color: #34495e;
+}
+
+.hover-wet-asphalt .plan .button.colored:after {
+	border-color: transparent;
+	border-bottom-color: #34495e;
+}
+
+.hover-wet-asphalt .plan.standout ul {
+	border: 5px solid #34495e;
+}
+
+.hover-wet-asphalt .plan.standout .price,
+.hover-wet-asphalt .plan.standout .label {
+	background-color: #2f4154;
+}
+
+.hover-wet-asphalt .plan:hover {
+	margin-top: -5px;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.hover-wet-asphalt .plan {
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}

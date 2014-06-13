@@ -1,0 +1,37 @@
+.plain-wet-asphalt .plan .title,
+.plain-wet-asphalt .plan .alt .title,
+.plain-wet-asphalt .plan .alt-dark .title {
+	background-color: #34495e;
+}
+
+.plain-wet-asphalt .plan .button .btn {
+	background-color: #34495e;
+	border: 1px solid #34495e;
+}
+
+.plain-wet-asphalt .plan .button .btn:hover {
+	background-color: #2b3c4e;
+}
+
+.plain-wet-asphalt .plan .button.btn-hover-alt .btn:hover {
+	color: #34495e;
+	background-color: #ffffff;
+}
+
+.plain-wet-asphalt .plan .button.colored {
+	background-color: #34495e;
+}
+
+.plain-wet-asphalt .plan .button.colored:after {
+	border-color: transparent;
+	border-bottom-color: #34495e;
+}
+
+.plain-wet-asphalt .plan.standout ul {
+	border: 5px solid #34495e;
+}
+
+.plain-wet-asphalt .plan.standout .price,
+.plain-wet-asphalt .plan.standout .label {
+	background-color: #2f4154;
+}
