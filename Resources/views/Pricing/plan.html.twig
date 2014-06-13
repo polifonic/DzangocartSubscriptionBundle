@@ -8,7 +8,12 @@
 				{{ plan.description }}
 			</li>
 			<li class="price">
-				{{ plan.defaultPrice }}
+				{% if plan.defaultPrice %}
+					<span class="currency-symbol">{{ plan.defaultPrice.currencySymbol }}</span>
+					<strong>{{ plan.defaultPrice.price|split(".")[0]}}</strong>
+					<sup>{{ plan.defaultPrice.price|split(".")[1] }}</sup>
+					<em>/{{ plan.defaultPrice.period.name }}</em>
+				{% endif %}
 			</li>
 
 			{% for feature in plan.features %}

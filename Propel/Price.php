@@ -3,6 +3,7 @@
 namespace Dzangocart\Bundle\SubscriptionBundle\Propel;
 
 use NumberFormatter;
+use Symfony\Component\Intl\Intl;
 
 use Dzangocart\Bundle\SubscriptionBundle\Propel\om\BasePrice;
 
@@ -14,7 +15,7 @@ class Price extends BasePrice
     {
         return sprintf(
             '%s/%s',
-            $this->getNumberFormatter()->formatCurrency($this->getPrice(), $this->getCurrency()),
+            $this->format(),
             $this->getPeriod()->getName()
         );
     }
@@ -43,4 +44,9 @@ class Price extends BasePrice
 
         return $this->aPeriod;
     }
+	
+	public function getCurrencySymbol()
+	{ 
+		return Intl::getCurrencyBundle()->getCurrencySymbol($this->getCurrency());
+	}
 }
