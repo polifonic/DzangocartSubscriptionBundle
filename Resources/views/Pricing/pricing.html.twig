@@ -17,13 +17,11 @@
 {% block dzangocart_subscription_content %}
 	<div class="row">
 		<div class="col-md-{{ row_width }} span-centered">
-			<div class="row">
 				{% for plan in plans %}
 					<div class="col-md-{{ col_width }}">
 						{% include "DzangocartSubscriptionBundle:Pricing:plan.html.twig" %}
 					</div>
 				{% endfor %}
-			</div>
 		</div>
 	</div>
 {% endblock %}
