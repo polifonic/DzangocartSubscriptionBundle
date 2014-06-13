@@ -19,7 +19,7 @@ class PricingController extends Controller
      */
     public function pricingAction(Request $request)
     {
-		$theme = 'plain-wet-asphalt';
+		$theme = 'hover-wet-asphalt';
         $col_width = 2;
         $row_width = 12;
 

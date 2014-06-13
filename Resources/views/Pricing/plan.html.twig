@@ -1,0 +1,27 @@
+{% spaceless %}
+	<div class="plan">
+		<ul>
+			<li class="title">
+				{{ plan.name }}
+			</li>
+			<li class="title">
+				{{ plan.description }}
+			</li>
+			<li class="price">
+				{{ plan.defaultPrice }}
+			</li>
+
+			{% for feature in plan.features %}
+				<li>
+					<span class="feature pull-right">{{ feature }}</span>{{ feature.definition.name }}
+				</li>
+			{% endfor %}
+
+			<li class="button">
+				<button class="btn btn-large">
+					<i class="icon-shopping-cart"></i>&nbsp;&nbsp;Sign Up
+				</button>
+			</li>
+		</ul>
+	</div>
+{% endspaceless %}
