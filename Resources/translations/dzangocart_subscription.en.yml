@@ -2,10 +2,11 @@ feature:
     create:
         cancel:         '&larr; Cancel'
         page_title:     Create a new feature
+        success:        New feature created successfully!!
     edit:
         cancel:         '&larr; Cancel'
         page_title:     Modify feature
-        
+  
     features:
         actions:
             edit:       Edit
@@ -21,6 +22,9 @@ plan:
     create:
         cancel:         '&larr; Cancel'
         page_title:     Create a new plan
+        
+    delete:
+        success:        plan deleted successfully.
 
     features:
         description:    Description

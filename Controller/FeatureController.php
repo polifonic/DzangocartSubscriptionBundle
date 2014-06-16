@@ -105,9 +105,14 @@ class FeatureController extends Controller
 
             $this->get('session')->getFlashBag()->add(
                 'success',
-                $this->get('translator')->trans('feature.features.create.success', array(), 'feature', $request->getLocale())
+                $this->get('translator')->trans(
+					'feature.create.success',
+					array(),
+					'dzangocart_subscription',
+					$request->getLocale()
+				)
             );
-            // TODO [OP 2014-06-07] Display flash success message
+
             return $this->redirect($this->generateUrl('dzangocart_subscription_features'));
         }
 
