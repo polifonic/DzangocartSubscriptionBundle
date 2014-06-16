@@ -1,4 +1,8 @@
 dzangocart_subscription_pricing:
     pattern: /pricing
     defaults: { _controller: DzangocartSubscriptionBundle:Pricing:pricing }
+    
+dzangocart_subscription_matrix:
+    resource: "@DzangocartSubscriptionBundle/Controller/MatrixController.php"
+    type: annotation
 
