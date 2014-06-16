@@ -1,1 +1,38 @@
-this is matrix page
+{% extends "DzangocartSubscriptionBundle::frontend.html.twig" %}
+
+{% trans_default_domain "dzangocart_subscription" %}
+
+{% block dzangocart_subscription_head_style %}
+	
+{% endblock %}
+
+{% block dzangocart_subscription_page_class %}{% endblock %}
+
+{% block dzangocart_subscription_content %}
+	<table border="1">
+		<thead>
+			<tr>
+				<td></td>
+				{% for plan in plans %}
+					<td>{{ plan.name }}</td>
+				{% endfor %}
+			</tr>
+			<tr>
+				<td></td>
+				{% for plan in plans %}
+					<td>{{ plan.description }}</td>
+				{% endfor %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for feature in features %}
+				<tr>
+					<td>{{ feature.name }}</td>
+					{% for plan in plans %}
+						<td>{{ plan.features[feature.id] }}</td>
+					{% endfor %}
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

@@ -2,6 +2,7 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Controller;
 
+use Dzangocart\Bundle\SubscriptionBundle\Propel\FeatureDefinitionQuery;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanQuery;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -18,14 +19,31 @@ class MatrixController extends Controller
     */
     public function indexAction(Request $request)
     {	
-		return array();
+		$plans = $this->getplanQuery()
+			->getActive()
+			->find();
+		
+		$features = $this->getFeatureQuery()
+			->find();
+		
+		return array(
+			'plans' => $plans,
+			'features' => $features
+		);
     }
 
-    protected function getQuery()
+    protected function getPlanQuery()
     {
         return PlanQuery::create()
             ->joinWithI18n($this->getRequest()->getLocale())
             ->orderByRank();
+    }
+	
+	protected function getFeatureQuery()
+    {
+        return FeatureDefinitionQuery::create()
+			->joinWithI18n($this->getRequest()->getLocale())
+			->orderByRank();
     }
 }
 
