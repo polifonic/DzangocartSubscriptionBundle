@@ -4,33 +4,17 @@
 			<li class="title">
 				{{ plan.name }}
 			</li>
-			<li class="title">
+			<li class="description">
 				{{ plan.description }}
 			</li>
-			<li class="price">
-				{% if plan.defaultPrice %}
-					<span class="currency-symbol">{{ plan.defaultPrice.currencySymbol }}</span>
-					<strong>{{ plan.defaultPrice.price|split(".")[0]}}</strong>
-					<sup>
-						{% if plan.defaultPrice.price|split(".")|length == 2 %}
-							{{ plan.defaultPrice.price|split(".")[1] }}
-						{% endif %}
-					</sup>
-					<em>/{{ plan.defaultPrice.period.name }}</em>
-				{% endif %}
-			</li>
+			
+			{% include "DzangocartSubscriptionBundle:pricing:price.html.twig" %}
 
 			{% for feature in plan.features %}
-				<li class="feature">
-					<span class="pull-right">{{ feature }}</span>{{ feature.definition.name }}
-				</li>
+				{% include "DzangocartSubscriptionBundle:pricing:feature.html.twig" %}
 			{% endfor %}
 
-			<li class="button">
-				<button class="btn btn-large">
-					<i class="icon-shopping-cart"></i>&nbsp;&nbsp;Sign Up
-				</button>
-			</li>
+			{% include "DzangocartSubscriptionBundle:pricing:signup.html.twig" %}
 		</ul>
 	</div>
 {% endspaceless %}
