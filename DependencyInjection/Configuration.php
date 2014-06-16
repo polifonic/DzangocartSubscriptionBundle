@@ -14,6 +14,19 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('dzangocart_subscription');
+		
+		$rootNode
+            ->children()
+			    ->arrayNode('pricing')
+			        ->canBeDisabled()
+			        ->children()
+						->scalarNode('theme')
+							->cannotBeEmpty()
+							->defaultValue('default')
+						->end()
+			        ->end()
+			    ->end()
+			->end();
 
         return $treeBuilder;
     }

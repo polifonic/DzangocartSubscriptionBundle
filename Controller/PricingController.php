@@ -18,8 +18,8 @@ class PricingController extends Controller
      * @Template() 
      */
     public function pricingAction(Request $request)
-    {
-		$theme = 'hover-wet-asphalt';
+    {	 
+		$theme = $this->container->getParameter('dzangocart_subscription.pricing.theme');;
         $col_width = 2;
         $row_width = 12;
 

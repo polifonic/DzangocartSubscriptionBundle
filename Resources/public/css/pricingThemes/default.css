@@ -1,0 +1,48 @@
+.default .plan {
+	font-family: 'Open Sans', sans-serif;
+	position: relative;
+}
+
+.default .plan .title,
+.default .plan .price,
+.default .plan .label,
+.default .plan .button {
+	border-bottom: none !important;
+}
+
+.default .plan .title,
+.default .plan .description {
+	background-color: #3A3F41;
+	color: #ecf0f1;
+	font-size: 18px;
+	font-weight: bold;
+	padding: 15px;
+	text-align: center;
+}
+
+.default .plan .price {
+	position: relative;
+	font-size: 18px;
+	font-weight: bold;
+	background-color: #ecf0f1;
+	padding: 15px;
+	text-align: center;
+}
+
+.default .plan .button {
+	padding: 15px;
+	text-align: center;
+}
+
+.default .plan .button .btn {
+	background-color: #3A3F41;
+	font-weight: bold;
+	color: #ecf0f1;
+}
+
+.default .plan ul li {
+	color: #77939a;
+	background-color: #ffffff;
+	padding: 10px;
+	border-bottom: 1px solid #ecf0f1;
+}
