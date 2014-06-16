@@ -1,39 +1,57 @@
+.hover-wet-asphalt .plan {
+	font-family: 'Open Sans', sans-serif;
+	position: relative;
+}
+
 .hover-wet-asphalt .plan .title,
-.hover-wet-asphalt .plan .alt .title,
-.hover-wet-asphalt .plan .alt-dark .title {
+.hover-wet-asphalt .plan .price,
+.hover-wet-asphalt .plan .label,
+.hover-wet-asphalt .plan .button {
+	border-bottom: none !important;
+}
+
+.hover-wet-asphalt .plan .title,
+.hover-wet-asphalt .plan .description {
 	background-color: #34495e;
+	color: #ecf0f1;
+	font-size: 18px;
+	font-weight: bold;
+	padding: 15px;
+	text-align: center;
+}
+
+.hover-wet-asphalt .plan .price {
+	position: relative;
+	font-size: 18px;
+	font-weight: bold;
+	background-color: #ecf0f1;
+	padding: 15px;
+	text-align: center;
+}
+
+.hover-wet-asphalt .plan .button {
+	padding: 15px;
+	text-align: center;
 }
 
 .hover-wet-asphalt .plan .button .btn {
 	background-color: #34495e;
 	border: 1px solid #34495e;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	color: #ecf0f1;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
 }
 
 .hover-wet-asphalt .plan .button .btn:hover {
 	background-color: #2b3c4e;
-}
-
-.hover-wet-asphalt .plan .button.btn-hover-alt .btn:hover {
-	color: #34495e;
-	background-color: #ffffff;
-}
-
-.hover-wet-asphalt .plan .button.colored {
-	background-color: #34495e;
-}
-
-.hover-wet-asphalt .plan .button.colored:after {
-	border-color: transparent;
-	border-bottom-color: #34495e;
-}
-
-.hover-wet-asphalt .plan.standout ul {
-	border: 5px solid #34495e;
-}
-
-.hover-wet-asphalt .plan.standout .price,
-.hover-wet-asphalt .plan.standout .label {
-	background-color: #2f4154;
+	color: #fbfcfc;
 }
 
 .hover-wet-asphalt .plan:hover {
@@ -49,4 +67,11 @@
 	-moz-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
+}
+
+.hover-wet-asphalt .plan ul li {
+	color: #77939a;
+	background-color: #ffffff;
+	padding: 10px;
+	border-bottom: 1px solid #ecf0f1;
 }
