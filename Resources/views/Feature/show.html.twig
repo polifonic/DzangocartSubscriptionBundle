@@ -1,0 +1,47 @@
+{% extends "DzangocartSubscriptionBundle::admin.html.twig" %}
+
+{% trans_default_domain "dzangocart_subscription" %}
+
+{% block dzangocart_subscription_head_style %}
+	{% stylesheets filter="cssrewrite" output="css/*.css"
+		'bundles/dzangocartsubscription/vendor/autotabs/css/jquery.autotabs.css'
+		'bundles/dzangocartsubscription/css/feature.css'
+	%}
+		<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+	{% endstylesheets %}
+{% endblock %}
+
+{% block dzangocart_subscription_page_class %}feature{% endblock %}
+
+{% block dzangocart_subscription_page_nav %}
+	<a href="{{ path('dzangocart_subscription_plans') }}">{% trans %}feature.show.cancel{% endtrans %}</a>
+{% endblock %}
+
+{% block dzangocart_subscription_page_title %}
+	{% trans with { '%feature%': feature.name } %}feature.show.page_title{% endtrans %}
+{% endblock %}
+
+{% block dzangocart_subscription_content %}
+<div class="tabs">
+	<div id="info" class="tab-pane info">
+		{{ render(controller("DzangocartSubscriptionBundle:Feature:edit", { id: plan.id })) }}
+	</div>
+	<div id="plans" class="tab-pane plans">
+		{% render(controller("DzangocartSubscriptionBundle:Plan:features", { id: plan.id })) %}
+	</div>
+</div>
+{% endblock %}
+
+{% block dzangocart_subscription_foot_script %}
+	{% javascripts
+		'bundles/dzangocartsubscription/vendor/jquery.cookie/jquery.cookie.min.js'
+		'bundles/dzangocartsubscription/vendor/autotabs/js/jquery.autotabs.min.js'
+		'bundles/dzangocartsubscription/vendor/jquery-form/jquery.form.min.js'
+		'bundles/dzangocartsubscription/js/feature.js'
+	%}
+		<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+	<script>
+	var dzangocart_subscription_feature = {};
+	</script>
+{% endblock %}

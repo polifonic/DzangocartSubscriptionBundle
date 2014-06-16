@@ -32,6 +32,19 @@ class FeatureController extends Controller
         return array('features' => $features);
     }
 
+	/**
+	 * @Route("/{id}/show", name = "dzangocart_subscription_feature", requirements={"id" = "\d+"})
+	 * @Template()
+	 */
+	public function showAction(Request $request, $id)
+	{
+		$feature = $this->getFeature($id);
+		
+		return array(
+			'feature' => $feature
+		);
+	}
+
     /**
      *
      * @Route("/{id}/edit", name="dzangocart_subscription_feature_edit", requirements={"id" = "\d+"})
