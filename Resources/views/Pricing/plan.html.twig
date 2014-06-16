@@ -8,13 +8,13 @@
 				{{ plan.description }}
 			</li>
 			
-			{% include "DzangocartSubscriptionBundle:pricing:price.html.twig" %}
+			{% include "DzangocartSubscriptionBundle:Pricing:price.html.twig" %}
 
 			{% for feature in plan.features %}
-				{% include "DzangocartSubscriptionBundle:pricing:feature.html.twig" %}
+				{% include "DzangocartSubscriptionBundle:Pricing:feature.html.twig" %}
 			{% endfor %}
 
-			{% include "DzangocartSubscriptionBundle:pricing:signup.html.twig" %}
+			{% include "DzangocartSubscriptionBundle:Pricing:signup.html.twig" %}
 		</ul>
 	</div>
 {% endspaceless %}
