@@ -14,7 +14,7 @@
 {% block dzangocart_subscription_page_class %}feature{% endblock %}
 
 {% block dzangocart_subscription_page_nav %}
-	<a href="{{ path('dzangocart_subscription_plans') }}">{% trans %}feature.show.cancel{% endtrans %}</a>
+	<a href="{{ path('dzangocart_subscription_features') }}">{% trans %}feature.show.cancel{% endtrans %}</a>
 {% endblock %}
 
 {% block dzangocart_subscription_page_title %}
@@ -24,10 +24,10 @@
 {% block dzangocart_subscription_content %}
 <div class="tabs">
 	<div id="info" class="tab-pane info">
-		{{ render(controller("DzangocartSubscriptionBundle:Feature:edit", { id: plan.id })) }}
+		{{ render(controller("DzangocartSubscriptionBundle:Feature:edit", { id: feature.id })) }}
 	</div>
 	<div id="plans" class="tab-pane plans">
-		{% render(controller("DzangocartSubscriptionBundle:Plan:features", { id: plan.id })) %}
+		{% render(controller("DzangocartSubscriptionBundle:Feature:plans", { id: feature.id })) %}
 	</div>
 </div>
 {% endblock %}

@@ -34,7 +34,7 @@ class FeatureController extends Controller
 
 	/**
 	 * @Route("/{id}/show", name = "dzangocart_subscription_feature", requirements={"id" = "\d+"})
-	 * @Template()
+	 * @Template("DzangocartSubscriptionBundle:Feature:show.html.twig")
 	 */
 	public function showAction(Request $request, $id)
 	{
@@ -46,7 +46,6 @@ class FeatureController extends Controller
 	}
 
     /**
-     *
      * @Route("/{id}/edit", name="dzangocart_subscription_feature_edit", requirements={"id" = "\d+"})
      * @Template("DzangocartSubscriptionBundle:Feature:edit.html.twig")
      */
@@ -66,7 +65,11 @@ class FeatureController extends Controller
 
         if ($form->isValid()) {
             $feature->save();
-            return $this->redirect($this->generateUrl('dzangocart_subscription_features'));
+            
+			$this->get('session')->getFlashBag()->add(
+                'feature.edit',
+                $this->get('translator')->trans('feature.edit.success', array(), 'dzangocart_subscription', $request->getLocale())
+            );
         }
 
         return array(
@@ -133,6 +136,15 @@ class FeatureController extends Controller
             'form' => $form->createView()
         );
     }
+	
+	/**
+     * @Route("/{id}/plans", name="dzangocart_subscription_feature_plans", requirements={"id" = "\d+"})
+     * @Template("DzangocartSubscriptionBundle:Feature:plans.html.twig")
+     */
+	public function plansAction(Request $request, $id)
+	{
+		return array();
+	}
 
     protected function getQuery()
     {
