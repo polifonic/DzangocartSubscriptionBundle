@@ -5,18 +5,24 @@ feature:
         success:        New feature created successfully!!
     edit:
         cancel:         '&larr; Cancel'
-        page_title:     Modify feature
+        success:        The feature's info have been updated.
+        title:          Info
   
     features:
         actions:
             edit:       Edit
             delete:     Delete
+            show:       Show
         description:    Description
         name:           Feature
         nav:
             create:     Create a new feature
         page_title:     Features
         rank:           Rank
+        
+    show:
+        cancel:         '&larr; Return to features list'
+        page_title:     Feature: %feature%
 
 plan:
     create:
