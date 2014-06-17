@@ -14,7 +14,8 @@
 
 					$( ".tabs", this ).autotabs( $.extend( true, {}, settings.autotabs, {
 						success: {
-							info: helpers.initInfo
+							info: helpers.initInfo,
+							plans: helpers.initPlans
 						}
 					} ) );
 				});
@@ -23,6 +24,14 @@
 
 		var helpers = {
 			initInfo: function() {
+				$( "form", this ).ajaxForm({
+					target: this,
+					success: function() {
+						helpers.initInfo.apply( this );
+					}
+				});
+			},
+			initPlans: function() {
 				$( "form", this ).ajaxForm({
 					target: this,
 					success: function() {

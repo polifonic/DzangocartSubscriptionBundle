@@ -1,1 +1,38 @@
-plans
+{% trans_default_domain "dzangocart_subscription" %}
+
+{{ form_start(form) }}
+
+<h3>{% trans %}feature.plans.title{% endtrans %}</h3>
+
+{{ form_errors(form) }}
+
+{% for flashMessage in app.session.flashbag.get('feature.plans') %}
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+<table class="table">
+	<thead>
+		<tr>
+			<th class="name">{% trans %}feature.plans.name{% endtrans %}</th>
+			<th class="value">{% trans %}feature.plans.value{% endtrans %}</th>
+			<th class="unit">{% trans %}feature.plans.unit{% endtrans %}</th>
+			<th class="period">{% trans %}feature.plans.period{% endtrans %}</th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for id, feature in form.features %}
+		<tr>
+			<td>{{ features[id].plan.name }}</td>
+			<td>{{ form_widget(feature.value) }}</td>
+			<td>{{ form_widget(feature.unit) }}</td>
+			<td>{{ form_widget(feature.period) }}</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+
+{{ form_rest(form) }}
+
+{{ form_end(form) }}

@@ -3,6 +3,7 @@
 namespace Dzangocart\Bundle\SubscriptionBundle\Controller;
 
 use Dzangocart\Bundle\SubscriptionBundle\Form\Type\FeatureDefinitionFormType;
+use Dzangocart\Bundle\SubscriptionBundle\Form\Type\FeaturePlansFormType;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\FeatureDefinition;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\FeatureDefinitionQuery;
 
@@ -143,7 +144,31 @@ class FeatureController extends Controller
      */
 	public function plansAction(Request $request, $id)
 	{
-		return array();
+        $feature_definition = $this->getFeature($id);
+
+        $form = $this->createForm(
+            new FeaturePlansFormType(),
+            $feature_definition ,
+            array(
+                'action' => $this->generateUrl('dzangocart_subscription_feature_plans', array('id' => $id))
+            )
+        );
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $feature_definition ->save();
+
+            $this->get('session')->getFlashBag()->add(
+                'feature.plans',
+                $this->get('translator')->trans('feature.plans.success', array(), 'dzangocart_subscription', $request->getLocale())
+            );
+        }
+
+        return array(
+            'features' => $feature_definition ->getFeatures(),
+            'form' => $form->createView()
+        );
 	}
 
     protected function getQuery()

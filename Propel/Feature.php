@@ -48,4 +48,15 @@ class Feature extends BaseFeature
 
         return $this->aPeriod;
     }
+	
+    public function getPlan(PropelPDO $con = null, $doQuery = true)
+    {
+        if ($this->aPlan === null && ($this->plan_id !== null) && $doQuery) {
+            $this->aPlan = PlanQuery::create()
+				->joinWithI18n($this->getDefinition()->getLocale())
+				->findPk($this->plan_id, $con);
+        }
+
+        return $this->aPlan;
+    }
 }
