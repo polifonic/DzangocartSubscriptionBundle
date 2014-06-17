@@ -7,9 +7,9 @@
 {{ form_errors(form) }}
 
 {% for flashMessage in app.session.flashbag.get('plan.features') %}
-    <div class="alert alert-success">
-        {{ flashMessage }}
-    </div>
+	<div class="alert alert-success">
+		{{ flashMessage }}
+	</div>
 {% endfor %}
 
 <table class="table">

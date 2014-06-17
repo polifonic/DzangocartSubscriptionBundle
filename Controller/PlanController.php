@@ -99,16 +99,16 @@ class PlanController extends Controller
 
         $plan->delete();
 
-		$this->get('session')->getFlashBag()->add(
-			'success',
-			$plan->getName() . " " . $this->get('translator')->trans(
-				'plan.delete.success',
-				array(),
-				'dzangocart_subscription',
-				$request->getLocale()
-			)
-		);
-		
+        $this->get('session')->getFlashBag()->add(
+            'success',
+            $plan->getName() . " " . $this->get('translator')->trans(
+                'plan.delete.success',
+                array(),
+                'dzangocart_subscription',
+                $request->getLocale()
+            )
+        );
+
         return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
     }
 

@@ -80,7 +80,7 @@ class Plan extends BasePlan
     public function getDefaultPrice()
     {
         return $this->getPrices(PriceQuery::create()->getDefault())
-	        ->getFirst();
+            ->getFirst();
     }
 
     public function disable()

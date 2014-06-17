@@ -15,7 +15,7 @@ class DzangocartSubscriptionExtension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
-		
-		$container->setParameter('dzangocart_subscription.pricing.theme', $config['pricing']['theme']);
+
+        $container->setParameter('dzangocart_subscription.pricing.theme', $config['pricing']['theme']);
     }
 }

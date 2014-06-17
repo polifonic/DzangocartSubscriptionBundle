@@ -39,7 +39,7 @@ class PricingController extends Controller
             'plans' => $plans,
             'col_width' => $col_width,
             'row_width' => $row_width,
-			'theme' => $theme
+            'theme' => $theme
         );
     }
 

@@ -33,7 +33,7 @@ class Price extends BasePrice
 
         return $this->number_formatter;
     }
-    
+
     public function getPeriod(PropelPDO $con = null, $doQuery = true)
     {
         if ($this->aPeriod === null && ($this->period_id !== null) && $doQuery) {
@@ -44,9 +44,9 @@ class Price extends BasePrice
 
         return $this->aPeriod;
     }
-	
-	public function getCurrencySymbol()
-	{ 
-		return Intl::getCurrencyBundle()->getCurrencySymbol($this->getCurrency());
-	}
+
+    public function getCurrencySymbol()
+    { 
+        return Intl::getCurrencyBundle()->getCurrencySymbol($this->getCurrency());
+    }
 }

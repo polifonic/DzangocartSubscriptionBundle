@@ -26,7 +26,7 @@ class Feature extends BaseFeature
 
         parent::setPlan($plan);
     }
-    
+
     public function getUnit(PropelPDO $con = null, $doQuery = true)
     {
         if ($this->aUnit === null && ($this->unit_id !== null) && $doQuery) {
@@ -37,7 +37,7 @@ class Feature extends BaseFeature
 
         return $this->aUnit;
     }
-    
+
     public function getPeriod(PropelPDO $con = null, $doQuery = true)
     {
         if ($this->aPeriod === null && ($this->period_id !== null) && $doQuery) {
@@ -48,13 +48,13 @@ class Feature extends BaseFeature
 
         return $this->aPeriod;
     }
-	
+
     public function getPlan(PropelPDO $con = null, $doQuery = true)
     {
         if ($this->aPlan === null && ($this->plan_id !== null) && $doQuery) {
             $this->aPlan = PlanQuery::create()
-				->joinWithI18n($this->getDefinition()->getLocale())
-				->findPk($this->plan_id, $con);
+                ->joinWithI18n($this->getDefinition()->getLocale())
+                ->findPk($this->plan_id, $con);
         }
 
         return $this->aPlan;

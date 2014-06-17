@@ -49,7 +49,7 @@ class PlanFormType extends BaseAbstractType
             'widget' => 'single_text',
             'required' => false
         ));
-        
+
         $builder->add('save', 'submit', array(
             'label' => 'plan.form.submit.label'
         ));

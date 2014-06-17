@@ -18,18 +18,18 @@ class MatrixController extends Controller
     * @Template()
     */
     public function indexAction(Request $request)
-    {	
-		$plans = $this->getplanQuery()
-			->getActive()
-			->find();
-		
-		$features = $this->getFeatureQuery()
-			->find();
-		
-		return array(
-			'plans' => $plans,
-			'features' => $features
-		);
+    {
+        $plans = $this->getplanQuery()
+            ->getActive()
+            ->find();
+
+        $features = $this->getFeatureQuery()
+            ->find();
+
+        return array(
+            'plans' => $plans,
+            'features' => $features
+        );
     }
 
     protected function getPlanQuery()
@@ -38,12 +38,12 @@ class MatrixController extends Controller
             ->joinWithI18n($this->getRequest()->getLocale())
             ->orderByRank();
     }
-	
-	protected function getFeatureQuery()
+
+    protected function getFeatureQuery()
     {
         return FeatureDefinitionQuery::create()
-			->joinWithI18n($this->getRequest()->getLocale())
-			->orderByRank();
+            ->joinWithI18n($this->getRequest()->getLocale())
+            ->orderByRank();
     }
 }
 
