@@ -20,6 +20,18 @@ feature:
         page_title:     Features
         rank:           Rank
         
+    form:
+        submit:
+            label:      Save
+        
+    plans:
+        name:           Plan
+        period:         Period
+        success:        The feature's plans have been updated.
+        title:          Plans
+        unit:           Unit
+        value:          Value
+        
     show:
         cancel:         '&larr; Return to features list'
         page_title:     Feature: %feature%

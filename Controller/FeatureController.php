@@ -34,7 +34,7 @@ class FeatureController extends Controller
     }
 
 	/**
-	 * @Route("/{id}/show", name = "dzangocart_subscription_feature", requirements={"id" = "\d+"})
+	 * @Route("/{id}", name = "dzangocart_subscription_feature", requirements={"id" = "\d+"})
 	 * @Template("DzangocartSubscriptionBundle:Feature:show.html.twig")
 	 */
 	public function showAction(Request $request, $id)
