@@ -16,6 +16,7 @@
 			<th class="period">{% trans %}plan.prices.period{% endtrans %}</th>
 			<th class="date">{% trans %}plan.prices.start{% endtrans %}</th>
 			<th class="date">{% trans %}plan.prices.finish{% endtrans %}</th>
+			<th class="choice">{% trans %}plan.prices.default.label{% endtrans %}</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -26,6 +27,7 @@
 				<td>{{ form_widget(price.period) }}</td>
 				<td>{{ form_widget(price.start) }}</td>
 				<td>{{ form_widget(price.finish) }}</td>
+				<td>{{ form_widget(price.isdefault) }}</td>
 			</tr>
 		{% endfor %}
 	</tbody>

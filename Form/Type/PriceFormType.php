@@ -43,8 +43,12 @@ class PriceFormType extends BaseAbstractType
             'class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\Period',
             'property' => 'name',
             'query' => PeriodQuery::create(),
-            'label' => 'feature.period.label',
             'required' => false
+        ));
+        
+        $builder->add('isdefault', 'choice', array(
+            'choices'   => array('1' => 'plan.prices.default.true', '0' => 'plan.prices.default.false'),
+            'required'  => false,
         ));
     }
 }
