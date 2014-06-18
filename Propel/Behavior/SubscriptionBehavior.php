@@ -3,9 +3,12 @@
 namespace Dzangocart\Bundle\SubscriptionBundle\Propel\Behavior;
 
 use Behavior;
+use ForeignKey;
 
 class SubscriptionBehavior extends Behavior
 {
+    protected $planTable;
+    
     protected $parameters = array(
         'plan_id_column'      => 'plan_id',
         'expires_at_column'      => 'expires_at'
@@ -26,5 +29,13 @@ class SubscriptionBehavior extends Behavior
                 'type' => 'TIMESTAMP'
             ));
         }
+        
+        $fk = new ForeignKey();
+        $fk->setForeignTableCommonName('plan');
+        $fk->setDefaultJoin('LEFT JOIN');
+        $fk->setOnDelete(ForeignKey::CASCADE);
+        $fk->setOnUpdate(ForeignKey::NONE);
+        $fk->addReference($this->getParameter('plan_id_column'),'id');    
+        $this->getTable()->addForeignKey($fk);
     }
 }
