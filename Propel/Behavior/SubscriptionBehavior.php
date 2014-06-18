@@ -28,4 +28,3 @@ class SubscriptionBehavior extends Behavior
         }
     }
 }
-
