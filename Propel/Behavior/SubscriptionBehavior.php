@@ -1,33 +1,31 @@
 <?php
 
-namespace Dzangocart\Bundle\SubscriptionBundle\Behavior;
+namespace Dzangocart\Bundle\SubscriptionBundle\Propel\Behavior;
 
 use Behavior;
 
 class SubscriptionBehavior extends Behavior
 {
     protected $parameters = array(
-        'plan_column'      => 'plan_id',
-        'expires_column'      => 'expires_at'
+        'plan_id_column'      => 'plan_id',
+        'expires_at_column'      => 'expires_at'
     );
-    
+
     public function modifyTable()
     {
-
         if (!$this->getTable()->containsColumn($this->getParameter('plan_column'))) {
             $this->getTable()->addColumn(array(
-                'name' => $this->getParameter('plan_column'),
+                'name' => $this->getParameter('plan_id_column'),
                 'type' => 'INTEGER'
             ));
         }
 
         if (!$this->getTable()->containsColumn($this->getParameter('expires_column'))) {
             $this->getTable()->addColumn(array(
-                'name' => $this->getParameter('expires_column'),
+                'name' => $this->getParameter('expires_at_column'),
                 'type' => 'TIMESTAMP'
             ));
         }
-
     }
 }
 
