@@ -2,6 +2,8 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Form\Type;
 
+use Dzangocart\Bundle\SubscriptionBundle\Propel\PeriodQuery;
+
 use Propel\PropelBundle\Form\BaseAbstractType;
 
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,51 +25,26 @@ class PriceFormType extends BaseAbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        /*
-        $builder->add('definition', 'model', array(
-            'class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\PlanFeatureDefinition',
-            'property' => 'name',
-            'label' => 'feature.label'
-        ));
+        $builder->add('currency', 'text', array());
 
-        $builder->add('value', 'text', array(
-            'label' => 'feature.value.label'
-        ));
+        $builder->add('price', 'text', array());
 
-        $builder->add('unit', 'model', array(
-            'class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\PlanUnit',
-            'property' => 'name',
-            'query' => $this->getUnitQuery(),
-            'label' => 'feature.unit.label',
+        $builder->add('start', 'date', array(
+            'widget' => 'single_text',
             'required' => false
         ));
 
+        $builder->add('finish', 'date', array(
+            'widget' => 'single_text',
+            'required' => false
+        ));
+        
         $builder->add('period', 'model', array(
-            'class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\PlanPeriod',
+            'class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\Period',
             'property' => 'name',
-            'query' => $this->getPeriodQuery(),
+            'query' => PeriodQuery::create(),
             'label' => 'feature.period.label',
             'required' => false
         ));
-
-        */
     }
-
-    public function getName()
-    {
-        return "plan_price";
-    }
-/*
-    protected function getUnitQuery()
-    {
-        return \Dzangocart\Bundle\SubscriptionBundle\Propel\PlanUnitQuery::create()
-            ->joinWithI18n($this->locale);
-    }
-
-    protected function getPeriodQuery()
-    {
-        return \Dzangocart\Bundle\SubscriptionBundle\Propel\PlanPeriodQuery::create()
-            ->joinWithI18n($this->locale);
-    }
-*/
 }

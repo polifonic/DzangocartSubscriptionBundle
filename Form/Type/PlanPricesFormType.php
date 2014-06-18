@@ -9,13 +9,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PlanPricesFormType extends BaseAbstractType
 {
-    protected $locale;
-
-    public function __construct($locale = 'en')
-    {
-        $this->locale = $locale;
-    }
-
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
@@ -34,17 +27,12 @@ class PlanPricesFormType extends BaseAbstractType
         $builder->add('prices', 'collection', array(
             'label' => false,
             'type' => new PriceFormType(),
-            'allow_add' => true,
-            'allow_delete' => true
+            'allow_add' => false,
+            'allow_delete' => false
         ));
 
         $builder->add('save', 'submit', array(
             'label' => 'plan.form.submit.label'
         ));
-    }
-
-    public function getName()
-    {
-        return "plan_prices";
     }
 }

@@ -1,19 +1,37 @@
 {% trans_default_domain "dzangocart_subscription" %}
 
+{{ form_start(form) }}
+
 <h3>{% trans %}plan.prices.title{% endtrans %}</h3>
+
+{{ form_errors(form) }}
+
+
 
 <table class="table">
 	<thead>
 		<tr>
-			<th class="name">{% trans %}plan.feature.name{% endtrans %}</th>
-			<th class="value">{% trans %}plan.feature.value{% endtrans %}</th>
-			<th class="unit">{% trans %}plan.feature.unit{% endtrans %}</th>
-			<th class="period">{% trans %}plan.feature.period{% endtrans %}</th>
+			<th class="currency">{% trans %}plan.prices.currency{% endtrans %}</th>
+			<th class="price">{% trans %}plan.prices.price{% endtrans %}</th>
+			<th class="period">{% trans %}plan.prices.period{% endtrans %}</th>
+			<th class="date">{% trans %}plan.prices.start{% endtrans %}</th>
+			<th class="date">{% trans %}plan.prices.finish{% endtrans %}</th>
 		</tr>
 	</thead>
 	<tbody>
-
+		{% for price in form.prices %}
+			<tr>
+				<td>{{ form_widget(price.currency) }}</td>
+				<td>{{ form_widget(price.price) }}</td>
+				<td>{{ form_widget(price.period) }}</td>
+				<td>{{ form_widget(price.start) }}</td>
+				<td>{{ form_widget(price.finish) }}</td>
+			</tr>
+		{% endfor %}
 	</tbody>
 </table>
 
-{{ form(form) }}
+{{ form_rest(form) }}
+
+{{ form_end(form) }}
+
