@@ -7,7 +7,7 @@ feature:
         cancel:         '&larr; Cancel'
         success:        The feature's info have been updated.
         title:          Info
-  
+
     features:
         actions:
             edit:       Edit
@@ -19,11 +19,11 @@ feature:
             create:     Create a new feature
         page_title:     Features
         rank:           Rank
-        
+
     form:
         submit:
             label:      Save
-        
+
     plans:
         name:           Plan
         period:         Period
@@ -31,7 +31,7 @@ feature:
         title:          Plans
         unit:           Unit
         value:          Value
-        
+
     show:
         cancel:         '&larr; Return to features list'
         page_title:     Feature: %feature%
@@ -40,7 +40,7 @@ plan:
     create:
         cancel:         '&larr; Cancel'
         page_title:     Create a new plan
-        
+
     delete:
         success:        plan deleted successfully.
 
