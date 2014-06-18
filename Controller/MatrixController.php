@@ -19,31 +19,21 @@ class MatrixController extends Controller
     */
     public function indexAction(Request $request)
     {
-        $plans = $this->getplanQuery()
+        $plans = PlanQuery::create()
+            ->joinWithI18n($this->getRequest()->getLocale())
+            ->orderByRank()
             ->getActive()
             ->find();
 
-        $features = $this->getFeatureQuery()
+        $features = FeatureDefinitionQuery::create()
+            ->joinWithI18n($this->getRequest()->getLocale())
+            ->orderByRank()
             ->find();
 
         return array(
             'plans' => $plans,
             'features' => $features
         );
-    }
-
-    protected function getPlanQuery()
-    {
-        return PlanQuery::create()
-            ->joinWithI18n($this->getRequest()->getLocale())
-            ->orderByRank();
-    }
-
-    protected function getFeatureQuery()
-    {
-        return FeatureDefinitionQuery::create()
-            ->joinWithI18n($this->getRequest()->getLocale())
-            ->orderByRank();
     }
 }
 
