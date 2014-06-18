@@ -6,7 +6,11 @@
 
 {{ form_errors(form) }}
 
-
+{% for flashMessage in app.session.flashbag.get('plan.prices') %}
+	<div class="alert alert-success">
+		{{ flashMessage }}
+	</div>
+{% endfor %}
 
 <table class="table">
 	<thead>

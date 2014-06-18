@@ -234,6 +234,10 @@ class PlanController extends Controller
 
         if ($form->isValid()) {
             $plan->save();
+            $this->get('session')->getFlashBag()->add(
+                'plan.prices',
+                $this->get('translator')->trans('plan.prices.success', array(), 'dzangocart_subscription', $request->getLocale())
+            );
         }
 
         return array(
