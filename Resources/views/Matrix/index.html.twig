@@ -3,33 +3,37 @@
 {% trans_default_domain "dzangocart_subscription" %}
 
 {% block dzangocart_subscription_head_style %}
-	
+	{% stylesheets filter="cssrewrite" output="css/*.css"
+		'bundles/dzangocartsubscription/css/matrix.css'
+	%}
+		<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+	{% endstylesheets %}
 {% endblock %}
 
-{% block dzangocart_subscription_page_class %}{% endblock %}
+{% block dzangocart_subscription_page_class %}matrix{% endblock %}
 
 {% block dzangocart_subscription_content %}
-	<table border="1">
+	<table class="table">
 		<thead>
-			<tr>
-				<td></td>
+			<tr class="plans">
+				<th></th>
 				{% for plan in plans %}
-					<td>{{ plan.name }}</td>
+					<th class="plan_{{ plan.rank }}">{{ plan.name }}</th>
 				{% endfor %}
 			</tr>
-			<tr>
-				<td></td>
+			<tr class="plan_descriptions">
+				<th></th>
 				{% for plan in plans %}
-					<td>{{ plan.description }}</td>
+					<th class="plan_description_{{ plan.rank }}">{{ plan.description }}</th>
 				{% endfor %}
 			</tr>
 		</thead>
 		<tbody>
 			{% for feature in features %}
 				<tr>
-					<td>{{ feature.name }}</td>
+					<th class="feature">{{ feature.name }}</th>
 					{% for plan in plans %}
-						<td>{{ plan.features[feature.id] }}</td>
+						<td class="plan_feature_value">{{ plan.features[feature.id] }}</td>
 					{% endfor %}
 				</tr>
 			{% endfor %}
