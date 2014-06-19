@@ -223,7 +223,7 @@ class PlanController extends Controller
         $plan = $this->getPlan($id);
 
         $form = $this->createForm(
-            new PlanPricesFormType(),
+            new PlanPricesFormType($request->getLocale()),
             $plan,
             array(
                 'action' => $this->generateUrl('dzangocart_subscription_plan_prices', array('id' => $id))

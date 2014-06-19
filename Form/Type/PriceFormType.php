@@ -11,6 +11,17 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PriceFormType extends BaseAbstractType
 {
+    protected $locale;
+
+    public function __construct($locale = 'en')
+    {
+        $this->locale = $locale;
+    }
+
+    public function getLocale()
+    {
+        return $this->locale;
+    }
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
@@ -42,7 +53,9 @@ class PriceFormType extends BaseAbstractType
         $builder->add('period', 'model', array(
             'class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\Period',
             'property' => 'name',
-            'query' => PeriodQuery::create(),
+            'query' => PeriodQuery::create()
+                ->joinWithI18n($this->getLocale()
+            ),
             'required' => false
         ));
         
