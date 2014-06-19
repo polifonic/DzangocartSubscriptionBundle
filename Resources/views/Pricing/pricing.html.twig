@@ -15,13 +15,5 @@
 {% block dzangocart_subscription_page_class %}{{ theme }}{% endblock %}
 
 {% block dzangocart_subscription_content %}
-	<div class="row">
-		<div class="col-md-{{ row_width }} span-centered">
-				{% for plan in plans %}
-					<div class="col-md-{{ col_width }}">
-						{% include "DzangocartSubscriptionBundle:Pricing:plan.html.twig" %}
-					</div>
-				{% endfor %}
-		</div>
-	</div>
+	{% include "DzangocartSubscriptionBundle:Pricing:pricing-partial.html.twig"%}
 {% endblock %}

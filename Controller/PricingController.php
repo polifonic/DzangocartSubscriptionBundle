@@ -19,7 +19,7 @@ class PricingController extends Controller
      */
     public function pricingAction(Request $request)
     {	 
-		$theme = $this->container->getParameter('dzangocart_subscription.pricing.theme');;
+		$theme = $this->container->getParameter('dzangocart_subscription.pricing.theme');
         $col_width = 2;
         $row_width = 12;
 
