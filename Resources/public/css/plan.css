@@ -41,3 +41,17 @@ table.table td.actions .dropdown-toggle {
 .plan .features table.table th.period {
 	width: 10em;
 }
+
+.plan .prices table.table th.price {
+
+}
+
+.plan .prices table.table th.date ,
+.plan .prices table.table th.period,
+.plan .prices table.table th.default {
+	width: 10em;
+}
+
+.plan .prices table.table th.currency {
+	width: 6em;
+}
