@@ -1,7 +1,5 @@
 <?php
 
-namespace Dzangocart\Bundle\SubscriptionBundle\Propel\Behavior;
-
 use Behavior;
 use ForeignKey;
 
