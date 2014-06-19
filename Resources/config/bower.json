@@ -1,11 +1,21 @@
 {
-	"name": "polifonic/backend",
-	"dependencies": {
-		"autotabs" : "2.0",
-		"bootstrap": "~3.1",
-		"font-awesome": "~4.1",
-		"jquery": "~1.11",
-		"jquery.cookie": "~1.4",
-		"jquery-form": "3.50"
-	}
+  "name": "polifonic/backend",
+  "dependencies": {
+    "autotabs": "~2.0",
+    "bootstrap": "~3.1",
+    "eonasdan-bootstrap-datetimepicker": "~3.0.0",
+    "font-awesome": "~4.1",
+    "jquery": "~1.11",
+    "jquery.cookie": "~1.4",
+    "jquery-form": "3.50"
+  },
+  "overrides": {
+    "moment": {
+      "main": [
+        "moment.js",
+        "min/moment-with-langs.js",
+        "min/moment-with-langs.min.js"
+      ]
+    }
+  }
 }

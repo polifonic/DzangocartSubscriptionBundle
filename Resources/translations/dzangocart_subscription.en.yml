@@ -86,6 +86,16 @@ plan:
         to:             To
 
     prices:
+        currency:       Currency
+        default:
+            label:      Default
+            'true':       Default
+            'false':      Not default
+        finish:         To
+        period:         Period
+        price:          Price
+        start:          From
+        success:        The plan's prices have been modified.
         title:          Prices
 
     show:

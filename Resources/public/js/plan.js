@@ -15,7 +15,8 @@
 					$( ".tabs", this ).autotabs( $.extend( true, {}, settings.autotabs, {
 						success: {
 							features: helpers.initFeatures,
-							info: helpers.initInfo
+							info: helpers.initInfo,
+							prices: helpers.initPrices
 						}
 					} ) );
 				});
@@ -32,6 +33,14 @@
 				});
 			},
 			initInfo: function() {
+				$( "form", this ).ajaxForm({
+					target: this,
+					success: function() {
+						helpers.initInfo.apply( this );
+					}
+				});
+			},
+			initPrices: function() {
 				$( "form", this ).ajaxForm({
 					target: this,
 					success: function() {
