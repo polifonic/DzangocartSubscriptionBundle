@@ -1,0 +1,20 @@
+{% stylesheets filter="cssrewrite"
+	'bundles/dzangocartsubscription/css/pricing.css'
+%}
+	<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+	<link href="{{ asset('bundles/dzangocartsubscription/css/pricingThemes/'~ theme ~'.css') }}" type="text/css" rel="stylesheet" media="screen"/>
+{% endstylesheets %}
+
+<div class="pricing">
+	<div class="{{ theme }}">
+		<div class="row">
+			<div class="col-md-{{ row_width }} span-centered">
+					{% for plan in plans %}
+						<div class="col-md-{{ col_width }}">
+							{% include "DzangocartSubscriptionBundle:Pricing:plan.html.twig" %}
+						</div>
+					{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>

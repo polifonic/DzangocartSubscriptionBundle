@@ -17,8 +17,16 @@ class PricingController extends Controller
     /**
      * @Template() 
      */
-    public function pricingAction(Request $request)
+    public function indexAction(Request $request)
     {	 
+		return array();
+    }
+
+    /**
+     * @Template
+     */
+    public function pricingPartialAction()
+    {
 		$theme = $this->container->getParameter('dzangocart_subscription.pricing.theme');
         $col_width = 2;
         $row_width = 12;
@@ -40,7 +48,7 @@ class PricingController extends Controller
             'col_width' => $col_width,
             'row_width' => $row_width,
             'theme' => $theme
-        );
+        );        
     }
 
     protected function getQuery()
