@@ -1,8 +1,5 @@
 <?php
 
-use Behavior;
-use ForeignKey;
-
 class SubscriptionBehavior extends Behavior
 {
     protected $planTable;
@@ -27,7 +24,7 @@ class SubscriptionBehavior extends Behavior
                 'type' => 'TIMESTAMP'
             ));
         }
-        
+
         $fk = new ForeignKey();
         $fk->setForeignTableCommonName('plan');
         $fk->setDefaultJoin('LEFT JOIN');
