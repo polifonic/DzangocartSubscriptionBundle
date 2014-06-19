@@ -1,9 +1,7 @@
 <?php
 
 class SubscriptionBehavior extends Behavior
-{
-    protected $planTable;
-    
+{   
     protected $parameters = array(
         'plan_id_column'      => 'plan_id',
         'expires_at_column'      => 'expires_at'
