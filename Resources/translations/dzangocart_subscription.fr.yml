@@ -1,12 +1,111 @@
-plans:
-    actions:
-        title:      Actions
-    description:    Description
-    from:           Du
-    name:           Nom
-    nav:
-        create:     Créer un nouvelle formule
-    page_title:     Formules
-    price:          Prix
-    rank:           Rang
-    to:             Au
+feature:
+    create:
+        cancel:         '&larr; Cancel'
+        page_title:     Create a new feature
+        success:        New feature created successfully!!
+    edit:
+        cancel:         '&larr; Cancel'
+        success:        The feature's info have been updated.
+        title:          Info
+
+    features:
+        actions:
+            edit:       Edit
+            delete:     Delete
+            show:       Show
+        description:    Description
+        name:           Feature
+        nav:
+            create:     Create a new feature
+        page_title:     Features
+        rank:           Rang
+
+    form:
+        submit:
+            label:      Save
+
+    plans:
+        name:           Plan
+        period:         Period
+        success:        The feature's plans have been updated.
+        title:          Plans
+        unit:           Unit
+        value:          Value
+
+    show:
+        cancel:         '&larr; Return to features list'
+        page_title:     Feature: %feature%
+
+plan:
+    create:
+        cancel:         '&larr; Cancel'
+        page_title:     Create a new plan
+
+    delete:
+        success:        plan deleted successfully.
+
+    features:
+        description:    Description
+        name:           Feature
+        period:         Per
+        success:        The plan's features have been updated.
+        title:          Features
+        unit:           Unit
+        value:          Value
+
+    edit:
+        title:          Info
+        success:        The plan's info have been updated.
+
+    form:
+        description:
+            label:      Description
+        from:
+            label:      Available from
+        name:
+            label:      Nom
+        submit:
+            label:      Save
+        to:
+            label:      Available to
+
+    plans:
+        actions:
+            disable:    Disable
+            enable:     Enable
+            show:       Show
+            title:      Actions
+        description:    Description
+        from:           Du
+        name:           Nom
+        nav:
+            create:     Create a new plan
+        page_title:     Plans
+        price:          Prix
+        rank:           Rang
+        to:             Au
+
+    prices:
+        currency:       Currency
+        default:
+            label:      Default
+            'true':       Default
+            'false':      Not default
+        finish:         Au
+        period:         Period
+        price:          Prix
+        start:          Du
+        success:        The plan's prices have been modified.
+        title:          Prixs
+
+    show:
+        cancel:         '&larr; Return to plans list'
+        description:    Description
+        from:           Du
+        name:           Nom
+        nav:
+            create:     Create new plan
+        page_title:     Plan: %plan%
+        rank:           Rang
+        to:             Au
+
