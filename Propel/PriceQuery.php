@@ -10,9 +10,9 @@ class PriceQuery extends BasePriceQuery
 {
     public function getDefault()
     {
-		return $this
+        return $this
             ->filterByIsDefault(true)
-			->orderByRank(Criteria::ASC)
-			->limit(1);
-	}
+            ->orderByRank(Criteria::ASC)
+            ->limit(1);
+    }
 }

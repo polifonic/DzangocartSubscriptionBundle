@@ -36,4 +36,3 @@ class MatrixController extends Controller
         );
     }
 }
-

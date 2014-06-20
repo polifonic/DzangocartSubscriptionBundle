@@ -20,7 +20,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  * @Template
  */
 class PlanController extends Controller
-{   
+{
     /**
      * Lists all Plans.
      *
@@ -136,6 +136,7 @@ class PlanController extends Controller
 
         if ($form->isValid()) {
             $plan->save();
+
             return $this->redirect($this->generateUrl('dzangocart_subscription_plan', array('id' => $plan->getId())));
         }
 

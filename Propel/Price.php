@@ -46,7 +46,7 @@ class Price extends BasePrice
     }
 
     public function getCurrencySymbol()
-    { 
+    {
         return Intl::getCurrencyBundle()->getCurrencySymbol($this->getCurrency());
     }
 }

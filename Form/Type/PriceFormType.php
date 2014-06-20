@@ -49,7 +49,7 @@ class PriceFormType extends BaseAbstractType
             'widget' => 'single_text',
             'required' => false
         ));
-        
+
         $builder->add('period', 'model', array(
             'class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\Period',
             'property' => 'name',
@@ -58,7 +58,7 @@ class PriceFormType extends BaseAbstractType
             ),
             'required' => false
         ));
-        
+
         $builder->add('isdefault', 'choice', array(
             'choices'   => array('1' => 'plan.prices.default.true', '0' => 'plan.prices.default.false'),
             'required'  => false,

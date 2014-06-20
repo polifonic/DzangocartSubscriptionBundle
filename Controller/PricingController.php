@@ -15,12 +15,13 @@ class PricingController extends Controller
     const PRICING_SHOW_LIMIT = 5;
 
     /**
-     * @Template() 
+     * @Template()
      */
     public function indexAction(Request $request)
     {
-		$theme = $this->container->getParameter('dzangocart_subscription.pricing.theme');
-		return array(
+        $theme = $this->container->getParameter('dzangocart_subscription.pricing.theme');
+
+        return array(
             'theme' => $theme
         );
     }
@@ -40,7 +41,7 @@ class PricingController extends Controller
 
         $plans_count = count($plans);
 
-        if ($plans_count > 0 && $plans_count < 5  ) {
+        if ($plans_count > 0 && $plans_count < 5) {
             $col_width = 12 / $plans_count;
             $row_width = $plans_count * 3;
         }
@@ -49,7 +50,7 @@ class PricingController extends Controller
             'plans' => $plans,
             'col_width' => $col_width,
             'row_width' => $row_width,
-        );        
+        );
     }
 
     protected function getQuery()
@@ -59,4 +60,3 @@ class PricingController extends Controller
             ->orderByRank();
     }
 }
-

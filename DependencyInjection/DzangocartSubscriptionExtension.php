@@ -2,7 +2,6 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\DependencyInjection;
 
-
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
