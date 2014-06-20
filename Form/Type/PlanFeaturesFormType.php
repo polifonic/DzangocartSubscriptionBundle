@@ -11,6 +11,18 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PlanFeaturesFormType extends BaseAbstractType
 {
+    protected $locale;
+
+    public function __construct($locale)
+    {
+        $this->locale = $locale;
+    }
+
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
@@ -31,7 +43,7 @@ class PlanFeaturesFormType extends BaseAbstractType
             'collection',
             array(
                 'label' => false,
-                'type' => new FeatureFormType(),
+                'type' => new FeatureFormType($this->getLocale()),
                 'allow_add' => false,
                 'allow_delete' => false
             )

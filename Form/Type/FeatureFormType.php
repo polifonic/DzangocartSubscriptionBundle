@@ -14,7 +14,7 @@ class FeatureFormType extends BaseAbstractType
 {
     protected $locale;
 
-    public function __construct($locale = 'en')
+    public function __construct($locale)
     {
         $this->locale = $locale;
     }
