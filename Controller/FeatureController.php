@@ -147,7 +147,7 @@ class FeatureController extends Controller
         $feature_definition = $this->getFeature($id);
 
         $form = $this->createForm(
-            new FeaturePlansFormType(),
+            new FeaturePlansFormType($request->getLocale()),
             $feature_definition ,
             array(
                 'action' => $this->generateUrl('dzangocart_subscription_feature_plans', array('id' => $id))
