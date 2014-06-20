@@ -2,8 +2,11 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Propel\Behavior;
 
+use Behavior;
+use ForeignKey;
+
 class SubscriptionBehavior extends Behavior
-{   
+{
     protected $parameters = array(
         'plan_id_column'      => 'plan_id',
         'expires_at_column'      => 'expires_at'
