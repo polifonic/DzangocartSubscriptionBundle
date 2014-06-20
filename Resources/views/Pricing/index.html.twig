@@ -4,10 +4,16 @@
 
 {% block dzangocart_subscription_head_style %}
 	{{ parent() }}
+	{% stylesheets filter="cssrewrite"
+		'bundles/dzangocartsubscription/css/pricing.css'
+	%}
+		<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+		<link href="{{ asset('bundles/dzangocartsubscription/css/pricingThemes/'~ theme ~'.css') }}" type="text/css" rel="stylesheet" media="screen"/>
+	{% endstylesheets %}
 {% endblock %}
 
-{% block dzangocart_subscription_page_class %}{% endblock %}
+{% block dzangocart_subscription_page_class %}{{ theme }}{% endblock %}
 
 {% block dzangocart_subscription_content %}
-	{{ render(controller("DzangocartSubscriptionBundle:Pricing:pricingPartial")) }}
+	{{ render(controller("DzangocartSubscriptionBundle:Pricing:pricing")) }}
 {% endblock %}
