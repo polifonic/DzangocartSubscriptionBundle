@@ -1,7 +1,5 @@
 <?php
 
-namespace Dzangocart\Bundle\SubscriptionBundle\Propel\Behavior;
-
 class SubscriptionBehavior extends Behavior
 {   
     protected $parameters = array(
