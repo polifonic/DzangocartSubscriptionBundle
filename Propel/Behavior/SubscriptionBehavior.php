@@ -33,7 +33,7 @@ class SubscriptionBehavior extends Behavior
         $fk->setDefaultJoin('LEFT JOIN');
         $fk->setOnDelete(ForeignKey::CASCADE);
         $fk->setOnUpdate(ForeignKey::NONE);
-        $fk->addReference($this->getParameter('plan_id_column'),'id');
+        $fk->addReference($this->getParameter('plan_id_column'), 'id');
         $this->getTable()->addForeignKey($fk);
     }
 }
