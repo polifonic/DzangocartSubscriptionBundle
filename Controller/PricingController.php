@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PricingController extends Controller
 {
@@ -31,32 +32,36 @@ class PricingController extends Controller
      */
     public function pricingAction()
     {
-        $col_width = 2;
-        $row_width = 12;
+        $plans = $this->getPlans();
 
-        $plans = $this->getQuery()
-            ->getActive()
-            ->limit(self::PRICING_SHOW_LIMIT)
-            ->find();
+        $count = count($plans);
 
-        $plans_count = count($plans);
+        if ($count == 0) {
+            throw new NotFoundHttpException('No plans to display');
+        }
 
-        if ($plans_count > 0 && $plans_count < 5) {
-            $col_width = 12 / $plans_count;
-            $row_width = $plans_count * 3;
+        if ($count > 5) {
+            $plan_cols = 2;
+            $row_cols = 12;
+        } else {
+            $plan_cols = 12 / $count;
+            $row_cols = $count * 3;
         }
 
         return array(
             'plans' => $plans,
-            'col_width' => $col_width,
-            'row_width' => $row_width,
+            'plan_cols' => $plan_cols,
+            'row_cols' => $row_cols,
         );
     }
 
-    protected function getQuery()
+    protected function getPlans()
     {
         return PlanQuery::create()
             ->joinWithI18n($this->getRequest()->getLocale())
-            ->orderByRank();
+            ->getActive()
+            ->orderByRank()
+            ->limit(self::PRICING_SHOW_LIMIT)
+            ->find();
     }
 }

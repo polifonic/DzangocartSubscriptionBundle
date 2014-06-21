@@ -1,8 +1,8 @@
 <div class="pricing">
 	<div class="row">
-		<div class="col-md-{{ row_width }} span-centered">
+		<div class="col-md-{{ row_cols }} span-centered">
 			{% for plan in plans %}
-				<div class="col-md-{{ col_width }}">
+				<div class="col-md-{{ plan_cols }}">
 					{% include "DzangocartSubscriptionBundle:Pricing:plan.html.twig" %}
 				</div>
 			{% endfor %}
