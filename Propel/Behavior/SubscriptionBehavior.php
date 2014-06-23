@@ -30,9 +30,7 @@ class SubscriptionBehavior extends Behavior
 
         $fk = new ForeignKey();
         $fk->setForeignTableCommonName('plan');
-        $fk->setDefaultJoin('LEFT JOIN');
         $fk->setOnDelete(ForeignKey::RESTRICT);
-        $fk->setOnUpdate(ForeignKey::NONE);
         $fk->addReference($this->getParameter('plan_id_column'), 'id');
         $this->getTable()->addForeignKey($fk);
     }
