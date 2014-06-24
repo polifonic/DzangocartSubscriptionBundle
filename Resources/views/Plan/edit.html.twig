@@ -12,7 +12,25 @@
 	</div>
 {% endfor %}
 
-{{ form(form) }}
+<div class="row">
+	<div class='col-sm-6'>
+		<div class='input-group date' id='datetimepicker1'>
+			{{ form_widget(form.startdate) }}
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-calendar"></span>
+			</span>
+		</div>
+	</div>
+	<div class='col-sm-6'>
+		<div class='input-group date' id='datetimepicker2'>
+			{{ form_widget(form.finishdate) }}
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-calendar"></span>
+			</span>
+		</div>
+	</div>
+</div>
+
 
 {{ form_rest(form) }}
 

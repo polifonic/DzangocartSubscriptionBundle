@@ -49,6 +49,16 @@ class PlanFormType extends BaseAbstractType
             'widget' => 'single_text',
             'required' => false
         ));
+        
+        $builder->add('startdate', 'text', array(
+            'required' => false,
+            'mapped' => false
+        ));
+        
+        $builder->add('finishdate', 'text', array(
+            'required' => false,
+            'mapped' => false
+        ));
 
         $builder->add('save', 'submit', array(
             'label' => 'plan.form.submit.label'

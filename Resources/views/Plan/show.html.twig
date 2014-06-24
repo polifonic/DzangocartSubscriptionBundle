@@ -5,6 +5,7 @@
 {% block dzangocart_subscription_head_style %}
 	{% stylesheets filter="cssrewrite" output="css/*.css"
 		'bundles/dzangocartsubscription/vendor/autotabs/css/jquery.autotabs.css'
+		'bundles/dzangocartsubscription/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css'
 		'bundles/dzangocartsubscription/css/plan.css'
 	%}
 		<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
@@ -40,11 +41,17 @@
 		'bundles/dzangocartsubscription/vendor/jquery.cookie/jquery.cookie.min.js'
 		'bundles/dzangocartsubscription/vendor/autotabs/js/jquery.autotabs.min.js'
 		'bundles/dzangocartsubscription/vendor/jquery-form/jquery.form.min.js'
+		'bundles/dzangocartsubscription/vendor/moment/min/moment-with-langs.min.js'
+		'bundles/dzangocartsubscription/vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
 		'bundles/dzangocartsubscription/js/plan.js'
 	%}
 		<script src="{{ asset_url }}"></script>
 	{% endjavascripts %}
 	<script>
 	var dzangocart_subscription_plan = {};
+	$(function () {
+		$('#datetimepicker1').datetimepicker();
+		$('#datetimepicker2').datetimepicker();
+	});
 	</script>
 {% endblock %}
