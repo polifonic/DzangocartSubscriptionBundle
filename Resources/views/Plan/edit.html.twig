@@ -12,9 +12,14 @@
 	</div>
 {% endfor %}
 
+{{ form_row(form.name) }}
+
+{{ form_row(form.description) }}
+
 <div class="row">
 	<div class='col-sm-6'>
-		<div class='input-group date' id='datetimepicker1'>
+		{{ 'plan.form.from.label' | trans }}
+		<div class='input-group date' id='start_datetimepicker' data-date-format="YYYY-MM-DD">
 			{{ form_widget(form.startdate) }}
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-calendar"></span>
@@ -22,7 +27,8 @@
 		</div>
 	</div>
 	<div class='col-sm-6'>
-		<div class='input-group date' id='datetimepicker2'>
+		{{ 'plan.form.to.label' | trans }}
+		<div class='input-group date' id='finish_datetimepicker' data-date-format="YYYY-MM-DD">
 			{{ form_widget(form.finishdate) }}
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-calendar"></span>
@@ -31,7 +37,11 @@
 	</div>
 </div>
 
+<div style="display: none;">
+	{{ form_widget(form.start) }}
+	{{ form_widget(form.finish) }}
+</div>
 
-{{ form_rest(form) }}
+{{ form_row(form.save) }}
 
 {{ form_end(form) }}
