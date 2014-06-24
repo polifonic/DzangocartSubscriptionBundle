@@ -24,6 +24,24 @@
 		};
 
 		var helpers = {
+			initDateTimePickers: function(){
+				$('#start_datetimepicker').datetimepicker();
+				$('#start_datetimepicker').data("DateTimePicker").setDate($('#dzangocart_subscription_plan_start').attr( 'value'));
+				$('#start_datetimepicker').data("DateTimePicker").setMaxDate($('#dzangocart_subscription_plan_finish').attr( 'value'));
+
+				$('#finish_datetimepicker').datetimepicker();
+				$('#finish_datetimepicker').data("DateTimePicker").setDate($('#dzangocart_subscription_plan_finish').attr( 'value'));
+				$('#finish_datetimepicker').data("DateTimePicker").setMinDate($('#dzangocart_subscription_plan_start').attr( 'value'));
+
+				$("#start_datetimepicker").on("dp.change",function (e) {
+					$('#dzangocart_subscription_plan_start').attr( 'value', $('#dzangocart_subscription_plan_startdatepicker').val() );
+					$('#finish_datetimepicker').data("DateTimePicker").setMinDate(e.date);
+				});
+				$("#finish_datetimepicker").on("dp.change",function (e) {
+					$('#dzangocart_subscription_plan_finish').attr( 'value', $('#dzangocart_subscription_plan_finishdatepicker').val() );
+					$('#start_datetimepicker').data("DateTimePicker").setMaxDate(e.date);
+				});
+			},
 			initFeatures: function() {
 				$( "form", this ).ajaxForm({
 					target: this,
@@ -33,10 +51,12 @@
 				});
 			},
 			initInfo: function() {
+				helpers.initDateTimePickers();
 				$( "form", this ).ajaxForm({
 					target: this,
 					success: function() {
 						helpers.initInfo.apply( this );
+						helpers.initDateTimePickers();
 					}
 				});
 			},
