@@ -80,18 +80,19 @@
 					});
 					finish_date_picker[i].data("DateTimePicker").setDate(finish[i].attr('value'));
 					finish_date_picker[i].data("DateTimePicker").setMinDate(start[i].attr('value'));
-
-					start_date_picker[i].on("dp.change", function(e) {
-						var i = $(this).attr('id').substring($(this).attr('id').length - 1)
-						start[i].attr('value', start_dummy[i].val());
-						finish_date_picker[i].data("DateTimePicker").setMinDate(e.date);
-					});
-					finish_date_picker[i].on("dp.change", function(e) {
-						var i = $(this).attr('id').substring($(this).attr('id').length - 1)
-						finish[i].attr('value', finish_dummy[i].val());
-						start_date_picker[i].data("DateTimePicker").setMaxDate(e.date);
-					});
 				}
+
+				$('.start_datetimepicker').on("dp.change", function(e) {
+					var i = $(this).attr('id').substring($(this).attr('id').length - 1);
+					$('#prices_' + i + '_start').attr('value', $('#prices_' + i + '_startdatepicker').val());
+					$('#finish_datetimepicker_' + i).data("DateTimePicker").setMinDate(e.date);
+				});
+
+				$('.finish_datetimepicker').on("dp.change", function(e) {
+					var i = $(this).attr('id').substring($(this).attr('id').length - 1);
+					$('#prices_' + i + '_finish').attr('value', $('#prices_' + i + '_finishdatepicker').val());
+					$('#start_datetimepicker_' + i).data("DateTimePicker").setMaxDate(e.date);
+				});
 			},
 			initFeatures: function() {
 				$("form", this).ajaxForm({
@@ -116,7 +117,7 @@
 				$("form", this).ajaxForm({
 					target: this,
 					success: function() {
-						helpers.initInfo.apply(this);
+						helpers.initPrices.apply(this);
 						helpers.initPricesDateTimePicker();
 					}
 				});

@@ -32,13 +32,13 @@
 				<td>{{ form_widget(price.period) }}</td>
 				<td>
 					<div style="display: none">{{ form_widget(price.start) }}</div>
-					<div id='start_datetimepicker_{{ count }}' data-date-format="YYYY-MM-DD">
+					<div class="start_datetimepicker" id='start_datetimepicker_{{ count }}' data-date-format="YYYY-MM-DD">
 						{{ form_widget(price.startdatepicker) }}
 					</div>
 				</td>
 				<td>
 					<div style="display: none">{{ form_widget(price.finish) }}</div>
-					<div id='finish_datetimepicker_{{ count }}' data-date-format="YYYY-MM-DD">
+					<div class="finish_datetimepicker" id='finish_datetimepicker_{{ count }}' data-date-format="YYYY-MM-DD">
 						{{ form_widget(price.finishdatepicker) }}
 					</div>
 				</td>
