@@ -18,21 +18,15 @@
 
 <div class="row">
 	<div class='col-sm-6'>
-		{{ 'plan.form.from.label' | trans }}
-		<div class='input-group date' id='start_datetimepicker' data-date-format="YYYY-MM-DD">
+		<strong>{{ 'plan.form.from.label' | trans }}</strong>
+		<div id='start_datetimepicker' data-date-format="YYYY-MM-DD">
 			{{ form_widget(form.startdatepicker) }}
-			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-calendar"></span>
-			</span>
 		</div>
 	</div>
 	<div class='col-sm-6'>
-		{{ 'plan.form.to.label' | trans }}
-		<div class='input-group date' id='finish_datetimepicker' data-date-format="YYYY-MM-DD">
+		<strong>{{ 'plan.form.to.label' | trans }}</strong>
+		<div id='finish_datetimepicker' data-date-format="YYYY-MM-DD">
 			{{ form_widget(form.finishdatepicker) }}
-			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-calendar"></span>
-			</span>
 		</div>
 	</div>
 </div>

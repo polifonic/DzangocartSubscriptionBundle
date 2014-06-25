@@ -25,11 +25,15 @@
 
 		var helpers = {
 			initDateTimePickers: function(){
-				$('#start_datetimepicker').datetimepicker();
+				$('#start_datetimepicker').datetimepicker({
+					pickTime: false
+				});
 				$('#start_datetimepicker').data("DateTimePicker").setDate($('#dzangocart_subscription_plan_start').attr( 'value'));
 				$('#start_datetimepicker').data("DateTimePicker").setMaxDate($('#dzangocart_subscription_plan_finish').attr( 'value'));
 
-				$('#finish_datetimepicker').datetimepicker();
+				$('#finish_datetimepicker').datetimepicker({
+					pickTime: false
+				});
 				$('#finish_datetimepicker').data("DateTimePicker").setDate($('#dzangocart_subscription_plan_finish').attr( 'value'));
 				$('#finish_datetimepicker').data("DateTimePicker").setMinDate($('#dzangocart_subscription_plan_start').attr( 'value'));
 
