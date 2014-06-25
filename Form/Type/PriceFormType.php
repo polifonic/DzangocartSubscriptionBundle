@@ -63,5 +63,15 @@ class PriceFormType extends BaseAbstractType
             'choices'   => array('1' => 'plan.prices.default.true', '0' => 'plan.prices.default.false'),
             'required'  => false,
         ));
+        
+        $builder->add('startdatepicker', 'text', array(
+            'required' => false,
+            'mapped' => false
+        ));
+        
+        $builder->add('finishdatepicker', 'text', array(
+            'required' => false,
+            'mapped' => false
+        ));
     }
 }

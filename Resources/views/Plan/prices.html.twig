@@ -24,15 +24,27 @@
 		</tr>
 	</thead>
 	<tbody>
+		{% set count = 0 %}
 		{% for price in form.prices %}
 			<tr>
 				<td>{{ form_widget(price.currency) }}</td>
 				<td>{{ form_widget(price.price) }}</td>
 				<td>{{ form_widget(price.period) }}</td>
-				<td>{{ form_widget(price.start) }}</td>
-				<td>{{ form_widget(price.finish) }}</td>
+				<td>
+					<div style="display: none">{{ form_widget(price.start) }}</div>
+					<div id='start_datetimepicker_{{ count }}' data-date-format="YYYY-MM-DD">
+						{{ form_widget(price.startdatepicker) }}
+					</div>
+				</td>
+				<td>
+					<div style="display: none">{{ form_widget(price.finish) }}</div>
+					<div id='finish_datetimepicker_{{ count }}' data-date-format="YYYY-MM-DD">
+						{{ form_widget(price.finishdatepicker) }}
+					</div>
+				</td>
 				<td>{{ form_widget(price.isdefault) }}</td>
 			</tr>
+			{% set count = count + 1 %}
 		{% endfor %}
 	</tbody>
 </table>
@@ -40,3 +52,9 @@
 {{ form_rest(form) }}
 
 {{ form_end(form) }}
+
+<script>
+	dzangocart_subscription_plan_prices = {
+		count: {{ count }}
+	};
+</script>
