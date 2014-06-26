@@ -34,8 +34,11 @@ class PlanFormType extends BaseAbstractType
             'label' => 'plan.form.name.label'
         ));
 
-        $builder->add('description', 'text', array(
-            'label' => 'plan.form.description.label'
+        $builder->add('description', 'textarea', array(
+            'label' => 'plan.form.description.label',
+            'attr' => array(
+                'rows' => 12
+            )
         ));
 
         $builder->add('start', 'date', array(
