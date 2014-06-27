@@ -52,12 +52,12 @@ class PlanFormType extends BaseAbstractType
             'widget' => 'single_text',
             'required' => false
         ));
-        
+
         $builder->add('startdatepicker', 'text', array(
             'required' => false,
             'mapped' => false
         ));
-        
+
         $builder->add('finishdatepicker', 'text', array(
             'required' => false,
             'mapped' => false
