@@ -84,11 +84,11 @@ class SubscriptionBehavior extends Behavior
             if (!$plan_id == null) {
                 $default_plan_id = $plan_id;
             }
-
-            $sql = sprintf("update %s set %s = %d where %s is null;",
+            $sql = sprintf("update %s set %s = %d where %s = 0 or %s is null;",
                 $this->getTable()->getName(),
                 $this->getParameter('plan_id_column'),
                 $default_plan_id,
+                $this->getParameter('plan_id_column'),
                 $this->getParameter('plan_id_column')
             );
             $st = $this->conn->prepare($sql);
@@ -102,7 +102,7 @@ class SubscriptionBehavior extends Behavior
                 $this->getTable()->getName(),
                 $this->getParameter('plan_id_column')
             );
-            $st = $conn->prepare($sql);
+            $st = $this->conn->prepare($sql);
             $st->execute();
             $this->populatePlanColumn();
         }
