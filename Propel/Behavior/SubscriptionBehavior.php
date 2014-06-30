@@ -8,6 +8,28 @@ use Propel;
 
 class SubscriptionBehavior extends Behavior
 {
+    protected $dbname;
+    protected $conn;
+    protected $tblname;
+
+    protected function setDbName()
+    {
+        $con_string = Propel::getConfiguration()['datasources'][$this->getTable()->getDatabase()->getName()]['connection']['dsn'];
+        $db_block = explode(';', $con_string)[1];
+        $this->dbname = substr($db_block, 7);
+    }
+
+    protected function setConnection()
+    {
+        $this->conn = Propel::getConnection();
+    }
+
+    protected function setTblName()
+    {
+        $this->tblname = $this->getTable()->getName();
+    }
+    
+    
     protected $parameters = array(
         'plan_id_column'      => 'plan_id',
         'expires_at_column'   => 'expires_at',
@@ -18,6 +40,10 @@ class SubscriptionBehavior extends Behavior
 
     public function modifyTable()
     {
+        $this->setDbName();
+        $this->setConnection();
+        $this->setTblName();
+
         if (!$this->getTable()->containsColumn($this->getParameter('plan_id_column'))) {
             $this->getTable()->addColumn(array(
                 'name' => $this->getParameter('plan_id_column'),
@@ -54,48 +80,51 @@ class SubscriptionBehavior extends Behavior
     
     public function populatePlanColumn()
     {
-        $default_plan_id = 1;
-        $sql_plan_id = "select id from plan order by rank limit 1";
-        $conn = Propel::getConnection();
-        $st_plan_id = $conn->prepare($sql_plan_id);
-        $st_plan_id->execute();
-        $plan_id = $st_plan_id->fetchColumn(0);
+        if ($this->existsColumn($this->getParameter('plan_id_column'), $this->tblname, $this->dbname)) {
+            $default_plan_id = 1;
+            $sql_plan_id = "select id from plan order by rank limit 1";
+            $st_plan_id = $this->conn->prepare($sql_plan_id);
+            $st_plan_id->execute();
+            $plan_id = $st_plan_id->fetchColumn(0);
 
-        if (!$plan_id == null ) {
-            $default_plan_id = $plan_id;
+            if (!$plan_id == null ) {
+                $default_plan_id = $plan_id;
+            }
+
+            $sql = sprintf("update %s set %s = %d where %s is null;",
+                $this->getTable()->getName(),
+                $this->getParameter('plan_id_column'),
+                $default_plan_id,
+                $this->getParameter('plan_id_column')
+            );
+            $st = $this->conn->prepare($sql);
+            $st->execute();
         }
-
-        $sql = sprintf("update %s set %s = %d where %s is null;",
-            $this->getTable()->getName(),
-            $this->getParameter('plan_id_column'),
-            $default_plan_id,
-            $this->getParameter('plan_id_column')
-        );
-        $st = $conn->prepare($sql);
-        $st->execute();
     }
     
     public function createPlanColumn()
     {
-        $conn = Propel::getConnection();
-        $con_string = Propel::getConfiguration()['datasources'][$this->getTable()->getDatabase()->getName()]['connection']['dsn'];
-        $db_block = explode(';', $con_string)[1];
-        $dbname = substr($db_block, 7);
+        if ($this->existsTable($this->tblname, $this->dbname) && !$this->existsColumn($this->getParameter('plan_id_column'), $$this->tblname, $this->dbname)) {
+           $sql = sprintf("alter table %s add %s integer not null",
+                $this->getTable()->getName(),
+                $this->getParameter('plan_id_column')
+            );
+            $st = $conn->prepare($sql);
+            $st->execute();
+            $this->populatePlanColumn();
+        }
+    }
 
-       $sql = sprintf("if not exists (select * from %s where %s is null or %s > 0 )
-            begin 
-            alter table %s add %s integer not null
-            end;",
-            $this->getTable()->getName(),
-            $this->getParameter('plan_id_column'),
-            $db,
-            $this->getParameter('plan_id_column')
-        );
-        $st = $conn->prepare($sql);
-        $st->execute();
-        $a = $st->fetchAll();
-        print_r($a); die;
-        $this->populatePlanColumn();
+    public function createExpiresAtColumn()
+    {
+        if ($this->existsTable($this->tblname, $this->dbname) && !$this->existsColumn($this->getParameter('expires_at_column'), $$this->tblname, $this->dbname)) {
+           $sql = sprintf("alter table %s add %s date",
+                $this->getTable()->getName(),
+                $this->getParameter('expires_at_column')
+            );
+            $st = $conn->prepare($sql);
+            $st->execute();
+        }
     }
     
     public function existsTable($tblname, $dbname)
