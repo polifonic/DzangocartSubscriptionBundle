@@ -14,8 +14,9 @@ class SubscriptionBehavior extends Behavior
 
     protected function setDbName() {
         $con_string = Propel::getConfiguration()['datasources'][$this->getTable()->getDatabase()->getName()]['connection']['dsn'];
-        $db_block = explode(';', $con_string)[1];
-        $this->dbname = substr($db_block, 7);
+        $start = strpos($con_string, 'dbname=') + 7;
+        $db_block = substr($con_string, $start);
+        $this->dbname = substr($db_block, 0, strpos($db_block, ';'));
     }
 
     protected function setConnection() {
