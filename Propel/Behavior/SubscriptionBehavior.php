@@ -12,18 +12,21 @@ class SubscriptionBehavior extends Behavior
     protected $conn;
     protected $tblname;
 
-    protected function setDbName() {
+    protected function setDbName()
+    {
         $con_string = Propel::getConfiguration()['datasources'][$this->getTable()->getDatabase()->getName()]['connection']['dsn'];
         $start = strpos($con_string, 'dbname=') + 7;
         $db_block = substr($con_string, $start);
         $this->dbname = substr($db_block, 0, strpos($db_block, ';'));
     }
 
-    protected function setConnection() {
+    protected function setConnection()
+    {
         $this->conn = Propel::getConnection();
     }
 
-    protected function setTblName() {
+    protected function setTblName()
+    {
         $this->tblname = $this->getTable()->getName();
     }
 
@@ -35,7 +38,8 @@ class SubscriptionBehavior extends Behavior
         'populate_plan_id_column' => 'false'
     );
 
-    public function modifyTable() {
+    public function modifyTable()
+    {
         $this->setDbName();
         $this->setConnection();
         $this->setTblName();
@@ -74,7 +78,8 @@ class SubscriptionBehavior extends Behavior
         }
     }
 
-    public function populatePlanColumn() {
+    public function populatePlanColumn()
+    {
         if ($this->existsColumn($this->getParameter('plan_id_column'), $this->tblname, $this->dbname)) {
             $default_plan_id = 1;
             $sql_plan_id = "select id from plan order by rank limit 1";
@@ -85,6 +90,7 @@ class SubscriptionBehavior extends Behavior
             if (!$plan_id == null) {
                 $default_plan_id = $plan_id;
             }
+
             $sql = sprintf("update %s set %s = %d where %s = 0 or %s is null;",
                 $this->getTable()->getName(),
                 $this->getParameter('plan_id_column'),
@@ -97,7 +103,8 @@ class SubscriptionBehavior extends Behavior
         }
     }
 
-    public function createPlanColumn() {
+    public function createPlanColumn()
+    {
         if ($this->existsTable($this->tblname, $this->dbname) && !$this->existsColumn($this->getParameter('plan_id_column'), $this->tblname, $this->dbname)) {
             $sql = sprintf("alter table %s add %s integer not null",
                 $this->getTable()->getName(),
@@ -109,7 +116,8 @@ class SubscriptionBehavior extends Behavior
         }
     }
 
-    public function createExpiresAtColumn() {
+    public function createExpiresAtColumn()
+    {
         if ($this->existsTable($this->tblname, $this->dbname) && !$this->existsColumn($this->getParameter('expires_at_column'), $this->tblname, $this->dbname)) {
             $sql = sprintf("alter table %s add %s date",
                 $this->getTable()->getName(),
@@ -120,7 +128,8 @@ class SubscriptionBehavior extends Behavior
         }
     }
 
-    public function existsTable($tblname, $dbname) {
+    public function existsTable($tblname, $dbname)
+    {
         $sql = sprintf('select table_name from information_schema.tables where table_schema = \'%s\' and table_name = \'%s\'',
             $dbname,
             $tblname
@@ -130,7 +139,8 @@ class SubscriptionBehavior extends Behavior
         return ($st->fetchAll() == null ? false : true);
     }
 
-    public function existsColumn($colname, $tblname, $dbname) {
+    public function existsColumn($colname, $tblname, $dbname)
+    {
         $sql = sprintf('select table_name from information_schema.columns where table_schema = \'%s\' and table_name = \'%s\' and column_name = \'%s\'',
             $dbname,
             $tblname,
