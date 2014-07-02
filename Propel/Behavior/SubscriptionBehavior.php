@@ -21,7 +21,7 @@ class SubscriptionBehavior extends Behavior
                 'required' => 'true'
             ));
 
-            $fk = new ForeignKey();
+            $fk = new ForeignKey('FI_subscription_plan');
             $fk->setForeignTableCommonName('plan');
             $fk->setOnDelete(ForeignKey::RESTRICT);
             $fk->addReference($this->getParameter('plan_id_column'), 'id');
