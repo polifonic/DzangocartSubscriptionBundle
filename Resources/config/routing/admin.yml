@@ -1,7 +1,53 @@
-dzangocart_subscription_plan:
-    resource: "@DzangocartSubscriptionBundle/Controller/PlanController.php"
-    type: annotation
-
 dzangocart_subscription_feature:
     resource: "@DzangocartSubscriptionBundle/Controller/FeatureController.php"
     type: annotation
+    
+dzangocart_subscription_plans:
+    pattern: /plan
+    defaults: { _controller: dzangocartsubscription.plan.controller:indexAction}
+
+dzangocart_subscription_plan:
+    pattern: /plan/{id}
+    defaults: { _controller: dzangocartsubscription.plan.controller:showAction}
+    requirements:
+        id: \d+
+
+dzangocart_subscription_plan_edit:
+    pattern: /plan/{id}/edit
+    defaults: { _controller: dzangocartsubscription.plan.controller:editAction}
+    requirements:
+        id: \d+
+
+dzangocart_subscription_plan_delete:
+    pattern: /plan/{id}/delete
+    defaults: { _controller: dzangocartsubscription.plan.controller:deleteAction}
+    requirements:
+        id: \d+
+
+dzangocart_subscription_plan_create:
+    pattern: /plan/create
+    defaults: { _controller: dzangocartsubscription.plan.controller:createAction}
+    
+dzangocart_subscription_plan_disable:
+    pattern: /plan/{id}/disable
+    defaults: { _controller: dzangocartsubscription.plan.controller:disableAction}
+    requirements:
+        id: \d+
+
+dzangocart_subscription_plan_enable:
+    pattern: /plan/{id}/enable
+    defaults: { _controller: dzangocartsubscription.plan.controller:enableAction}
+    requirements:
+        id: \d+
+
+dzangocart_subscription_plan_features:
+    pattern: /plan/{id}/features
+    defaults: { _controller: dzangocartsubscription.plan.controller:featuresAction}
+    requirements:
+        id: \d+
+
+dzangocart_subscription_plan_prices:
+    pattern: /plan/{id}/prices
+    defaults: { _controller: dzangocartsubscription.plan.controller:pricesAction}
+    requirements:
+        id: \d+

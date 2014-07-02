@@ -8,23 +8,23 @@ use Dzangocart\Bundle\SubscriptionBundle\Form\Type\PlanPricesFormType;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\Plan;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanQuery;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-/**
- * @Route("/plan")
- * @Template
- */
 class PlanController extends Controller
 {
+    protected $container;
+
+    public function __construct(ContainerInterface $container = null)
+    {
+        $this->container = $container;
+    }
     /**
      * Lists all Plans.
-     *
-     * @Route("/", name="dzangocart_subscription_plans")
      * @Template("DzangocartSubscriptionBundle:Plan:index.html.twig")
      */
     public function indexAction()
@@ -39,8 +39,6 @@ class PlanController extends Controller
 
     /**
      * Displays a Plan.
-     *
-     * @Route("/{id}", name="dzangocart_subscription_plan", requirements={"id" = "\d+"})
      * @Template("DzangocartSubscriptionBundle:Plan:show.html.twig")
      */
     public function showAction(Request $request, $id)
@@ -54,8 +52,6 @@ class PlanController extends Controller
 
     /**
      * Displays a form to edit an existing Plan.
-     *
-     * @Route("/{id}/edit", name="dzangocart_subscription_plan_edit", requirements={"id" = "\d+"})
      * @Template("DzangocartSubscriptionBundle:Plan:edit.html.twig")
      */
     public function editAction(Request $request, $id)
@@ -89,8 +85,6 @@ class PlanController extends Controller
 
     /**
      * Delete existing Plan entity.
-     *
-     * @Route("/{id}/delete", name="dzangocart_subscription_plan_delete", requirements={"id" = "\d+"})
      * @Template()
      */
     public function deleteAction(Request $request, $id)
@@ -114,8 +108,6 @@ class PlanController extends Controller
 
     /**
      * Create a Plan entity.
-     *
-     * @Route("/create", name="dzangocart_subscription_plan_create")
      * @Template("DzangocartSubscriptionBundle:Plan:create.html.twig")
      */
     public function createAction(Request $request)
@@ -147,8 +139,6 @@ class PlanController extends Controller
     }
 
     /**
-     *
-     * @Route("/{id}/disable", name="dzangocart_subscription_plan_disable", requirements={"id" = "\d+"})
      * @Template()
      */
     public function disableAction(Request $request, $id)
@@ -163,7 +153,6 @@ class PlanController extends Controller
     }
 
     /**
-     * @Route("/{id}/enable", name="dzangocart_subscription_plan_enable", requirements={"id" = "\d+"})
      * @Template()
      */
     public function enableAction(Request $request, $id)
@@ -179,8 +168,6 @@ class PlanController extends Controller
 
     /**
      * Displays a form to edit a Plan's features.
-     *
-     * @Route("/{id}/features", name="dzangocart_subscription_plan_features", requirements={"id" = "\d+"})
      * @Template("DzangocartSubscriptionBundle:Plan:features.html.twig")
      */
     public function featuresAction(Request $request, $id)
@@ -215,8 +202,6 @@ class PlanController extends Controller
 
     /**
      * Displays a form to edit a Plan's prices.
-     *
-     * @Route("/{id}/prices", name="dzangocart_subscription_plan_prices", requirements={"id" = "\d+"})
      * @Template("DzangocartSubscriptionBundle:Plan:prices.html.twig")
      */
     public function pricesAction(Request $request, $id)

@@ -4,3 +4,4 @@ parameters:
 services:
     dzangocartsubscription.plan.controller:
         class:     "%dzangocartsubscription.controller.plan.class%"
+        arguments: [@service_container]
