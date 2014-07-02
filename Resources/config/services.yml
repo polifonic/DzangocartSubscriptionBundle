@@ -1,0 +1,6 @@
+parameters:
+    dzangocartsubscription.controller.plan.class: Dzangocart\Bundle\SubscriptionBundle\Controller\PlanController
+
+services:
+    dzangocartsubscription.plan.controller:
+        class:     "%dzangocartsubscription.controller.plan.class%"
