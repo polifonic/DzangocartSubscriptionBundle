@@ -30,7 +30,7 @@ class PlanController
     protected $session;
     protected $translator;
 
-    public function __construct(EngineInterface $templating,  RequestStack $request_stack, FormFactory $form_factory,  Router $router, Session $session, Translator $translator)
+public function __construct(FormFactory $form_factory, RequestStack $request_stack, Router $router, Session $session, EngineInterface $templating, Translator $translator)
     {
         $this->templating = $templating;
         $this->request_stack = $request_stack;
