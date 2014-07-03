@@ -10,19 +10,36 @@ use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanQuery;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Bundle\FrameworkBundle\Routing\Router;
+use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
+use Symfony\Bundle\FrameworkBundle\Translation\Translator;
+use Symfony\Component\Form\FormFactory;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-class PlanController extends Controller
+class PlanController
 {
-    protected $container;
+    protected $templating;
+    protected $request_stack;
+    protected  $form_factory;
+    protected $router;
+    protected $session;
+    protected $translator;
 
-    public function __construct(ContainerInterface $container = null)
+    public function __construct(EngineInterface $templating,  RequestStack $request_stack, FormFactory $form_factory,  Router $router, Session $session, Translator $translator)
     {
-        $this->container = $container;
+        $this->templating = $templating;
+        $this->request_stack = $request_stack;
+        $this->form_factory = $form_factory;
+        $this->router = $router;
+        $this->session = $session;
+        $this->translator = $translator;
     }
+
     /**
      * Lists all Plans.
      * @Template("DzangocartSubscriptionBundle:Plan:index.html.twig")
@@ -33,8 +50,8 @@ class PlanController extends Controller
             ->find();
 
         return array(
-            'plans' => $plans
-        );
+                'plans' => $plans
+            );
     }
 
     /**
@@ -58,11 +75,14 @@ class PlanController extends Controller
     {
         $plan = $this->getPlan($id);
 
-        $form = $this->createForm(
+        $form = $this->form_factory->create(
             new PlanFormType($request->getLocale()),
             $plan,
             array(
-                'action' => $this->generateUrl('dzangocart_subscription_plan_edit', array('id' => $id))
+                'action' => $this->router->generate('dzangocart_subscription_plan_edit',
+                    array('id' => $id),
+                    UrlGeneratorInterface::ABSOLUTE_PATH
+                )
             )
         );
 
@@ -71,9 +91,9 @@ class PlanController extends Controller
         if ($form->isValid()) {
             $plan->save();
 
-            $this->get('session')->getFlashBag()->add(
+            $this->session->getFlashBag()->add(
                 'plan.edit',
-                $this->get('translator')->trans('plan.edit.success', array(), 'dzangocart_subscription', $request->getLocale())
+                $this->translator->trans('plan.edit.success', array(), 'dzangocart_subscription', $request->getLocale())
             );
         }
 
@@ -93,9 +113,9 @@ class PlanController extends Controller
 
         $plan->delete();
 
-        $this->get('session')->getFlashBag()->add(
+        $this->session->getFlashBag()->add(
             'success',
-            $plan->getName() . " " . $this->get('translator')->trans(
+            $plan->getName() . " " . $this->translator->trans(
                 'plan.delete.success',
                 array(),
                 'dzangocart_subscription',
@@ -103,7 +123,7 @@ class PlanController extends Controller
             )
         );
 
-        return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
+        return new RedirectResponse($this->router->generate('dzangocart_subscription_plans'));
     }
 
     /**
@@ -116,11 +136,15 @@ class PlanController extends Controller
 
         $plan->setLocale($request->getLocale());
 
-        $form = $this->createForm(
+        $form = $this->form_factory->create(
             new PlanFormType(),
             $plan,
             array(
-                'action' => $this->generateUrl('dzangocart_subscription_plan_create')
+                'action' => $this->router->generate(
+                    'dzangocart_subscription_plan_create',
+                    array(),
+                    UrlGeneratorInterface::ABSOLUTE_PATH
+                )
             )
         );
 
@@ -129,7 +153,13 @@ class PlanController extends Controller
         if ($form->isValid()) {
             $plan->save();
 
-            return $this->redirect($this->generateUrl('dzangocart_subscription_plan', array('id' => $plan->getId())));
+            return new RedirectResponse($this->router
+                ->generate(
+                    'dzangocart_subscription_plan',
+                    array('id' => $plan->getId()),
+                    UrlGeneratorInterface::ABSOLUTE_PATH
+                )
+            );
         }
 
         return array(
@@ -149,7 +179,13 @@ class PlanController extends Controller
 
         $plan->save();
 
-        return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
+        return new RedirectResponse($this->router
+            ->generate(
+                'dzangocart_subscription_plans',
+                array(),
+                UrlGeneratorInterface::ABSOLUTE_PATH
+            )
+        );
     }
 
     /**
@@ -163,7 +199,13 @@ class PlanController extends Controller
 
         $plan->save();
 
-        return $this->redirect($this->generateUrl('dzangocart_subscription_plans'));
+        return new RedirectResponse($this->router
+            ->generate(
+                'dzangocart_subscription_plans',
+                array(),
+                UrlGeneratorInterface::ABSOLUTE_PATH
+            )
+        );
     }
 
     /**
@@ -174,11 +216,16 @@ class PlanController extends Controller
     {
         $plan = $this->getPlan($id);
 
-        $form = $this->createForm(
+        $form = $this->form_factory->create(
             new PlanFeaturesFormType($request->getLocale()),
             $plan,
             array(
-                'action' => $this->generateUrl('dzangocart_subscription_plan_features', array('id' => $id))
+                'action' => $this->router
+                ->generate(
+                    'dzangocart_subscription_plan_features',
+                    array('id' => $id),
+                    UrlGeneratorInterface::ABSOLUTE_PATH
+                )
             )
         );
 
@@ -187,9 +234,9 @@ class PlanController extends Controller
         if ($form->isValid()) {
             $plan->save();
 
-            $this->get('session')->getFlashBag()->add(
+            $this->session->getFlashBag()->add(
                 'plan.features',
-                $this->get('translator')->trans('plan.features.success', array(), 'dzangocart_subscription', $request->getLocale())
+                $this->translator->trans('plan.features.success', array(), 'dzangocart_subscription', $request->getLocale())
             );
         }
 
@@ -208,11 +255,16 @@ class PlanController extends Controller
     {
         $plan = $this->getPlan($id);
 
-        $form = $this->createForm(
+        $form = $this->form_factory->create(
             new PlanPricesFormType($request->getLocale()),
             $plan,
             array(
-                'action' => $this->generateUrl('dzangocart_subscription_plan_prices', array('id' => $id))
+                'action' => $this->router
+                ->generate(
+                    'dzangocart_subscription_plan_prices',
+                    array('id' => $id),
+                    UrlGeneratorInterface::ABSOLUTE_PATH
+                )
             )
         );
 
@@ -220,9 +272,9 @@ class PlanController extends Controller
 
         if ($form->isValid()) {
             $plan->save();
-            $this->get('session')->getFlashBag()->add(
+            $this->session->getFlashBag()->add(
                 'plan.prices',
-                $this->get('translator')->trans('plan.prices.success', array(), 'dzangocart_subscription', $request->getLocale())
+                $this->translator->trans('plan.prices.success', array(), 'dzangocart_subscription', $request->getLocale())
             );
         }
 
@@ -235,7 +287,7 @@ class PlanController extends Controller
     protected function getQuery()
     {
         return PlanQuery::create()
-            ->joinWithI18n($this->getRequest()->getLocale())
+            ->joinWithI18n($this->request_stack->getCurrentRequest()->getLocale())
             ->orderByRank();
     }
 

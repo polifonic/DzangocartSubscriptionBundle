@@ -25,13 +25,13 @@
 {% block dzangocart_subscription_content %}
 <div class="tabs">
 	<div id="info" class="tab-pane info">
-		{{ render(controller("DzangocartSubscriptionBundle:Plan:edit", { id: plan.id })) }}
+		{{ render(controller("dzangocartsubscription.plan.controller:editAction", { id: plan.id })) }}
 	</div>
 	<div id="features" class="tab-pane features">
-		{% render(controller("DzangocartSubscriptionBundle:Plan:features", { id: plan.id })) %}
+		{% render(controller("dzangocartsubscription.plan.controller:featuresAction", { id: plan.id })) %}
 	</div>
 	<div id="prices" class="tab-pane prices">
-		{% render(controller("DzangocartSubscriptionBundle:Plan:prices", { id: plan.id })) %}
+		{% render(controller("dzangocartsubscription.plan.controller:pricesAction", { id: plan.id })) %}
 	</div>
 </div>
 {% endblock %}
