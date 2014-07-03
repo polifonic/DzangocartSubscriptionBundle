@@ -4,4 +4,10 @@ parameters:
 services:
     dzangocartsubscription.plan.controller:
         class:     "%dzangocartsubscription.controller.plan.class%"
-        arguments: [@service_container]
+        arguments: 
+            - @templating
+            - @request_stack
+            - @form.factory
+            - @router
+            - @session
+            - @translator
