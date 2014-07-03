@@ -5,9 +5,9 @@ services:
     dzangocartsubscription.plan.controller:
         class:     "%dzangocartsubscription.controller.plan.class%"
         arguments: 
-            - @templating
-            - @request_stack
             - @form.factory
+            - @request_stack
             - @router
             - @session
+            - @templating
             - @translator
