@@ -25,7 +25,8 @@ class DomainSubscriptionBehavior extends Behavior
         if (!$this->getTable()->containsColumn($this->getParameter('host_column'))) {
             $this->getTable()->addColumn(array(
                 'name' => $this->getParameter('host_column'),
-                'type' => 'VARCHAR'
+                'type' => 'VARCHAR',
+                'size' => '100'
             ));
         }
     }
