@@ -30,4 +30,16 @@ class DomainSubscriptionBehavior extends Behavior
             ));
         }
     }
+
+    public function objectMethods(PHP5ObjectBuilder $builder)
+    { 
+    return 'public function getHostname()
+{
+    if (!$this->getCustom() == null ) {
+        return $this->getCustom();
+    } else {
+        return $this->get'.ucfirst($this->getParameter('domain_column')).'().\'.\'.$this->get'. ucfirst($this->getParameter('host_column')).'();
+    }
+}';
+    }
 }
