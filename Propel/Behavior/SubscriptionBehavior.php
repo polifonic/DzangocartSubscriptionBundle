@@ -24,7 +24,7 @@ class SubscriptionBehavior extends Behavior
             ));
 
             $fk = new ForeignKey('FI_subscription_plan');
-            $fk->setForeignTableCommonName(PlanPeer::TABLE_NAME);
+            $fk->setForeignTableCommonName('dzangocart_subscription_plan');
             $fk->setOnDelete(ForeignKey::RESTRICT);
             $fk->addReference($this->getParameter('plan_id_column'), 'id');
             $this->getTable()->addForeignKey($fk);
