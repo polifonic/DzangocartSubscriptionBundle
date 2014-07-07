@@ -3,16 +3,11 @@ feature:
         cancel:         '&larr; Cancel'
         page_title:     Create a new feature
         success:        The new feature was created successfully.
+
     edit:
         cancel:         '&larr; Cancel'
         success:        The feature has been updated successfully.
         title:          Info
-    form:
-        description:
-            label:      Description
-        name:
-            label:      Name
-        submit:         Save
 
     features:
         actions:
@@ -27,8 +22,11 @@ feature:
         rank:           Rank
 
     form:
-        submit:
-            label:      Save
+        description:
+            label:      Description
+        name:
+            label:      Name
+        submit:         Save
 
     plans:
         period:         Period
@@ -55,6 +53,7 @@ plan:
         description:    Description
         name:           Feature
         period:         Per
+        submit:         Update
         success:        The plan's features have been updated.
         title:          Features
         unit:           Unit
