@@ -43,7 +43,7 @@ class DomainSubscriptionBehavior extends Behavior
 
         $domain_array = explode('_', $this->getParameter('domain_column'));
         $name_for_get_domain = '';
-        
+
         foreach ($domain_array as $x) {
             $name_for_get_domain = $name_for_get_domain . ucfirst($x);
         }
