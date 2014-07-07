@@ -2,8 +2,6 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Propel;
 
-use Criteria;
-
 use Dzangocart\Bundle\SubscriptionBundle\Propel\om\BasePlan;
 
 class Plan extends BasePlan
@@ -47,31 +45,29 @@ class Plan extends BasePlan
 
     public function getFeatures($criteria = null, PropelPDO $con = null)
     {
-        $_features = array();
-
-        foreach (parent::getFeatures() as $feature) {
-            $_features[$feature->getDefinitionId()] = $feature;
-        }
-
-        $definitions = FeatureDefinitionQuery::create()
-            ->joinWithI18n($this->getLocale())
-            ->orderByRank()
-            ->find();
-
         $features = array();
 
-        foreach ($definitions as $definition) {
-            $id = $definition->getId();
+        foreach (parent::getFeatures() as $feature) {
+            $features[$feature->getDefinitionId()] = $feature;
+        }
+
+        $query = FeatureQuery::create()
+            ->joinWithI18n($this->getLocale())
+            ->orderByRank();
+
+
+        foreach ($query->find() as $feature) {
+            $id = $feature->getId();
 
             if (array_key_exists($id, $_features)) {
-                $feature = $_features[$id];
+                $plan_feature = $features[$id];
             } else {
-                $feature = new Feature();
-                $feature->setDefinition($definition);
-                $feature->setPlan($this);
+                $plan_eature = new PlanFeature();
+                $plan_feature->setFeature($feature);
+                $plan_feature->setPlan($this);
             }
 
-            $features[$id] = $feature;
+            $features[$id] = $plan_feature;
         }
 
         return $features;

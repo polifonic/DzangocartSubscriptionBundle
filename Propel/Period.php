@@ -6,5 +6,4 @@ use Dzangocart\Bundle\SubscriptionBundle\Propel\om\BasePeriod;
 
 class Period extends BasePeriod
 {
-
 }

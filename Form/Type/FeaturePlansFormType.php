@@ -25,7 +25,7 @@ class FeaturePlansFormType extends BaseAbstractType
     {
         $resolver->setDefaults(array(
             'translation_domain' => 'dzangocart_subscription',
-            'data_class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\FeatureDefinition',
+            'data_class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\Feature',
             'name' => 'dzangocart_subscription_feature_plans',
             'intention' => 'feature_plans'
         ));
@@ -37,18 +37,18 @@ class FeaturePlansFormType extends BaseAbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add(
-            'features',
+            'plan_features',
             'collection',
             array(
                 'label' => false,
-                'type' => new FeatureFormType($this->getLocale()),
+                'type' => new PlanFeatureFormType($this->getLocale()),
                 'allow_add' => false,
                 'allow_delete' => false
             )
         );
 
         $builder->add('save', 'submit', array(
-            'label' => 'feature.form.submit.label'
+            'label' => 'feature.plans.submit'
         ));
     }
 }

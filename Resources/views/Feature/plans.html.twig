@@ -15,19 +15,19 @@
 <table class="table">
 	<thead>
 		<tr>
-			<th class="name">{% trans %}feature.plans.name{% endtrans %}</th>
+			<th class="name">{% trans %}feature.plans.plan{% endtrans %}</th>
 			<th class="value">{% trans %}feature.plans.value{% endtrans %}</th>
 			<th class="unit">{% trans %}feature.plans.unit{% endtrans %}</th>
 			<th class="period">{% trans %}feature.plans.period{% endtrans %}</th>
 		</tr>
 	</thead>
 	<tbody>
-	{% for id, feature in form.features %}
+	{% for plan_feature in form.plan_features %}
 		<tr>
-			<td>{{ features[id].plan.name }}</td>
-			<td>{{ form_widget(feature.value) }}</td>
-			<td>{{ form_widget(feature.unit) }}</td>
-			<td>{{ form_widget(feature.period) }}</td>
+			<td>{{ plan_feature.vars.value.plan.name }}</td>
+			<td>{{ form_widget(plan_feature.value) }}</td>
+			<td>{{ form_widget(plan_feature.unit) }}</td>
+			<td>{{ form_widget(plan_feature.period) }}</td>
 		</tr>
 	{% endfor %}
 	</tbody>

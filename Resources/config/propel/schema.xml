@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database name="default" namespace="Dzangocart\Bundle\SubscriptionBundle\Propel" defaultIdMethod="native">
-	<table name="dzangocart_plan" phpName="Plan">
+	<table name="dzangocart_subscription_plan" phpName="Plan">
 		<column name="id"          type="integer" required="true" primaryKey="true" autoIncrement="true" />
 		<column name="name"        type="varchar" size="100" required="true" primaryString="true" />
 		<column name="description" type="longvarchar" required="true" />
@@ -16,7 +16,7 @@
 		</behavior>
 	</table>
 
-	<table name="dzangocart_plan_price" phpName="Price">
+	<table name="dzangocart_subscription_price" phpName="Price">
 		<column name="id"         type="integer" required="true" primaryKey="true" autoIncrement="true" />
 		<column name="plan_id"    type="integer" required="true" />
 		<column name="currency"   type="varchar" size="3" required="true" default="EUR" />
@@ -25,10 +25,10 @@
 		<column name="start"      type="timestamp" required="false" />
 		<column name="finish"     type="timestamp" required="false" />
 		<column name="is_default" type="boolean" required="true" default="false" />
-		<foreign-key foreignTable="dzangocart_plan" refPhpName="Price" onDelete="cascade">
+		<foreign-key foreignTable="dzangocart_subscription_plan" onDelete="cascade">
 			<reference local="plan_id" foreign="id" />
 		</foreign-key>
-		<foreign-key foreignTable="dzangocart_plan_period" phpName="Period">
+		<foreign-key foreignTable="dzangocart_subscription_period" phpName="Period">
 			<reference local="period_id" foreign="id" />
 		</foreign-key>
 		<behavior name="sortable">
@@ -36,7 +36,7 @@
 		</behavior>
 	</table>
 
-	<table name="dzangocart_plan_feature_definition" phpName="FeatureDefinition">
+	<table name="dzangocart_subscription_feature" phpName="Feature">
 		<column name="id"          type="integer" required="true" primaryKey="true" autoIncrement="true" />
 		<column name="name"        type="varchar" size="100" required="true" primaryString="true" />
 		<column name="description" type="longvarchar" required="false" />
@@ -48,23 +48,23 @@
 		</behavior>
 	</table>
 
-	<table name="dzangocart_plan_feature" phpName="Feature">
+	<table name="dzangocart_subscription_plan_feature" phpName="PlanFeature">
 		<column name="id"            type="integer" required="true" primaryKey="true" autoIncrement="true" />
 		<column name="plan_id"       type="integer" required="true" />
-		<column name="definition_id" type="integer" required="true" />
+		<column name="feature_id"    type="integer" required="true" />
 		<column name="value"         type="varchar" size="255" required="true" />
 		<column name="period_id"     type="integer" required="false" />
 		<column name="unit_id"       type="integer" required="false" />
-		<foreign-key foreignTable="dzangocart_plan" name="FI_plan_feature_plan" onDelete="cascade">
+		<foreign-key foreignTable="dzangocart_subscription_plan" name="FI_plan_feature_plan" refPhpName="Feature" onDelete="cascade">
 			<reference local="plan_id" foreign="id" />
 		</foreign-key>
-		<foreign-key foreignTable="dzangocart_plan_feature_definition" name="FI_plan_feature_definition" phpName="Definition" onDelete="restrict">
-			<reference local="definition_id" foreign="id" />
+		<foreign-key foreignTable="dzangocart_subscription_feature" name="FI_plan_feature" onDelete="restrict">
+			<reference local="feature_id" foreign="id" />
 		</foreign-key>
-		<foreign-key foreignTable="dzangocart_plan_period" name="FI_plan_feature_period" phpName="Period" onDelete="restrict">
+		<foreign-key foreignTable="dzangocart_subscription_period" name="FI_plan_feature_period" phpName="Period" onDelete="restrict">
 			<reference local="period_id" foreign="id" />
 		</foreign-key>
-		<foreign-key foreignTable="dzangocart_plan_unit" name="FI_plan_feature_unit" phpName="Unit" onDelete="restrict">
+		<foreign-key foreignTable="dzangocart_subscription_unit" name="FI_plan_feature_unit" phpName="Unit" onDelete="restrict">
 			<reference local="unit_id" foreign="id" />
 		</foreign-key>
 		<index>
@@ -79,7 +79,7 @@
 		</unique>
 	</table>
 
-	<table name="dzangocart_plan_period" phpName="Period" allowPkInsert="true">
+	<table name="dzangocart_subscription_period" phpName="Period" allowPkInsert="true">
 		<column name="id"            type="integer" required="true" primaryKey="true" autoIncrement="true" />
 		<column name="date_interval" type="varchar" size="10" required="true" />
 		<column name="name"          type="varchar" size="20" required="true" primaryString="true" />
@@ -89,7 +89,7 @@
 		</behavior>
 	</table>
 
-	<table name="dzangocart_plan_unit" phpName="Unit" allowPkInsert="true">
+	<table name="dzangocart_subscription_unit" phpName="Unit" allowPkInsert="true">
 		<column name="id"     type="integer" required="true" primaryKey="true" autoIncrement="true" />
 		<column name="name"   type="varchar" size="20" required="true" primaryString="true" />
 		<column name="plural" type="varchar" size="20" required="true" />
@@ -97,5 +97,4 @@
 			<parameter name="i18n_columns" value="name, plural"/>
 		</behavior>
 	</table>
-
 </database>

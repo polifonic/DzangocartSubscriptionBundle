@@ -8,7 +8,6 @@ class DomainSubscriptionBehavior extends Behavior
 {
     protected $parameters = array(
         'domain_column' => 'domain',
-        'host_column' => 'host',
         'custom_column' => 'custom'
     );
 
@@ -23,9 +22,9 @@ class DomainSubscriptionBehavior extends Behavior
             ));
         }
 
-        if (!$this->getTable()->containsColumn($this->getParameter('host_column'))) {
+        if (!$this->getTable()->containsColumn($this->getParameter('custom_column'))) {
             $this->getTable()->addColumn(array(
-                'name' => $this->getParameter('host_column'),
+                'name' => $this->getParameter('custom_column'),
                 'type' => 'VARCHAR',
                 'size' => '100'
             ));

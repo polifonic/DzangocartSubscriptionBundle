@@ -5,6 +5,8 @@ namespace Dzangocart\Bundle\SubscriptionBundle\Propel\Behavior;
 use Behavior;
 use ForeignKey;
 
+use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanPeer;
+
 class SubscriptionBehavior extends Behavior
 {
     protected $parameters = array(
@@ -22,7 +24,7 @@ class SubscriptionBehavior extends Behavior
             ));
 
             $fk = new ForeignKey('FI_subscription_plan');
-            $fk->setForeignTableCommonName('dzangocart_plan');
+            $fk->setForeignTableCommonName(PlanPeer::TABLE_NAME);
             $fk->setOnDelete(ForeignKey::RESTRICT);
             $fk->addReference($this->getParameter('plan_id_column'), 'id');
             $this->getTable()->addForeignKey($fk);
