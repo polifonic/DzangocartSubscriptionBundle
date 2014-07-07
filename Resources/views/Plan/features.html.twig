@@ -22,12 +22,12 @@
 		</tr>
 	</thead>
 	<tbody>
-	{% for id, feature in form.features %}
+	{% for plan_feature in form.features %}
 		<tr>
-			<td>{{ features[id].definition.name }}</td>
-			<td>{{ form_widget(feature.value) }}</td>
-			<td>{{ form_widget(feature.unit) }}</td>
-			<td>{{ form_widget(feature.period) }}</td>
+			<td>{{ plan_feature.vars.value.feature.name }}</td>
+			<td>{{ form_widget(plan_feature.value) }}</td>
+			<td>{{ form_widget(plan_feature.unit) }}</td>
+			<td>{{ form_widget(plan_feature.period) }}</td>
 		</tr>
 	{% endfor %}
 	</tbody>

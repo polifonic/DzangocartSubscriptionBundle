@@ -25,12 +25,12 @@ class PlanController
 {
     protected $templating;
     protected $request_stack;
-    protected  $form_factory;
+    protected $form_factory;
     protected $router;
     protected $session;
     protected $translator;
 
-public function __construct(FormFactory $form_factory, RequestStack $request_stack, Router $router, Session $session, EngineInterface $templating, Translator $translator)
+    public function __construct(FormFactory $form_factory, RequestStack $request_stack, Router $router, Session $session, EngineInterface $templating, Translator $translator)
     {
         $this->templating = $templating;
         $this->request_stack = $request_stack;
@@ -80,8 +80,7 @@ public function __construct(FormFactory $form_factory, RequestStack $request_sta
             $plan,
             array(
                 'action' => $this->router->generate('dzangocart_subscription_plan_edit',
-                    array('id' => $id),
-                    UrlGeneratorInterface::ABSOLUTE_PATH
+                    array('id' => $id)
                 )
             )
         );
@@ -141,9 +140,7 @@ public function __construct(FormFactory $form_factory, RequestStack $request_sta
             $plan,
             array(
                 'action' => $this->router->generate(
-                    'dzangocart_subscription_plan_create',
-                    array(),
-                    UrlGeneratorInterface::ABSOLUTE_PATH
+                    'dzangocart_subscription_plan_create'
                 )
             )
         );
@@ -156,8 +153,7 @@ public function __construct(FormFactory $form_factory, RequestStack $request_sta
             return new RedirectResponse($this->router
                 ->generate(
                     'dzangocart_subscription_plan',
-                    array('id' => $plan->getId()),
-                    UrlGeneratorInterface::ABSOLUTE_PATH
+                    array('id' => $plan->getId())
                 )
             );
         }
@@ -181,9 +177,7 @@ public function __construct(FormFactory $form_factory, RequestStack $request_sta
 
         return new RedirectResponse($this->router
             ->generate(
-                'dzangocart_subscription_plans',
-                array(),
-                UrlGeneratorInterface::ABSOLUTE_PATH
+                'dzangocart_subscription_plans'
             )
         );
     }
@@ -201,9 +195,7 @@ public function __construct(FormFactory $form_factory, RequestStack $request_sta
 
         return new RedirectResponse($this->router
             ->generate(
-                'dzangocart_subscription_plans',
-                array(),
-                UrlGeneratorInterface::ABSOLUTE_PATH
+                'dzangocart_subscription_plans'
             )
         );
     }
@@ -223,8 +215,7 @@ public function __construct(FormFactory $form_factory, RequestStack $request_sta
                 'action' => $this->router
                 ->generate(
                     'dzangocart_subscription_plan_features',
-                    array('id' => $id),
-                    UrlGeneratorInterface::ABSOLUTE_PATH
+                    array('id' => $id)
                 )
             )
         );
@@ -242,7 +233,6 @@ public function __construct(FormFactory $form_factory, RequestStack $request_sta
 
         return array(
             'plan' => $plan,
-            'features' => $plan->getFeatures(),
             'form' => $form->createView()
         );
     }

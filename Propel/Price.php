@@ -2,9 +2,6 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Propel;
 
-use NumberFormatter;
-use Symfony\Component\Intl\Intl;
-
 use Dzangocart\Bundle\SubscriptionBundle\Propel\om\BasePrice;
 
 class Price extends BasePrice

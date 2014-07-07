@@ -41,14 +41,14 @@ class PlanFeaturesFormType extends BaseAbstractType
             'collection',
             array(
                 'label' => false,
-                'type' => new FeatureFormType($this->getLocale()),
+                'type' => new PlanFeatureFormType($this->getLocale()),
                 'allow_add' => false,
                 'allow_delete' => false
             )
         );
 
         $builder->add('save', 'submit', array(
-            'label' => 'plan.form.submit.label'
+            'label' => 'plan.features.submit'
         ));
     }
 }

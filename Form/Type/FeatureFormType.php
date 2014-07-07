@@ -2,9 +2,6 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Form\Type;
 
-use Dzangocart\Bundle\SubscriptionBundle\Propel\PeriodQuery;
-use Dzangocart\Bundle\SubscriptionBundle\Propel\UnitQuery;
-
 use Propel\PropelBundle\Form\BaseAbstractType;
 
 use Symfony\Component\Form\FormBuilderInterface;
@@ -12,18 +9,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class FeatureFormType extends BaseAbstractType
 {
-    protected $locale;
-
-    public function __construct($locale)
-    {
-        $this->locale = $locale;
-    }
-
-    public function getLocale()
-    {
-        return $this->locale;
-    }
-
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
@@ -39,36 +24,19 @@ class FeatureFormType extends BaseAbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('value', 'text', array(
-            'label' => false
+        $builder->add('name', 'text', array(
+            'label' => 'feature.form.name.label'
         ));
 
-        $builder->add('unit', 'model', array(
-            'class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\Unit',
-            'property' => 'name',
-            'query' => $this->getUnitQuery(),
-            'label' => false,
-            'required' => false
+        $builder->add('description', 'textarea', array(
+            'label' => 'feature.form.description.label',
+            'attr' => array(
+                'rows' => 12
+            )
         ));
 
-        $builder->add('period', 'model', array(
-            'class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\Period',
-            'property' => 'name',
-            'query' => $this->getPeriodQuery(),
-            'label' => false,
-            'required' => false
+        $builder->add('submit', 'submit', array(
+            'label' => 'feature.form.submit'
         ));
-    }
-
-    protected function getUnitQuery()
-    {
-        return UnitQuery::create()
-            ->joinWithI18n($this->getLocale());
-    }
-
-    protected function getPeriodQuery()
-    {
-        return PeriodQuery::create()
-            ->joinWithI18n($this->getLocale());
     }
 }

@@ -2,10 +2,10 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Controller;
 
-use Dzangocart\Bundle\SubscriptionBundle\Form\Type\FeatureDefinitionFormType;
+use Dzangocart\Bundle\SubscriptionBundle\Form\Type\FeatureFormType;
 use Dzangocart\Bundle\SubscriptionBundle\Form\Type\FeaturePlansFormType;
-use Dzangocart\Bundle\SubscriptionBundle\Propel\FeatureDefinition;
-use Dzangocart\Bundle\SubscriptionBundle\Propel\FeatureDefinitionQuery;
+use Dzangocart\Bundle\SubscriptionBundle\Propel\Feature;
+use Dzangocart\Bundle\SubscriptionBundle\Propel\FeatureQuery;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -55,7 +55,7 @@ class FeatureController extends Controller
         $feature = $this->getFeature($id);
 
         $form = $this->createForm(
-            new FeatureDefinitionFormType(),
+            new FeatureFormType(),
             $feature,
             array(
                 'action' => $this->generateUrl('dzangocart_subscription_feature_edit', array('id' => $id))
@@ -103,12 +103,12 @@ class FeatureController extends Controller
      */
     public function createAction(Request $request)
     {
-        $feature = new FeatureDefinition();
+        $feature = new Feature();
 
         $feature->setLocale($request->getLocale());
 
         $form = $this->createForm(
-            new FeatureDefinitionFormType(),
+            new FeatureFormType(),
             $feature,
             array(
                 'action' => $this->generateUrl('dzangocart_subscription_feature_create')
@@ -144,11 +144,11 @@ class FeatureController extends Controller
      */
     public function plansAction(Request $request, $id)
     {
-        $feature_definition = $this->getFeature($id);
+        $feature = $this->getFeature($id);
 
         $form = $this->createForm(
             new FeaturePlansFormType($request->getLocale()),
-            $feature_definition ,
+            $feature,
             array(
                 'action' => $this->generateUrl('dzangocart_subscription_feature_plans', array('id' => $id))
             )
@@ -157,7 +157,7 @@ class FeatureController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $feature_definition ->save();
+            $feature ->save();
 
             $this->get('session')->getFlashBag()->add(
                 'feature.plans',
@@ -166,14 +166,13 @@ class FeatureController extends Controller
         }
 
         return array(
-            'features' => $feature_definition ->getFeatures(),
             'form' => $form->createView()
         );
     }
 
     protected function getQuery()
     {
-        return FeatureDefinitionQuery::create()
+        return FeatureQuery::create()
             ->joinWithI18n($this->getRequest()->getLocale())
             ->orderByRank();
     }
