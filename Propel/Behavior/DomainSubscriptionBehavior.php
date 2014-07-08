@@ -51,17 +51,20 @@ class DomainSubscriptionBehavior extends Behavior
     {
         $name_for_get_custom = $this->getTable()->getColumn($this->getParameter('custom_column'))->getPhpName();
         $name_for_get_domain = $this->getTable()->getColumn($this->getParameter('domain_column'))->getPhpName();
-        return '
+        $script = sprintf ('
 /**
  * Returns the fully qualified hostname of the subscription account
  */
 public function getHostname($host)
 {
-    if (!$this->get' . $name_for_get_custom . '() == null ) {
-        return $this->get' . $name_for_get_custom . '();
-    } else {
-        return $this->get' . $name_for_get_domain . '().\'.\'.$host;
+    if (!$this->get%1$s() == null ) {
+        return $this->get%1$s();
     }
-}';
+
+    return $this->get%2$s().\'.\'.$host;
+
+}', $name_for_get_custom, $name_for_get_domain);
+        
+        return $script;
     }  
 }
