@@ -2,7 +2,7 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Controller;
 
-use Dzangocart\Bundle\SubscriptionBundle\Propel\FeatureDefinitionQuery;
+use Dzangocart\Bundle\SubscriptionBundle\Propel\FeatureQuery;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanQuery;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -25,7 +25,7 @@ class MatrixController extends Controller
             ->getActive()
             ->find();
 
-        $features = FeatureDefinitionQuery::create()
+        $features = FeatureQuery::create()
             ->joinWithI18n($this->getRequest()->getLocale())
             ->orderByRank()
             ->find();
