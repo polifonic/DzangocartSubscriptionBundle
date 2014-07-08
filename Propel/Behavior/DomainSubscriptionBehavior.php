@@ -58,11 +58,11 @@ class DomainSubscriptionBehavior extends Behavior
  */
 public function getHostname($host)
 {
-    if (!$this->get'    .$custom_column_name.    '() == null) {
-        return $this->get'    .$custom_column_name.    '();
+    if (!$this->get'    . $custom_column_name .    '() == null) {
+        return $this->get'    . $custom_column_name .    '();
     }
 
-    return $this->get'    .$domain_column_name.    '() . \'.\' . $host;
+    return $this->get'    . $domain_column_name .    '() . \'.\' . $host;
 
 }';
     }
