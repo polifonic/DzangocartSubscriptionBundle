@@ -49,8 +49,8 @@ class DomainSubscriptionBehavior extends Behavior
 
     public function objectMethods(PHP5ObjectBuilder $builder)
     {
-        $custom_column_phpname = $this->getTable()->getColumn($this->getParameter('custom_column'))->getPhpName();
-        $domain_column_phpname = $this->getTable()->getColumn($this->getParameter('domain_column'))->getPhpName();
+        $custom_column_name = $this->getTable()->getColumn($this->getParameter('custom_column'))->getPhpName();
+        $domain_column_name = $this->getTable()->getColumn($this->getParameter('domain_column'))->getPhpName();
 
         $script = sprintf ('
 /**
@@ -64,7 +64,7 @@ public function getHostname($host)
 
     return $this->get%2$s().\'.\'.$host;
 
-}', $custom_column_phpname, $domain_column_phpname);
+}', $custom_column_name, $domain_column_name);
 
         return $script;
     }
