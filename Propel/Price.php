@@ -3,6 +3,7 @@
 namespace Dzangocart\Bundle\SubscriptionBundle\Propel;
 
 use Dzangocart\Bundle\SubscriptionBundle\Propel\om\BasePrice;
+use NumberFormatter;
 
 class Price extends BasePrice
 {
