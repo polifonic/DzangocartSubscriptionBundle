@@ -62,7 +62,7 @@ public function getHostname($host)
         return $this->get'    .$custom_column_name.    '();
     }
 
-    return $this->get'    .$domain_column_name.    '().\'.\'.$host;
+    return $this->get'    .$domain_column_name.    '() . \'.\' . $host;
 
 }';
     }
