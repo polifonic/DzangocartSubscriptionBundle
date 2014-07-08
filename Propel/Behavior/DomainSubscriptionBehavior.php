@@ -14,16 +14,16 @@ class DomainSubscriptionBehavior extends Behavior
     public function modifyTable()
     {
         if (!$this->getTable()->containsColumn($this->getParameter('domain_column'))) {
-            $domain_array = explode('_', $this->getParameter('domain_column'));
-            $domain_phpname = '';
+            $domain_splitedby_ = explode('_', $this->getParameter('domain_column'));
+            $domain_column_phpname = '';
 
-            foreach ($domain_array as $x) {
-                $domain_phpname = $domain_phpname . ucfirst($x);
+            foreach ($domain_splitedby_ as $x) {
+                $domain_column_phpname = $domain_column_phpname . ucfirst($x);
             }
 
             $this->getTable()->addColumn(array(
                 'name' => $this->getParameter('domain_column'),
-                'phpName' => $domain_phpname,
+                'phpName' => $domain_column_phpname,
                 'type' => 'VARCHAR',
                 'size' => '100',
                 'required' => 'true'
@@ -31,16 +31,16 @@ class DomainSubscriptionBehavior extends Behavior
         }
 
         if (!$this->getTable()->containsColumn($this->getParameter('custom_column'))) {
-            $custom_array = explode('_', $this->getParameter('custom_column'));
-            $custom_phpname = '';
+            $custom_splittedby_ = explode('_', $this->getParameter('custom_column'));
+            $custom_column_phpname = '';
 
-            foreach ($custom_array as $x) {
-                $custom_phpname = $custom_phpname . ucfirst($x);
+            foreach ($custom_splittedby_ as $x) {
+                $custom_column_phpname = $custom_column_phpname . ucfirst($x);
             }
 
             $this->getTable()->addColumn(array(
                 'name' => $this->getParameter('custom_column'),
-                'phpName' => $custom_phpname,
+                'phpName' => $custom_column_phpname,
                 'type' => 'VARCHAR',
                 'size' => '132'
             ));
@@ -49,22 +49,23 @@ class DomainSubscriptionBehavior extends Behavior
 
     public function objectMethods(PHP5ObjectBuilder $builder)
     {
-        $name_for_get_custom = $this->getTable()->getColumn($this->getParameter('custom_column'))->getPhpName();
-        $name_for_get_domain = $this->getTable()->getColumn($this->getParameter('domain_column'))->getPhpName();
+        $custom_column_phpname = $this->getTable()->getColumn($this->getParameter('custom_column'))->getPhpName();
+        $domain_column_phpname = $this->getTable()->getColumn($this->getParameter('domain_column'))->getPhpName();
+
         $script = sprintf ('
 /**
  * Returns the fully qualified hostname of the subscription account
  */
 public function getHostname($host)
 {
-    if (!$this->get%1$s() == null ) {
+    if (!$this->get%1$s() == null) {
         return $this->get%1$s();
     }
 
     return $this->get%2$s().\'.\'.$host;
 
-}', $name_for_get_custom, $name_for_get_domain);
-        
+}', $custom_column_phpname, $domain_column_phpname);
+
         return $script;
-    }  
+    }
 }
