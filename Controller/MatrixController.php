@@ -25,14 +25,14 @@ class MatrixController extends Controller
             ->getActive()
             ->find();
 
-        $features = FeatureQuery::create()
+        $plan_features = FeatureQuery::create()
             ->joinWithI18n($this->getRequest()->getLocale())
             ->orderByRank()
             ->find();
 
         return array(
             'plans' => $plans,
-            'features' => $features
+            'planfeatures' => $plan_features
         );
     }
 }
