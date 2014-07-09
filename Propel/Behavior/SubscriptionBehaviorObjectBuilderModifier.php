@@ -26,11 +26,12 @@ class SubscriptionBehaviorObjectBuilderModifier
  /**
  * Whether the subscription is expired
  *
- * @boolean tue if the subscription is expired, false otherwise
+ * @boolean true if the subscription is expired, false otherwise
  */
 public function isExpired()
 {
-    //codes here
-}";
+    \$expire = \$this->get{$this->table->getColumn($this->behavior->getParameter('expires_at_column'))->getPhpName()}('U');
+    return ( \$expire != null && \$expire < time());
+}\n";
     }
 }
