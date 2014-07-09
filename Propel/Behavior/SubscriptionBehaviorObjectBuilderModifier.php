@@ -16,7 +16,7 @@ class SubscriptionBehaviorObjectBuilderModifier
         $this->builder = $builder;
         $script = '';
         $this->addIsExpired($script);
-        
+
         return $script;
     }
 
