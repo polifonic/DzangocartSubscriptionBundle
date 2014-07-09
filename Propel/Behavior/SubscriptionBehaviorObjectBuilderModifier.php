@@ -31,6 +31,7 @@ class SubscriptionBehaviorObjectBuilderModifier
 public function isExpired()
 {
     \$expire = \$this->get{$this->table->getColumn($this->behavior->getParameter('expires_at_column'))->getPhpName()}('U');
+
     return ( \$expire != null && \$expire < time());
 }\n";
     }
