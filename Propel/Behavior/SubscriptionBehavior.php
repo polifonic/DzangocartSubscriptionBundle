@@ -5,7 +5,7 @@ namespace Dzangocart\Bundle\SubscriptionBundle\Propel\Behavior;
 use Behavior;
 use ForeignKey;
 
-use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanPeer;
+require_once dirname(__FILE__) . '/SubscriptionBehaviorObjectBuilderModifier.php';
 
 class SubscriptionBehavior extends Behavior
 {
@@ -13,6 +13,8 @@ class SubscriptionBehavior extends Behavior
         'plan_id_column' => 'plan_id',
         'expires_at_column' => 'expires_at'
     );
+
+    protected $objectBuilderModifier;
 
     public function modifyTable()
     {
@@ -36,5 +38,14 @@ class SubscriptionBehavior extends Behavior
                 'type' => 'TIMESTAMP'
             ));
         }
+    }
+
+    public function getObjectBuilderModifier()
+    {
+        if (is_null($this->objectBuilderModifier)) {
+            $this->objectBuilderModifier = new SubscriptionBehaviorObjectBuilderModifier($this);
+        }
+
+        return $this->objectBuilderModifier;
     }
 }
