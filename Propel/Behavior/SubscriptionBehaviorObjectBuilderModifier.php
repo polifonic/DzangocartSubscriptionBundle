@@ -15,24 +15,14 @@ class SubscriptionBehaviorObjectBuilderModifier
     {
         $this->builder = $builder;
         $script = '';
-        $this->addIsExpired($script);
-
+        $script .= $this->addIsExpired();
         return $script;
     }
 
-    protected function addIsExpired(&$script)
+    protected function addIsExpired()
     {
-        $script .= "
- /**
- * Whether the subscription is expired
- *
- * @boolean true if the subscription is expired, false otherwise
- */
-public function isExpired()
-{
-    \$expire = \$this->get{$this->table->getColumn($this->behavior->getParameter('expires_at_column'))->getPhpName()}('U');
-
-    return ( \$expire != null && \$expire < time());
-}\n";
+        return $this->behavior->renderTemplate('objectIsExpired', array(
+            'column_name' => $this->table->getColumn($this->behavior->getParameter('expires_at_column'))->getPhpName()
+        ));
     }
 }

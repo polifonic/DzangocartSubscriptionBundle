@@ -5,8 +5,6 @@ namespace Dzangocart\Bundle\SubscriptionBundle\Propel\Behavior;
 use Behavior;
 use ForeignKey;
 
-require_once dirname(__FILE__) . '/SubscriptionBehaviorObjectBuilderModifier.php';
-
 class SubscriptionBehavior extends Behavior
 {
     protected $parameters = array(
