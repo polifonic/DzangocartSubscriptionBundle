@@ -11,7 +11,7 @@ class SubscriptionBehaviorObjectBuilderModifier
         $this->table = $behavior->getTable();
     }
 
-    public function objectMethods(PHP5ObjectBuilder $builder)
+    public function objectMethods($builder)
     {
         $this->builder = $builder;
         $script = '';

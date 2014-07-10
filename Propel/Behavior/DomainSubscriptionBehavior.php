@@ -3,6 +3,7 @@
 namespace Dzangocart\Bundle\SubscriptionBundle\Propel\Behavior;
 
 use Behavior;
+use Unique;
 
 class DomainSubscriptionBehavior extends Behavior
 {
@@ -44,10 +45,20 @@ class DomainSubscriptionBehavior extends Behavior
                 'type' => 'VARCHAR',
                 'size' => '132'
             ));
+
+            $custom_column = $this->getTable()->getColumn($this->getParameter('custom_column'));
+            $index_columns = array(
+                $custom_column
+            );
+
+            $unique = new Unique('dzangocart_subscription_custom');
+            $unique->setColumns($index_columns);
+
+            $this->getTable()->addUnique($unique);
         }
     }
 
-    public function objectMethods(PHP5ObjectBuilder $builder)
+    public function objectMethods($builder)
     {
         $custom_column_name = $this->getTable()->getColumn($this->getParameter('custom_column'))->getPhpName();
         $domain_column_name = $this->getTable()->getColumn($this->getParameter('domain_column'))->getPhpName();
