@@ -68,14 +68,14 @@
 			<reference local="unit_id" foreign="id" />
 		</foreign-key>
 		<index>
-			<index-column name="definition_id" />
+			<index-column name="feature_id" />
 		</index>
 		<index>
 			<index-column name="plan_id" />
 		</index>
 		<unique name="plan">
 			<unique-column name="plan_id" />
-			<unique-column name="definition_id" />
+			<unique-column name="feature_id" />
 		</unique>
 	</table>
 
