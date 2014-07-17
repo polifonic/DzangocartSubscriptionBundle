@@ -21,7 +21,6 @@ class DomainSubscriptionBehavior extends Behavior
             throw new EngineException('The DomainSubscription behavior does not support table with column "hostname"');
         } else {
             if (!$this->getTable()->containsColumn($this->getParameter('domain_column'))) {
-
                 $this->getTable()->addColumn(array(
                     'name' => $this->getParameter('domain_column'),
                     'type' => 'VARCHAR',
@@ -41,21 +40,21 @@ class DomainSubscriptionBehavior extends Behavior
             }
 
             if (!$this->getTable()->containsColumn($this->getParameter('custom_column'))) {
-            $this->getTable()->addColumn(array(
-                'name' => $this->getParameter('custom_column'),
-                'type' => 'VARCHAR',
-                'size' => '132'
-            ));
+                $this->getTable()->addColumn(array(
+                    'name' => $this->getParameter('custom_column'),
+                    'type' => 'VARCHAR',
+                    'size' => '132'
+                ));
 
-            $custom_column = $this->getTable()->getColumn($this->getParameter('custom_column'));
-            $index_columns = array(
-                $custom_column
-            );
+                $custom_column = $this->getTable()->getColumn($this->getParameter('custom_column'));
+                $index_columns = array(
+                    $custom_column
+                );
 
-            $unique = new Unique('dzangocart_subscription_custom');
-            $unique->setColumns($index_columns);
+                $unique = new Unique('dzangocart_subscription_custom');
+                $unique->setColumns($index_columns);
 
-            $this->getTable()->addUnique($unique);
+                $this->getTable()->addUnique($unique);
             }
         }
     }
