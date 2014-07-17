@@ -3,45 +3,46 @@
 namespace Dzangocart\Bundle\SubscriptionBundle\Propel\Behavior;
 
 use Behavior;
+use EngineException;
 use Unique;
 
 class DomainSubscriptionBehavior extends Behavior
 {
     protected $parameters = array(
-        'domain_column' => 'domain',
+        'domain_column' => 'hostname',
         'custom_column' => 'custom'
     );
 
     public function modifyTable()
     {
-        if (!$this->getTable()->containsColumn($this->getParameter('domain_column'))) {
-            $domain_splitedby_ = explode('_', $this->getParameter('domain_column'));
-            $domain_column_phpname = '';
+        if (in_array('hostname', array_map('strtolower', $this->parameters))) {
+            throw new EngineException('The DomainSubscription behavior cannot be applied with parameter set to "hostname"');
+        } else if ($this->getTable()->getColumn('hostname', true)) {
+            throw new EngineException('The DomainSubscription behavior does not support table with column "hostname"');
+        } else {
+            if (!$this->getTable()->containsColumn($this->getParameter('domain_column'))) {
 
-            foreach ($domain_splitedby_ as $x) {
-                $domain_column_phpname = $domain_column_phpname . ucfirst($x);
+                $this->getTable()->addColumn(array(
+                    'name' => $this->getParameter('domain_column'),
+                    'type' => 'VARCHAR',
+                    'size' => '100',
+                    'required' => 'true'
+                ));
+
+                $domain_column = $this->getTable()->getColumn($this->getParameter('domain_column'));
+
+                $unique_domain = new Unique('dzangocart_subscription_domain');
+                $unique_domain->setColumns(array (
+                    $domain_column
+                ));
+
+                $this->getTable()->addUnique($unique_domain);
+
             }
 
-            $this->getTable()->addColumn(array(
-                'name' => $this->getParameter('domain_column'),
-                'phpName' => $domain_column_phpname,
-                'type' => 'VARCHAR',
-                'size' => '100',
-                'required' => 'true'
-            ));
-        }
-
-        if (!$this->getTable()->containsColumn($this->getParameter('custom_column'))) {
-            $custom_splittedby_ = explode('_', $this->getParameter('custom_column'));
-            $custom_column_phpname = '';
-
-            foreach ($custom_splittedby_ as $x) {
-                $custom_column_phpname = $custom_column_phpname . ucfirst($x);
-            }
-
+            if (!$this->getTable()->containsColumn($this->getParameter('custom_column'))) {
             $this->getTable()->addColumn(array(
                 'name' => $this->getParameter('custom_column'),
-                'phpName' => $custom_column_phpname,
                 'type' => 'VARCHAR',
                 'size' => '132'
             ));
@@ -55,6 +56,7 @@ class DomainSubscriptionBehavior extends Behavior
             $unique->setColumns($index_columns);
 
             $this->getTable()->addUnique($unique);
+            }
         }
     }
 
