@@ -9,7 +9,7 @@ use Unique;
 class DomainSubscriptionBehavior extends Behavior
 {
     protected $parameters = array(
-        'domain_column' => 'hostname',
+        'domain_column' => 'domain',
         'custom_column' => 'custom'
     );
 
