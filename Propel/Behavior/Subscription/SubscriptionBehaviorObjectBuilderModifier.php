@@ -1,5 +1,5 @@
 <?php
-namespace Dzangocart\Bundle\SubscriptionBundle\Propel\Behavior;
+namespace Dzangocart\Bundle\SubscriptionBundle\Propel\Behavior\Subscription;
 
 class SubscriptionBehaviorObjectBuilderModifier
 {
