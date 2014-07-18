@@ -1,4 +1,4 @@
 propel:
     build-properties:
         propel.behavior.subscription.class: Dzangocart\Bundle\SubscriptionBundle\Propel\Behavior\Subscription\SubscriptionBehavior
-        propel.behavior.domainsubscription.class: Dzangocart\Bundle\SubscriptionBundle\Propel\Behavior\DomainSubscription\DomainSubscriptionBehavior
+
