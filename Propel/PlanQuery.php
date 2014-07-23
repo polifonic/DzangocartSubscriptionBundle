@@ -23,6 +23,17 @@ class PlanQuery extends BasePlanQuery
             filterByDisabled(false);
     }
 
+    public function default()
+    {
+        return $this
+            ->getActive()
+            ->filterByIsDefault(true)
+            ->orderByRank();
+    }
+
+    /**
+     * @deprecated
+     */
     public function getDefault()
     {
         return $this

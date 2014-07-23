@@ -6,6 +6,13 @@ use Dzangocart\Bundle\SubscriptionBundle\Propel\om\BasePlan;
 
 class Plan extends BasePlan
 {
+    static public function getDefaultPlan()
+    {
+        return PlanQuery::create()
+            ->default()
+            ->findOne();
+    }
+
     public function isDisabled()
     {
         return $this->getDisabled();
