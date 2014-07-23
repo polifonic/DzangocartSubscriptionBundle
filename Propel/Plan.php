@@ -9,7 +9,7 @@ class Plan extends BasePlan
     static public function getDefaultPlan()
     {
         return PlanQuery::create()
-            ->default()
+            ->isDefault()
             ->findOne();
     }
 

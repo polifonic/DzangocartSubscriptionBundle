@@ -23,7 +23,7 @@ class PlanQuery extends BasePlanQuery
             filterByDisabled(false);
     }
 
-    public function default()
+    public function isDefault()
     {
         return $this
             ->getActive()
