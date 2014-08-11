@@ -112,3 +112,9 @@ plan:
         page_title:     Plan: %plan%
         rank:           Rang
         to:             Au
+
+signup:
+    form:
+        plan_id:
+            label:      Choisissez une formule
+        submit:         Inscription

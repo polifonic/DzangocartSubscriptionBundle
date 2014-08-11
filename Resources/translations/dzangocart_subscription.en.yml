@@ -114,3 +114,9 @@ plan:
         page_title:     Plan: %plan%
         rank:           Rank
         to:             To
+
+signup:
+    form:
+        plan_id:
+            label:      Select a plan
+        submit:         Signup
