@@ -19,6 +19,7 @@ class SubscriptionBehavior extends Behavior
         if (!$this->getTable()->containsColumn($this->getParameter('plan_id_column'))) {
             $this->getTable()->addColumn(array(
                 'name' => $this->getParameter('plan_id_column'),
+                'phpName' => 'PlanId',
                 'type' => 'INTEGER',
                 'required' => 'true'
             ));
@@ -33,6 +34,7 @@ class SubscriptionBehavior extends Behavior
         if (!$this->getTable()->containsColumn($this->getParameter('expires_at_column'))) {
             $this->getTable()->addColumn(array(
                 'name' => $this->getParameter('expires_at_column'),
+                'phpName' => 'ExpiresAt',
                 'type' => 'TIMESTAMP'
             ));
         }
