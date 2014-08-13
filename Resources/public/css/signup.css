@@ -1,4 +1,7 @@
 .dzangocart_subscription_signup input,
-.dzangocart_subscription_signup select {
+.dzangocart_subscription_signup select,
+.dzangocart_subscription_signup span.host {
 	font-size: 125%;
 }
+
+.dzangocart_subscription_signup input[name='']
