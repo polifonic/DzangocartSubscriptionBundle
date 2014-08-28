@@ -19,7 +19,7 @@ class DzangocartSubscriptionExtension extends Extension
 
         $container->setParameter('dzangocart_subscription.pricing.theme', $config['pricing']['theme']);
 
-        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.yml');
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config/services'));
+        $loader->load('plan.yml');
     }
 }
