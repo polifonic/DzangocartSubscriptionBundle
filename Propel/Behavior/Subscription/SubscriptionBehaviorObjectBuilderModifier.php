@@ -19,7 +19,7 @@ class SubscriptionBehaviorObjectBuilderModifier
 
         if (!$this->table->getBehavior('domainsubscription')) {
             $this->builder->declareClasses('Symfony\Component\Validator\Constraints\NotNull');
-            $script .=$this->addLoadValidatiorMetadata();
+            $script .= $this->addLoadValidatiorMetadata();
         }
 
         return $script;
