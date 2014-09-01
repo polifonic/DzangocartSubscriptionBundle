@@ -201,6 +201,52 @@ class PlanController
     }
 
     /**
+     * set a plan as default plan for trial period.
+     * @Template()
+     */
+    public function setTrialAction(Request $request, $id)
+    {
+        $plans = PlanQuery::create()
+            ->filterByTrial(true)
+            ->find();
+
+        foreach ($plans as $plan) {
+            $plan->setTrial(false);
+            $plan->save();
+        }
+
+        $plan = $this->getPlan($id);
+
+        $plan->setTrial(true);
+
+        $plan->save();
+
+        return new RedirectResponse($this->router
+            ->generate(
+                'dzangocart_subscription_plans'
+            )
+        );
+    }
+
+    /**
+     * @Template()
+     */
+    public function unsetTrialAction(Request $request, $id)
+    {
+        $plan = $this->getPlan($id);
+
+        $plan->setTrial(false);
+
+        $plan->save();
+
+        return new RedirectResponse($this->router
+            ->generate(
+                'dzangocart_subscription_plans'
+            )
+        );
+    }
+
+    /**
      * Displays a form to edit a Plan's features.
      * @Template("DzangocartSubscriptionBundle:Plan:features.html.twig")
      */

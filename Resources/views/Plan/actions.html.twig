@@ -25,6 +25,20 @@
 				</a>
 			</li>
 		{% endif %}
+
+		{% if plan.isDefaultForTrial %}
+			<li>
+				<a href="{{ path('dzangocart_subscription_plan_remove_default_for_trial', { id: plan.id }) }}">
+					{% trans %}plan.plans.actions.removefortrial{% endtrans %}
+				</a>
+			</li>
+		{% else %}
+			<li>
+				<a href="{{ path('dzangocart_subscription_plan_use_default_for_trial', { id: plan.id }) }}">
+					{% trans %}plan.plans.actions.usefortrial{% endtrans %}
+				</a>
+			</li>
+		{% endif %}
 	</ul>
 </div>
 {% endspaceless %}

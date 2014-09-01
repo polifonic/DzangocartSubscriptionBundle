@@ -93,4 +93,9 @@ class Plan extends BasePlan
     {
         $this->setDisabled(false);
     }
+
+    public function isDefaultForTrial()
+    {
+        return $this->getTrial();
+    }
 }
