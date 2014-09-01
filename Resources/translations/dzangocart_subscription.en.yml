@@ -1,122 +1,124 @@
 feature:
     create:
-        cancel:         '&larr; Cancel'
-        page_title:     Create a new feature
-        success:        The new feature was created successfully.
+        cancel:                       '&larr; Cancel'
+        page_title:                   Create a new feature
+        success:                      The new feature was created successfully.
 
     edit:
-        cancel:         '&larr; Cancel'
-        success:        The feature has been updated successfully.
-        title:          Info
+        cancel:                       '&larr; Cancel'
+        success:                      The feature has been updated successfully.
+        title:                        Info
 
     features:
         actions:
-            edit:       Edit
-            delete:     Delete
-            show:       Show
-        description:    Description
-        name:           Feature
+            edit:                     Edit
+            delete:                   Delete
+            show:                     Show
+        description:                  Description
+        name:                         Feature
         nav:
-            create:     Create a new feature
-        page_title:     Features
-        rank:           Rank
+            create:                   Create a new feature
+        page_title:                   Features
+        rank:                         Rank
 
     form:
         description:
-            label:      Description
+            label:                    Description
         name:
-            label:      Name
-        submit:         Save
+            label:                    Name
+        submit:                       Save
 
     plans:
-        period:         Period
-        plan:           Plan
-        submit:         Update
-        success:        The plans have been updated for this feature.
-        title:          Plans
-        unit:           Unit
-        value:          Value
+        period:                       Period
+        plan:                         Plan
+        submit:                       Update
+        success:                      The plans have been updated for this feature.
+        title:                        Plans
+        unit:                         Unit
+        value:                        Value
 
     show:
-        cancel:         '&larr; Return to features list'
-        page_title:     Feature: %feature%
+        cancel:                       '&larr; Return to features list'
+        page_title:                   Feature: %feature%
 
 plan:
     create:
-        cancel:         '&larr; Cancel'
-        page_title:     Create a new plan
+        cancel:                       '&larr; Cancel'
+        page_title:                   Create a new plan
 
     delete:
-        success:        plan deleted successfully.
+        success:                      plan deleted successfully.
 
     features:
-        description:    Description
-        name:           Feature
-        period:         Per
-        submit:         Update
-        success:        The plan's features have been updated.
-        title:          Features
-        unit:           Unit
-        value:          Value
+        description:                  Description
+        name:                         Feature
+        period:                       Per
+        submit:                       Update
+        success:                      The plan's features have been updated.
+        title:                        Features
+        unit:                         Unit
+        value:                        Value
 
     edit:
-        title:          Info
-        success:        The plan's info have been updated.
+        title:                        Info
+        success:                      The plan's info have been updated.
 
     form:
         description:
-            label:      Description
+            label:                    Description
         from:
-            label:      Available from
+            label:                    Available from
         name:
-            label:      Name
+            label:                    Name
         submit:
-            label:      Save
+            label:                    Save
         to:
-            label:      Available to
+            label:                    Available to
 
     plans:
         actions:
-            disable:    Disable
-            enable:     Enable
-            show:       Show
-            title:      Actions
-        description:    Description
-        from:           From
-        name:           Name
+            disable:                  Disable
+            enable:                   Enable
+            remove_default_for_trial: Remove plan as default for trial
+            show:                     Show
+            title:                    Actions
+            use_default_for_trial:    Set plan as default for trial
+        description:                  Description
+        from:                         From
+        name:                         Name
         nav:
-            create:     Create a new plan
-        page_title:     Plans
-        price:          Price
-        rank:           Rank
-        to:             To
+            create:                   Create a new plan
+        page_title:                   Plans
+        price:                        Price
+        rank:                         Rank
+        to:                           To
 
     prices:
-        currency:       Currency
+        currency:                     Currency
         default:
-            label:      Default
-            'true':       Default
-            'false':      Not default
-        finish:         To
-        period:         Period
-        price:          Price
-        start:          From
-        success:        The plan's prices have been modified.
-        title:          Prices
+            label:                    Default
+            'true':                   Default
+            'false':                  Not default
+        finish:                       To
+        period:                       Period
+        price:                        Price
+        start:                        From
+        success:                      The plan's prices have been modified.
+        title:                        Prices
 
     show:
-        cancel:         '&larr; Return to plans list'
-        description:    Description
-        from:           From
-        name:           Name
+        cancel:                       '&larr; Return to plans list'
+        description:                  Description
+        from:                         From
+        name:                         Name
         nav:
-            create:     Create new plan
-        page_title:     Plan: %plan%
-        rank:           Rank
-        to:             To
+            create:                   Create new plan
+        page_title:                   Plan: %plan%
+        rank:                         Rank
+        to:                           To
 
 signup:
     form:
         plan_id:
-            label:      Select a plan
-        submit:         Signup
+            label:                    Select a plan
+        submit:                       Signup
