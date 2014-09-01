@@ -47,7 +47,7 @@ class SignupFormType extends AbstractType
             'label' => 'signup.form.plan_id.label',
             'choices' => $this->getPlans(),
             'required' => true,
-            'preferred_choices' => Plan::getDefaultPlan()? array(Plan::getDefaultPlan()->getId()): $this->getPlans(),
+            'preferred_choices' => $this->getPrefferedChoice(),
             'label_attr' => array(
                 'class' => 'sr-only'
             )
@@ -55,6 +55,13 @@ class SignupFormType extends AbstractType
 
         $builder->add('submit', 'submit', array());
     }
+
+	protected function getPrefferedChoice()
+	{
+		return $this->trial_enabled ?
+			array('trial') : (Plan::getDefaultPlan() ? 
+				array(Plan::getDefaultPlan()->getId()) : $this->getPlans());
+	}
 
     public function getName()
     {
@@ -65,20 +72,23 @@ class SignupFormType extends AbstractType
     {
         $plans = array();
 
-        $query = PlanQuery::create()
-            ->joinWithI18n($this->getLocale())
-            ->getActive()
-            ->orderByRank();
-
 		if ($this->trial_enabled) {
-			$trial_plan = $query
+			$trial_plan = PlanQuery::create()
+				->joinWithI18n($this->getLocale())
+				->getActive()
 				->filterByTrial(true)
 				->findOne();
 
-			$plans[$trial_plan->getId()] = 'Trial.untranslated';
+			if ($trial_plan) {
+				$plans['trial'] = 'Trial.untranslated';
+			}
 		}
 
 		if (!$this->trial_enabled || $this->trial_options_enabled) {
+			$query = PlanQuery::create()
+				->joinWithI18n($this->getLocale())
+				->getActive()
+				->orderByRank();
 
 			foreach ($query->find() as $plan) {
 				$plans[$plan->getId()] = $plan->getName();
