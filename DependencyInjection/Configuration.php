@@ -27,6 +27,7 @@ class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
 				->scalarNode('class')
+					->isRequired()
 					->cannotBeEmpty()
 				->end()
 				->arrayNode('trial')
