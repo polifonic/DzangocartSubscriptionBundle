@@ -74,11 +74,16 @@ class SignupFormType extends AbstractType
 			$trial_plan = $query
 				->filterByTrial(true)
 				->findOne();
+
+			$plans[$trial_plan->getId()] = 'Trial.untranslated';
 		}
 
-        foreach ($query->find() as $plan) {
-            $plans[$plan->getId()] = $plan->getName();
-        }
+		if (!$this->trial_enabled || $this->trial_options_enabled) {
+
+			foreach ($query->find() as $plan) {
+				$plans[$plan->getId()] = $plan->getName();
+			}
+		}
 
         return $plans;
     }
