@@ -13,6 +13,13 @@ class Plan extends BasePlan
             ->findOne();
     }
 
+	static public function getDefaultPlanForTrial()
+	{
+		return PlanQuery::create()
+			->filterByTrial(true)
+			->findOne();
+	}
+
     public function isDisabled()
     {
         return $this->getDisabled();

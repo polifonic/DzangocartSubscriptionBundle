@@ -233,7 +233,7 @@ class PlanController
     }
 
     /**
-     * remove plan as default plan fortrial period
+     * remove plan as default plan for trial period
      * @Template()
      */
     public function unsetTrialAction(Request $request, $id)
