@@ -5,27 +5,29 @@ namespace Dzangocart\Bundle\SubscriptionBundle\Form\Type;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\Plan;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanQuery;
 
+use Symfony\Bundle\FrameworkBundle\Translation\Translator;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
 class SignupFormType extends AbstractType
 {
     protected $class;
 	protected $locale;
+	protected $translator;
 	protected $trial_enabled;
 	protected $trial_options_enabled;
 
     /**
      * @param string $class The class name of the
      */
-    public function __construct(RequestStack $request_stack, $class, array $config)
+    public function __construct(RequestStack $request_stack, Translator $translator, $class, array $config)
     {
         $this->class = $class;
 		$this->locale = $request_stack->getCurrentRequest()->getLocale();
 		$this->trial_enabled = $config['enabled'];
 		$this->trial_options_enabled = $config['options'];
+		$this->translator = $translator;
     }
 
 	public function getLocale()
@@ -80,7 +82,12 @@ class SignupFormType extends AbstractType
 				->findOne();
 
 			if ($trial_plan) {
-				$plans['trial'] = 'Trial.untranslated';
+				$plans['trial'] = $this->translator->trans(
+					'signup.form.plan_id.trial',
+					array(),
+					'dzangocart_subscription',
+					$this->getLocale()
+				);
 			}
 		}
 

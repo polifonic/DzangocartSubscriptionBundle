@@ -4,6 +4,7 @@ services:
         class:  Dzangocart\Bundle\SubscriptionBundle\Form\Type\SignupFormType
         arguments:
             - @request_stack
+            - @translator
             - %dzangocart_subscription.class%
             - %dzangocart_subscription.trial.config%
         tags:
