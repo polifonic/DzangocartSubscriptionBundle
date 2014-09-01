@@ -1,120 +1,123 @@
 feature:
     create:
-        cancel:         '&larr; Annuler'
-        page_title:     Créer une nouvelle fonctionnalité
-        success:        La nouvelle fonctionnalité a bien été créée.
+        cancel:                       '&larr; Annuler'
+        page_title:                   Créer une nouvelle fonctionnalité
+        success:                      La nouvelle fonctionnalité a bien été créée.
 
     edit:
-        cancel:         '&larr; Annuler'
-        success:        La nouvelle fonctionnalité a bien été mise à jour.
-        title:          Info
+        cancel:                       '&larr; Annuler'
+        success:                      La nouvelle fonctionnalité a bien été mise à jour.
+        title:                        Info
 
     features:
         actions:
-            edit:       Modifier
-            delete:     Supprimer
-            show:       Afficher
-        description:    Description
-        name:           Fonctionnalité
+            edit:                     Modifier
+            delete:                   Supprimer
+            show:                     Afficher
+        description:                  Description
+        name:                         Fonctionnalité
         nav:
-            create:     Créer une nouvelle fonctionnalité
-        page_title:     Fonctionnalités
-        rank:           Rang
+            create:                   Créer une nouvelle fonctionnalité
+        page_title:                   Fonctionnalités
+        rank:                         Rang
 
     form:
         description:
-            label:      Description
+            label:                    Description
         name:
-            label:      Nom
-        submit:         Sauvegarder
+            label:                    Nom
+        submit:                       Sauvegarder
 
     plans:
-        period:         Période
-        plan:           Formule
-        submit:         Modifier
-        success:        Les formules ont été mises à jour pour cette fonctionnalité.
-        title:          Formules
-        unit:           Unité
-        value:          Valeur
+        period:                       Période
+        plan:                         Formule
+        submit:                       Modifier
+        success:                      Les formules ont été mises à jour pour cette fonctionnalité.
+        title:                        Formules
+        unit:                         Unité
+        value:                        Valeur
 
     show:
-        cancel:         '&larr; Retourner à la liste des fonctionnalités'
-        page_title:     Fonctionnalité : %feature%
+        cancel:                       '&larr; Retourner à la liste des fonctionnalités'
+        page_title:                   Fonctionnalité : %feature%
 
 plan:
     create:
-        cancel:         '&larr; Annuler'
-        page_title:     Créer une nouvelle formule
+        cancel:                       '&larr; Annuler'
+        page_title:                   Créer une nouvelle formule
 
     delete:
-        success:        La formule %name% a été supprimée.
+        success:                      La formule %name% a été supprimée.
 
     features:
-        description:    Description
-        name:           Fonctionnalité
-        period:         Par
-        submit:         Mettre à jour
-        success:        Le plan a bien été mis à jour.
-        title:          Fonctionnalités
-        unit:           Unité
-        value:          Valeur
+        description:                  Description
+        name:                         Fonctionnalité
+        period:                       Par
+        submit:                       Mettre à jour
+        success:                      Le plan a bien été mis à jour.
+        title:                        Fonctionnalités
+        unit:                         Unité
+        value:                        Valeur
 
     edit:
-        title:          Info
-        success:        The plan's info have been updated.
+        title:                        Info
+        success:                      The plan's info have been updated.
 
     form:
         description:
-            label:      Description
+            label:                    Description
         from:
-            label:      Disponible du
+            label:                    Disponible du
         name:
-            label:      Nom
-        submit:         Sauvegarder
+            label:                    Nom
+        submit:                       Sauvegarder
         to:
-            label:      Au
+            label:                    Au
 
     plans:
         actions:
-            disable:    Désactiver
-            enable:     Réactiver
-            show:       Afficher
-        description:    Description
-        from:           Du
-        name:           Nom
+            disable:                  Désactiver
+            enable:                   Réactiver
+            remove_default_for_trial: Remove plan as default for trial.not translated in fr
+            show:                     Afficher
+            title:                    Actions.not translated in fr
+            use_default_for_trial:    set plan as default for trial.not translated in fr
+        description:                  Description
+        from:                         Du
+        name:                         Nom
         nav:
-            create:     Créer une nouvelle formule
-        page_title:     Formule
-        price:          Prix
-        rank:           Rang
-        to:             Au
+            create:                   Créer une nouvelle formule
+        page_title:                   Formule
+        price:                        Prix
+        rank:                         Rang
+        to:                           Au
 
     prices:
-        currency:       Devise
+        currency:                     Devise
         default:
-            label:      Default
-            'true':       Default
-            'false':      Not default
-        finish:         Au
-        period:         Période
-        price:          Prix
-        start:          Du
-        success:        The plan's prices have been modified.
-        title:          Prix
+            label:                    Default
+            'true':                     Default
+            'false':                    Not default
+        finish:                       Au
+        period:                       Période
+        price:                        Prix
+        start:                        Du
+        success:                      The plan's prices have been modified.
+        title:                        Prix
 
     show:
-        cancel:         '&larr; Return to plans list'
-        description:    Description
-        from:           Du
-        name:           Nom
+        cancel:                       '&larr; Return to plans list'
+        description:                  Description
+        from:                         Du
+        name:                         Nom
         nav:
-            create:     Create new plan
-        page_title:     Plan: %plan%
-        rank:           Rang
-        to:             Au
+            create:                   Create new plan
+        page_title:                   Plan: %plan%
+        rank:                         Rang
+        to:                           Au
 
 signup:
     form:
         plan_id:
-            label:      Choisissez une formule
-        submit:         Inscription
+            label:                    Choisissez une formule
+        submit:                       Inscription
