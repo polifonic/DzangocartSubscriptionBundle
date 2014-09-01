@@ -1,10 +1,10 @@
 services:
 
-    dzangocart.subscription.signup.form.type:
+    dzangocart_subscription.signup.form.type:
         class:  Dzangocart\Bundle\SubscriptionBundle\Form\Type\SignupFormType
         arguments:
             - @request_stack
-            - %dzangocart.subscription.signup.class%
-            - %dzangocart.subscription.trial.config%
+            - %dzangocart_subscription.class%
+            - %dzangocart_subscription.trial.config%
         tags:
             - { name: form.type, alias: dzangocart_subscription_signup }
