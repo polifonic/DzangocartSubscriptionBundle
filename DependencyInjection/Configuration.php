@@ -26,6 +26,19 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
+				->scalarNode('class')
+					->isRequired()
+					->cannotBeEmpty()
+				->end()
+				->arrayNode('trial')
+					->canBeEnabled()
+					->addDefaultsIfNotSet()
+					->children()
+						->booleanNode('options')
+							->defaultFalse()
+						->end()
+					->end()
+				->end()
             ->end();
 
         return $treeBuilder;
