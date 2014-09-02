@@ -18,11 +18,14 @@ class DzangocartSubscriptionExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $container->setParameter('dzangocart_subscription.pricing.theme', $config['pricing']['theme']);
-		$container->setParameter('dzangocart_subscription.class', $config['class']);
 		$container->setParameter('dzangocart_subscription.trial.config', $config['trial']);
 
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config/services'));
         $loader->load('plan.yml');
-		$loader->load('form.yml');
+
+		if (isset($config['class'])) {
+			$loader->load('form.yml');
+			$container->setParameter('dzangocart_subscription.class', $config['class']);
+		}
     }
 }
