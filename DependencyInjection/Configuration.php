@@ -31,6 +31,8 @@ class Configuration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('class')
                         ->end()
+                        ->scalarNode('success_target_path')
+                        ->end()
                         ->arrayNode('trial')
                             ->canBeEnabled()
                             ->addDefaultsIfNotSet()

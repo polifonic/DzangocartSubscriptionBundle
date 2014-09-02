@@ -1,0 +1,10 @@
+services:
+    dzangocart_subscription.signup.controller:
+        class:     Dzangocart\Bundle\SubscriptionBundle\Controller\SignupController
+        arguments:
+            - @form.factory
+            - @session
+            - @router
+            - @templating
+            - %dzangocart_subscription.signup.class%
+            - %dzangocart_subscription.signup.success_target_path%
