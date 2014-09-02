@@ -5,7 +5,7 @@ services:
         arguments:
             - @request_stack
             - @translator
-            - %dzangocart_subscription.class%
-            - %dzangocart_subscription.trial.config%
+            - %dzangocart_subscription.signup.class%
+            - %dzangocart_subscription.signup.trial.config%
         tags:
             - { name: form.type, alias: dzangocart_subscription_signup }

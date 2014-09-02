@@ -1,0 +1,16 @@
+{% trans_default_domain "DzangocartSubscriptionBundle" %}
+
+<div class="dzangocart_subscription_signup">
+	<div class="row">
+		<form method="post" action={{ path('dzangocart_subscription_signup') }} role="form" class="form">
+			{{ form_errors(form) }}
+			<div class="col-md-4">
+				{{ form_row(form.plan_id) }}
+			</div>
+			<div class="col-md-2">
+				{{ form_widget(form.submit) }}
+			</div>
+			{{ form_rest(form) }}
+		</form>
+	</div>
+</div>
