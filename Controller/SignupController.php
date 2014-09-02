@@ -11,7 +11,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class SignupController
 {
@@ -20,18 +19,16 @@ class SignupController
     protected $session;
     protected $router;
     protected $templating;
-    protected $validator;
     protected $target_on_success;
     protected $form_factory;
 
-    public function __construct(FormFactory $form_factory, Session $session, Router $router, EngineInterface $templating, ValidatorInterface $validator, $class, $target_on_success)
+    public function __construct(FormFactory $form_factory, Session $session, Router $router, EngineInterface $templating, $class, $target_on_success)
     {
         $this->class = $class;
         $this->query_class = $class . 'Query';
         $this->session = $session;
         $this->router = $router;
         $this->templating = $templating;
-        $this->validator = $validator;
         $this->target_on_success = $target_on_success;
         $this->form_factory = $form_factory;
     }
