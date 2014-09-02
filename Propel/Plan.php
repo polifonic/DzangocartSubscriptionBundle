@@ -6,19 +6,19 @@ use Dzangocart\Bundle\SubscriptionBundle\Propel\om\BasePlan;
 
 class Plan extends BasePlan
 {
-    static public function getDefaultPlan()
+    public static function getDefaultPlan()
     {
         return PlanQuery::create()
             ->isDefault()
             ->findOne();
     }
 
-	static public function getDefaultPlanForTrial()
-	{
-		return PlanQuery::create()
-			->filterByTrial(true)
-			->findOne();
-	}
+    public static function getDefaultPlanForTrial()
+    {
+        return PlanQuery::create()
+            ->filterByTrial(true)
+            ->findOne();
+    }
 
     public function isDisabled()
     {
@@ -68,7 +68,6 @@ class Plan extends BasePlan
         $query = FeatureQuery::create()
             ->joinWithI18n($this->getLocale())
             ->orderByRank();
-
 
         foreach ($query->find() as $feature) {
             $id = $feature->getId();

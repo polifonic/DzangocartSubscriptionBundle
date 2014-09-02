@@ -10,4 +10,3 @@ public function isExpired()
 
     return ($expire != null && $expire < time());
 }
-

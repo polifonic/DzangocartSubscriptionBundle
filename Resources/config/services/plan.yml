@@ -4,7 +4,7 @@ parameters:
 services:
     dzangocartsubscription.plan.controller:
         class:     "%dzangocartsubscription.controller.plan.class%"
-        arguments: 
+        arguments:
             - @form.factory
             - @request_stack
             - @router

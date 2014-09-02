@@ -16,7 +16,7 @@ class PlanFeature extends BasePlanFeature
     public function setPlanId($id)
     {
         if ($this->plan_id) {
-        	return;
+            return;
         }
 
         parent::setPlanId($id);
@@ -25,7 +25,7 @@ class PlanFeature extends BasePlanFeature
     public function setPlan(Plan $plan = null)
     {
         if ($this->plan_id) {
-        	return;
+            return;
         }
 
         parent::setPlan($plan);

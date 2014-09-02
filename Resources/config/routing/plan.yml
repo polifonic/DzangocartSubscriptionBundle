@@ -23,19 +23,19 @@ dzangocart_subscription_plan_delete:
 dzangocart_subscription_plan_create:
     pattern: /plan/create
     defaults: { _controller: dzangocartsubscription.plan.controller:createAction}
-    
+
 dzangocart_subscription_plan_disable:
     pattern: /plan/{id}/disable
     defaults: { _controller: dzangocartsubscription.plan.controller:disableAction}
     requirements:
         id: \d+
-    
+
 dzangocart_subscription_plan_use_default_for_trial:
     pattern: /plan/{id}/default_for_trial
     defaults: { _controller: dzangocartsubscription.plan.controller:setTrialAction}
     requirements:
         id: \d+
-    
+
 dzangocart_subscription_plan_remove_default_for_trial:
     pattern: /plan/{id}/remove_default_for_trial
     defaults: { _controller: dzangocartsubscription.plan.controller:unsetTrialAction}

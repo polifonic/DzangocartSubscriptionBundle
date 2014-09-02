@@ -157,7 +157,7 @@ class FeatureController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $feature ->save();
+            $feature->save();
 
             $this->get('session')->getFlashBag()->add(
                 'feature.plans',
