@@ -2,6 +2,8 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Controller;
 
+use Dzangocart\Bundle\SubscriptionBundle\Propel\Plan;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
@@ -56,17 +58,27 @@ class SignupController
 
         if ($form->isValid()) {
 
-            $this->session->set('dzangocart_subscription_entity', $subscription);
+            if ($subscription->getPlanId() == 'trial') {
+                $subscription->setPlanId(Plan::getDefaultPlanForTrial()->getId());
 
-            if ($request->isXmlHttpRequest()) {
-                return new JsonResponse(
-                    array(
-                        'redirectUrl' => $this->router->generate($this->target_on_success)
-                    )
-                );
+                // TODO set expiry date to x day from current date
+
+                $this->session->set('dzangocart_subscription_entity', $subscription);
+
+                if ($request->isXmlHttpRequest()) {
+                    return new JsonResponse(
+                        array(
+                            'redirectUrl' => $this->router->generate($this->target_on_success)
+                        )
+                    );
+                }
+
+                return new RedirectResponse($this->router->generate($this->target_on_success));
             }
 
-            return new RedirectResponse($this->router->generate($this->target_on_success));
+            $this->session->set('dzangocart_subscription_entity', $subscription);
+
+            // TODO redirect to paid registration page
         }
 
         return array(
