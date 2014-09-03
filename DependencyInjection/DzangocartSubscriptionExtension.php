@@ -38,6 +38,7 @@ class DzangocartSubscriptionExtension extends Extension
 
         $container->setParameter('dzangocart_subscription.signup.class', $config['class']);
         $container->setParameter('dzangocart_subscription.signup.trial.config', $config['trial']);
+        $container->setParameter('dzangocart_subscription.signup.trial.days', $config['trial']['days']);
         $container->setParameter('dzangocart_subscription.signup.success_target_path', $config['success_target_path']);
         $loader->load('form.yml');
         $loader->load('signup.yml');

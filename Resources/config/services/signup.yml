@@ -8,3 +8,4 @@ services:
             - @templating
             - %dzangocart_subscription.signup.class%
             - %dzangocart_subscription.signup.success_target_path%
+            - %dzangocart_subscription.signup.trial.days%

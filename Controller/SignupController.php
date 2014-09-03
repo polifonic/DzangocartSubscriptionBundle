@@ -23,8 +23,9 @@ class SignupController
     protected $templating;
     protected $target_on_success;
     protected $form_factory;
+    protected $trial_days;
 
-    public function __construct(FormFactory $form_factory, Session $session, Router $router, EngineInterface $templating, $class, $target_on_success)
+    public function __construct(FormFactory $form_factory, Session $session, Router $router, EngineInterface $templating, $class, $target_on_success, $trial_days)
     {
         $this->class = $class;
         $this->query_class = $class . 'Query';
@@ -33,6 +34,7 @@ class SignupController
         $this->templating = $templating;
         $this->target_on_success = $target_on_success;
         $this->form_factory = $form_factory;
+        $this->trial_days = $trial_days;
     }
 
     /**
@@ -63,7 +65,7 @@ class SignupController
                 $subscription->setPlanId($trial_plan->getId());
 
                 $now = date('Y-m-d', time());
-                $expiry_date = date('Y-m-d', strtotime($now . ' + 30 days'));
+                $expiry_date = date('Y-m-d', strtotime($now . ' + ' . $this->trial_days . ' days'));
 
                 $subscription->setExpiresAt($expiry_date);
 
