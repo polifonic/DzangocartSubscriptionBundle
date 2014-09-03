@@ -59,9 +59,13 @@ class SignupController
         if ($form->isValid()) {
 
             if ($subscription->getPlanId() == 'trial') {
-                $subscription->setPlanId(Plan::getDefaultPlanForTrial()->getId());
+                $trial_plan = Plan::getDefaultPlanForTrial();
+                $subscription->setPlanId($trial_plan->getId());
 
-                // TODO set expiry date to x day from current date
+                $now = date('Y-m-d', time());
+                $expiry_date = date('Y-m-d', strtotime($now . ' + 30 days'));
+
+                $subscription->setExpiresAt($expiry_date);
 
                 $this->session->set('dzangocart_subscription_entity', $subscription);
 
