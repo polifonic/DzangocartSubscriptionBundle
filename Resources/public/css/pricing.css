@@ -15,3 +15,7 @@ float: none;
 	-o-transition: all 0.2s ease-in-out;
 	transition: all 0.2s ease-in-out;
 }
+
+.plan.border-plan {
+	border: 3px solid #ccc;
+}
