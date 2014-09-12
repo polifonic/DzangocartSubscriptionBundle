@@ -14,7 +14,9 @@
 				{% include "DzangocartSubscriptionBundle:Pricing:feature.html.twig" %}
 			{% endfor %}
 
-
+			{% if not is_granted('ROLE_USER') %}
+				{% include "DzangocartSubscriptionBundle:Pricing:signup.html.twig"%}
+			{% endif %}
 		</ul>
 	</div>
 {% endspaceless %}
