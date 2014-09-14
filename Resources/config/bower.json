@@ -1,5 +1,5 @@
 {
-  "name": "polifonic/backend",
+  "name": "dzangocart/subscription-bundle",
   "dependencies": {
     "autotabs": "~2.0",
     "bootstrap": "~3.1",
@@ -7,12 +7,34 @@
     "font-awesome": "~4.1",
     "jquery": "~1.11",
     "jquery.cookie": "~1.4",
-    "jquery-form": "3.50"
+    "jquery-form": "~3.46"
   },
   "overrides": {
+    "bootstrap": {
+      "main": [
+        "./dist/css/bootstrap.css",
+        "./dist/css/bootstrap.min.css",
+        "./dist/css/bootstrap.css.map",
+        "./dist/js/bootstrap.js",
+        "./dist/js/bootstrap.min.js"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+        "./css/font-awesome.css",
+        "./css/font-awesome.min.css",
+        "./fonts/*"
+      ]
+    },
+    "jquery": {
+      "main": [
+        "dist/jquery.js",
+        "dist/jquery.min.js",
+        "dist/jquery.min.map"
+      ]
+    },
     "moment": {
       "main": [
-        "moment.js",
         "min/moment-with-langs.js",
         "min/moment-with-langs.min.js"
       ]
