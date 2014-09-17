@@ -10,7 +10,7 @@ public function __call($name, $params)
         foreach ($planFeatures as $planFeature) {
             $feature = $planFeature->getFeature();
 
-            if ($feature->getName() == substr($name,3)) {
+            if (PropelInflector::camelize($feature->getName()) == PropelInflector::camelize(substr($name,3))) {
                 return (string) $planFeature;
             }
         }

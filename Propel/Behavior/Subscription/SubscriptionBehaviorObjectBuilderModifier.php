@@ -16,6 +16,8 @@ class SubscriptionBehaviorObjectBuilderModifier
         $this->builder = $builder;
         $script = '';
         $script .= $this->addIsExpired();
+
+        $this->builder->declareClasses('Propel\PropelBundle\Util\PropelInflector');
         $script .= $this->add__Call();
 
         if (!$this->table->getBehavior('domainsubscription')) {
