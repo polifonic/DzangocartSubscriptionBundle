@@ -41,6 +41,7 @@
 		<column name="id"          type="integer" required="true" primaryKey="true" autoIncrement="true" />
 		<column name="name"        type="varchar" size="100" required="true" primaryString="true" />
 		<column name="description" type="longvarchar" required="false" />
+		<column name="property_name" type="varchar" size="255" required="true" />
 		<behavior name="i18n">
 			<parameter name="i18n_columns" value="name, description"/>
 		</behavior>
