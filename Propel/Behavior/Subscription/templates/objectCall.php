@@ -1,6 +1,6 @@
 
 /**
- * magic method to return wiki's feature value
+ * magic method to return subscription's feature value
  */
 public function __call($name, $params)
 {
