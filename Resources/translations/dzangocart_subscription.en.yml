@@ -39,7 +39,14 @@ feature:
 
     show:
         cancel:                       '&larr; Return to features list'
-        page_title:                   Feature: %feature%
+        page_title:                   Feature : %feature%
+
+    validation:
+        error:
+            property_name:
+                alphanumeric:         The property name can only contain alphabets and numbers.
+                blank:                The property name field can not be blank.
+                null:                 The property name field can not be null.
 
 plan:
     create:

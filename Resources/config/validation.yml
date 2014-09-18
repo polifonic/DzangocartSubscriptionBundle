@@ -1,0 +1,7 @@
+Dzangocart\Bundle\SubscriptionBundle\Propel\Feature:
+    properties:
+        property_name:
+            - NotNull:
+                message: feature.validation.error.property_name.null
+            - NotBlank:
+                message: feature.validation.error.property_name.blank
