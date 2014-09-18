@@ -24,11 +24,21 @@
 
 		var helpers = {
 			initInfo: function() {
-				$( "form", this ).ajaxForm({
+				var $form = $( "form", this );
+
+				$form.ajaxForm({
 					target: this,
 					success: function() {
 						helpers.initInfo.apply( this );
 					}
+				});
+
+				$( "input[name='name']", $form ).keyup( function( event ) {
+					var name = $.trim($( this ).val().toLowerCase());
+					var propertyName = name.replace(/[^a-zA-Z0-9]/g,'_');
+					propertyName = propertyName.replace(/_{2,}/g,'_');
+
+					$( "input[name='property_name']", $form ).val( propertyName );
 				});
 			},
 			initPlans: function() {
