@@ -26,6 +26,8 @@ feature:
             label:                    Description
         name:
             label:                    Name
+        property_name:
+            label:                    Property name
         submit:                       Save
 
     plans:
@@ -46,7 +48,7 @@ feature:
             property_name:
                 alphanumeric:         The property name can only contain alphabets, numbers and underscore.
                 blank:                The property name field can not be blank.
-                null:                 The property name field can not be null.
+                _null:                 The property name field can not be null.
 
 plan:
     create:

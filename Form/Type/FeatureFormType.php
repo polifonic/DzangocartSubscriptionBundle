@@ -28,6 +28,10 @@ class FeatureFormType extends BaseAbstractType
             'label' => 'feature.form.name.label'
         ));
 
+        $builder->add('property_name', 'text', array(
+            'label' => 'feature.form.property_name.label'
+        ));
+
         $builder->add('description', 'textarea', array(
             'label' => 'feature.form.description.label',
             'attr' => array(

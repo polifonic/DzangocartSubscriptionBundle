@@ -26,6 +26,8 @@ feature:
             label:                    Description
         name:
             label:                    Nom
+        property_name:
+            label:                    Property name.untranslated.fr
         submit:                       Sauvegarder
 
     plans:
@@ -46,7 +48,7 @@ feature:
             property_name:
                 alphanumeric:         The property name can only contain alphabets and numbers.untranslated.fr
                 blank:                The property name field can not be blank.untranslated.fr
-                null:                 The property name field can not be null.untranslated.fr
+                _null:                 The property name field can not be null.untranslated.fr
 
 plan:
     create:

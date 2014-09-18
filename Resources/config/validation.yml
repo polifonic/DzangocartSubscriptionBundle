@@ -2,7 +2,7 @@ Dzangocart\Bundle\SubscriptionBundle\Propel\Feature:
     properties:
         property_name:
             - NotNull:
-                message: feature.validation.error.property_name.null
+                message: feature.validation.error.property_name._null
             - NotBlank:
                 message: feature.validation.error.property_name.blank
             - Dzangocart\Bundle\SubscriptionBundle\Validator\Constraints\AlphaNumeric:
