@@ -19,11 +19,6 @@
 				</a>
 			</li>
 		{% else %}
-			<li>
-				<a href="{{ path('dzangocart_subscription_plan_disable', { id: plan.id }) }}">
-					{% trans %}plan.plans.actions.disable{% endtrans %}
-				</a>
-			</li>
 			{% if plan.isDefaultForTrial %}
 				<li>
 					<a href="{{ path('dzangocart_subscription_plan_remove_default_for_trial', { id: plan.id }) }}">
@@ -31,6 +26,11 @@
 					</a>
 				</li>
 			{% else %}
+				<li>
+					<a href="{{ path('dzangocart_subscription_plan_disable', { id: plan.id }) }}">
+						{% trans %}plan.plans.actions.disable{% endtrans %}
+					</a>
+				</li>
 				<li>
 					<a href="{{ path('dzangocart_subscription_plan_use_default_for_trial', { id: plan.id }) }}">
 						{% trans %}plan.plans.actions.use_default_for_trial{% endtrans %}
