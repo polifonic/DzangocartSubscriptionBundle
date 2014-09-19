@@ -222,18 +222,7 @@ class PlanController
         $plan = $this->getPlan($id);
 
         if (!$plan->isDisabled()) {
-            $plans = PlanQuery::create()
-                ->filterByTrial(true)
-                ->find();
-
-            foreach ($plans as $otherPlan) {
-                $otherPlan->setTrial(false);
-                $otherPlan->save();
-            }
-
-            $plan->setTrial(true);
-
-            $plan->save();
+            $plan->setAsTrialPlan();
         } else {
             $this->session->getFlashBag()->add(
                 'dzangocart.plans.unsuccess',
@@ -262,9 +251,7 @@ class PlanController
     {
         $plan = $this->getPlan($id);
 
-        $plan->setTrial(false);
-
-        $plan->save();
+        $plan->unsetAsTrialPlan();
 
         return new RedirectResponse($this->router
             ->generate(

@@ -104,4 +104,25 @@ class Plan extends BasePlan
     {
         return $this->getTrial();
     }
+
+    public function setAsTrialPlan()
+    {
+        $plans = PlanQuery::create()
+            ->filterByTrial(true)
+            ->find();
+
+        foreach ($plans as $plan) {
+            $plan->unsetAsTrialPlan();
+        }
+
+        $this->setTrial(true);
+
+        $this->save();
+    }
+
+    public function unsetAsTrialPlan()
+    {
+        $this->setTrial(false);
+        $this->save();
+    }
 }
