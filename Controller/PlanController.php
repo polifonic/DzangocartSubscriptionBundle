@@ -171,9 +171,22 @@ class PlanController
     {
         $plan = $this->getPlan($id);
 
-        $plan->disable();
+        if (!$plan->getTrial()) {
+            $plan->disable();
 
-        $plan->save();
+            $plan->save();
+        } else {
+            $this->session->getFlashBag()->add(
+                'dzangocart.plans.unsuccess',
+                $this->translator->trans('plan.plans.actions.error.disable',
+                    array(
+                        '%plan%' => $plan->getName()
+                    ),
+                    'dzangocart_subscription',
+                    $request->getLocale()
+                )
+            );
+        }
 
         return new RedirectResponse($this->router
             ->generate(
@@ -224,7 +237,7 @@ class PlanController
         } else {
             $this->session->getFlashBag()->add(
                 'dzangocart.plans.unsuccess',
-                $this->translator->trans('plan.plans.set_default.fail',
+                $this->translator->trans('plan.plans.actions.error.set_default',
                     array(
                         '%plan%' => $plan->getName()
                     ),

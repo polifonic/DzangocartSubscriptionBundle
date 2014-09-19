@@ -91,6 +91,9 @@ plan:
             show:                     Afficher
             title:                    Actions.not translated in fr
             use_default_for_trial:    set plan as default for trial.not translated in fr
+            error:
+                set_default:          You can not set plan "%plan%" as default plan for trial.untranslated.fr period.
+                disable:              You can not disable plan "%plan%".untranslated.fr
         description:                  Description
         from:                         Du
         name:                         Nom
@@ -98,9 +101,7 @@ plan:
             create:                   Créer une nouvelle formule
         page_title:                   Formule
         price:                        Prix
-        rank:                         Rang
-        set_default:
-            fail:                    Can not set plan "%plan%" as default plan for trial period.untranslated.fr
+        rank:                         Rang                    
         to:                           Au
 
     prices:

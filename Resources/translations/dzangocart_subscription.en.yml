@@ -92,6 +92,10 @@ plan:
             show:                     Show
             title:                    Actions
             use_default_for_trial:    Set plan as default for trial
+            error:
+                set_default:          You can not set plan "%plan%" as default plan for trial period.
+                disable:              You can not disable plan "%plan%". 
+                    
         description:                  Description
         from:                         From
         name:                         Name
@@ -100,8 +104,6 @@ plan:
         page_title:                   Plans
         price:                        Price
         rank:                         Rank
-        set_default:
-            fail:                    Can not set plan "%plan%" as default plan for trial period.
         to:                           To
 
     prices:
