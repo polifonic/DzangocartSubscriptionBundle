@@ -44,7 +44,7 @@ class Plan extends BasePlan
 
     public function isDefault()
     {
-        return $this->getIsDefault();
+        return $this->getTrial();
     }
 
     public function isFree()

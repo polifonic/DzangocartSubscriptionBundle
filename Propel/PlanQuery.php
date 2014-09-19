@@ -27,7 +27,7 @@ class PlanQuery extends BasePlanQuery
     {
         return $this
             ->getActive()
-            ->filterByIsDefault(true)
+            ->filterByTrial(true)
             ->orderByRank();
     }
 
@@ -39,6 +39,6 @@ class PlanQuery extends BasePlanQuery
         return $this
             ->getActive()
             ->orderByRank()
-            ->findOneByIsDefault(true);
+            ->findOneByTrial(true);
     }
 }

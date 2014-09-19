@@ -6,7 +6,6 @@
 		<column name="description" type="longvarchar" required="true" />
 		<column name="start"       type="timestamp" required="false" />
 		<column name="finish"      type="timestamp" required="false" />
-		<column name="is_default"  type="boolean" required="true" default="false" />
 		<column name="disabled"    type="boolean" required="true" default="false" />
 		<column name="trial"       type="boolean" required="true" default="false" />
 		<behavior name="i18n">
