@@ -100,6 +100,8 @@ plan:
         page_title:                   Plans
         price:                        Price
         rank:                         Rank
+        set_default:
+            fail:                    Can not set plan "%plan%" as default plan for trial period.
         to:                           To
 
     prices:

@@ -99,6 +99,8 @@ plan:
         page_title:                   Formule
         price:                        Prix
         rank:                         Rang
+        set_default:
+            fail:                    Can not set plan "%plan%" as default plan for trial period.untranslated.fr
         to:                           Au
 
     prices:

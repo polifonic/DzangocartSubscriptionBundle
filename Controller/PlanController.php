@@ -222,7 +222,16 @@ class PlanController
 
             $default_plan->save();
         } else {
-            // TODO display flash error message
+            $this->session->getFlashBag()->add(
+                'dzangocart.plans.unsuccess',
+                $this->translator->trans('plan.plans.set_default.fail',
+                    array(
+                        '%plan%' => $default_plan->getName()
+                    ),
+                    'dzangocart_subscription',
+                    $request->getLocale()
+                )
+            );
         }
 
         return new RedirectResponse($this->router

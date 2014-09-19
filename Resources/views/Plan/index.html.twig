@@ -21,6 +21,13 @@
 {% block dzangocart_subscription_page_title %}{% trans %}plan.plans.page_title{% endtrans %}{% endblock %}
 
 {% block dzangocart_subscription_content %}
+
+{% for flashMessage in app.session.flashbag.get('dzangocart.plans.unsuccess') %}
+	<div class="alert alert-danger">
+		{{ flashMessage }}
+	</div>
+{% endfor %}
+
 <table class="table table-condensed">
 	<thead>
 		<tr>
