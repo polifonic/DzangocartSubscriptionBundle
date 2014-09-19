@@ -42,6 +42,8 @@
 		<script src="{{ asset_url }}"></script>
 	{% endjavascripts %}
 	<script>
-	var dzangocart_subscription_feature = {};
+		var dzangocart_subscription_feature = {
+			property_name_recommend: {% if feature.getPropertyName() == '' %} true {% else %} false {% endif %}
+		};
 	</script>
 {% endblock %}
