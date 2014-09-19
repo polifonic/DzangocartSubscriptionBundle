@@ -32,13 +32,13 @@ dzangocart_subscription_plan_disable:
 
 dzangocart_subscription_plan_use_default_for_trial:
     pattern: /plan/{id}/default
-    defaults: { _controller: dzangocartsubscription.plan.controller:setTrialAction}
+    defaults: { _controller: dzangocartsubscription.plan.controller:setDefaultAction}
     requirements:
         id: \d+
 
 dzangocart_subscription_plan_remove_default_for_trial:
     pattern: /plan/{id}/removedefault
-    defaults: { _controller: dzangocartsubscription.plan.controller:unsetTrialAction}
+    defaults: { _controller: dzangocartsubscription.plan.controller:removeDefaultAction}
     requirements:
         id: \d+
 

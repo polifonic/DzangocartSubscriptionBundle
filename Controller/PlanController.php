@@ -204,29 +204,29 @@ class PlanController
      * set a plan as default plan for trial period.
      * @Template()
      */
-    public function setTrialAction(Request $request, $id)
+    public function setDefaultAction(Request $request, $id)
     {
-        $default_plan = $this->getPlan($id);
+        $plan = $this->getPlan($id);
 
-        if (!$default_plan->isDisabled()) {
+        if (!$plan->isDisabled()) {
             $plans = PlanQuery::create()
                 ->filterByTrial(true)
                 ->find();
 
-            foreach ($plans as $plan) {
-                $plan->setTrial(false);
-                $plan->save();
+            foreach ($plans as $otherPlan) {
+                $otherPlan->setTrial(false);
+                $otherPlan->save();
             }
 
-            $default_plan->setTrial(true);
+            $plan->setTrial(true);
 
-            $default_plan->save();
+            $plan->save();
         } else {
             $this->session->getFlashBag()->add(
                 'dzangocart.plans.unsuccess',
                 $this->translator->trans('plan.plans.set_default.fail',
                     array(
-                        '%plan%' => $default_plan->getName()
+                        '%plan%' => $plan->getName()
                     ),
                     'dzangocart_subscription',
                     $request->getLocale()
@@ -245,7 +245,7 @@ class PlanController
      * remove plan as default plan for trial period
      * @Template()
      */
-    public function unsetTrialAction(Request $request, $id)
+    public function removeDefaultAction(Request $request, $id)
     {
         $plan = $this->getPlan($id);
 
