@@ -5,6 +5,8 @@
 {% block dzangocart_subscription_head_style %}
 {% endblock %}
 
+{% block dzangocart_subscription_page_class %}create_feature{% endblock %}
+
 {% block dzangocart_subscription_page_nav %}
 	<a href="{{ path('dzangocart_subscription_features') }}">{% trans %}feature.create.cancel{% endtrans %}</a>
 {% endblock %}
@@ -13,4 +15,13 @@
 
 {% block dzangocart_subscription_content %}
 	{{ form(form) }}
+{% endblock %}
+
+{% block dzangocart_subscription_foot_script %}
+	{{ parent() }}
+	{% javascripts
+		'bundles/dzangocartsubscription/js/feature/create.js'
+	%}
+		<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
 {% endblock %}
