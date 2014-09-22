@@ -94,6 +94,8 @@ plan:
             error:
                 set_default:          You can not set plan "%plan%" as default plan for trial.untranslated.fr period.
                 disable:              You can not disable plan "%plan%".untranslated.fr
+            success:
+                set_default:          '"%plan%" plan set as default plan for trial period.untranslated.fr'
         description:                  Description
         from:                         Du
         name:                         Nom

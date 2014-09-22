@@ -22,6 +22,12 @@
 
 {% block dzangocart_subscription_content %}
 
+{% for flashMessage in app.session.flashbag.get('dzangocart.plans.success') %}
+	<div class="alert alert-success">
+		{{ flashMessage }}
+	</div>
+{% endfor %}
+
 {% for flashMessage in app.session.flashbag.get('dzangocart.plans.unsuccess') %}
 	<div class="alert alert-danger">
 		{{ flashMessage }}

@@ -223,6 +223,16 @@ class PlanController
 
         if (!$plan->isDisabled()) {
             $plan->setAsTrialPlan();
+            $this->session->getFlashBag()->add(
+                'dzangocart.plans.success',
+                $this->translator->trans('plan.plans.actions.success.set_default',
+                    array(
+                        '%plan%' => $plan->getName()
+                    ),
+                    'dzangocart_subscription',
+                    $request->getLocale()
+                )
+            );
         } else {
             $this->session->getFlashBag()->add(
                 'dzangocart.plans.unsuccess',
