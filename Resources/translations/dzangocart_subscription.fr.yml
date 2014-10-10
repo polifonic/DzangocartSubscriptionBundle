@@ -103,7 +103,7 @@ plan:
             create:                   Créer une nouvelle formule
         page_title:                   Formule
         price:                        Prix
-        rank:                         Rang                    
+        rank:                         Rang
         to:                           Au
 
     prices:

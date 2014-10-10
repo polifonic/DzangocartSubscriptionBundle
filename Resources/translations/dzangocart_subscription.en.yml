@@ -97,7 +97,7 @@ plan:
                 disable:              You can not disable plan "%plan%".
             success:
                 set_default:          '"%plan%" plan set as default plan for trial period.'
-                    
+
         description:                  Description
         from:                         From
         name:                         Name
