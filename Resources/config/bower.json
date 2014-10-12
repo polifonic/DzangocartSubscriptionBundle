@@ -7,7 +7,8 @@
     "font-awesome": "~4.1",
     "jquery": "~1.11",
     "jquery.cookie": "~1.4",
-    "jquery-form": "~3.46"
+    "jquery-form": "~3.46",
+    "TableDnD": "*"
   },
   "overrides": {
     "bootstrap": {
@@ -35,8 +36,8 @@
     },
     "moment": {
       "main": [
-        "min/moment-with-langs.js",
-        "min/moment-with-langs.min.js"
+        "min/moment-with-locales.js",
+        "min/moment-with-locales.min.js"
       ]
     }
   }

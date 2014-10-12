@@ -11,7 +11,9 @@ gulp.task('bower-files', function() {
 
 gulp.task('minify', ['bower-files'], function() {
 	return gulp.src([
-			'../public/vendor/datatables-plugins/**/*.js',
+			'../public/vendor/jquery.cookie/jquery.cookie.js',
+			'../public/vendor/jquery-form/jquery.form.js',
+			'../public/vendor/TableDnD/js/jquery.tablednd.js',
 			'!../public/vendor/**/*min.js'
 		], { base: '../public/vendor' })
 		.pipe(jsmin())
