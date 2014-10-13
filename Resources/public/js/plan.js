@@ -1,126 +1,123 @@
-!function($) {
-	$.fn.plan = function(method) {
+!function( $ ) {
+	$.fn.plan = function( method ) {
 
 		var settings,
-				table;
+			table;
 
 		// Public methods
 		var methods = {
-			init: function(options) {
+			init: function( options ) {
 				settings = $.extend(true, {}, $.fn.plan.defaults, options);
 
-				return this.each(function() {
-					var $this = $(this);
+				return this.each( function() {
+					var $this = $( this );
 
-					$(".tabs", this).autotabs($.extend(true, {}, settings.autotabs, {
+					$( ".tabs", this ).autotabs( $.extend( true, {}, settings.autotabs, {
 						success: {
 							features: helpers.initFeatures,
 							info: helpers.initInfo,
 							prices: helpers.initPrices
 						}
-					}));
-				});
+					} ) );
+				} );
 			}
 		};
 
 		var helpers = {
 			initPlanDateTimePickers: function() {
-				var start_date_picker = $('#start_datetimepicker');
-				var finish_date_picker = $('#finish_datetimepicker');
-				var start = $('#dzangocart_subscription_plan_start');
-				var finish = $('#dzangocart_subscription_plan_finish');
-				var start_dummy = $('#dzangocart_subscription_plan_startdatepicker');
-				var finish_dummy = $('#dzangocart_subscription_plan_finishdatepicker');
+				var start = $( ".date.start" ),
+				    finish = $( ".date.finish" );
 
-				start_date_picker.datetimepicker({
+				start.datetimepicker( {
 					pickTime: false
-				});
-				start_date_picker.data("DateTimePicker").setDate(start.attr('value'));
-				start_date_picker.data("DateTimePicker").setMaxDate(finish.attr('value'));
+				} );
 
-				finish_date_picker.datetimepicker({
+				start.data( "DateTimePicker" ).setDate( start.attr( "value" ) );
+				start.data( "DateTimePicker" ).setMaxDate( finish.attr( "value" ) );
+
+				finish.datetimepicker( {
 					pickTime: false
-				});
-				finish_date_picker.data("DateTimePicker").setDate(finish.attr('value'));
-				finish_date_picker.data("DateTimePicker").setMinDate(start.attr('value'));
+				} );
 
-				start_date_picker.on("dp.change", function(e) {
-					start.attr('value', start_dummy.val());
-					finish_date_picker.data("DateTimePicker").setMinDate(e.date);
-				});
-				finish_date_picker.on("dp.change", function(e) {
-					finish.attr('value', finish_dummy.val());
-					start_date_picker.data("DateTimePicker").setMaxDate(e.date);
-				});
+				finish.data( "DateTimePicker" ).setDate(finish.attr( "value" ) );
+				finish.data( "DateTimePicker" ).setMinDate(start.attr( "value" ) );
+
+				start.on( "dp.change", function( e ) {
+					finish.data( "DateTimePicker" ).setMinDate( e.date );
+				} );
+
+				finish.on( "dp.change", function( e ) {
+					start.data( "DateTimePicker" ).setMaxDate( e.date );
+				} );
 			},
 			initPricesDateTimePicker: function() {
-				var start_date_picker = [];
-				var finish_date_picker = [];
-				var start = [];
-				var finish = [];
-				var start_dummy = [];
-				var finish_dummy = [];
+				var start_date_picker = [],
+				    finish_date_picker = [],
+				    start = [],
+				    finish = [],
+				    start_dummy = [],
+				    finish_dummy = [];
 
-				for (var i = 0; i < dzangocart_subscription_plan_prices.count; i++) {
-					start_date_picker[i] = $('#start_datetimepicker_' + i);
-					finish_date_picker[i] = $('#finish_datetimepicker_' + i);
-					start[i] = $('#prices_' + i + '_start');
-					finish[i] = $('#prices_' + i + '_finish');
-					start_dummy[i] = $('#prices_' + i + '_startdatepicker');
-					finish_dummy[i] = $('#prices_' + i + '_finishdatepicker');
+				for ( var i = 0; i < dzangocart_subscription_plan_prices.count; i++ ) {
+					start_date_picker[i] = $( "#start_datetimepicker_" + i );
+					finish_date_picker[i] = $( "#finish_datetimepicker_" + i );
+					start[i] = $( "#prices_" + i + "_start" );
+					finish[i] = $( "#prices_" + i + "_finish" );
+					start_dummy[i] = $( "#prices_" + i + "_startdatepicker" );
+					finish_dummy[i] = $( "#prices_" + i + "_finishdatepicker" );
 
-					start_date_picker[i].datetimepicker({
+					start_date_picker[i].datetimepicker( {
 						pickTime: false
-					});
-					start_date_picker[i].data("DateTimePicker").setDate(start[i].attr('value'));
-					start_date_picker[i].data("DateTimePicker").setMaxDate(finish[i].attr('value'));
+					} );
+					start_date_picker[i].data( "DateTimePicker" ).setDate(start[i].attr( "value" ) );
+					start_date_picker[i].data( "DateTimePicker" ).setMaxDate(finish[i].attr( "value" ) );
 
-					finish_date_picker[i].datetimepicker({
+					finish_date_picker[i].datetimepicker( {
 						pickTime: false
-					});
-					finish_date_picker[i].data("DateTimePicker").setDate(finish[i].attr('value'));
-					finish_date_picker[i].data("DateTimePicker").setMinDate(start[i].attr('value'));
+					} );
+					finish_date_picker[i].data( "DateTimePicker" ).setDate(finish[i].attr( "value" ) );
+					finish_date_picker[i].data( "DateTimePicker" ).setMinDate(start[i].attr( "value" ) );
 				}
 
-				$('.start_datetimepicker').on("dp.change", function(e) {
-					var i = $(this).attr('id').substring($(this).attr('id').length - 1);
-					$('#prices_' + i + '_start').attr('value', $('#prices_' + i + '_startdatepicker').val());
-					$('#finish_datetimepicker_' + i).data("DateTimePicker").setMinDate(e.date);
-				});
+				$( ".start_datetimepicker" ).on( "dp.change", function( e ) {
+					var i = $(this).attr( "id" ).substring($(this).attr( "id" ).length - 1 );
+					$( "#prices_" + i + "_start" ).attr( "value", $( "#prices_" + i + "_startdatepicker" ).val() );
+					$( "#finish_datetimepicker_" + i).data( "DateTimePicker" ).setMinDate( e.date );
+				} );
 
-				$('.finish_datetimepicker').on("dp.change", function(e) {
-					var i = $(this).attr('id').substring($(this).attr('id').length - 1);
-					$('#prices_' + i + '_finish').attr('value', $('#prices_' + i + '_finishdatepicker').val());
-					$('#start_datetimepicker_' + i).data("DateTimePicker").setMaxDate(e.date);
-				});
+				$( ".finish_datetimepicker" ).on( "dp.change", function( e ) {
+					var i = $( this ).attr( "id" ).substring( $( this ).attr( "id" ).length - 1 );
+					$( "#prices_" + i + "_finish" ).attr( "value", $( "#prices_" + i + "_finishdatepicker" ).val() );
+					$( "#start_datetimepicker_" + i ).data( "DateTimePicker" ).setMaxDate( e.date );
+				} );
 			},
 			initFeatures: function() {
-				$("form", this).ajaxForm({
+				$( "form", this ).ajaxForm( {
 					target: this,
 					success: function() {
-						helpers.initFeatures.apply(this);
+						helpers.initFeatures.apply( this );
 					}
-				});
+				} );
 			},
 			initInfo: function() {
 				helpers.initPlanDateTimePickers();
-				$("form", this).ajaxForm({
+				$( "form", this ).ajaxForm( {
 					target: this,
 					success: function() {
-						helpers.initInfo.apply(this);
+						helpers.initInfo.apply( this );
 						helpers.initPlanDateTimePickers();
 					}
-				});
+				} );
 			},
 			initPrices: function() {
 				helpers.initPricesDateTimePicker();
-				$("form", this).ajaxForm({
+				$( "form", this ).ajaxForm( {
 					target: this,
 					success: function() {
-						helpers.initPrices.apply(this);
+						helpers.initPrices.apply( this );
 						helpers.initPricesDateTimePicker();
 					}
-				});
+				} );
 			}
 		};
 
@@ -131,7 +128,7 @@
 			return methods.init.apply(this, arguments);
 		}
 		else {
-			$.error("Method " + method + " does not exist in $.plan.");
+			$.error( "Method " + method + " does not exist in $.plan." );
 		}
 	};
 
@@ -146,5 +143,5 @@
 }(window.jQuery);
 
 $(document).ready(function() {
-	$(".plan").plan(dzangocart_subscription_plan);
+	$( ".plan" ).plan(dzangocart_subscription_plan);
 });

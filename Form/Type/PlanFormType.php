@@ -44,23 +44,19 @@ class PlanFormType extends BaseAbstractType
         $builder->add('start', 'date', array(
             'label' => 'plan.form.from.label',
             'widget' => 'single_text',
-            'required' => false
+            'attr' => array(
+                'class' => 'date start',
+                'data-date-format' => 'YYYY-MM-DD'
+            )
         ));
 
         $builder->add('finish', 'date', array(
             'label' => 'plan.form.to.label',
             'widget' => 'single_text',
-            'required' => false
-        ));
-
-        $builder->add('startdatepicker', 'text', array(
-            'required' => false,
-            'mapped' => false
-        ));
-
-        $builder->add('finishdatepicker', 'text', array(
-            'required' => false,
-            'mapped' => false
+            'attr' => array(
+                'class' => 'date finish',
+                'data-date-format' => 'YYYY-MM-DD'
+            )
         ));
 
         $builder->add('save', 'submit', array(
