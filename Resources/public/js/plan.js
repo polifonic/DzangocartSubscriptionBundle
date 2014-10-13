@@ -7,7 +7,7 @@
 		// Public methods
 		var methods = {
 			init: function( options ) {
-				settings = $.extend(true, {}, $.fn.plan.defaults, options);
+				settings = $.extend( true, {}, $.fn.plan.defaults, options );
 
 				return this.each( function() {
 					var $this = $( this );
@@ -93,11 +93,11 @@
 			}
 		};
 
-		if (methods[ method ]) {
-			return methods[ method ].apply(this, Array.prototype.slice.call(arguments, 1));
+		if ( methods[ method ] ) {
+			return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ) );
 		}
-		else if (typeof method === "object" || !method) {
-			return methods.init.apply(this, arguments);
+		else if ( typeof method === "object" || !method ) {
+			return methods.init.apply( this, arguments );
 		}
 		else {
 			$.error( "Method " + method + " does not exist in $.plan." );
@@ -112,8 +112,8 @@
 			active_class: "active"
 		}
 	};
-}(window.jQuery);
+}( window.jQuery );
 
-$(document).ready(function() {
-	$( ".plan" ).plan(dzangocart_subscription.plan);
-});
+$( document ).ready( function() {
+	$( ".plan" ).plan( dzangocart_subscription.plan );
+} );
