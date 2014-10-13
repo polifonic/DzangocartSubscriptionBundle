@@ -12,6 +12,8 @@
 				return this.each( function() {
 					var $this = $( this );
 
+					moment.locale( dzangocart_subscription.locale );
+
 					$( ".tabs", this ).autotabs( $.extend( true, {}, settings.autotabs, {
 						success: {
 							features: helpers.initFeatures,
@@ -29,18 +31,20 @@
 				    finish = $( ".date.finish" );
 
 				start.datetimepicker( {
-					pickTime: false
+					pickTime: false,
+					language: dzangocart_subscription.locale
 				} );
 
 				start.data( "DateTimePicker" ).setDate( start.attr( "value" ) );
 				start.data( "DateTimePicker" ).setMaxDate( finish.attr( "value" ) );
 
 				finish.datetimepicker( {
-					pickTime: false
+					pickTime: false,
+					language: dzangocart_subscription.locale
 				} );
 
-				finish.data( "DateTimePicker" ).setDate(finish.attr( "value" ) );
-				finish.data( "DateTimePicker" ).setMinDate(start.attr( "value" ) );
+				finish.data( "DateTimePicker" ).setDate( finish.attr( "value" ) );
+				finish.data( "DateTimePicker" ).setMinDate( start.attr( "value" ) );
 
 				start.on( "dp.change", function( e ) {
 					finish.data( "DateTimePicker" ).setMinDate( e.date );

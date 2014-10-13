@@ -18,6 +18,11 @@
 	{% block dzangocart_subscription_head_style %}{% endblock %}
 
 	{% block dzangocart_subscription_head_script %}
+		<script>
+			var dzangocart_subscription = {
+				locale: "{{ app.request.locale }}"
+			};
+		</script>
 	{% endblock %}
 </head>
 
