@@ -147,5 +147,5 @@
 }(window.jQuery);
 
 $(document).ready(function() {
-	$( ".plan" ).plan(dzangocart_subscription_plan);
+	$( ".plan" ).plan(dzangocart_subscription.plan);
 });
