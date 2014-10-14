@@ -12,6 +12,8 @@
 				return this.each( function() {
 					var $this = $( this );
 
+					table = $( "table.plans", this );
+					table.tableDnD();
 				} );
 			}
 		};
