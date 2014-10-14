@@ -60,3 +60,18 @@
 	</tbody>
 </table>
 {% endblock %}
+
+{% block dzangocart_subscription_foot_script %}
+	{% javascripts
+		'bundles/dzangocartsubscription/vendor/jquery.cookie/jquery.cookie.min.js'
+		'bundles/dzangocartsubscription/vendor/jquery-table-dnd/jquery.tablednd.js'
+		'bundles/dzangocartsubscription/js/plans.js'
+	%}
+		<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+	<script>
+		var dzangocart_subscription = {
+			plans : {}
+		};
+	</script>
+{% endblock %}
