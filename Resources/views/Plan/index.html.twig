@@ -22,17 +22,19 @@
 
 {% block dzangocart_subscription_content %}
 
-{% for flashMessage in app.session.flashbag.get('dzangocart.plans.success') %}
-	<div class="alert alert-success">
-		{{ flashMessage }}
-	</div>
-{% endfor %}
+<div class="flash-message">
+	{% for flashMessage in app.session.flashbag.get('dzangocart.plans.success') %}
+		<div class="alert alert-success">
+			{{ flashMessage }}
+		</div>
+	{% endfor %}
 
-{% for flashMessage in app.session.flashbag.get('dzangocart.plans.unsuccess') %}
-	<div class="alert alert-danger">
-		{{ flashMessage }}
-	</div>
-{% endfor %}
+	{% for flashMessage in app.session.flashbag.get('dzangocart.plans.unsuccess') %}
+		<div class="alert alert-danger">
+			{{ flashMessage }}
+		</div>
+	{% endfor %}
+</div>
 
 {% include "DzangocartSubscriptionBundle:Plan:plans.html.twig" %}
 
@@ -52,6 +54,7 @@
 				tablednd: {
 					ajax: {
 						loading: '{% trans %}plan.plans.tablednd.ajax.loading{% endtrans %}',
+						success: '{% trans %}plan.plans.tablednd.ajax.success{% endtrans %}',
 						url: '{{ path('dzangocart_subscription_plan_ranks_change') }}'
 					}
 				}

@@ -35,6 +35,7 @@
 								success: function ( data ) {
 									$( "tbody.plans", table ).replaceWith( data );
 									$( "tbody.loading", table ).html( '' );
+									$( ".flash-message", plans ).html( "<div class='alert alert-success'>" + settings.tablednd.ajax.success + "</div>" );
 									helpers.initTableDnD( plans );
 								}
 							} );

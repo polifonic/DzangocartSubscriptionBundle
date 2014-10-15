@@ -107,6 +107,7 @@ plan:
         tablednd:
             ajax:
                 loading:              Loading...untranslated.fr
+                success:              The plans have been re-arranged successfully.untranslated.fr
         to:                           Au
 
     prices:

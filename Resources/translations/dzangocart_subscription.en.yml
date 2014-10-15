@@ -109,6 +109,7 @@ plan:
         tablednd:
             ajax:
                 loading:              Loading...
+                success:              The plans have been re-arranged successfully.
         to:                           To
 
     prices:
