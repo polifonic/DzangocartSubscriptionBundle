@@ -104,6 +104,9 @@ plan:
         page_title:                   Formule
         price:                        Prix
         rank:                         Rang
+        tablednd:
+            ajax:
+                loading:              Loading...untranslated.fr
         to:                           Au
 
     prices:

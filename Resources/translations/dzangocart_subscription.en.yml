@@ -106,6 +106,9 @@ plan:
         page_title:                   Plans
         price:                        Price
         rank:                         Rank
+        tablednd:
+            ajax:
+                loading:              Loading...
         to:                           To
 
     prices:
