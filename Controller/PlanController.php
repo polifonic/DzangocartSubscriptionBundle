@@ -346,7 +346,7 @@ class PlanController
 
     /**
      * Lists all Plans.
-     * @Template("DzangocartSubscriptionBundle:Plan:plans.html.twig")
+     * @Template("DzangocartSubscriptionBundle:Plan:plans_tbody.html.twig")
      */
     public function changeRankAction(Request $request)
     {
