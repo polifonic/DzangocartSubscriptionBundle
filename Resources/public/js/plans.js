@@ -12,8 +12,32 @@
 				return this.each( function() {
 					var $this = $( this );
 
-					table = $( "table.plans", this );
-					table.tableDnD();
+					helpers.initTableDnD( this );
+					
+				} );
+			}
+		};
+
+		var helpers = {
+			initTableDnD: function( plans ) {
+				var plans = plans;
+				table = $( "table.plans", plans );
+				table.tableDnD( {
+					onDrop: function( table, row ) {
+						var new_rank = $( table.tBodies[ 0 ].rows ).index( row ) + 1,
+							plan_id = ( row.id ).slice( -1 );
+
+						if ( String(new_rank) !== $( "td.number", row ).html() ) {
+							$.ajax({
+								url: settings.tablednd.ajax.url,
+								data: { plan_id : plan_id, new_rank : new_rank },
+								success: function ( data ) {
+									$( table ).replaceWith( data );
+									helpers.initTableDnD( plans );
+								}
+							});
+						}
+					}
 				} );
 			}
 		};

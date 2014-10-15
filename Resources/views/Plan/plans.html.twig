@@ -1,0 +1,27 @@
+{% trans_default_domain "dzangocart_subscription" %}
+
+<table class="table table-condensed noajax plans">
+	<thead>
+		<tr>
+			<th class="rank">{% trans %}plan.plans.rank{% endtrans %}</th>
+			<th class="name">{% trans %}plan.plans.name{% endtrans %}</th>
+			<th class="date">{% trans %}plan.plans.from{% endtrans %}</th>
+			<th class="date">{% trans %}plan.plans.to{% endtrans %}</th>
+			<th class="price">{% trans %}plan.plans.price{% endtrans %}</th>
+			<th class="actions"><i class="fa fa-cog"></i></th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for plan in plans %}
+			<tr id="plan_{{ plan.id }}"class="{% if plan.isDisabled %}disabled{% elseif plan.isInactive %}inactive{% elseif plan.isDefault %}default{%endif %}">
+				<td class="number">{{ plan.rank }}</td>
+				<td><a href="{{ path('dzangocart_subscription_plan', { 'id': plan.id }) }}">{{ plan.name }}</a></td>
+				<td>{% if plan.start %}{{ plan.start|date('Y-m-d H:i') }}{% endif%}</td>
+				<td>{% if plan.finish %}{{ plan.finish|date('Y-m-d H:i') }}{% endif%}</td>
+				<td class="amount"></td>
+				<td class="actions">{% include "DzangocartSubscriptionBundle:Plan:actions.html.twig" %}</td>
+				</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
