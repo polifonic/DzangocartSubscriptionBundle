@@ -12,6 +12,7 @@
 				return this.each( function() {
 					var $this = $( this );
 
+					$( "div.loading", this ).hide();
 					helpers.initTableDnD( this );
 					
 				} );
@@ -28,13 +29,13 @@
 							plan_id = ( row.id ).slice( -1 );
 
 						if ( String(new_rank) !== $( "td.number", row ).html() ) {
-							$( "tbody.loading", table ).html( settings.tablednd.ajax.loading );
+							$( "div.loading", plans ).show();
 							$.ajax( {
 								url: settings.tablednd.ajax.url,
 								data: { plan_id : plan_id, new_rank : new_rank },
 								success: function ( data ) {
 									$( "tbody.plans", table ).replaceWith( data );
-									$( "tbody.loading", table ).html( '' );
+									$( "div.loading", plans ).hide();
 									$( ".flash-message", plans ).html( "<div class='alert alert-success'>" + settings.tablednd.ajax.success + "</div>" );
 									helpers.initTableDnD( plans );
 								}
