@@ -106,6 +106,7 @@ plan:
         rank:                         Rang
         tablednd:
             ajax:
+                fail:                 The plans could not be re-arranged.
                 loading:              Loading...untranslated.fr
                 success:              The plans have been re-arranged successfully.untranslated.fr
         to:                           Au

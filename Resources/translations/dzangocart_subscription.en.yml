@@ -108,6 +108,7 @@ plan:
         rank:                         Rank
         tablednd:
             ajax:
+                fail:                 The plans could not be re-arranged.
                 loading:              Loading...
                 success:              The plans have been re-arranged successfully.
         to:                           To
