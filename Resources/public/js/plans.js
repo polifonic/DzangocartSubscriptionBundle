@@ -38,6 +38,11 @@
 									$( "div.loading", plans ).hide();
 									$( ".flash-message", plans ).html( "<div class='alert alert-success'>" + settings.tablednd.ajax.success + "</div>" );
 									helpers.initTableDnD( plans );
+								},
+								error: function ( data ) {
+									$( "div.loading", plans ).hide();
+									$( ".flash-message", plans ).html( "<div class='alert alert-danget'>" + settings.tablednd.ajax.fail + "</div>" );
+									helpers.initTableDnD( plans );
 								}
 							} );
 						}
