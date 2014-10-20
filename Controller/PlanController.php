@@ -357,18 +357,16 @@ class PlanController
         
         $query = $this->getQuery();
 
-        if ($new_rank > $query->count() || $new_rank <= 0 || !$new_rank) {
-            die;
+        if (0 < $new_rank && $new_rank <= $query->count()) {
+            $plan->moveToRank($new_rank);
+            $plan->save();
         }
-
-        $plan->moveToRank($new_rank);
-        $plan->save();
 
         $plans = $query->find();
 
         return array(
-                'plans' => $plans
-            );
+            'plans' => $plans
+        );
     }
 
     protected function getQuery()
