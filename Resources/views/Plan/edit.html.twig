@@ -19,21 +19,12 @@
 <div class="row">
 	<div class='col-sm-6'>
 		<strong>{{ 'plan.form.from.label' | trans }}</strong>
-		<div id='start_datetimepicker' data-date-format="YYYY-MM-DD">
-			{{ form_widget(form.startdatepicker) }}
-		</div>
+		{{ form_widget(form.start) }}
 	</div>
 	<div class='col-sm-6'>
 		<strong>{{ 'plan.form.to.label' | trans }}</strong>
-		<div id='finish_datetimepicker' data-date-format="YYYY-MM-DD">
-			{{ form_widget(form.finishdatepicker) }}
-		</div>
+		{{ form_widget(form.finish) }}
 	</div>
-</div>
-
-<div style="display: none;">
-	{{ form_widget(form.start) }}
-	{{ form_widget(form.finish) }}
 </div>
 
 {{ form_row(form.save) }}

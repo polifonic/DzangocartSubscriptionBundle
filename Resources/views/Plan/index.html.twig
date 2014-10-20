@@ -22,41 +22,43 @@
 
 {% block dzangocart_subscription_content %}
 
-{% for flashMessage in app.session.flashbag.get('dzangocart.plans.success') %}
-	<div class="alert alert-success">
-		{{ flashMessage }}
-	</div>
-{% endfor %}
+<div class="flash-message">
+	{% for flashMessage in app.session.flashbag.get('dzangocart.plans.success') %}
+		<div class="alert alert-success">
+			{{ flashMessage }}
+		</div>
+	{% endfor %}
 
-{% for flashMessage in app.session.flashbag.get('dzangocart.plans.unsuccess') %}
-	<div class="alert alert-danger">
-		{{ flashMessage }}
-	</div>
-{% endfor %}
+	{% for flashMessage in app.session.flashbag.get('dzangocart.plans.unsuccess') %}
+		<div class="alert alert-danger">
+			{{ flashMessage }}
+		</div>
+	{% endfor %}
+</div>
 
-<table class="table table-condensed noajax">
-	<thead>
-		<tr>
-			<th class="rank">{% trans %}plan.plans.rank{% endtrans %}</th>
-			<th class="name">{% trans %}plan.plans.name{% endtrans %}</th>
-			<th class="date">{% trans %}plan.plans.from{% endtrans %}</th>
-			<th class="date">{% trans %}plan.plans.to{% endtrans %}</th>
-			<th class="price">{% trans %}plan.plans.price{% endtrans %}</th>
-			<th class="actions"><i class="fa fa-cog"></i></th>
-		</tr>
-	</thead>
-	<tbody>
-		{% for plan in plans %}
-			<tr class="{% if plan.isDisabled %}disabled{% elseif plan.isInactive %}inactive{% elseif plan.isDefault %}default{%endif %}">
-				<td class="number">{{ plan.rank }}</td>
-				<td><a href="{{ path('dzangocart_subscription_plan', { 'id': plan.id }) }}">{{ plan.name }}</a></td>
-				<td>{% if plan.start %}{{ plan.start|date('Y-m-d H:i') }}{% endif%}</td>
-				<td>{% if plan.finish %}{{ plan.finish|date('Y-m-d H:i') }}{% endif%}</td>
-				<td class="amount"></td>
-				<td class="actions">{% include "DzangocartSubscriptionBundle:Plan:actions.html.twig" %}</td>
-				</td>
-			</tr>
-		{% endfor %}
-	</tbody>
-</table>
+{% include "DzangocartSubscriptionBundle:Plan:plans.html.twig" %}
+
+{% endblock %}
+
+{% block dzangocart_subscription_foot_script %}
+	{% javascripts
+		'bundles/dzangocartsubscription/vendor/jquery.cookie/jquery.cookie.min.js'
+		'bundles/dzangocartsubscription/vendor/jquery-table-dnd/jquery.tablednd.js'
+		'bundles/dzangocartsubscription/js/plans.js'
+	%}
+		<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+	<script>
+		var dzangocart_subscription = {
+			plans : {
+				tablednd: {
+					ajax: {
+						fail: '{% trans %}plan.plans.tablednd.ajax.fail{% endtrans %}',
+						success: '{% trans %}plan.plans.tablednd.ajax.success{% endtrans %}',
+						url: '{{ path('dzangocart_subscription_plan_ranks_change') }}'
+					}
+				}
+			}
+		};
+	</script>
 {% endblock %}

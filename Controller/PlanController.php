@@ -344,6 +344,33 @@ class PlanController
         );
     }
 
+    /**
+     * Lists all Plans.
+     * @Template("DzangocartSubscriptionBundle:Plan:plans_tbody.html.twig")
+     */
+    public function changeRankAction(Request $request)
+    {
+        $plan_id = $request->query->get('plan_id');
+        $new_rank = $request->query->get('new_rank');
+
+        $plan = $this->getPlan($plan_id);
+        
+        $query = $this->getQuery();
+
+        if ($new_rank > $query->count() || $new_rank <= 0 || !$new_rank) {
+            die;
+        }
+
+        $plan->moveToRank($new_rank);
+        $plan->save();
+
+        $plans = $query->find();
+
+        return array(
+                'plans' => $plans
+            );
+    }
+
     protected function getQuery()
     {
         return PlanQuery::create()

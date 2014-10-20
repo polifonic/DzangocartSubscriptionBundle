@@ -59,3 +59,7 @@ dzangocart_subscription_plan_prices:
     defaults: { _controller: dzangocartsubscription.plan.controller:pricesAction}
     requirements:
         id: \d+
+
+dzangocart_subscription_plan_ranks_change:
+    pattern: /plan/rank/change
+    defaults: { _controller: dzangocartsubscription.plan.controller:changeRankAction}
