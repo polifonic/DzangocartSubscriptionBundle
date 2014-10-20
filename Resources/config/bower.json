@@ -39,6 +39,11 @@
         "min/moment-with-locales.js",
         "min/moment-with-locales.min.js"
       ]
+    },
+    "TableDnD": {
+      "main": [
+        "js/jquery.tablednd.js"
+      ]
     }
   }
 }
