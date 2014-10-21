@@ -351,16 +351,15 @@ class PlanController
     public function changeRankAction(Request $request)
     {
         $plan_id = $request->query->get('plan_id');
-        $new_rank = $request->query->get('new_rank');
 
         $plan = $this->getPlan($plan_id);
         
         $query = $this->getQuery();
 
-        if (0 < $new_rank && $new_rank <= $query->count()) {
-            $plan->moveToRank($new_rank);
-            $plan->save();
-        }
+        $new_rank = max(1, min($request->query->get('new_rank'), $query->count()));
+
+        $plan->moveToRank($new_rank);
+        $plan->save();
 
         $plans = $query->find();
 
