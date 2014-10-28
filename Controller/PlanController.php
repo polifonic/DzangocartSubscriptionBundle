@@ -136,7 +136,7 @@ class PlanController
         $plan->setLocale($request->getLocale());
 
         $form = $this->form_factory->create(
-            new PlanFormType(),
+            new PlanFormType($request->getLocale()),
             $plan,
             array(
                 'action' => $this->router->generate(

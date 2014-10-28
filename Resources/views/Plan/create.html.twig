@@ -3,7 +3,14 @@
 {% trans_default_domain "dzangocart_subscription" %}
 
 {% block dzangocart_subscription_head_style %}
+	{% stylesheets filter="cssrewrite" output="css/*.css"
+		'bundles/dzangocartsubscription/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css'
+	%}
+		<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+	{% endstylesheets %}
 {% endblock %}
+
+{% block dzangocart_subscription_page_class %}plan_create{% endblock %}
 
 {% block dzangocart_subscription_page_nav %}
 	<a href="{{ path('dzangocart_subscription_plans') }}">{% trans %}plan.create.cancel{% endtrans %}</a>
@@ -12,5 +19,20 @@
 {% block dzangocart_subscription_page_title %}{% trans %}plan.create.page_title{% endtrans %}{% endblock %}
 
 {% block dzangocart_subscription_content %}
-	{{ form(form) }}
+	{% include "DzangocartSubscriptionBundle:Plan:edit.html.twig" %}
+{% endblock %}
+
+{% block dzangocart_subscription_foot_script %}
+	{% javascripts
+		'bundles/dzangocartsubscription/vendor/moment/min/moment-with-locales.min.js'
+		'bundles/dzangocartsubscription/vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
+		'bundles/dzangocartsubscription/js/plan/create.js'
+	%}
+		<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+	<script>
+		var dzangocart_subscription = {
+			plan : {}
+		};
+	</script>
 {% endblock %}
