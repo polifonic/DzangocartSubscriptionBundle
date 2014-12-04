@@ -12,7 +12,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
-use Symfony\Bundle\FrameworkBundle\Translation\Translator;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,6 +19,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Translation\TranslatorInterface;
 
 class PlanController
 {
@@ -30,7 +30,7 @@ class PlanController
     protected $session;
     protected $translator;
 
-    public function __construct(FormFactory $form_factory, RequestStack $request_stack, Router $router, Session $session, EngineInterface $templating, Translator $translator)
+    public function __construct(FormFactory $form_factory, RequestStack $request_stack, Router $router, Session $session, EngineInterface $templating, TranslatorInterface $translator)
     {
         $this->templating = $templating;
         $this->request_stack = $request_stack;
