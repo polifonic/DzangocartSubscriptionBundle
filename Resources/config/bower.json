@@ -1,13 +1,13 @@
 {
   "name": "dzangocart/subscription-bundle",
   "dependencies": {
-    "autotabs": "~2.0",
-    "bootstrap": "~3.1",
-    "eonasdan-bootstrap-datetimepicker": "~3.0.0",
-    "font-awesome": "~4.1",
+    "autotabs": ">=2.1",
+    "bootstrap": ">=3.1",
+    "eonasdan-bootstrap-datetimepicker": "",
+    "font-awesome": ">=4.0",
     "jquery": "~1.11",
-    "jquery.cookie": "~1.4",
-    "jquery-form": "~3.46",
+    "jquery.cookie": ">=1.4",
+    "jquery-form": "*",
     "TableDnD": "*"
   },
   "overrides": {
@@ -45,5 +45,8 @@
         "js/jquery.tablednd.js"
       ]
     }
+  },
+  "resolutions": {
+    "jquery": "~1.11"
   }
 }
