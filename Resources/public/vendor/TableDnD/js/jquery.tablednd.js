@@ -249,6 +249,8 @@ jQuery.tableDnD = {
                             return false;
                         }
                     }).css("cursor", "move"); // Store the tableDnD object
+                } else {
+                    $(this).css("cursor", ""); // Remove the cursor if we don't have the nodrag class
                 }
             });
     },
@@ -283,10 +285,10 @@ jQuery.tableDnD = {
     },
     /** Get the mouse coordinates from the event (allowing for browser differences) */
     mouseCoords: function(e) {
-        if (event.changedTouches)
+        if (e.originalEvent.changedTouches)
             return {
-                x: event.changedTouches[0].clientX,
-                y: event.changedTouches[0].clientY
+                x: e.originalEvent.changedTouches[0].clientX,
+                y: e.originalEvent.changedTouches[0].clientY
             };
         
         if(e.pageX || e.pageY)
@@ -499,13 +501,13 @@ jQuery.tableDnD = {
         return null;
     },
     processMouseup: function() {
+        if (!this.currentTable || !this.dragObject)
+            return null;
+
         var config      = this.currentTable.tableDnDConfig,
             droppedRow  = this.dragObject,
             parentLevel = 0,
             myLevel     = 0;
-
-        if (!this.currentTable || !droppedRow)
-            return null;
 
         // Unbind the event handlers
         $(document)
