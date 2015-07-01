@@ -16,6 +16,7 @@ class SubscriptionBehaviorObjectBuilderModifier
         $this->builder = $builder;
         $script = '';
         $script .= $this->addIsExpired();
+        $script .= $this->addIsTrial();
 
         $this->builder->declareClasses('Propel\PropelBundle\Util\PropelInflector');
         $script .= $this->add__Call();
@@ -32,6 +33,13 @@ class SubscriptionBehaviorObjectBuilderModifier
     {
         return $this->behavior->renderTemplate('objectIsExpired', array(
             'column_name' => $this->table->getColumn($this->behavior->getParameter('expires_at_column'))->getPhpName()
+        ));
+    }
+
+    protected function addIsTrial()
+    {
+        return $this->behavior->renderTemplate('objectIsTrial', array(
+            'column_name' => $this->table->getColumn($this->behavior->getParameter('trial_expires_at_column'))->getPhpName()
         ));
     }
 
