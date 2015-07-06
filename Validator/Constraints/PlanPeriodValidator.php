@@ -12,7 +12,7 @@ class PlanPeriodValidator extends ConstraintValidator
         $start = $object->getStart('U');
         $finish = $object->getFinish('U');
 
-        if ($start > $finish ) {
+        if ($start > $finish) {
             $this->context->addViolation(
                 $constraint->getMessage(),
                 array()

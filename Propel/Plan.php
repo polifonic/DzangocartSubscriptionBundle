@@ -27,7 +27,9 @@ class Plan extends BasePlan
 
     public function isActive()
     {
-        if ($this->isDisabled()) { return false; }
+        if ($this->isDisabled()) {
+            return false;
+        }
 
         $start = $this->getStart('U');
         $end = $this->getFinish('U');

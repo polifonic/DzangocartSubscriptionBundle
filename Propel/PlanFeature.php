@@ -8,9 +8,9 @@ class PlanFeature extends BasePlanFeature
 {
     public function __toString()
     {
-        return $this->getValue() .
-            ($this->getUnitId() ? $this->getUnit()->getName() : '') .
-            ($this->getPeriodId() ? '/' . $this->getPeriod()->getName() : '');
+        return $this->getValue().
+            ($this->getUnitId() ? $this->getUnit()->getName() : '').
+            ($this->getPeriodId() ? '/'.$this->getPeriod()->getName() : '');
     }
 
     public function setPlanId($id)
