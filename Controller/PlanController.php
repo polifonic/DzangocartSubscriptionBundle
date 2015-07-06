@@ -7,9 +7,7 @@ use Dzangocart\Bundle\SubscriptionBundle\Form\Type\PlanFormType;
 use Dzangocart\Bundle\SubscriptionBundle\Form\Type\PlanPricesFormType;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\Plan;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanQuery;
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\Form\FormFactory;
@@ -42,6 +40,7 @@ class PlanController
 
     /**
      * Lists all Plans.
+     *
      * @Template("DzangocartSubscriptionBundle:Plan:index.html.twig")
      */
     public function indexAction()
@@ -50,12 +49,13 @@ class PlanController
             ->find();
 
         return array(
-                'plans' => $plans
+                'plans' => $plans,
             );
     }
 
     /**
      * Displays a Plan.
+     *
      * @Template("DzangocartSubscriptionBundle:Plan:show.html.twig")
      */
     public function showAction(Request $request, $id)
@@ -63,12 +63,13 @@ class PlanController
         $plan = $this->getPlan($id);
 
         return array(
-            'plan' => $plan
+            'plan' => $plan,
         );
     }
 
     /**
      * Displays a form to edit an existing Plan.
+     *
      * @Template("DzangocartSubscriptionBundle:Plan:edit.html.twig")
      */
     public function editAction(Request $request, $id)
@@ -81,7 +82,7 @@ class PlanController
             array(
                 'action' => $this->router->generate('dzangocart_subscription_plan_edit',
                     array('id' => $id)
-                )
+                ),
             )
         );
 
@@ -98,12 +99,13 @@ class PlanController
 
         return array(
             'plan' => $plan,
-            'form' => $form->createView()
+            'form' => $form->createView(),
         );
     }
 
     /**
      * Delete existing Plan entity.
+     *
      * @Template()
      */
     public function deleteAction(Request $request, $id)
@@ -114,7 +116,7 @@ class PlanController
 
         $this->session->getFlashBag()->add(
             'success',
-            $plan->getName() . " " . $this->translator->trans(
+            $plan->getName().' '.$this->translator->trans(
                 'plan.delete.success',
                 array(),
                 'dzangocart_subscription',
@@ -127,6 +129,7 @@ class PlanController
 
     /**
      * Create a Plan entity.
+     *
      * @Template("DzangocartSubscriptionBundle:Plan:create.html.twig")
      */
     public function createAction(Request $request)
@@ -141,7 +144,7 @@ class PlanController
             array(
                 'action' => $this->router->generate(
                     'dzangocart_subscription_plan_create'
-                )
+                ),
             )
         );
 
@@ -160,7 +163,7 @@ class PlanController
 
         return array(
             'plan' => $plan,
-            'form' => $form->createView()
+            'form' => $form->createView(),
         );
     }
 
@@ -180,7 +183,7 @@ class PlanController
                 'dzangocart.plans.unsuccess',
                 $this->translator->trans('plan.plans.actions.error.disable',
                     array(
-                        '%plan%' => $plan->getName()
+                        '%plan%' => $plan->getName(),
                     ),
                     'dzangocart_subscription',
                     $request->getLocale()
@@ -215,6 +218,7 @@ class PlanController
 
     /**
      * set a plan as default plan for trial period.
+     *
      * @Template()
      */
     public function setDefaultAction(Request $request, $id)
@@ -227,7 +231,7 @@ class PlanController
                 'dzangocart.plans.success',
                 $this->translator->trans('plan.plans.actions.success.set_default',
                     array(
-                        '%plan%' => $plan->getName()
+                        '%plan%' => $plan->getName(),
                     ),
                     'dzangocart_subscription',
                     $request->getLocale()
@@ -238,7 +242,7 @@ class PlanController
                 'dzangocart.plans.unsuccess',
                 $this->translator->trans('plan.plans.actions.error.set_default',
                     array(
-                        '%plan%' => $plan->getName()
+                        '%plan%' => $plan->getName(),
                     ),
                     'dzangocart_subscription',
                     $request->getLocale()
@@ -254,7 +258,8 @@ class PlanController
     }
 
     /**
-     * remove plan as default plan for trial period
+     * remove plan as default plan for trial period.
+     *
      * @Template()
      */
     public function removeDefaultAction(Request $request, $id)
@@ -272,6 +277,7 @@ class PlanController
 
     /**
      * Displays a form to edit a Plan's features.
+     *
      * @Template("DzangocartSubscriptionBundle:Plan:features.html.twig")
      */
     public function featuresAction(Request $request, $id)
@@ -286,7 +292,7 @@ class PlanController
                 ->generate(
                     'dzangocart_subscription_plan_features',
                     array('id' => $id)
-                )
+                ),
             )
         );
 
@@ -303,12 +309,13 @@ class PlanController
 
         return array(
             'plan' => $plan,
-            'form' => $form->createView()
+            'form' => $form->createView(),
         );
     }
 
     /**
      * Displays a form to edit a Plan's prices.
+     *
      * @Template("DzangocartSubscriptionBundle:Plan:prices.html.twig")
      */
     public function pricesAction(Request $request, $id)
@@ -324,7 +331,7 @@ class PlanController
                     'dzangocart_subscription_plan_prices',
                     array('id' => $id),
                     UrlGeneratorInterface::ABSOLUTE_PATH
-                )
+                ),
             )
         );
 
@@ -340,12 +347,13 @@ class PlanController
 
         return array(
             'plan' => $plan,
-            'form' => $form->createView()
+            'form' => $form->createView(),
         );
     }
 
     /**
      * Lists all Plans.
+     *
      * @Template("DzangocartSubscriptionBundle:Plan:plans_tbody.html.twig")
      */
     public function changeRankAction(Request $request)
@@ -353,7 +361,7 @@ class PlanController
         $plan_id = $request->query->get('plan_id');
 
         $plan = $this->getPlan($plan_id);
-        
+
         $query = $this->getQuery();
 
         $new_rank = max(1, min($request->query->get('new_rank'), $query->count()));
@@ -364,7 +372,7 @@ class PlanController
         $plans = $query->find();
 
         return array(
-            'plans' => $plans
+            'plans' => $plans,
         );
     }
 

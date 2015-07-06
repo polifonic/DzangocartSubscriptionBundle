@@ -3,9 +3,7 @@
 namespace Dzangocart\Bundle\SubscriptionBundle\Controller;
 
 use Dzangocart\Bundle\SubscriptionBundle\Propel\Plan;
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\Form\FormFactory;
@@ -28,7 +26,7 @@ class SignupController
     public function __construct(FormFactory $form_factory, Session $session, Router $router, EngineInterface $templating, $class, $target_on_success, $trial_days)
     {
         $this->class = $class;
-        $this->query_class = $class . 'Query';
+        $this->query_class = $class.'Query';
         $this->session = $session;
         $this->router = $router;
         $this->templating = $templating;
@@ -52,20 +50,19 @@ class SignupController
             'dzangocart_subscription_signup',
             $subscription,
             array(
-                'action' => $this->router->generate('dzangocart_subscription_signup')
+                'action' => $this->router->generate('dzangocart_subscription_signup'),
             )
         );
 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-
             if ($subscription->getPlanId() == 'trial') {
                 $trial_plan = Plan::getDefaultPlanForTrial();
                 $subscription->setPlanId($trial_plan->getId());
 
                 $now = date('Y-m-d', time());
-                $expiry_date = date('Y-m-d', strtotime($now . ' + ' . $this->trial_days . ' days'));
+                $expiry_date = date('Y-m-d', strtotime($now.' + '.$this->trial_days.' days'));
 
                 $subscription->setExpiresAt($expiry_date);
 
@@ -74,7 +71,7 @@ class SignupController
                 if ($request->isXmlHttpRequest()) {
                     return new JsonResponse(
                         array(
-                            'redirectUrl' => $this->router->generate($this->target_on_success)
+                            'redirectUrl' => $this->router->generate($this->target_on_success),
                         )
                     );
                 }
@@ -88,7 +85,7 @@ class SignupController
         }
 
         return array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
         );
     }
 }

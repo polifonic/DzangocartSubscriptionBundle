@@ -23,7 +23,7 @@ class SubscriptionBehavior extends Behavior
                 'name' => $this->getParameter('plan_id_column'),
                 'phpName' => 'PlanId',
                 'type' => 'INTEGER',
-                'required' => true
+                'required' => true,
             ));
 
             $fk = new ForeignKey('FI_subscription_plan');
@@ -39,7 +39,7 @@ class SubscriptionBehavior extends Behavior
                 'name' => $this->getParameter('expires_at_column'),
                 'phpName' => 'ExpiresAt',
                 'type' => 'TIMESTAMP',
-                'required' => false
+                'required' => false,
             ));
         }
 
@@ -48,7 +48,7 @@ class SubscriptionBehavior extends Behavior
                 'name' => $this->getParameter('trial_plan_id_column'),
                 'phpName' => 'TrialPlanId',
                 'type' => 'INTEGER',
-                'required' => false
+                'required' => false,
             ));
 
             $fk = new ForeignKey('FI_subscription_trial_plan');
@@ -64,10 +64,9 @@ class SubscriptionBehavior extends Behavior
                 'name' => $this->getParameter('trial_expires_at_column'),
                 'phpName' => 'TrialExpiresAt',
                 'type' => 'TIMESTAMP',
-                'required' => false
+                'required' => false,
             ));
         }
-
     }
 
     public function getObjectBuilderModifier()

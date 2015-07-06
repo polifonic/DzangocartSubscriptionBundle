@@ -3,9 +3,7 @@
 namespace Dzangocart\Bundle\SubscriptionBundle\Controller;
 
 use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanQuery;
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -23,7 +21,7 @@ class PricingController extends Controller
         $theme = $this->container->getParameter('dzangocart_subscription.pricing.theme');
 
         return array(
-            'theme' => $theme
+            'theme' => $theme,
         );
     }
 

@@ -6,10 +6,8 @@ use Dzangocart\Bundle\SubscriptionBundle\Form\Type\FeatureFormType;
 use Dzangocart\Bundle\SubscriptionBundle\Form\Type\FeaturePlansFormType;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\Feature;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\FeatureQuery;
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -21,7 +19,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class FeatureController extends Controller
 {
     /**
-     *
      * @Route("/", name="dzangocart_subscription_features")
      * @Template("DzangocartSubscriptionBundle:Feature:index.html.twig")
      */
@@ -42,7 +39,7 @@ class FeatureController extends Controller
         $feature = $this->getFeature($id);
 
         return array(
-            'feature' => $feature
+            'feature' => $feature,
         );
     }
 
@@ -58,7 +55,7 @@ class FeatureController extends Controller
             new FeatureFormType(),
             $feature,
             array(
-                'action' => $this->generateUrl('dzangocart_subscription_feature_edit', array('id' => $id))
+                'action' => $this->generateUrl('dzangocart_subscription_feature_edit', array('id' => $id)),
             )
         );
 
@@ -75,7 +72,7 @@ class FeatureController extends Controller
 
         return array(
             'form' => $form->createView(),
-            'feature' => $feature
+            'feature' => $feature,
         );
     }
 
@@ -97,7 +94,6 @@ class FeatureController extends Controller
     }
 
     /**
-     *
      * @Route("/create", name="dzangocart_subscription_feature_create")
      * @Template("DzangocartSubscriptionBundle:Feature:create.html.twig")
      */
@@ -111,7 +107,7 @@ class FeatureController extends Controller
             new FeatureFormType(),
             $feature,
             array(
-                'action' => $this->generateUrl('dzangocart_subscription_feature_create')
+                'action' => $this->generateUrl('dzangocart_subscription_feature_create'),
             )
         );
 
@@ -134,7 +130,7 @@ class FeatureController extends Controller
         }
 
         return array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
         );
     }
 
@@ -150,7 +146,7 @@ class FeatureController extends Controller
             new FeaturePlansFormType($request->getLocale()),
             $feature,
             array(
-                'action' => $this->generateUrl('dzangocart_subscription_feature_plans', array('id' => $id))
+                'action' => $this->generateUrl('dzangocart_subscription_feature_plans', array('id' => $id)),
             )
         );
 
@@ -166,7 +162,7 @@ class FeatureController extends Controller
         }
 
         return array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
         );
     }
 

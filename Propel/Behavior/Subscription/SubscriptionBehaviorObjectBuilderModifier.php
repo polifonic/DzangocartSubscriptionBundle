@@ -1,4 +1,5 @@
 <?php
+
 namespace Dzangocart\Bundle\SubscriptionBundle\Propel\Behavior\Subscription;
 
 class SubscriptionBehaviorObjectBuilderModifier
@@ -32,21 +33,21 @@ class SubscriptionBehaviorObjectBuilderModifier
     protected function addIsExpired()
     {
         return $this->behavior->renderTemplate('objectIsExpired', array(
-            'column_name' => $this->table->getColumn($this->behavior->getParameter('expires_at_column'))->getPhpName()
+            'column_name' => $this->table->getColumn($this->behavior->getParameter('expires_at_column'))->getPhpName(),
         ));
     }
 
     protected function addIsTrial()
     {
         return $this->behavior->renderTemplate('objectIsTrial', array(
-            'column_name' => $this->table->getColumn($this->behavior->getParameter('trial_expires_at_column'))->getPhpName()
+            'column_name' => $this->table->getColumn($this->behavior->getParameter('trial_expires_at_column'))->getPhpName(),
         ));
     }
 
     protected function addLoadValidatiorMetadata()
     {
         return $this->behavior->renderTemplate('objectLoadValidatorMetadata', array(
-            'plan_id_column' => $this->table->getBehavior('subscription')->getParameter('plan_id_column')
+            'plan_id_column' => $this->table->getBehavior('subscription')->getParameter('plan_id_column'),
         ));
     }
 

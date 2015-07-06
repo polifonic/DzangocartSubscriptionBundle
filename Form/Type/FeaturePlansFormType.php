@@ -3,7 +3,6 @@
 namespace Dzangocart\Bundle\SubscriptionBundle\Form\Type;
 
 use Propel\PropelBundle\Form\BaseAbstractType;
-
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
@@ -27,7 +26,7 @@ class FeaturePlansFormType extends BaseAbstractType
             'translation_domain' => 'dzangocart_subscription',
             'data_class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\Feature',
             'name' => 'dzangocart_subscription_feature_plans',
-            'intention' => 'feature_plans'
+            'intention' => 'feature_plans',
         ));
     }
 
@@ -43,12 +42,12 @@ class FeaturePlansFormType extends BaseAbstractType
                 'label' => false,
                 'type' => new PlanFeatureFormType($this->getLocale()),
                 'allow_add' => false,
-                'allow_delete' => false
+                'allow_delete' => false,
             )
         );
 
         $builder->add('save', 'submit', array(
-            'label' => 'feature.plans.submit'
+            'label' => 'feature.plans.submit',
         ));
     }
 }

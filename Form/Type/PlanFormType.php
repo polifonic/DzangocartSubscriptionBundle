@@ -3,7 +3,6 @@
 namespace Dzangocart\Bundle\SubscriptionBundle\Form\Type;
 
 use Propel\PropelBundle\Form\BaseAbstractType;
-
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
@@ -21,7 +20,7 @@ class PlanFormType extends BaseAbstractType
         $resolver->setDefaults(array(
             'translation_domain' => 'dzangocart_subscription',
             'data_class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\Plan',
-            'intention' => 'plan_edit'
+            'intention' => 'plan_edit',
         ));
     }
 
@@ -31,14 +30,14 @@ class PlanFormType extends BaseAbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name', 'text', array(
-            'label' => 'plan.form.name.label'
+            'label' => 'plan.form.name.label',
         ));
 
         $builder->add('description', 'textarea', array(
             'label' => 'plan.form.description.label',
             'attr' => array(
-                'rows' => 12
-            )
+                'rows' => 12,
+            ),
         ));
 
         $builder->add('start', 'date', array(
@@ -46,8 +45,8 @@ class PlanFormType extends BaseAbstractType
             'widget' => 'single_text',
             'attr' => array(
                 'class' => 'date start',
-                'data-date-format' => 'YYYY-MM-DD'
-            )
+                'data-date-format' => 'YYYY-MM-DD',
+            ),
         ));
 
         $builder->add('finish', 'date', array(
@@ -55,12 +54,12 @@ class PlanFormType extends BaseAbstractType
             'widget' => 'single_text',
             'attr' => array(
                 'class' => 'date finish',
-                'data-date-format' => 'YYYY-MM-DD'
-            )
+                'data-date-format' => 'YYYY-MM-DD',
+            ),
         ));
 
         $builder->add('save', 'submit', array(
-            'label' => 'plan.form.submit.label'
+            'label' => 'plan.form.submit.label',
         ));
     }
 

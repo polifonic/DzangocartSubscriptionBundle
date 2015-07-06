@@ -4,12 +4,12 @@ namespace Dzangocart\Bundle\SubscriptionBundle\Form\Type;
 
 use Dzangocart\Bundle\SubscriptionBundle\Propel\Plan;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanQuery;
-
 use Symfony\Bundle\FrameworkBundle\Translation\Translator;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+
 class SignupFormType extends AbstractType
 {
     protected $class;
@@ -39,7 +39,7 @@ class SignupFormType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => $this->class,
-            'intention'  => 'signup'
+            'intention' => 'signup',
         ));
     }
 
@@ -51,8 +51,8 @@ class SignupFormType extends AbstractType
             'required' => true,
             'preferred_choices' => $this->getPrefferedChoice(),
             'label_attr' => array(
-                'class' => 'sr-only'
-            )
+                'class' => 'sr-only',
+            ),
         ));
 
         $builder->add('submit', 'submit', array());

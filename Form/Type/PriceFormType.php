@@ -3,9 +3,7 @@
 namespace Dzangocart\Bundle\SubscriptionBundle\Form\Type;
 
 use Dzangocart\Bundle\SubscriptionBundle\Propel\PeriodQuery;
-
 use Propel\PropelBundle\Form\BaseAbstractType;
-
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
@@ -27,7 +25,7 @@ class PriceFormType extends BaseAbstractType
         $resolver->setDefaults(array(
             'translation_domain' => 'dzangocart_subscription',
             'data_class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\Price',
-            'name' => 'dzangocart_subscription_price'
+            'name' => 'dzangocart_subscription_price',
         ));
     }
 
@@ -44,16 +42,16 @@ class PriceFormType extends BaseAbstractType
             'widget' => 'single_text',
             'attr' => array(
                 'class' => 'date start',
-                'data-date-format' => 'YYYY-MM-DD'
-            )
+                'data-date-format' => 'YYYY-MM-DD',
+            ),
         ));
 
         $builder->add('finish', 'date', array(
             'widget' => 'single_text',
             'attr' => array(
                 'class' => 'date finish',
-                'data-date-format' => 'YYYY-MM-DD'
-            )
+                'data-date-format' => 'YYYY-MM-DD',
+            ),
         ));
 
         $builder->add('period', 'model', array(
@@ -62,12 +60,12 @@ class PriceFormType extends BaseAbstractType
             'query' => PeriodQuery::create()
                 ->joinWithI18n($this->getLocale()
             ),
-            'required' => false
+            'required' => false,
         ));
 
         $builder->add('isdefault', 'choice', array(
-            'choices'   => array('1' => 'plan.prices.default.true', '0' => 'plan.prices.default.false'),
-            'required'  => false,
+            'choices' => array('1' => 'plan.prices.default.true', '0' => 'plan.prices.default.false'),
+            'required' => false,
         ));
     }
 }
