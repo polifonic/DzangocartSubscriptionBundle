@@ -51,6 +51,8 @@ feature:
                 _null:                 The property name field can not be null.
 
 plan:
+    choice:
+        placeholder:                    Choose your plan
     create:
         cancel:                       '&larr; Cancel'
         page_title:                   Create a new plan

@@ -51,6 +51,8 @@ feature:
                 _null:                 The property name field can not be null.untranslated.fr
 
 plan:
+    choice:
+        placeholder:                    Choisissez votre formule
     create:
         cancel:                       '&larr; Annuler'
         page_title:                   Créer une nouvelle formule

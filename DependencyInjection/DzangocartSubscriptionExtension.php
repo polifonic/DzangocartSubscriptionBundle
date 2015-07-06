@@ -22,6 +22,7 @@ class DzangocartSubscriptionExtension extends Extension
 
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config/services'));
         $loader->load('plan.yml');
+        $loader->load('form.yml');
 
         if ($config['signup']['enabled']) {
             $this->loadSignup($config['signup'], $container, $loader);
@@ -40,7 +41,7 @@ class DzangocartSubscriptionExtension extends Extension
         $container->setParameter('dzangocart_subscription.signup.trial.config', $config['trial']);
         $container->setParameter('dzangocart_subscription.signup.trial.days', $config['trial']['days']);
         $container->setParameter('dzangocart_subscription.signup.success_target_path', $config['success_target_path']);
-        $loader->load('form.yml');
+
         $loader->load('signup.yml');
     }
 }
