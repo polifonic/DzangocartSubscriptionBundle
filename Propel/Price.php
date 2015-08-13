@@ -2,8 +2,9 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Propel;
 
-use Dzangocart\Bundle\SubscriptionBundle\Propel\om\BasePrice;
 use NumberFormatter;
+use Dzangocart\Bundle\SubscriptionBundle\Propel\om\BasePrice;
+use Symfony\Component\Intl\Intl;
 
 class Price extends BasePrice
 {
@@ -46,5 +47,36 @@ class Price extends BasePrice
     public function getCurrencySymbol()
     {
         return Intl::getCurrencyBundle()->getCurrencySymbol($this->getCurrency());
+    }
+
+    public function getDecimals()
+    {
+        return Intl::getCurrencyBundle()->getFractionDigits($this->getCurrency());
+    }
+
+    public function getParts()
+    {
+        $currency = $this->getCurrency();
+
+        $symbol = $this->getCurrencySymbol();
+
+        $price = $this->getPrice();
+
+        $mantissa = floor($price);
+
+        $decimals = $this->getDecimals();
+
+        if ($decimals > 0) {
+            $cents = sprintf('%0' . $decimals . 'd', ($price - $mantissa) * (10 ^ $decimals));
+        } else {
+            $cents = null;
+        }
+
+        return array(
+            $currency,
+            $symbol,
+            $mantissa,
+            $cents,
+        );
     }
 }

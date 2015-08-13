@@ -20,48 +20,58 @@ Dzangocart\Bundle\SubscriptionBundle\Propel\PeriodI18n:
         locale: en
         name: hour
         plural: hours
+        shortname: h
     PeriodI18n_1_fr:
         id: Period_1
         locale: fr
         name: heure
         plural: heures
+        shortname: h
     PeriodI18n_2_en:
         id: Period_2
         locale: en
         name: day
         plural: days
+        shortname: d
     PeriodI18n_2_fr:
         id: Period_2
         locale: fr
         name: jour
         plural: jours
+        shortname: j.
     PeriodI18n_3_en:
         id: Period_3
         locale: en
         name: week
         plural: weeks
+        shortname: w
     PeriodI18n_3_fr:
         id: Period_3
         locale: fr
         name: semaine
         plural: semaines
+        shortname: sem.
     PeriodI18n_4_en:
         id: Period_4
         locale: en
         name: month
         plural: months
+        shortname: mo.
     PeriodI18n_4_fr:
         id: Period_4
         locale: fr
         name: mois
         plural: mois
+        shortname: m.
     PeriodI18n_5_en:
         id: Period_5
         locale: en
         name: year
         plural: years
+        shortname: y
     PeriodI18n_5_fr:
         id: Period_5
         locale: fr
         name: an
         plural: ans
+        shortname: a.
