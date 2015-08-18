@@ -30,6 +30,7 @@ class PlanChoiceType extends AbstractType
 //            'preferred_choices' => Plan::getDefaultPlan() ? array(Plan::getDefaultPlan()->getId()) : $this->getPlans(),
             'placeholder' => 'plan.choice.placeholder',
             'translation_domain' => 'dzangocart_subscription',
+            'required' => true,
         ));
     }
 
