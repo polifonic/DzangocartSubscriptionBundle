@@ -84,7 +84,7 @@ plan:
         submit:
             label:                    Save
         to:
-            label:                    Available to
+            label:                    Available until
 
     plans:
         actions:

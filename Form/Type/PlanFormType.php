@@ -35,6 +35,7 @@ class PlanFormType extends BaseAbstractType
 
         $builder->add('description', 'textarea', array(
             'label' => 'plan.form.description.label',
+            'required' => false,
             'attr' => array(
                 'rows' => 12,
             ),
@@ -43,6 +44,7 @@ class PlanFormType extends BaseAbstractType
         $builder->add('start', 'date', array(
             'label' => 'plan.form.from.label',
             'widget' => 'single_text',
+            'required' => false,
             'attr' => array(
                 'class' => 'date start',
                 'data-date-format' => 'YYYY-MM-DD',
@@ -52,6 +54,7 @@ class PlanFormType extends BaseAbstractType
         $builder->add('finish', 'date', array(
             'label' => 'plan.form.to.label',
             'widget' => 'single_text',
+            'required' => false,
             'attr' => array(
                 'class' => 'date finish',
                 'data-date-format' => 'YYYY-MM-DD',

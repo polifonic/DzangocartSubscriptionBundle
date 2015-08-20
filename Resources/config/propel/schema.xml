@@ -3,7 +3,7 @@
 	<table name="dzangocart_subscription_plan" phpName="Plan">
 		<column name="id"          type="integer" required="true" primaryKey="true" autoIncrement="true" />
 		<column name="name"        type="varchar" size="100" required="true" primaryString="true" />
-		<column name="description" type="longvarchar" required="true" />
+		<column name="description" type="longvarchar" required="false" />
 		<column name="start"       type="timestamp" required="false" />
 		<column name="finish"      type="timestamp" required="false" />
 		<column name="disabled"    type="boolean" required="true" default="false" />
