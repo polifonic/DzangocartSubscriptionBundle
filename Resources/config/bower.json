@@ -2,9 +2,9 @@
   "name": "dzangocart/subscription-bundle",
   "dependencies": {
     "autotabs": ">=2.1",
-    "bootstrap": ">=3.1",
-    "eonasdan-bootstrap-datetimepicker": "",
-    "font-awesome": ">=4.0",
+    "bootstrap": "~3.3",
+    "eonasdan-bootstrap-datetimepicker": "~4.15",
+    "font-awesome": "~4.4",
     "jquery": "~1.11",
     "jquery.cookie": ">=1.4",
     "jquery-form": "*",
