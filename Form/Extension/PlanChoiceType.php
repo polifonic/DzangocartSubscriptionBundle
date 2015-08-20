@@ -26,7 +26,7 @@ class PlanChoiceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'choices' => $this->getPlans(),
+            'choices' => $this->getChoices(),
 //            'preferred_choices' => Plan::getDefaultPlan() ? array(Plan::getDefaultPlan()->getId()) : $this->getPlans(),
             'placeholder' => 'plan.choice.placeholder',
             'translation_domain' => 'dzangocart_subscription',
@@ -45,10 +45,11 @@ class PlanChoiceType extends AbstractType
         return 'dzangocart_subscription_plan';
     }
 
-    protected function getPlans()
+    protected function getChoices()
     {
         $plans = PlanQuery::create()
             ->joinWithI18n($this->getLocale())
+            ->getActive()
             ->orderByRank()
             ->find();
 
