@@ -9,8 +9,8 @@ class PlanPeriodValidator extends ConstraintValidator
 {
     public function validate($object, Constraint $constraint)
     {
-        $start = $object->getStart('U');
-        $finish = $object->getFinish('U');
+        $start = $object->getStart();
+        $finish = $object->getFinish();
 
         if ($start > $finish) {
             $this->context->addViolation(

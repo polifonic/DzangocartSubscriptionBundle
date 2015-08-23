@@ -1,0 +1,13 @@
+accounts:
+    plan_id:
+        null:           The account must be associated to a plan.
+
+feature:
+    property_name:
+        null:           The property name cannot be null.
+        blank:          The property name cannot be blank.
+        alphanumeric:   The property name can only contain letters, numbers and underscore.
+
+plan:
+    period:
+        invalid:        The plan's end date cannot be earlier than its start date.

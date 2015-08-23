@@ -49,7 +49,7 @@ class PlanChoiceType extends AbstractType
     {
         $plans = PlanQuery::create()
             ->joinWithI18n($this->getLocale())
-            ->getActive()
+            ->active()
             ->orderByRank()
             ->find();
 

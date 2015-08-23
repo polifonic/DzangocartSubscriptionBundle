@@ -2,9 +2,10 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Propel;
 
+use Dzangocart\Bundle\SubscriptionBundle\Model\PlanInterface;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\om\BasePlan;
 
-class Plan extends BasePlan
+class Plan extends BasePlan implements PlanInterface
 {
     public static function getDefaultPlan()
     {

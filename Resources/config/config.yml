@@ -1,3 +1,0 @@
-propel:
-    build-properties:
-        propel.behavior.subscription.class: Dzangocart\Bundle\SubscriptionBundle\Propel\Behavior\Subscription\SubscriptionBehavior

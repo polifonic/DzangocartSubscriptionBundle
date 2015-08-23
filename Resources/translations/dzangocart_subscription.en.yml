@@ -43,13 +43,6 @@ feature:
         cancel:                       '&larr; Return to features list'
         page_title:                   Feature : %feature%
 
-    validation:
-        error:
-            property_name:
-                alphanumeric:         The property name can only contain alphabets, numbers and underscore.
-                blank:                The property name field can not be blank.
-                _null:                 The property name field can not be null.
-
 plan:
     choice:
         placeholder:                    Choose your plan

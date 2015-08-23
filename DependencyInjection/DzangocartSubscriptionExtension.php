@@ -5,10 +5,11 @@ namespace Dzangocart\Bundle\SubscriptionBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class DzangocartSubscriptionExtension extends Extension
+class DzangocartSubscriptionExtension extends Extension implements PrependExtensionInterface
 {
     /**
      * {@inheritDoc}
@@ -27,6 +28,37 @@ class DzangocartSubscriptionExtension extends Extension
         if ($config['signup']['enabled']) {
             $this->loadSignup($config['signup'], $container, $loader);
         }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function prepend(ContainerBuilder $container)
+    {
+        $bundles = $container->getParameter('kernel.bundles');
+
+        $configs = $container->getExtensionConfig($this->getAlias());
+
+        $config = $this->processConfiguration(new Configuration(), $configs);
+
+        if (isset($bundles['PropelBundle'])) {
+            $this->configurePropelBundle($container);
+        }
+    }
+
+    /**
+     * @param ContainerBuilder $container The service container
+     */
+    protected function configurePropelBundle(ContainerBuilder $container)
+    {
+        $container->prependExtensionConfig(
+            'propel',
+            array(
+                'build-properties' => array(
+                    'propel.behavior.subscription.class' => 'Dzangocart\Bundle\SubscriptionBundle\Propel\Behavior\SubscriptionBehavior',
+                ),
+            )
+        );
     }
 
     protected function loadSignup(array $config, ContainerBuilder $container, YamlFileLoader $loader)

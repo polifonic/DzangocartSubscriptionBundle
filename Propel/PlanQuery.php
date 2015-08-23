@@ -6,7 +6,7 @@ use Dzangocart\Bundle\SubscriptionBundle\Propel\om\BasePlanQuery;
 
 class PlanQuery extends BasePlanQuery
 {
-    public function getActive()
+    public function active()
     {
         return $this->
             // start date
@@ -23,14 +23,10 @@ class PlanQuery extends BasePlanQuery
             filterByDisabled(false);
     }
 
-    public function isDefault()
+    public function defaultPlan()
     {
-        return $this
-            ->getActive()
-            ->filterByTrial(true)
-            ->orderByRank();
+        return $this->filterByIsDefault(true);
     }
-
     /**
      * @deprecated
      */

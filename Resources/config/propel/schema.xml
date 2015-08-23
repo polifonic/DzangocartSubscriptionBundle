@@ -7,6 +7,7 @@
 		<column name="start"       type="timestamp" required="false" />
 		<column name="finish"      type="timestamp" required="false" />
 		<column name="disabled"    type="boolean" required="true" default="false" />
+		<column name="is_default"  type="boolean" required="true" defaultValue="false" />
 		<column name="trial"       type="boolean" required="true" default="false" />
 		<behavior name="i18n">
 			<parameter name="i18n_columns" value="name, description"/>

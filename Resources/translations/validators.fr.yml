@@ -1,0 +1,17 @@
+accounts:
+    plan_id:
+        null:           Le compte doit être associé à une formule.
+
+feature:
+    property_name:
+        null:           Le nom de la propriété ne peut pas être nul.
+        blank:          Le nom de la propriété ne peut pas être vide.
+        alphanumeric: >
+           Le nom de la propriété ne doit contenir que des lettres, chiffres ou
+           le tiret bas.
+
+plan:
+    period:
+        invalid: >
+            La date de fin due la formule doit être postérieure à sa date de
+            début.

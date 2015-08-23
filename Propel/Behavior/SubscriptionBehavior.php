@@ -1,9 +1,10 @@
 <?php
 
-namespace Dzangocart\Bundle\SubscriptionBundle\Propel\Behavior\Subscription;
+namespace Dzangocart\Bundle\SubscriptionBundle\Propel\Behavior;
 
 use Behavior;
 use ForeignKey;
+use Dzangocart\Bundle\SubscriptionBundle\Model\SubscriptionInterface;
 
 class SubscriptionBehavior extends Behavior
 {
@@ -12,6 +13,7 @@ class SubscriptionBehavior extends Behavior
         'expires_at_column' => 'expires_at',
         'trial_plan_id_column' => 'trial_plan_id',
         'trial_expires_at_column' => 'trial_expires_at',
+        'plan_table' => 'dzangocart_subscription_plan',
     );
 
     protected $objectBuilderModifier;
@@ -26,8 +28,9 @@ class SubscriptionBehavior extends Behavior
                 'required' => true,
             ));
 
-            $fk = new ForeignKey('FI_subscription_plan');
-            $fk->setForeignTableCommonName('dzangocart_subscription_plan');
+            $fk = new ForeignKey('FK_subscription_plan');
+            $fk->setForeignTableCommonName($this->getParameter(
+                'plan_table'));
             $fk->setOnDelete(ForeignKey::RESTRICT);
             $fk->addReference($this->getParameter('plan_id_column'), 'id');
             $fk->setPhpName('Plan');
@@ -51,8 +54,8 @@ class SubscriptionBehavior extends Behavior
                 'required' => false,
             ));
 
-            $fk = new ForeignKey('FI_subscription_trial_plan');
-            $fk->setForeignTableCommonName('dzangocart_subscription_plan');
+            $fk = new ForeignKey('FK_subscription_trial_plan');
+            $fk->setForeignTableCommonName($this->getParameter('plan_table'));
             $fk->setOnDelete(ForeignKey::RESTRICT);
             $fk->addReference($this->getParameter('trial_plan_id_column'), 'id');
             $fk->setPhpName('TrialPlan');
@@ -67,6 +70,13 @@ class SubscriptionBehavior extends Behavior
                 'required' => false,
             ));
         }
+    }
+
+    public function objectFilter(&$script)
+    {
+        $pattern = '/abstract class (\w+) extends (\w+) implements (\w+)/i';
+        $replace = 'abstract class ${1} extends ${2} implements ${3}, SubscriptionInterface';
+        $script = preg_replace($pattern, $replace, $script);
     }
 
     public function getObjectBuilderModifier()

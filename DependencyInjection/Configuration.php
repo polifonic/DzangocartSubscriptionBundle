@@ -17,6 +17,9 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->scalarNode('factory')
+                    ->cannotBeEmpty()
+                ->end()
                 ->arrayNode('pricing')
                     ->canBeDisabled()
                     ->children()

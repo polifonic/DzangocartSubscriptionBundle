@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraint;
  */
 class PlanPeriod extends Constraint
 {
-    protected $message = 'plan.period.invalid.start_greater_than_finish';
+    protected $message = 'plan.period.invalid';
 
     public function getTargets()
     {

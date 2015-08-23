@@ -2,7 +2,7 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Model;
 
-interface Plan
+interface PlanInterface
 {
     public function isDisabled();
 

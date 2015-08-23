@@ -1,6 +1,6 @@
 <?php
 
-namespace Dzangocart\Bundle\SubscriptionBundle\Propel\Behavior\Subscription;
+namespace Dzangocart\Bundle\SubscriptionBundle\Propel\Behavior;
 
 class SubscriptionBehaviorObjectBuilderModifier
 {
@@ -12,22 +12,35 @@ class SubscriptionBehaviorObjectBuilderModifier
         $this->table = $behavior->getTable();
     }
 
+    public function objectAttributes($builder)
+    {
+        return $this->behavior->renderTemplate('objectAttributes');
+    }
+
     public function objectMethods($builder)
     {
         $this->builder = $builder;
+
+        $this->builder->declareClass('Propel\PropelBundle\Util\PropelInflector');
+
         $script = '';
+        $script .= $this->addGetSetFactory();
         $script .= $this->addIsExpired();
         $script .= $this->addIsTrial();
+        $script .= $this->add__call();
 
-        $this->builder->declareClasses('Propel\PropelBundle\Util\PropelInflector');
-        $script .= $this->add__Call();
-
+/*
         if (!$this->table->getBehavior('domainsubscription')) {
-            $this->builder->declareClasses('Symfony\Component\Validator\Constraints\NotNull');
+            $this->builder->declareClass('Symfony\Component\Validator\Constraints\NotNull');
             $script .= $this->addLoadValidatiorMetadata();
         }
-
+*/
         return $script;
+    }
+
+    protected function addGetSetFactory()
+    {
+        return $this->behavior->renderTemplate('objectGetSetFactory');
     }
 
     protected function addIsExpired()
@@ -51,7 +64,7 @@ class SubscriptionBehaviorObjectBuilderModifier
         ));
     }
 
-    protected function add__Call()
+    protected function add__call()
     {
         return $this->behavior->renderTemplate('objectCall', array());
     }
