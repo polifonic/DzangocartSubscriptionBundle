@@ -12,56 +12,157 @@ class SubscriptionBehaviorObjectBuilderModifier
         $this->table = $behavior->getTable();
     }
 
+    public function objectFilter(&$script)
+    {
+        $pattern = '/abstract class (\w+) extends (\w+) implements (\w+)/i';
+        $replace = 'abstract class ${1} extends ${2} implements ${3}, SubscriptionInterface';
+        $script = preg_replace($pattern, $replace, $script);
+    }
+
     public function objectAttributes($builder)
     {
-        return $this->behavior->renderTemplate('objectAttributes');
+        $script = "
+/**
+ * The factory associated with this account
+ * @var SubscriptionFactoryInterface
+ */
+protected \$factory;
+";
+
+        return $script;
     }
 
     public function objectMethods($builder)
     {
         $this->builder = $builder;
 
-        $this->builder->declareClass('Propel\PropelBundle\Util\PropelInflector');
+        $this->declareClasses($this->builder);
 
         $script = '';
         $script .= $this->addGetSetFactory();
         $script .= $this->addIsExpired();
         $script .= $this->addIsTrial();
-        $script .= $this->add__call();
+//        $script .= $this->add__call();
+        $script .= $this->addLoadValidatorMetadata();
 
-/*
-        if (!$this->table->getBehavior('domainsubscription')) {
-            $this->builder->declareClass('Symfony\Component\Validator\Constraints\NotNull');
-            $script .= $this->addLoadValidatiorMetadata();
-        }
-*/
         return $script;
+    }
+
+    protected function declareClasses($builder)
+    {
+        $builder->declareClass('Dzangocart\Bundle\SubscriptionBundle\Model\SubscriptionFactoryInterface');
+
+        $builder->declareClass('Symfony\Component\Validator\Constraints\NotNull');
+
+        $builder->declareClass('Symfony\Component\Validator\Mapping\ClassMetadata');
     }
 
     protected function addGetSetFactory()
     {
         return $this->behavior->renderTemplate('objectGetSetFactory');
+
+        $script = "
+/**
+ * {@inheritdoc}
+ */
+public function getFactory()
+{
+    return \$this->factory;
+}
+
+/**
+ * {@inheritdoc}
+ */
+public function setFactory(SubscriptionFactoryInterface \$factory)
+{
+    \$this->factory = \$factory;
+}
+";
+
+        return $script;
     }
 
     protected function addIsExpired()
     {
-        return $this->behavior->renderTemplate('objectIsExpired', array(
-            'column_name' => $this->table->getColumn($this->behavior->getParameter('expires_at_column'))->getPhpName(),
-        ));
+        $column_name = $this->table
+            ->getColumn($this->behavior->getParameter('expires_at_column'))
+            ->getPhpName();
+
+        $script = sprintf("
+/**
+ * Whether the subscription is expired.
+ *
+ * @boolean true if the subscription is expired, false otherwise
+ */
+public function isExpired()
+{
+    \$expire = \$this->get%s('U');
+
+    return (\$expire != null && \$expire < time());
+}
+",
+        $column_name);
+
+        return $script;
     }
 
     protected function addIsTrial()
     {
-        return $this->behavior->renderTemplate('objectIsTrial', array(
-            'column_name' => $this->table->getColumn($this->behavior->getParameter('trial_expires_at_column'))->getPhpName(),
-        ));
+        $column_name = $this->table
+            ->getColumn($this->behavior->getParameter('trial_expires_at_column'))
+            ->getPhpName();
+
+        $script = sprintf("
+/**
+ * Whether the subscription is currently during a trial period.
+ *
+ * @boolean true if the subscription is during a trial period, false otherwise
+ */
+public function isTrial()
+{
+    \$expire = \$this->get%s('U');
+
+    return (\$expire != null && \$expire < time());
+}
+",
+        $column_name);
+
+        return $script;
     }
 
-    protected function addLoadValidatiorMetadata()
+    protected function addLoadValidatorMetadata()
     {
-        return $this->behavior->renderTemplate('objectLoadValidatorMetadata', array(
-            'plan_id_column' => $this->table->getBehavior('subscription')->getParameter('plan_id_column'),
-        ));
+        $script = sprintf("
+/**
+ * Add validation constraints.
+ */
+public static function loadValidatorMetadata(ClassMetadata \$metadata)
+{
+%s
+}
+",
+        $this->addLoadValidatorMetadataBody());
+
+        return $script;
+    }
+
+    protected function addLoadValidatorMetadataBody()
+    {
+        $column_name = $this->table
+            ->getColumn($this->behavior->getParameter('plan_id_column'))
+            ->getPhpName();
+
+        $script = sprintf("
+    \$metadata->addPropertyConstraint(
+        '%s',
+        new NotNull(array(
+            'message' => 'validation.error.plan_id.null'
+        ))
+    );
+",
+        $column_name);
+
+        return $script;
     }
 
     protected function add__call()
