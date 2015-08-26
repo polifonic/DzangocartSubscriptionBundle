@@ -67,7 +67,7 @@ class Price extends BasePrice
         $decimals = $this->getDecimals();
 
         if ($decimals > 0) {
-            $cents = sprintf('%0' . $decimals . 'd', ($price - $mantissa) * (10 ^ $decimals));
+            $cents = sprintf('%0'.$decimals.'d', ($price - $mantissa) * (10 ^ $decimals));
         } else {
             $cents = null;
         }

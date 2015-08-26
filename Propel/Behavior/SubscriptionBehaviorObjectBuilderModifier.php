@@ -21,13 +21,13 @@ class SubscriptionBehaviorObjectBuilderModifier
 
     public function objectAttributes($builder)
     {
-        $script = "
+        $script = '
 /**
  * The factory associated with this account
  * @var SubscriptionFactoryInterface
  */
-protected \$factory;
-";
+protected $factory;
+';
 
         return $script;
     }
@@ -61,23 +61,23 @@ protected \$factory;
 
     protected function addGetSetFactory()
     {
-        $script = "
+        $script = '
 /**
  * {@inheritdoc}
  */
 public function getFactory()
 {
-    return \$this->factory;
+    return $this->factory;
 }
 
 /**
  * {@inheritdoc}
  */
-public function setFactory(SubscriptionFactoryInterface \$factory)
+public function setFactory(SubscriptionFactoryInterface $factory)
 {
-    \$this->factory = \$factory;
+    $this->factory = $factory;
 }
-";
+';
 
         return $script;
     }
@@ -132,15 +132,15 @@ public function isTrial()
 
     protected function addLoadValidatorMetadata()
     {
-        $script = sprintf("
+        $script = sprintf('
 /**
  * Add validation constraints.
  */
-public static function loadValidatorMetadata(ClassMetadata \$metadata)
+public static function loadValidatorMetadata(ClassMetadata $metadata)
 {
 %s
 }
-",
+',
         $this->addLoadValidatorMetadataBody());
 
         return $script;

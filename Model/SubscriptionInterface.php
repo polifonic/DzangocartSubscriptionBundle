@@ -4,7 +4,7 @@ namespace Dzangocart\Bundle\SubscriptionBundle\Model;
 
 interface SubscriptionInterface
 {
-	public function getPlan();
+    public function getPlan();
 
 //	public function getExpiredAt();
 
@@ -12,11 +12,11 @@ interface SubscriptionInterface
 
 //	public function isExpired();
 
-	public function isSuspended();
+    public function isSuspended();
 
-	public function isDisabled();
+    public function isDisabled();
 
-	public function isClosed();
+    public function isClosed();
 
 //	public function hasFeature($feature);
 
@@ -30,6 +30,5 @@ interface SubscriptionInterface
 
 //	public function reactivate();
 
-	public function setFactory(SubscriptionFactoryInterface $factory);
+    public function setFactory(SubscriptionFactoryInterface $factory);
 }
-

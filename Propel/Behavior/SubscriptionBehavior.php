@@ -4,7 +4,6 @@ namespace Dzangocart\Bundle\SubscriptionBundle\Propel\Behavior;
 
 use Behavior;
 use ForeignKey;
-use Dzangocart\Bundle\SubscriptionBundle\Model\SubscriptionInterface;
 
 class SubscriptionBehavior extends Behavior
 {
