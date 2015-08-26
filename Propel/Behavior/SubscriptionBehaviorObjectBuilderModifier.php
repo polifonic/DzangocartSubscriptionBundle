@@ -52,6 +52,8 @@ protected \$factory;
     {
         $builder->declareClass('Dzangocart\Bundle\SubscriptionBundle\Model\SubscriptionFactoryInterface');
 
+        $builder->declareClass('Dzangocart\Bundle\SubscriptionBundle\Model\SubscriptionInterface');
+
         $builder->declareClass('Symfony\Component\Validator\Constraints\NotNull');
 
         $builder->declareClass('Symfony\Component\Validator\Mapping\ClassMetadata');
@@ -59,8 +61,6 @@ protected \$factory;
 
     protected function addGetSetFactory()
     {
-        return $this->behavior->renderTemplate('objectGetSetFactory');
-
         $script = "
 /**
  * {@inheritdoc}
@@ -84,7 +84,7 @@ public function setFactory(SubscriptionFactoryInterface \$factory)
 
     protected function addIsExpired()
     {
-        $column_name = $this->table
+        $column = $this->table
             ->getColumn($this->behavior->getParameter('expires_at_column'))
             ->getPhpName();
 
@@ -101,14 +101,14 @@ public function isExpired()
     return (\$expire != null && \$expire < time());
 }
 ",
-        $column_name);
+        $column);
 
         return $script;
     }
 
     protected function addIsTrial()
     {
-        $column_name = $this->table
+        $column = $this->table
             ->getColumn($this->behavior->getParameter('trial_expires_at_column'))
             ->getPhpName();
 
@@ -125,7 +125,7 @@ public function isTrial()
     return (\$expire != null && \$expire < time());
 }
 ",
-        $column_name);
+        $column);
 
         return $script;
     }
@@ -148,9 +148,9 @@ public static function loadValidatorMetadata(ClassMetadata \$metadata)
 
     protected function addLoadValidatorMetadataBody()
     {
-        $column_name = $this->table
+        $column = $this->table
             ->getColumn($this->behavior->getParameter('plan_id_column'))
-            ->getPhpName();
+            ->getName();
 
         $script = sprintf("
     \$metadata->addPropertyConstraint(
@@ -160,7 +160,7 @@ public static function loadValidatorMetadata(ClassMetadata \$metadata)
         ))
     );
 ",
-        $column_name);
+        $column);
 
         return $script;
     }
