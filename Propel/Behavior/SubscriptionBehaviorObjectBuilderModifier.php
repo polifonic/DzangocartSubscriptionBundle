@@ -42,7 +42,7 @@ protected $factory;
         $script .= $this->addGetSetFactory();
         $script .= $this->addIsExpired();
         $script .= $this->addIsTrial();
-//        $script .= $this->add__call();
+        $script .= $this->add__call();
         $script .= $this->addLoadValidatorMetadata();
 
         return $script;
@@ -50,7 +50,11 @@ protected $factory;
 
     protected function declareClasses($builder)
     {
+        $builder->declareClass('PropelException');
+
         $builder->declareClass('Dzangocart\Bundle\SubscriptionBundle\Model\SubscriptionFactoryInterface');
+
+        $builder->declareClass('Propel\PropelBundle\Util\PropelInflector');
 
         $builder->declareClass('Dzangocart\Bundle\SubscriptionBundle\Model\SubscriptionInterface');
 
@@ -167,6 +171,27 @@ public static function loadValidatorMetadata(ClassMetadata $metadata)
 
     protected function add__call()
     {
-        return $this->behavior->renderTemplate('objectCall', array());
+        $script = "
+/**
+ * Magic method to return subscription's feature value
+ */
+public function __call(\$name, \$params)
+{
+    if (substr(\$name, 0, 3) == 'get') {
+        \$planFeatures = \$this->getPlan()->getFeatures();
+
+        foreach (\$planFeatures as \$planFeature) {
+            \$feature = \$planFeature->getFeature();
+
+            if (PropelInflector::camelize(\$feature->getPropertyName()) == PropelInflector::camelize(substr($name, 3))) {
+                return (string) \$planFeature;
+            }
+        }
+    }
+
+    throw new PropelException('Call to undefined method ' . \$name);
+}
+";
+        return $script;
     }
 }
