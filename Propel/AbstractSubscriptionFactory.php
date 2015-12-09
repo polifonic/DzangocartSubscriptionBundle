@@ -3,9 +3,8 @@
 namespace Dzangocart\Bundle\SubscriptionBundle\Propel;
 
 use Dzangocart\Bundle\SubscriptionBundle\Model\SubscriptionFactoryInterface;
-use Symfony\Component\DependencyInjection\ContainerAware;
 
-abstract class AbstractSubscriptionFactory extends ContainerAware implements SubscriptionFactoryInterface
+abstract class AbstractSubscriptionFactory implements SubscriptionFactoryInterface
 {
     /**
      * {@inheritdoc}
