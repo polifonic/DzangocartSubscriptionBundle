@@ -1,7 +1,6 @@
 satis:
     script:
-        - cd ~/satis
-        - bin/satis.sh dzangocart
+        - satis dzangocart
     type: deploy
     tags:
         - satis
