@@ -2,10 +2,10 @@ services:
     dzangocart_subscription.signup.controller:
         class:     Dzangocart\Bundle\SubscriptionBundle\Controller\SignupController
         arguments:
-            - @form.factory
-            - @session
-            - @router
-            - @templating
+            - "@form.factory"
+            - "@session"
+            - "@router"
+            - "@templating"
             - %dzangocart_subscription.signup.class%
             - %dzangocart_subscription.signup.success_target_path%
             - %dzangocart_subscription.signup.trial.days%
@@ -13,8 +13,8 @@ services:
     dzangocart_subscription.signup.form.type:
         class:  Dzangocart\Bundle\SubscriptionBundle\Form\Type\SignupFormType
         arguments:
-            - @request_stack
-            - @translator
+            - "@request_stack"
+            - "@translator"
             - %dzangocart_subscription.signup.class%
             - %dzangocart_subscription.signup.trial.config%
         tags:

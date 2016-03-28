@@ -2,6 +2,6 @@ services:
     dzangocart.subscription.plan.choice.type:
         class: Dzangocart\Bundle\SubscriptionBundle\Form\Extension\PlanChoiceType
         arguments:
-            - @request_stack
+            - "@request_stack"
         tags:
             - { name: form.type, alias: dzangocart_subscription_plan }
