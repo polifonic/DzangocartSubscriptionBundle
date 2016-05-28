@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Dzangocart\Bundle\DomainSubscriptionBundle\Model;
+namespace Dzangocart\Bundle\SubscriptionBundle\Model;
 
 trait FactoryEnabledTrait
 {
