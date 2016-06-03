@@ -2,6 +2,7 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Propel;
 
+use PropelPDO;
 use Dzangocart\Bundle\SubscriptionBundle\Model\PlanInterface;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\om\BasePlan;
 
@@ -36,8 +37,8 @@ class Plan extends BasePlan implements PlanInterface
         $end = $this->getFinish('U');
         $now = time();
 
-        return (($start == null || $start <= $now) &&
-            ($end == null || $now <= $end));
+        return ($start == null || $start <= $now) &&
+            ($end == null || $now <= $end);
     }
 
     public function isInactive()
@@ -60,7 +61,7 @@ class Plan extends BasePlan implements PlanInterface
         return $this->isFree();
     }
 
-    public function getFeatures($criteria = null, \PropelPDO $con = null)
+    public function getFeatures($criteria = null, PropelPDO $con = null)
     {
         $plan_features = array();
 
