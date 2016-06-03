@@ -60,7 +60,7 @@ class Plan extends BasePlan implements PlanInterface
         return $this->isFree();
     }
 
-    public function getFeatures($criteria = null, PropelPDO $con = null)
+    public function getFeatures($criteria = null, \PropelPDO $con = null)
     {
         $plan_features = array();
 
