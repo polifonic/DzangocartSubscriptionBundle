@@ -2,6 +2,7 @@
 
 namespace Dzangocart\Bundle\SubscriptionBundle\Propel;
 
+use PropelPDO;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\om\BasePlanFeature;
 
 class PlanFeature extends BasePlanFeature
