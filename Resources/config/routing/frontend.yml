@@ -1,11 +1,10 @@
 dzangocart_subscription_pricing:
-    pattern: /pricing
+    path: /pricing
     defaults: { _controller: DzangocartSubscriptionBundle:Pricing:index }
 
-dzangocart_subscription_matrix:
-    resource: "@DzangocartSubscriptionBundle/Controller/MatrixController.php"
-    type: annotation
+_dzangocart_subscription_matrix:
+    resource: "@DzangocartSubscriptionBundle/Resources/config/routing/matrix.xml"
 
 dzangocart_subscription_signup:
-    pattern: /signup
+    path: /signup
     defaults: { _controller: dzangocart_subscription.signup.controller:signupAction}

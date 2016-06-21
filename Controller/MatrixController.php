@@ -4,33 +4,42 @@ namespace Dzangocart\Bundle\SubscriptionBundle\Controller;
 
 use Dzangocart\Bundle\SubscriptionBundle\Propel\FeatureQuery;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanQuery;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Templating\EngineInterface;
 
-class MatrixController extends Controller
+class MatrixController
 {
-    /**
-     * @Route("/matrix", name = "dzangocart_subscription_matrix")
-     * @Template()
-     */
+    protected $templating;
+
+    public function __construct(EngineInterface $templating)
+    {
+        $this->templating = $templating;
+    }
+
     public function indexAction(Request $request)
     {
         $plans = PlanQuery::create()
-            ->joinWithI18n($this->getRequest()->getLocale())
+            ->joinWithI18n($request->getLocale())
             ->orderByRank()
-            ->getActive()
+            ->active()
             ->find();
 
         $plan_features = FeatureQuery::create()
-            ->joinWithI18n($this->getRequest()->getLocale())
+            ->joinWithI18n($request->getLocale())
             ->orderByRank()
             ->find();
 
-        return array(
-            'plans' => $plans,
-            'planfeatures' => $plan_features,
-        );
+        return new Response(
+            $this->templating
+                ->render(
+                    'DzangocartSubscriptionBundle:Matrix:index.html.twig',
+                    array(
+                        'plans' => $plans,
+                        'planfeatures' => $plan_features,
+                    )
+                )
+            );
     }
+
 }

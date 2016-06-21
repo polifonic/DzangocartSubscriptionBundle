@@ -1,0 +1,5 @@
+services:
+    dzangocart_subscription.matrix_controller:
+        class: Dzangocart\Bundle\SubscriptionBundle\Controller\MatrixController
+        arguments:
+            - "@templating"

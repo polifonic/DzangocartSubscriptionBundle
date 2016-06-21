@@ -1,65 +1,65 @@
 dzangocart_subscription_plans:
-    pattern: /plan
+    path: /plan
     defaults: { _controller: dzangocartsubscription.plan.controller:indexAction}
 
 dzangocart_subscription_plan:
-    pattern: /plan/{id}
+    path: /plan/{id}
     defaults: { _controller: dzangocartsubscription.plan.controller:showAction}
     requirements:
         id: \d+
 
 dzangocart_subscription_plan_edit:
-    pattern: /plan/{id}/edit
+    path: /plan/{id}/edit
     defaults: { _controller: dzangocartsubscription.plan.controller:editAction}
     requirements:
         id: \d+
 
 dzangocart_subscription_plan_delete:
-    pattern: /plan/{id}/delete
+    path: /plan/{id}/delete
     defaults: { _controller: dzangocartsubscription.plan.controller:deleteAction}
     requirements:
         id: \d+
 
 dzangocart_subscription_plan_create:
-    pattern: /plan/create
+    path: /plan/create
     defaults: { _controller: dzangocartsubscription.plan.controller:createAction}
 
 dzangocart_subscription_plan_disable:
-    pattern: /plan/{id}/disable
+    path: /plan/{id}/disable
     defaults: { _controller: dzangocartsubscription.plan.controller:disableAction}
     requirements:
         id: \d+
 
 dzangocart_subscription_plan_use_default_for_trial:
-    pattern: /plan/{id}/default
+    path: /plan/{id}/default
     defaults: { _controller: dzangocartsubscription.plan.controller:setDefaultAction}
     requirements:
         id: \d+
 
 dzangocart_subscription_plan_remove_default_for_trial:
-    pattern: /plan/{id}/removedefault
+    path: /plan/{id}/removedefault
     defaults: { _controller: dzangocartsubscription.plan.controller:removeDefaultAction}
     requirements:
         id: \d+
 
 dzangocart_subscription_plan_enable:
-    pattern: /plan/{id}/enable
+    path: /plan/{id}/enable
     defaults: { _controller: dzangocartsubscription.plan.controller:enableAction}
     requirements:
         id: \d+
 
 dzangocart_subscription_plan_features:
-    pattern: /plan/{id}/features
+    path: /plan/{id}/features
     defaults: { _controller: dzangocartsubscription.plan.controller:featuresAction}
     requirements:
         id: \d+
 
 dzangocart_subscription_plan_prices:
-    pattern: /plan/{id}/prices
+    path: /plan/{id}/prices
     defaults: { _controller: dzangocartsubscription.plan.controller:pricesAction}
     requirements:
         id: \d+
 
 dzangocart_subscription_plan_ranks_change:
-    pattern: /plan/rank/change
+    path: /plan/rank/change
     defaults: { _controller: dzangocartsubscription.plan.controller:changeRankAction}
