@@ -192,6 +192,7 @@ public function __call(\$name, \$params)
     throw new PropelException('Call to undefined method ' . \$name);
 }
 ";
+
         return $script;
     }
 }

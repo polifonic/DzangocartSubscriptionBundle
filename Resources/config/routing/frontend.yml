@@ -1,8 +1,7 @@
 dzangocart_subscription_pricing:
-    path: /pricing
-    defaults: { _controller: DzangocartSubscriptionBundle:Pricing:index }
+    resource: "@DzangocartSubscriptionBundle/Resources/config/routing/pricing.xml"
 
-_dzangocart_subscription_matrix:
+dzangocart_subscription_matrix:
     resource: "@DzangocartSubscriptionBundle/Resources/config/routing/matrix.xml"
 
 dzangocart_subscription_signup:

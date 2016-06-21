@@ -21,6 +21,8 @@ class DzangocartSubscriptionExtension extends Extension implements PrependExtens
 
         $container->setParameter('dzangocart_subscription.pricing.theme', $config['pricing']['theme']);
 
+        $container->setParameter('dzangocart_subscription.pricing.max_plans', $config['pricing']['max_plans']);
+
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config/services'));
         $loader->load('controllers.yml');
         $loader->load('plan.yml');

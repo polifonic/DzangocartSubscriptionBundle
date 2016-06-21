@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Dzangocart\Bundle\SubscriptionBundle\Model;
 
 trait FactoryEnabledTrait

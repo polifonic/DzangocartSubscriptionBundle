@@ -3,3 +3,10 @@ services:
         class: Dzangocart\Bundle\SubscriptionBundle\Controller\MatrixController
         arguments:
             - "@templating"
+
+    dzangocart_subscription.pricing_controller:
+        class: Dzangocart\Bundle\SubscriptionBundle\Controller\PricingController
+        arguments:
+            - "@templating"
+            - %dzangocart_subscription.pricing.theme%
+            - %dzangocart_subscription.pricing.max_plans%

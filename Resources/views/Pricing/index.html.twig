@@ -15,5 +15,5 @@
 {% block dzangocart_subscription_page_class %}{{ theme }}{% endblock %}
 
 {% block dzangocart_subscription_content %}
-	{{ render(controller("DzangocartSubscriptionBundle:Pricing:pricing")) }}
+	{{ render(controller("dzangocart_subscription.pricing_controller:pricingAction")) }}
 {% endblock %}

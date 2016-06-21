@@ -3,34 +3,44 @@
 namespace Dzangocart\Bundle\SubscriptionBundle\Controller;
 
 use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanQuery;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Templating\EngineInterface;
 
-class PricingController extends Controller
+class PricingController
 {
-    //this is hard coded here to cap off the plans that are shown in the pricing page
-    const PRICING_SHOW_LIMIT = 5;
+    protected $templating;
 
-    /**
-     * @Template()
-     */
-    public function indexAction(Request $request)
+    protected $theme;
+
+    protected $max_plans;
+
+    public function __construct(EngineInterface $templating, $theme, $max_plans)
     {
-        $theme = $this->container->getParameter('dzangocart_subscription.pricing.theme');
+        $this->templating = $templating;
 
-        return array(
-            'theme' => $theme,
-        );
+        $this->theme = $theme;
+
+        $this->max_plans = $max_plans;
     }
 
-    /**
-     * @Template
-     */
-    public function pricingAction()
+    public function indexAction(Request $request)
     {
-        $plans = $this->getPlans();
+        return new Response(
+            $this->templating
+                ->render(
+                    'DzangocartSubscriptionBundle:Pricing:index.html.twig',
+                    array(
+                        'theme' => $this->getTheme(),
+                    )
+                )
+            );
+    }
+
+    public function pricingAction(Request $request)
+    {
+        $plans = $this->getPlans($request->getLocale());
 
         $count = count($plans);
 
@@ -46,20 +56,36 @@ class PricingController extends Controller
             $row_cols = $count * 3;
         }
 
-        return array(
-            'plans' => $plans,
-            'plan_cols' => $plan_cols,
-            'row_cols' => $row_cols,
-        );
+        return new Response(
+            $this->templating
+                ->render(
+                    'DzangocartSubscriptionBundle:Pricing:pricing.html.twig',
+                    array(
+                        'plans' => $plans,
+                        'plan_cols' => $plan_cols,
+                        'row_cols' => $row_cols,
+                    )
+                )
+            );
     }
 
-    protected function getPlans()
+    protected function getTheme()
+    {
+        return $this->theme;
+    }
+
+    protected function getMaxPlans()
+    {
+        return $this->max_plans;
+    }
+
+    protected function getPlans($locale)
     {
         return PlanQuery::create()
-            ->joinWithI18n($this->getRequest()->getLocale())
-            ->getActive()
+            ->joinWithI18n($locale)
+            ->active()
             ->orderByRank()
-            ->limit(self::PRICING_SHOW_LIMIT)
+            ->limit($this->getMaxPlans())
             ->find();
     }
 }
