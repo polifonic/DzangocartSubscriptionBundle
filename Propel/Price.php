@@ -3,6 +3,7 @@
 namespace Dzangocart\Bundle\SubscriptionBundle\Propel;
 
 use NumberFormatter;
+use PropelPDO;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\om\BasePrice;
 use Symfony\Component\Intl\Intl;
 
