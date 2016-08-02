@@ -20,6 +20,7 @@ gulp.task('bower-files', ['bower-prune'], function() {
 
 gulp.task('minify', ['bower-files'], function() {
 	return gulp.src([
+			'../public/vendor/bootbox/bootbox.js',
 			'../public/vendor/jquery.cookie/jquery.cookie.js',
 			'../public/vendor/jquery-form/jquery.form.js',
 			'../public/vendor/TableDnD/js/jquery.tablednd.js',

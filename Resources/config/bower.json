@@ -2,12 +2,14 @@
   "name": "dzangocart/subscription-bundle",
   "dependencies": {
     "autotabs": ">=2.1",
+    "bootbox": "^4.3",
     "bootstrap": "~3.3",
     "eonasdan-bootstrap-datetimepicker": "~4.15",
-    "font-awesome": "~4.4",
-    "jquery": "~1.11",
+    "Font-Awesome": "~4.6",
+    "jquery": "~1.12",
     "jquery.cookie": ">=1.4",
     "jquery-form": "*",
+    "mustache.js": "*",
     "TableDnD": "*"
   },
   "overrides": {
@@ -20,7 +22,7 @@
         "./dist/js/bootstrap.min.js"
       ]
     },
-    "font-awesome": {
+    "Font-Awesome": {
       "main": [
         "./css/font-awesome.css",
         "./css/font-awesome.min.css",
@@ -38,6 +40,12 @@
       "main": [
         "min/moment-with-locales.js",
         "min/moment-with-locales.min.js"
+      ]
+    },
+    "mustache.js": {
+      "main": [
+        "mustache.js",
+        "mustache.min.js"
       ]
     },
     "TableDnD": {
