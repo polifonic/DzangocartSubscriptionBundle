@@ -1,11 +1,11 @@
 feature:
     create:
-        cancel:                       '&larr; Cancel'
+        cancel:                       "&larr; Cancel"
         page_title:                   Create a new feature
         success:                      The new feature was created successfully.
 
     edit:
-        cancel:                       '&larr; Cancel'
+        cancel:                       "&larr; Cancel"
         success:                      The feature has been updated successfully.
         title:                        Info
 
@@ -40,18 +40,18 @@ feature:
         value:                        Value
 
     show:
-        cancel:                       '&larr; Return to features list'
-        page_title:                   Feature : %feature%
+        cancel:                       "&larr; Return to features list"
+        page_title:                   "Feature : %feature%"
 
 plan:
     choice:
-        placeholder:                    Choose your plan
+        placeholder:                  Choose your plan
     create:
-        cancel:                       '&larr; Cancel'
+        cancel:                       "&larr; Cancel"
         page_title:                   Create a new plan
 
     delete:
-        success:                      plan deleted successfully.
+        success:                      The plan was deleted successfully.
 
     features:
         description:                  Description
@@ -122,13 +122,13 @@ plan:
         title:                        Prices
 
     show:
-        cancel:                       '&larr; Return to plans list'
+        cancel:                       "&larr; Return to plans list"
         description:                  Description
         from:                         From
         name:                         Name
         nav:
             create:                   Create new plan
-        page_title:                   Plan: %plan%
+        page_title:                   "Plan: %plan%"
         rank:                         Rank
         to:                           To
 

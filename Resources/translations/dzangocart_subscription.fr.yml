@@ -1,11 +1,11 @@
 feature:
     create:
-        cancel:                       '&larr; Annuler'
+        cancel:                       "&larr; Annuler"
         page_title:                   Créer une nouvelle fonctionnalité
         success:                      La nouvelle fonctionnalité a bien été créée.
 
     edit:
-        cancel:                       '&larr; Annuler'
+        cancel:                       "&larr; Annuler"
         success:                      La nouvelle fonctionnalité a bien été mise à jour.
         title:                        Info
 
@@ -40,14 +40,14 @@ feature:
         value:                        Valeur
 
     show:
-        cancel:                       '&larr; Retourner à la liste des fonctionnalités'
-        page_title:                   Fonctionnalité : %feature%
+        cancel:                       "&larr; Retourner à la liste des fonctionnalités"
+        page_title:                   "Fonctionnalité : %feature%"
 
 plan:
     choice:
-        placeholder:                    Choisissez votre formule
+        placeholder:                  Choisissez votre formule
     create:
-        cancel:                       '&larr; Annuler'
+        cancel:                       "&larr; Annuler"
         page_title:                   Créer une nouvelle formule
 
     delete:
@@ -126,7 +126,7 @@ plan:
         name:                         Nom
         nav:
             create:                   Create new plan
-        page_title:                   Plan: %plan%
+        page_title:                   "Plan: %plan%"
         rank:                         Rang
         to:                           Au
 
