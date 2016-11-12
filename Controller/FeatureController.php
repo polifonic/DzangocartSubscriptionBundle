@@ -24,7 +24,7 @@ class FeatureController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $features = $this->getQuery()
+        $features = $this->getQuery($request->getLocale())
             ->find();
 
         return array('features' => $features);
@@ -36,7 +36,7 @@ class FeatureController extends Controller
      */
     public function showAction(Request $request, $id)
     {
-        $feature = $this->getFeature($id);
+        $feature = $this->getFeature($id, $request->getLocale());
 
         return array(
             'feature' => $feature,
@@ -49,7 +49,7 @@ class FeatureController extends Controller
      */
     public function editAction(Request $request, $id)
     {
-        $feature = $this->getFeature($id);
+        $feature = $this->getFeature($id, $request->getLocale());
 
         $form = $this->createForm(
             new FeatureFormType(),
@@ -84,7 +84,7 @@ class FeatureController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
-        $feature = $this->getFeature($id);
+        $feature = $this->getFeature($id, $request->getLocale());
 
         if ($feature->getFeatures()->isEmpty()) {
             $feature->delete();
@@ -140,7 +140,7 @@ class FeatureController extends Controller
      */
     public function plansAction(Request $request, $id)
     {
-        $feature = $this->getFeature($id);
+        $feature = $this->getFeature($id, $request->getLocale());
 
         $form = $this->createForm(
             new FeaturePlansFormType($request->getLocale()),
@@ -166,16 +166,16 @@ class FeatureController extends Controller
         );
     }
 
-    protected function getQuery()
+    protected function getQuery($locale)
     {
         return FeatureQuery::create()
-            ->joinWithI18n($this->getRequest()->getLocale())
+            ->joinWithI18n($locale)
             ->orderByRank();
     }
 
-    protected function getFeature($id)
+    protected function getFeature($id, $locale)
     {
-        $feature = $this->getQuery()
+        $feature = $this->getQuery($locale)
             ->findPk($id);
 
         if (!$feature) {
