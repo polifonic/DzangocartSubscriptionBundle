@@ -6,16 +6,16 @@ services:
             - "@session"
             - "@router"
             - "@templating"
-            - %dzangocart_subscription.signup.class%
-            - %dzangocart_subscription.signup.success_target_path%
-            - %dzangocart_subscription.signup.trial.days%
+            - "%dzangocart_subscription.signup.class%"
+            - "%dzangocart_subscription.signup.success_target_path%"
+            - "%dzangocart_subscription.signup.trial.days%"
 
     dzangocart_subscription.signup.form.type:
         class:  Dzangocart\Bundle\SubscriptionBundle\Form\Type\SignupFormType
         arguments:
             - "@request_stack"
             - "@translator"
-            - %dzangocart_subscription.signup.class%
-            - %dzangocart_subscription.signup.trial.config%
+            - "%dzangocart_subscription.signup.class%"
+            - "%dzangocart_subscription.signup.trial.config%"
         tags:
             - { name: form.type, alias: dzangocart_subscription_signup }

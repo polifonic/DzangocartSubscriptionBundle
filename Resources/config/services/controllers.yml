@@ -8,5 +8,5 @@ services:
         class: Dzangocart\Bundle\SubscriptionBundle\Controller\PricingController
         arguments:
             - "@templating"
-            - %dzangocart_subscription.pricing.theme%
-            - %dzangocart_subscription.pricing.max_plans%
+            - "%dzangocart_subscription.pricing.theme%"
+            - "%dzangocart_subscription.pricing.max_plans%"
