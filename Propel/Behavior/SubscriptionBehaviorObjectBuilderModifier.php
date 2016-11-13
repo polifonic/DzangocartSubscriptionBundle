@@ -156,17 +156,16 @@ public static function loadValidatorMetadata(ClassMetadata $metadata)
             ->getColumn($this->behavior->getParameter('plan_id_column'))
             ->getName();
 
-        $script = sprintf("
-    \$metadata->addPropertyConstraint(
-        '%s',
+        $text = '
+    $metadata->addPropertyConstraint(
+        \'%s\',
         new NotNull(array(
-            'message' => 'validation.error.plan_id.null'
+            \'message\' => \'validation.error.plan_id.null\'
         ))
     );
-",
-        $column);
+';
 
-        return $script;
+        return sprintf($text,$column);
     }
 
     protected function add__call()
