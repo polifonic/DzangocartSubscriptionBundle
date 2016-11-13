@@ -3,7 +3,9 @@
 namespace Dzangocart\Bundle\SubscriptionBundle\Propel;
 
 use ArrayObject;
+use Criteria;
 use PropelQuery;
+use Dzangocart\Bundle\SubscriptionBundle\Model\Status;
 use Dzangocart\Bundle\SubscriptionBundle\Model\SubscriptionFactoryInterface;
 
 class SubscriptionFactory implements SubscriptionFactoryInterface
@@ -20,9 +22,13 @@ class SubscriptionFactory implements SubscriptionFactoryInterface
         return $this->class;
     }
 
-    public function getAccounts()
+    public function getAccounts($exclude_closed = true)
     {
         $query = $this->createQuery();
+
+        if ($exclude_closed) {
+            $query->filterByStatus(Status::CLOSED, Criteria::NOT_EQUAL);
+        }
 
         $accounts = array();
 

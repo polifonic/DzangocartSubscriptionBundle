@@ -17,7 +17,7 @@ interface SubscriptionFactoryInterface
     /**
      * @returns all accounts
      */
-    public function getAccounts();
+    public function getAccounts($exclude_closed = true);
 
     /**
      * @return PlanInterface
