@@ -15,6 +15,11 @@ interface SubscriptionFactoryInterface
     public function createAccount();
 
     /**
+     * @returns all accounts
+     */
+    public function getAccounts();
+
+    /**
      * @return PlanInterface
      */
     public function getDefaultPlan();

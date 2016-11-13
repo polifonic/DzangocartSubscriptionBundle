@@ -19,14 +19,23 @@ class DzangocartSubscriptionExtension extends Extension implements PrependExtens
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
+        $container->setParameter('dzangocart.subscription.account_class', $config['account_class']);
+
+        $container->setAlias('dzangocart.subscription.factory', $config['factory']);
+
         $container->setParameter('dzangocart_subscription.pricing.theme', $config['pricing']['theme']);
 
         $container->setParameter('dzangocart_subscription.pricing.max_plans', $config['pricing']['max_plans']);
 
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config/services'));
+
+        $loader->load('factory.yml');
+
         $loader->load('controllers.yml');
-        $loader->load('plan.yml');
+
         $loader->load('form.yml');
+
+        $loader->load('plan.yml');
 
         if ($config['signup']['enabled']) {
             $this->loadSignup($config['signup'], $container, $loader);

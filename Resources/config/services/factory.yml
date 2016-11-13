@@ -1,0 +1,5 @@
+services:
+    dzangocart.subscription.factory.propel:
+        class: Dzangocart\Bundle\SubscriptionBundle\Propel\SubscriptionFactory
+        arguments:
+            - "%dzangocart.subscription.account_class%"

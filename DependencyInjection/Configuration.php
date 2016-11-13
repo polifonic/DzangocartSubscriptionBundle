@@ -17,8 +17,13 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->scalarNode('account_class')
+                    ->isRequired()
+                    ->cannotBeEmpty()
+                ->end()
                 ->scalarNode('factory')
                     ->cannotBeEmpty()
+                    ->defaultValue('dzangocart.subscription.factory.propel')
                 ->end()
                 ->arrayNode('pricing')
                     ->canBeDisabled()
