@@ -4,6 +4,7 @@ namespace Dzangocart\Bundle\SubscriptionBundle\Form\Type;
 
 use Propel\PropelBundle\Form\BaseAbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class FeaturePlansFormType extends BaseAbstractType
@@ -46,7 +47,7 @@ class FeaturePlansFormType extends BaseAbstractType
             )
         );
 
-        $builder->add('save', 'submit', array(
+        $builder->add('save', SubmitType::class, array(
             'label' => 'feature.plans.submit',
         ));
     }

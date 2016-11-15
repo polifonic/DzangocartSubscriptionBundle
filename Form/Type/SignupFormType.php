@@ -7,6 +7,8 @@ use Dzangocart\Bundle\SubscriptionBundle\Propel\PlanQuery;
 use Symfony\Bundle\FrameworkBundle\Translation\Translator;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
@@ -45,7 +47,7 @@ class SignupFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('plan_id', 'choice', array(
+        $builder->add('plan_id', ChoiceType::class, array(
             'label' => 'signup.form.plan_id.label',
             'choices' => $this->getPlans(),
             'required' => true,
@@ -55,7 +57,7 @@ class SignupFormType extends AbstractType
             ),
         ));
 
-        $builder->add('submit', 'submit', array());
+        $builder->add('submit', SubmitType::class, array());
     }
 
     protected function getPrefferedChoice()

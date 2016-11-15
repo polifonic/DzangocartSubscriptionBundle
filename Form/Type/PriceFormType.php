@@ -5,6 +5,9 @@ namespace Dzangocart\Bundle\SubscriptionBundle\Form\Type;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\PeriodQuery;
 use Propel\PropelBundle\Form\BaseAbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PriceFormType extends BaseAbstractType
@@ -34,11 +37,11 @@ class PriceFormType extends BaseAbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('currency', 'text', array());
+        $builder->add('currency', TextType::class, array());
 
-        $builder->add('price', 'text', array());
+        $builder->add('price', TextType::class, array());
 
-        $builder->add('start', 'date', array(
+        $builder->add('start', DateType::class, array(
             'widget' => 'single_text',
             'attr' => array(
                 'class' => 'date start',
@@ -46,7 +49,7 @@ class PriceFormType extends BaseAbstractType
             ),
         ));
 
-        $builder->add('finish', 'date', array(
+        $builder->add('finish', DateType::class, array(
             'widget' => 'single_text',
             'attr' => array(
                 'class' => 'date finish',
@@ -63,7 +66,7 @@ class PriceFormType extends BaseAbstractType
             'required' => false,
         ));
 
-        $builder->add('isdefault', 'choice', array(
+        $builder->add('isdefault', ChoiceType::class, array(
             'choices' => array('1' => 'plan.prices.default.true', '0' => 'plan.prices.default.false'),
             'required' => false,
         ));

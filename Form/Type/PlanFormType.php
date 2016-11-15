@@ -4,6 +4,10 @@ namespace Dzangocart\Bundle\SubscriptionBundle\Form\Type;
 
 use Propel\PropelBundle\Form\BaseAbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextAreaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PlanFormType extends BaseAbstractType
@@ -29,11 +33,11 @@ class PlanFormType extends BaseAbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name', 'text', array(
+        $builder->add('name', TextType::class, array(
             'label' => 'plan.form.name.label',
         ));
 
-        $builder->add('description', 'textarea', array(
+        $builder->add('description', TextAreaType::class, array(
             'label' => 'plan.form.description.label',
             'required' => false,
             'attr' => array(
@@ -41,7 +45,7 @@ class PlanFormType extends BaseAbstractType
             ),
         ));
 
-        $builder->add('start', 'date', array(
+        $builder->add('start', DateType::class, array(
             'label' => 'plan.form.from.label',
             'widget' => 'single_text',
             'required' => false,
@@ -51,7 +55,7 @@ class PlanFormType extends BaseAbstractType
             ),
         ));
 
-        $builder->add('finish', 'date', array(
+        $builder->add('finish', DateType::class, array(
             'label' => 'plan.form.to.label',
             'widget' => 'single_text',
             'required' => false,
@@ -61,7 +65,7 @@ class PlanFormType extends BaseAbstractType
             ),
         ));
 
-        $builder->add('save', 'submit', array(
+        $builder->add('save', SubmitType::class, array(
             'label' => 'plan.form.submit.label',
         ));
     }

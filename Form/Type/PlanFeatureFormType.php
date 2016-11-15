@@ -6,6 +6,7 @@ use Dzangocart\Bundle\SubscriptionBundle\Propel\PeriodQuery;
 use Dzangocart\Bundle\SubscriptionBundle\Propel\UnitQuery;
 use Propel\PropelBundle\Form\BaseAbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PlanFeatureFormType extends BaseAbstractType
@@ -37,7 +38,7 @@ class PlanFeatureFormType extends BaseAbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('value', 'text', array(
+        $builder->add('value', TextType::class, array(
             'label' => false,
         ));
 
