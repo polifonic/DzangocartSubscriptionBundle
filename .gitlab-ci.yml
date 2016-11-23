@@ -1,6 +1,7 @@
 satis:
     script:
-        - satis dzangocart
-    type: deploy
+        - docker exec satis satis polifonic
     tags:
         - satis
+    variables:
+        GIT_STRATEGY: none
