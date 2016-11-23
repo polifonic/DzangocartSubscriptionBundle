@@ -4,7 +4,7 @@ stages:
 satis:
     script:
         - docker exec satis satis polifonic
-      stage: satis
+    stage: satis
     tags:
         - satis
     variables:
