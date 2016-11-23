@@ -1,3 +1,6 @@
+stages:
+    - satis
+
 satis:
     script:
         - docker exec satis satis polifonic
