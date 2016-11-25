@@ -3,7 +3,7 @@ stages:
 
 satis:
     script:
-        - docker exec satis satis polifonic
+        - docker exec satis satis dzangocart
     stage: satis
     tags:
         - satis
