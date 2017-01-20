@@ -20,6 +20,7 @@ php5.6:
         - php56
 
 php5.5:
+    allow_failure: true
     image: unitedasian/php:5.5
     script:
         - composer update
