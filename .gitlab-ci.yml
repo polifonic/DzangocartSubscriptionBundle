@@ -1,11 +1,29 @@
 stages:
-    - satis
+    - php70
+    - php56
+    - php55
 
-satis:
+php7.0:
+    image: unitedasian/php:7.0
     script:
-        - docker exec satis satis dzangocart
-    stage: satis
+        - composer update
+    stage: php70
     tags:
-        - satis
-    variables:
-        GIT_STRATEGY: none
+        - php70
+
+php5.6:
+    image: unitedasian/php:5.6
+    script:
+        - composer update
+    stage: php56
+    tags:
+        - php56
+
+php5.5:
+    allow_failure: true
+    image: unitedasian/php:5.5
+    script:
+        - composer update
+    stage: php55
+    tags:
+        - php55
