@@ -23,4 +23,23 @@ interface SubscriptionFactoryInterface
      * @return PlanInterface
      */
     public function getDefaultPlan();
+
+    public function disable(SubscriptionInterface $account);
+
+    public function enable(SubscriptionInterface $account);
+
+    public function suspend(SubscriptionInterface $account);
+
+    public function reinstate(SubscriptionInterface $account);
+
+    public function close(SubscriptionInterface $account);
+
+    public function delete(SubscriptionInterface $account);
+
+    public function getDeprecatedAccounts();
+
+    /**
+     * Definitively removes closed accounts.
+     */
+    public function purge();
 }
