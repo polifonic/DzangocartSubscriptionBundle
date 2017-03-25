@@ -83,4 +83,56 @@ class SubscriptionFactory implements SubscriptionFactoryInterface
             ->orderByRank()
             ->findOne();
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function disable(DomainSubscriptionInterface $account)
+    {
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function enable(DomainSubscriptionInterface $account)
+    {
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function suspend(DomainSubscriptionInterface $account)
+    {
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function reinstate(DomainSubscriptionInterface $account)
+    {
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function close(DomainSubscriptionInterface $account)
+    {
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function delete(DomainSubscriptionInterface $account)
+    {
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function purge()
+    {
+        foreach ($this->getDeprecatedAccounts() as $account) {
+            $account->delete();
+        }
+    }
 }

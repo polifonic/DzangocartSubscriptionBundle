@@ -165,7 +165,7 @@ public static function loadValidatorMetadata(ClassMetadata $metadata)
     );
 ';
 
-        return sprintf($text,$column);
+        return sprintf($text, $column);
     }
 
     protected function add__call()
