@@ -24,17 +24,17 @@ interface SubscriptionFactoryInterface
      */
     public function getDefaultPlan();
 
-    public function disable(DomainSubscriptionInterface $account);
+    public function disable(SubscriptionInterface $account);
 
-    public function enable(DomainSubscriptionInterface $account);
+    public function enable(SubscriptionInterface $account);
 
-    public function suspend(DomainSubscriptionInterface $account);
+    public function suspend(SubscriptionInterface $account);
 
-    public function reinstate(DomainSubscriptionInterface $account);
+    public function reinstate(SubscriptionInterface $account);
 
-    public function close(DomainSubscriptionInterface $account);
+    public function close(SubscriptionInterface $account);
 
-    public function delete(DomainSubscriptionInterface $account);
+    public function delete(SubscriptionInterface $account);
 
     public function getDeprecatedAccounts();
 

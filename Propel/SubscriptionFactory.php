@@ -7,6 +7,7 @@ use Criteria;
 use PropelQuery;
 use Dzangocart\Bundle\SubscriptionBundle\Model\Status;
 use Dzangocart\Bundle\SubscriptionBundle\Model\SubscriptionFactoryInterface;
+use Dzangocart\Bundle\SubscriptionBundle\Model\SubscriptionInterface;
 
 class SubscriptionFactory implements SubscriptionFactoryInterface
 {
@@ -87,43 +88,51 @@ class SubscriptionFactory implements SubscriptionFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function disable(DomainSubscriptionInterface $account)
+    public function disable(SubscriptionInterface $account)
     {
     }
 
     /**
      * {@inheritdoc}
      */
-    public function enable(DomainSubscriptionInterface $account)
+    public function enable(SubscriptionInterface $account)
     {
     }
 
     /**
      * {@inheritdoc}
      */
-    public function suspend(DomainSubscriptionInterface $account)
+    public function suspend(SubscriptionInterface $account)
     {
     }
 
     /**
      * {@inheritdoc}
      */
-    public function reinstate(DomainSubscriptionInterface $account)
+    public function reinstate(SubscriptionInterface $account)
     {
     }
 
     /**
      * {@inheritdoc}
      */
-    public function close(DomainSubscriptionInterface $account)
+    public function close(SubscriptionInterface $account)
     {
     }
 
     /**
      * {@inheritdoc}
      */
-    public function delete(DomainSubscriptionInterface $account)
+    public function delete(SubscriptionInterface $account)
     {
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDeprecatedAccounts()
+    {
+        return $this->findAccountsByStatus(Status::CLOSED);
     }
 
     /**
