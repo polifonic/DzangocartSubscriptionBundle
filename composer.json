@@ -11,8 +11,8 @@
         }
     ],
     "require": {
-        "symfony/symfony": "^2.4",
-        "propel/propel-bundle": "^1.4"
+        "symfony/symfony": "3.0",
+        "skyfox/propel-bundle": "^4.0.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.6||^5.4"
@@ -22,7 +22,8 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.7.x-dev"
+            "dev-master": "0.7.x-dev",
+            "dev-feat/update-symfony-version": "0.8.x-dev"
         }
     }
 }
